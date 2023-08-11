@@ -17,11 +17,12 @@
     :root{
         --white: #f9f9f9;
         --green: #1A3D1F;
+        --yellow:  #eeb249;
     }
     body{
         height: 100%;
         margin: 0;
-        background-image: url(../yara_bg.png);
+        background-image: url(media/yara_bg.png);
         background-repeat: no-repeat;
         background-size: contain;
         background-attachment: fixed;
@@ -175,7 +176,7 @@ color: #eeb249;
   body{
         height: 100%;
         margin: 0;
-        background-image: url(../yara_bg.png);
+        background-image: url(media/yara_bg.png);
         background-repeat: no-repeat;
         background-size: auto;
         background-attachment: initial;
@@ -190,6 +191,11 @@ color: #eeb249;
 .menubar, .painel{
   margin-top: -3em;
 }
+.subtitle{
+        font-size: 1.4em;
+        margin-top: -1em;
+        font-family: 'Glacial Indifference', sans-serif;
+    }
 }
 
   @media screen and (max-width: 671px) {
@@ -220,6 +226,7 @@ color: #eeb249;
   @media screen and (max-width: 360px) {
     .col-1{
       display: none;
+   
     }
   }
     </style>
@@ -309,7 +316,7 @@ color: #eeb249;
             </div>
             <div class="col-1"></div>
             <div class="col-9 painel">
-              <iframe src="iframe.html" name="iframe" id="iframe"frameborder="0">
+              <iframe src="iframe.html" name="iframe" scrolling="auto" id="iframe"frameborder="0">
 
               </iframe>
            
