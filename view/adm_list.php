@@ -157,7 +157,7 @@ $dados = listaAdm();
             <th class="TabelaAdmTh">Data</th>
             <th class="TabelaAdmTh poder">Poder</th>
             <th class="TabelaAdmTh">Status</th>
-            <th class="TabelaAdmTh">&nbsp;</th>
+            <th class="TabelaAdmTh"><a><i class="fa-solid fa-user-plus" style="color:  #4da037;"></i></a></th>
             <th class="TabelaAdmTh">&nbsp;</th>
         </tr>
         <?php
