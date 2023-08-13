@@ -9,7 +9,7 @@
    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Yara | Adminstração</title>
 </head>
 <style>
      @import url('https://fonts.googleapis.com/css2?family=Berkshire+Swash&display=swap');
@@ -39,7 +39,7 @@
         display: flex;
 
     }
-    .col-5{
+    #col{
         background-color: #f9f9f9;
         border-radius: 20px;
         border:none;
@@ -67,6 +67,7 @@
         border-radius: 10px;
 
     }
+   
     .title{
         font-family: 'Berkshire Swash';
         font-size: 2em;
@@ -98,22 +99,64 @@
         transition: 0.2s;
         cursor: pointer;
     }
+    @media screen and (max-width: 1300px) {
+  body{
+        height: 100%;
+        margin: 0;
+        background-image: url(view/media/yara_bg.png);
+        background-repeat: no-repeat;
+        background-size: auto;
+        background-attachment: initial;
+  }
+  .input{
+        background-color: var(--lgreen);
+        padding: 10px 15px 10px 15px;
+        border: none;
+        width: 80%;
+        border-radius: 10px;
+
+    }
+    .adm{
+            font-size: 1.3em;
+            margin-top: 10%;
+           
+        }
+    }
 </style>
+<script>
+      function updateElementClass() {
+      const element = document.getElementById('col');
+
+      if (window.innerWidth <= 1000) {  // Tamanho da tela abaixo de 768 pixels
+        element.classList.remove('col-5');
+        element.classList.add('col-10');
+      } else {
+        element.classList.remove('col-10');
+        element.classList.add('col-5');
+      }
+    }
+
+    window.addEventListener('load', updateElementClass);
+    window.addEventListener('resize', updateElementClass);
+
+
+    </script>
 <body>
     <div class="container">
         <div class="row">
-            <div class="col-5">
+            <div class="col-5" id="col">
                 <div class="row adm">
                    <span class="title"> Y.  </span>   Administração
                 </div>
                 
-                <form action="controller/controller_adm.php">
+                <form action="controller/controller_adm.php" method="post" name="loginform">
+                    <input type="hidden" name="loginsenha" value="1">
                 <div class="row">
-                    <input type="text" name="email" class="input" placeholder="Seu email..">
+                    <input type="text" name="login" class="input" rquired placeholder="Seu email..">
                 </div>
                 <br>
                 <div class="row">
-                    <input type="password" name="senha" class="input" placeholder="Sua senha..">
+                    <input type="password" name="senha" class="input" required placeholder="Sua senha..">
                 </div>
                 <div class="row cont">
                     <button class="submit" type="submit">Continuar</button>
@@ -125,5 +168,13 @@
             </div>
         </div>
         </div>
+        <?php
+if(isset($_REQUEST["msg"])){
+	$cod = $_REQUEST["msg"];
+	require_once "model/msg.php";
+	echo "<script>alert('" . $MSG[$cod] . "');</script>";
+    unset($cod);
+}
+?>
 </body>
 </html>

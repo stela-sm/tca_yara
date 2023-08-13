@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -138,7 +141,7 @@ color: #eeb249;
 
     @media screen and (max-width: 1520px) {
        .nav-link{
-        font-size: 2em;
+        font-size: 1.6em;
         font-family: 'Glacial Indifference', sans-serif;
         padding-left: 1em;
     }
@@ -147,7 +150,8 @@ color: #eeb249;
     }
     .link2{
       display: block;
-      margin-bottom: 10%;
+
+      margin-bottom: 5%;
       
     }
     
@@ -201,7 +205,7 @@ color: #eeb249;
 
   @media screen and (max-width: 671px) {
     .link2{
-        font-size: 1.7em;
+        font-size: 1.5em;
         font-family: 'Glacial Indifference', sans-serif;
         padding-left: 1em;
         margin-bottom: 10%;
@@ -277,6 +281,8 @@ color: #eeb249;
 
 
 
+<?php
+if($_SESSION["ADM-PODER"]>=4){?>
 
                     <li class="nav-item">
                       <a target='iframe' style="color: var(--green);"  class="link1 nav-link menulink" href="adm_list.php"><i class="fa-solid fa-users fa-sm" style="color: #1A3D1F;"></i> Administradores</a>
@@ -287,11 +293,23 @@ color: #eeb249;
 
 
 
+                    <li class="nav-item">
+                      <a target='iframe' style="color: var(--green);"  class="link1 nav-link menulink" href="senhas.php"><i class="fa-solid fa-key" style="color: #1A3D1F;"></i></i>Trocar senhas</a>
+<?php 
+}?>                      
+                      
+                      <a target='iframe' style="color: var(--green);"  class="link2 nav-link menulink" href="senhas.php"><i class="fa-solid fa-key" style="color: #1A3D1F;"></i></i></a>
+                    </li>
+
+                    <?php
+if($_SESSION["ADM-PODER"]>=3){?>
 
                     <li class="nav-item">
                       <a target='iframe' style="color: var(--green);" class="link1 nav-link menulink" href="menus_list.php"><i class="fa-solid fa-arrow-up-right-from-square" style="color: #1A3D1F;"></i>Menus e Submenus</a>
 
-
+                      <?php 
+}?>                      
+     
                       <a target='iframe'style="color: var(--green);" class="link2 nav-link menulink" href="menus_list.php"><i class="fa-solid fa-arrow-up-right-from-square" style="color: #1A3D1F;"></i></a>
                     </li>
 
@@ -305,6 +323,8 @@ color: #eeb249;
                       </li>
 
 
+                      <?php
+if($_SESSION["ADM-PODER"]>=2){?>
 
                       <li class="nav-item menulink">
 
@@ -313,6 +333,9 @@ color: #eeb249;
 
                         <a target='iframe' style="color: var(--green);"  class="link2 nav-link menulink" href="pedidos_list.php"><i class="fa-solid fa-box" style="color: #1A3D1F;"></i></a>
                       </li>
+
+                      <?php 
+}?>          
                   </ul>
             </div>
             <div class="col-1"></div>
