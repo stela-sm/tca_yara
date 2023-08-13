@@ -37,7 +37,7 @@
     }
     
     table {
-      width: 100vw;
+      width: 100%;
       border-collapse: collapse;
       table-layout: auto;
       border-radius: 20px;
@@ -49,9 +49,11 @@
     
     th, td, tr {
         
-        font-size: 1em;
+        font-size: 0.9em;
       border-bottom: 1px solid #ddd;
       padding: 10px;
+      padding-left: 0px;
+      padding-right: 0px;
       text-align: center;
       align-items: center;
      
@@ -69,9 +71,9 @@
         border: none;
         width: 3cm;
         background-color: #dbdbdb;
-    width: 110%;
-    max-width: 3.6cm;
-    }
+    width: 100%;
+    max-width: 3cm;
+   }
     
     
     input:focus{
@@ -89,11 +91,11 @@
         background-color: transparent;
         color: var(--green);
         border: none;
-    width: 110%;
-    min-width: 3.6cm;
+    width: 100%;
+    min-width: 3cm;
     }
     .poder{
-        width: 2em;
+        width: 1em;
         margin-left: -2em;
     }
     .data{
@@ -114,12 +116,19 @@
 i{
     cursor:pointer;
 }
+textarea{
+    resize: none;
+    height: 4cm;
+    width: 3cm;
+    padding: 0;
+    margin: 0;
+}
 </style>
 <body>
     <div id="admTabela">
 <?php
 require_once "../model/manager.php";
-$dados = listaAdm();
+$dados = listaProdutos();
 ?>
 
 <script>
@@ -179,20 +188,21 @@ $dados = listaAdm();
     <table class="tabelaAdm">
         <tr id="yellow">
             <th class="TabelaAdmTh">ID</th>
-            <th class="TabelaAdmTh">Nome</th>
-            <th class="TabelaAdmTh">Email</th>            
-            <th class="TabelaAdmTh">Telefone</th>
-            <th class="TabelaAdmTh">Data</th>
-            <th class="TabelaAdmTh poder">Poder</th>
+            <th class="TabelaAdmTh">Nome</th>     
+            <th class="TabelaAdmTh poder">Descrição</th>            
+            <th class="TabelaAdmTh poder">Ingredientes</th>
+            <th class="TabelaAdmTh">Imagem</th>
+            <th class="TabelaAdmTh">Imagem hover</th>
+            <th class="TabelaAdmTh">Datahora</th>
             <th class="TabelaAdmTh">Status</th>
-            <th class="TabelaAdmTh"><a href="adm_new.php"><i class="fa-solid fa-user-plus" style=" color:  #4da037;"></i></a></th>
+            <th class="TabelaAdmTh"><a href="produto_new.php"><i class="fa-solid fa-user-plus" style=" color:  #4da037;"></i></a></th>
             <th class="TabelaAdmTh">&nbsp;</th>
         </tr>
         <?php
         for($i=1;$i<=$dados["num"];$i++){
             echo"<tr><form  name=\"formEdit\" action=\"../controller/controller_adm.php\" method=\"post\">";
 
-            echo "<input type=\"hidden\" name=\"adm_edit\" value=\"".$dados[$i]["id"]."\">";
+            echo "<input type=\"hidden\" name=\"produtos_edit\" value=\"".$dados[$i]["id"]."\">";
             
             echo "<input type=\"hidden\" id=\"idget".$dados[$i]["id"]."\"name=\"id\" value=\"".$dados[$i]["id"]."\">";
 
@@ -202,43 +212,19 @@ $dados = listaAdm();
             
             echo "<td class=\"TabelaAdmTd\"> <input type=\"text\" id=\"classe".$dados[$i]["id"]."\"  disabled name=\"nome\" value=\"". $dados[$i]["nome"] ."\"></td>";
             
-            echo "<td class=\"TabelaAdmTd email\"> <input type=\"text\"  id=\"classe".$dados[$i]["id"]."\" disabled name=\"email\" value=\"". $dados[$i]["email"] ."\"></td>";
+          
+            echo "<td class=\"TabelaAdmTd\"> <textarea  id=\"classe".$dados[$i]["id"]."\" disabled name=\"descricao\">". $dados[$i]["descricao"] ."</textarea></td>";
 
-            echo "<td class=\"TabelaAdmTd\"> <input type=\"text\" maxwidth=\"11\" id=\"classe".$dados[$i]["id"]."\" disabled name=\"telefone\" value=\"". $dados[$i]["telefone"] ."\"></td>";
-            
+
+            echo "<td class=\"TabelaAdmTd\"> <textarea  id=\"classe".$dados[$i]["id"]."\" disabled name=\"ingredientes\">". $dados[$i]["ingredientes"] ."</textarea></td>";
+
+            echo "<td class=\"TabelaAdmTd\"> <input type=\"text\"  id=\"classe".$dados[$i]["id"]."\" disabled name=\"img\" value=\"". $dados[$i]["img"] ."\"></td>";
+
+            echo "<td class=\"TabelaAdmTd\"> <input type=\"text\"  id=\"classe".$dados[$i]["id"]."\" disabled name=\"img_hover\" value=\"". $dados[$i]["img_hover"] ."\"></td>";
+
+           
             echo "<td class=\"TabelaAdmTd data\"> <input disabled value=\"". $dados[$i]["datahora"] ."\"></td>";
             
-
-
-            echo "<td class=\"TabelaAdmTd poder\"> <select  id=\"classe".$dados[$i]["id"]."\" disabled name=\"poder\">
-            
-            <option value=\"1\""; if($dados[$i]["poder"]==1){
-                echo "selected";} echo ">1 - Operador</option><br>
-
-            <option value=\"2\""; if($dados[$i]["poder"]==2){
-                echo "selected";} echo ">2 - Setorizado</option><br>
-
-                <option value=\"3\""; if($dados[$i]["poder"]==3){
-                    echo "selected";} echo ">3 - Sub Gerente</option><br>
-    
-                <option value=\"4\""; if($dados[$i]["poder"]==4){
-                    echo "selected";} echo ">4 - Gerente</option><br>
-                  
-                    <option value=\"5\""; if($dados[$i]["poder"]==5){
-                        echo "selected";} echo ">5 - Sysop </option><br>
-            
-            
-            
-            
-            </td>";
-            
-
-
-
-
-
-
-
 
             echo "<td class=\"TabelaAdmTd\"> <select disabled name=\"status\" id=\"classe".$dados[$i]["id"]."\"> 
             
@@ -294,6 +280,8 @@ echo "<script>alert('" . $MSG[$cod] . "');</script>";
 }
 
 ?>
+
+
 </body>
 </html>
 

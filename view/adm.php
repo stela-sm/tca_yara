@@ -307,11 +307,11 @@ if($_SESSION["ADM-PODER"]>=3){?>
                     <li class="nav-item">
                       <a target='iframe' style="color: var(--green);" class="link1 nav-link menulink" href="menus_list.php"><i class="fa-solid fa-arrow-up-right-from-square" style="color: #1A3D1F;"></i>Menus e Submenus</a>
 
+                      <a target='iframe'style="color: var(--green);" class="link2 nav-link menulink" href="menus_list.php"><i class="fa-solid fa-arrow-up-right-from-square" style="color: #1A3D1F;"></i></a>
+                    </li>
                       <?php 
 }?>                      
      
-                      <a target='iframe'style="color: var(--green);" class="link2 nav-link menulink" href="menus_list.php"><i class="fa-solid fa-arrow-up-right-from-square" style="color: #1A3D1F;"></i></a>
-                    </li>
 
 
 
@@ -320,6 +320,13 @@ if($_SESSION["ADM-PODER"]>=3){?>
 
 
                         <a target='iframe' style="color: var(--green);"  class="link2 nav-link menulink" href="produtos_list.php"><i class="fa-solid fa-bag-shopping" style="color: #1A3D1F;"></i></a>
+                      </li>
+
+                      <li class="nav-item">
+                        <a target='iframe' style="color: var(--green);"  class="link1 nav-link menulink" href="vitrine_list.php"><i class="fa-solid fa-store" style="color: #1A3D1F;"></i>Vitrine</a>
+
+
+                        <a target='iframe' style="color: var(--green);"  class="link2 nav-link menulink" href="vitrine_list.php"><i class="fa-solid fa-store" style="font-size: 0.8em;  color: #1A3D1F;"></i></a>
                       </li>
 
 
