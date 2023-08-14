@@ -228,7 +228,7 @@ input[type="file"] {
     </td>
     <td>
       <label for="categoria" class="label">Categoria</label><br>
-    <select  required class="label"><br>
+    <select name="categoria" required class="label"><br>
         <option  name="categoria" value="1" class="input">Sérum</option></textarea>
 </select>
     </td>
@@ -244,8 +244,8 @@ input[type="file"] {
         <textarea  name="descricao" id="" placeholder="Descrição do produto..." required class="input"></textarea>
     </td>
     <td> <label for="categoria" class="label">Finalidade</label><br>
-    <select  required class="label"><br>
-        <option  name="categoria" value="1" class="input">Pele Acneica</option></textarea>
+    <select name="finalidade"  required class="label"><br>
+        <option  name="finalidade" value="1" class="input">Pele Acneica</option></textarea>
 </select>
     </td>
     <td> <label for="nome" class="label">Preço</label><br>

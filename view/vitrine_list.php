@@ -12,7 +12,7 @@
         function confirmDelete(id){
             var resp = confirm("Tem certeza que deseja deletar esse registro?");
             if(resp==true){
-                    location.href="../controller/controller_adm.php?adm_delete=1&id="+id;
+                    location.href="../controller/controller_adm.php?produto_delete=1&id="+id;
             }else{
                 return null;
             }
@@ -29,7 +29,8 @@
         --grey: gray;
     }
 
-
+  
+    
    body {
       margin: 0;
       padding: 0;
@@ -61,18 +62,20 @@
     }
     
     input, select{
-        
+       
+        font-size: 1.1em;
+        opacity: 1;
+        text-decoration: none;
         display: flex;
         height: max-content;
         text-align: center;   
-        font-family: 'Glacial Indifderence';
-        background-color: transparent;
-        color: black;
-        border: none;
-        width: 3cm;
+        font-family: 'Glacial Indifference';
         background-color: #dbdbdb;
+        color: var(--green);
+        border: none;
+
     width: 100%;
-    max-width: 3cm;
+    min-width: 3cm;
    }
     
     
@@ -82,24 +85,24 @@
     
    
     input:disabled, select:disabled, option{
+        
+        font-size: 1.1em;
         opacity: 1;
         text-decoration: none;
         display: flex;
         height: max-content;
         text-align: center;   
-        font-family: 'Glacial Indifderence';
+        font-family: 'Glacial Indifference';
         background-color: transparent;
         color: var(--green);
         border: none;
+
     width: 100%;
     min-width: 3cm;
     }
-    .poder{
-        width: 1em;
-        margin-left: -2em;
-    }
+   
     .data{
-        font-size: 0.7em;
+        font-size: 0.9em;
     }
    .email{
     width:20%
@@ -116,12 +119,47 @@
 i{
     cursor:pointer;
 }
+textarea::-webkit-scrollbar {
+    width: 0.2em;
+}
+
+textarea::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 2px rgba(0,0,0,0.3);
+}
+
+textarea::-webkit-scrollbar-thumb {
+  background-color: var(--yellow);
+  outline: none;
+}
+textarea:disabled{
+    resize: none;
+    height: 4cm;
+    max-width: 3cm;
+    padding: 5px 10px 5px 10px;
+    border-radius: 10px; 
+    font-family: 'Glacial Indifference';
+    background-color: transparent;
+    color: black;
+    border: 1px #DADADA solid;  
+      
+   
+}
+
+label{
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
 textarea{
     resize: none;
     height: 4cm;
-    width: 3cm;
-    padding: 0;
-    margin: 0;
+    max-width: 3cm;
+    padding: 5px 10px 5px 10px;
+    border-radius: 10px; 
+    font-family: 'Glacial Indifference';
+    background-color: #dbdbdb;
+    color: black;
+    border: 1px #DADADA solid;  
 }
 </style>
 <body>
@@ -137,7 +175,8 @@ $dados = listaProdutos();
     function css(valor){
     const toggleButton = document.getElementById('edit');
     const inputId = document.getElementById('idget'+valor).value;
-     const inputsToToggle = document.querySelectorAll('#classe' + valor);
+    var classe = '.classe' + valor
+    const inputsToToggle = document.querySelectorAll(classe);
 
     const sumir = document.getElementById('edit'+inputId);
     const sumir2 =  document.getElementById('ex'+inputId);
@@ -160,7 +199,8 @@ $dados = listaProdutos();
     function css2(valor){
     const toggleButton = document.getElementById('edit');
     const inputId = document.getElementById('idget'+valor).value;
-     const inputsToToggle = document.querySelectorAll('#classe' + valor);
+    var classe = '.classe' + valor
+    const inputsToToggle = document.querySelectorAll(classe);
 
     const sumir = document.getElementById('edit'+inputId);
     const sumir2 =  document.getElementById('ex'+inputId);
@@ -200,9 +240,9 @@ $dados = listaProdutos();
         </tr>
         <?php
         for($i=1;$i<=$dados["num"];$i++){
-            echo"<tr><form  name=\"formEdit\" action=\"../controller/controller_adm.php\" method=\"post\">";
+            echo"<tr><form  name=\"formEdit\" action=\"../controller/controller_adm.php\" method=\"post\" enctype=\"multipart/form-data\">";
 
-            echo "<input type=\"hidden\" name=\"produtos_edit\" value=\"".$dados[$i]["id"]."\">";
+            echo "<input type=\"hidden\" name=\"vitrine_edit\" value=\"".$dados[$i]["id"]."\">";
             
             echo "<input type=\"hidden\" id=\"idget".$dados[$i]["id"]."\"name=\"id\" value=\"".$dados[$i]["id"]."\">";
 
@@ -210,23 +250,26 @@ $dados = listaProdutos();
 
             echo "<td class=\"TabelaAdmTd\">". $dados[$i]["id"]."</td>";
             
-            echo "<td class=\"TabelaAdmTd\"> <input type=\"text\" id=\"classe".$dados[$i]["id"]."\"  disabled name=\"nome\" value=\"". $dados[$i]["nome"] ."\"></td>";
+            echo "<td class=\"TabelaAdmTd\"> <input type=\"text\" class=\"classe".$dados[$i]["id"]."\"  disabled name=\"nome\" value=\"". $dados[$i]["nome"] ."\"></td>";
             
           
-            echo "<td class=\"TabelaAdmTd\"> <textarea  id=\"classe".$dados[$i]["id"]."\" disabled name=\"descricao\">". $dados[$i]["descricao"] ."</textarea></td>";
+            echo "<td class=\"TabelaAdmTd\"> <textarea  class=\"classe".$dados[$i]["id"]."\" disabled name=\"descricao\">". $dados[$i]["descricao"] ."</textarea></td>";
 
 
-            echo "<td class=\"TabelaAdmTd\"> <textarea  id=\"classe".$dados[$i]["id"]."\" disabled name=\"ingredientes\">". $dados[$i]["ingredientes"] ."</textarea></td>";
+            echo "<td class=\"TabelaAdmTd\"> <textarea  class=\"classe".$dados[$i]["id"]."\" disabled name=\"ingredientes\">". $dados[$i]["ingredientes"] ."</textarea></td>";
 
-            echo "<td class=\"TabelaAdmTd\"> <input type=\"text\"  id=\"classe".$dados[$i]["id"]."\" disabled name=\"img\" value=\"". $dados[$i]["img"] ."\"></td>";
+            echo "<td class=\"TabelaAdmTd\"> <label for=\"muda\">
+            <img style=\"width:3cm;\"src=\"media/".$dados[$i]["img"] ."\" alt=\"\"></label><input type=\"file\" style=\"display:none;\" id=\"muda\"class=\"classe".$dados[$i]["id"]."\" name=\"img\"></td>";
 
-            echo "<td class=\"TabelaAdmTd\"> <input type=\"text\"  id=\"classe".$dados[$i]["id"]."\" disabled name=\"img_hover\" value=\"". $dados[$i]["img_hover"] ."\"></td>";
+            echo "<td class=\"TabelaAdmTd\"> <label for=\"muda2\">
+            <img style=\"width:3cm;\"src=\"media/".$dados[$i]["img_hover"] ."\" alt=\"\"></label><input type=\"file\" style=\"display:none;\" id=\"muda2\"class=\"classe".$dados[$i]["id"]."\" name=\"img_hover\"></td>";
 
+           
            
             echo "<td class=\"TabelaAdmTd data\"> <input disabled value=\"". $dados[$i]["datahora"] ."\"></td>";
             
 
-            echo "<td class=\"TabelaAdmTd\"> <select disabled name=\"status\" id=\"classe".$dados[$i]["id"]."\"> 
+            echo "<td class=\"TabelaAdmTd\"> <select disabled name=\"status\" class=\"classe".$dados[$i]["id"]."\"> 
             
             <option value=\"1\""; if($dados[$i]["status"]==1){
                 echo "selected";} echo ">Ativo</option><br>
@@ -237,7 +280,6 @@ $dados = listaProdutos();
 
 </select></td> <td class=\"TabelaAdmTd\">";
             ?>
-
 <button style="background-color:transparent; display: none; border:none;"  onclick="css(this.value)" id="confirma<?php echo $dados[$i]["id"];?>" type="submit" class="confirm" value= "<?php echo $dados[$i]["id"];?>"><i class="fa-solid fa-circle-check" style="color: #4da037;"></i></button>
 </form>
 

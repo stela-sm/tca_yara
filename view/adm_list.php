@@ -59,11 +59,12 @@
     }
     
     input, select{
-        
+        margin-left: 18%;
+        font-size: 0.9em;
         display: flex;
         height: max-content;
         text-align: center;   
-        font-family: 'Glacial Indifderence';
+        font-family: 'Glacial Indifference';
         background-color: transparent;
         color: black;
         border: none;
@@ -80,12 +81,13 @@
     
    
     input:disabled, select:disabled, option{
+        margin-left: 18%;
         opacity: 1;
         text-decoration: none;
         display: flex;
         height: max-content;
         text-align: center;   
-        font-family: 'Glacial Indifderence';
+        font-family: 'Glacial Indifference';
         background-color: transparent;
         color: var(--green);
         border: none;
@@ -97,10 +99,11 @@
         margin-left: -2em;
     }
     .data{
-        font-size: 0.7em;
-    }
+        font-size: 0.9em;
+    } 
    .email{
-    width:20%
+    max-width: 4cm;
+    width:4cm;
    }
     #yellow{
         color: var(--white);
@@ -202,7 +205,7 @@ $dados = listaAdm();
             
             echo "<td class=\"TabelaAdmTd\"> <input type=\"text\" id=\"classe".$dados[$i]["id"]."\"  disabled name=\"nome\" value=\"". $dados[$i]["nome"] ."\"></td>";
             
-            echo "<td class=\"TabelaAdmTd email\"> <input type=\"text\"  id=\"classe".$dados[$i]["id"]."\" disabled name=\"email\" value=\"". $dados[$i]["email"] ."\"></td>";
+            echo "<td class=\"TabelaAdmTd email\"> <input type=\"email\"  classe=\"email\" id=\"classe".$dados[$i]["id"]."\" disabled name=\"email\" value=\"". $dados[$i]["email"] ."\"></td>";
 
             echo "<td class=\"TabelaAdmTd\"> <input type=\"text\" maxwidth=\"11\" id=\"classe".$dados[$i]["id"]."\" disabled name=\"telefone\" value=\"". $dados[$i]["telefone"] ."\"></td>";
             

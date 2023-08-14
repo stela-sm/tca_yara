@@ -48,6 +48,23 @@ function geradorStringRandom($length){
 }
 
 
+function validaExtImg($img){ // validar se a extensão da imagem é a correta
+	$ext = pathinfo($img,PATHINFO_EXTENSION);
+	$ext = strtolower($ext);
+	$types = array("png","jpg","jpeg","gif","webp");
+	if(in_array($ext,$types)){
+		return 1;
+	}else{return 0;}
+
+}
+
+function pegaExtensao($file){ // colocar extenção na url da imagem
+	$ext = pathinfo($file,PATHINFO_EXTENSION);
+	$ext = strtolower($ext);
+	return $ext;
+}
+
+
 function validaCPF($cpf) {
   
  

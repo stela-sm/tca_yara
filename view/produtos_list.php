@@ -12,7 +12,7 @@
         function confirmDelete(id){
             var resp = confirm("Tem certeza que deseja deletar esse registro?");
             if(resp==true){
-                    location.href="../controller/controller_adm.php?adm_delete=1&id="+id;
+                    location.href="../controller/controller_adm.php?produto_delete=1&id="+id;
             }else{
                 return null;
             }
@@ -37,7 +37,7 @@
     }
     
     table {
-      width: 100%;
+      width: 100vw;
       border-collapse: collapse;
       table-layout: auto;
       border-radius: 20px;
@@ -49,11 +49,9 @@
     
     th, td, tr {
         
-        font-size: 0.9em;
+        font-size: 1em;
       border-bottom: 1px solid #ddd;
       padding: 10px;
-      padding-left: 5px;
-      padding-right: 0px;
       text-align: center;
       align-items: center;
      
@@ -61,19 +59,20 @@
     }
     
     input, select{
-        
+        margin-left: 10%;
+        font-size: 0.9em;
         display: flex;
         height: max-content;
         text-align: center;   
-        font-family: 'Glacial Indifderence';
+        font-family: 'Glacial Indifference';
         background-color: transparent;
         color: black;
         border: none;
         width: 3cm;
         background-color: #dbdbdb;
-    width: 100%;
-    max-width: 3cm;
-   }
+    width: 110%;
+    max-width: 3.6cm;
+    }
     
     
     input:focus{
@@ -82,24 +81,25 @@
     
    
     input:disabled, select:disabled, option{
+        margin-left: 10%;
         opacity: 1;
         text-decoration: none;
         display: flex;
         height: max-content;
         text-align: center;   
-        font-family: 'Glacial Indifderence';
+        font-family: 'Glacial Indifference';
         background-color: transparent;
         color: var(--green);
         border: none;
-    width: 100%;
-    min-width: 3cm;
+    width: 110%;
+    min-width: 3.6cm;
     }
     .poder{
         width: 1em;
         margin-left: -2em;
     }
     .data{
-        font-size: 0.7em;
+        font-size: 0.9em;
     }
    .email{
     width:20%
@@ -115,13 +115,6 @@
 }
 i{
     cursor:pointer;
-}
-textarea{
-    resize: none;
-    height: 4cm;
-    width: 3cm;
-    padding: 0;
-    margin: 0;
 }
 </style>
 <body>
@@ -202,7 +195,7 @@ $dados = listaProdutos();
         for($i=1;$i<=$dados["num"];$i++){
             echo"<tr><form  name=\"formEdit\" action=\"../controller/controller_adm.php\" method=\"post\">";
 
-            echo "<input type=\"hidden\" name=\"produtos_edit\" value=\"".$dados[$i]["id"]."\">";
+            echo "<input type=\"hidden\" name=\"produto_edit\" value=\"".$dados[$i]["id"]."\">";
             
             echo "<input type=\"hidden\" id=\"idget".$dados[$i]["id"]."\"name=\"id\" value=\"".$dados[$i]["id"]."\">";
 
@@ -213,14 +206,22 @@ $dados = listaProdutos();
             echo "<td class=\"TabelaAdmTd\"> <input type=\"text\" id=\"classe".$dados[$i]["id"]."\"  disabled name=\"nome\" value=\"". $dados[$i]["nome"] ."\"></td>";
             
           
-            echo "<td class=\"TabelaAdmTd\"> <input type=\"text\" maxwidth=\"11\" id=\"classe".$dados[$i]["id"]."\" disabled name=\"categoria\" value=\"". $dados[$i]["categoria"] ."\"></td>";
+            echo "<td class=\"TabelaAdmTd\"> <select disabled name=\"categoria\" id=\"classe".$dados[$i]["id"]."\"> 
+            
+            <option value=\"1\""; if($dados[$i]["categoria"]==1){
+                echo "selected";} echo ">Ativo</option><br>
+</select></td>";
+
+            echo "<td class=\"TabelaAdmTd\"> <select disabled name=\"finalidade\" id=\"classe".$dados[$i]["id"]."\"> 
+            
+            <option value=\"1\""; if($dados[$i]["finalidade"]==1){
+                echo "selected";} echo ">Ativo</option><br>
+</select></td>";
 
 
-            echo "<td class=\"TabelaAdmTd\"> <input type=\"text\" maxwidth=\"11\" id=\"classe".$dados[$i]["id"]."\" disabled name=\"finalidade\" value=\"". $dados[$i]["finalidade"] ."\"></td>";
+            echo "<td class=\"TabelaAdmTd\"> <input type=\"text\"  id=\"classe".$dados[$i]["id"]."\" disabled name=\"estoque\" value=\"". $dados[$i]["estoque"] ."\"></td>";
 
-            echo "<td class=\"TabelaAdmTd\"> <input type=\"text\" maxwidth=\"11\" id=\"classe".$dados[$i]["id"]."\" disabled name=\"estoque\" value=\"". $dados[$i]["estoque"] ."\"></td>";
-
-            echo "<td class=\"TabelaAdmTd\"> <input type=\"text\" maxwidth=\"11\" id=\"classe".$dados[$i]["id"]."\" disabled name=\"valor\" value=\"". $dados[$i]["valor"] ."\"></td>";
+            echo "<td class=\"TabelaAdmTd\"> <input type=\"text\"  id=\"classe".$dados[$i]["id"]."\" disabled name=\"valor\" value=\"". $dados[$i]["valor"] ."\"></td>";
 
         
            

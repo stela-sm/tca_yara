@@ -32,12 +32,18 @@ session_start();
         background-attachment: fixed;
         
     }
-    header, .menu, .painel{
+    .painel, .menu{
        
         padding-left: 5%;
         padding-right: 5%;
         padding-top: 2%;
         
+    }
+    header{
+      
+      padding-left: 3%;
+        padding-right: 3%;
+        padding-top: 2%;
     }
     .menu, .painel{
 font-family: 'Glacial Indifference', sans-serif;
@@ -234,6 +240,12 @@ color: #eeb249;
    
     }
   }
+  .col-10{
+    margin-left: 0.5cm;
+    }
+  .col-2{
+    margin-left: -0.5cm;
+  }
     </style>
 <body>
     <header>
@@ -345,8 +357,7 @@ if($_SESSION["ADM-PODER"]>=2){?>
 }?>          
                   </ul>
             </div>
-            <div class="col-1"></div>
-            <div class="col-9 painel">
+            <div class="col-10 painel">
               <iframe src="iframe.html" name="iframe" scrolling="auto" id="iframe"frameborder="0">
 
               </iframe>

@@ -138,4 +138,63 @@ function listaProdutos(){ //função pra listar adms
     }
 
 }
+
+
+
+function produtoNew($dados){
+    require_once "conexao.php";
+    $sql = "INSERT INTO produtos (nome,ingredientes,valor_uni,descricao,categoria,finalidade,estoque,status,datahora,img,img_hover) VALUES ('{$dados["nome"]}','{$dados["ingredientes"]}','{$dados["preco"]}','{$dados["descricao"]}','{$dados["categoria"]}','{$dados["finalidade"]}','  {$dados["estoque"]}','{$dados["status"]}',now(),'{$dados["img"]}','{$dados["img_hover"]}');";
+   
+   
+    $result = $conn -> query($sql);
+
+    if($result==true){
+        $dados["result"]=1;
+        $conn->close();
+         return $dados;
+}else{
+$conn->close();
+$dados["result"]=0;
+return $dados;
+
+}   
+}
+
+
+
+
+function produtoEdit($dados){
+    require_once "Conexao.php";
+   
+            $sql= "UPDATE produtos SET nome = '{$dados['nome']}', categoria = '{$dados['categoria']}', finalidade = {$dados['finalidade']}, valor_uni = {$dados['preco']}, estoque = {$dados['estoque']}, datahora = now(), status = {$dados['status']}   WHERE ID_PRODUTO = '{$dados['id']}'";
+
+    $result = $conn->query($sql);
+    return $result;
+    $conn-> close();
+
+}
+
+
+
+
+function vitrineEdit($dados){
+    require_once "Conexao.php";
+   
+            $sql= "UPDATE produtos SET nome = '{$dados['nome']}', descricao = '{$dados['descricao']}', ingredientes = '{$dados['ingredientes']}',img = '{$dados['img']}', img_hover = '{$dados['img_hover']}', datahora = now(), status = '{$dados['status']} '  WHERE ID_PRODUTO = '{$dados['id']}'";
+
+    $result = $conn->query($sql);
+    return $result;
+    $conn-> close();
+
+}
+
+
+
+function produtoDelete($id){
+    require_once "Conexao.php";
+    $sql="DELETE FROM produtos WHERE ID_PRODUTO = {$id}";
+    $result = $conn -> query($sql);
+    $conn->close();
+    return $result;
+}
 ?>
