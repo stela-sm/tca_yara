@@ -178,9 +178,9 @@ function produtoEdit($dados){
 
 
 function vitrineEdit($dados){
-    require_once "Conexao.php";
+    require "conexao.php";
    
-            $sql= "UPDATE produtos SET nome = '{$dados['nome']}', descricao = '{$dados['descricao']}', ingredientes = '{$dados['ingredientes']}',img = '{$dados['img']}', img_hover = '{$dados['img_hover']}', datahora = now(), status = '{$dados['status']} '  WHERE ID_PRODUTO = '{$dados['id']}'";
+            $sql= "UPDATE produtos SET nome = '{$dados['nome']}', descricao = '{$dados['descricao']}', ingredientes = '{$dados['ingredientes']}', datahora = now(), status = '{$dados['status']} '  WHERE ID_PRODUTO = '{$dados['id']}'";
 
     $result = $conn->query($sql);
     return $result;
@@ -188,7 +188,25 @@ function vitrineEdit($dados){
 
 }
 
+function img($dados){
+    require "conexao.php";
+   
+    $sql= "UPDATE produtos SET img = '{$dados['img']}' WHERE ID_PRODUTO = '{$dados['id']}'";
+    $result = $conn->query($sql);
+    return $result;
+    $conn-> close();
 
+}
+
+
+function img_hover($dados){
+    require "conexao.php";
+   
+    $sql= "UPDATE produtos SET img_hover = '{$dados['img_hover']}' WHERE ID_PRODUTO = '{$dados['id']}'";
+    $result = $conn->query($sql);
+    return $result;
+    $conn-> close();
+}
 
 function produtoDelete($id){
     require_once "Conexao.php";
@@ -197,4 +215,88 @@ function produtoDelete($id){
     $conn->close();
     return $result;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//PEDIDOS -------------------------------------------------------------------------------------------------------------------------------------------------------
+
+function listaPedidos(){ //função pra listar adms 
+    require "conexao.php";
+    $sql = "SELECT * FROM pedidos";
+    $result=$conn->query($sql); 
+
+    if($result->num_rows > 0){
+        $num = $result ->num_rows;
+        $dados=array();
+        $dados["result"] = 1;
+        $dados["num"]=$num;
+        $i=1;
+        while($row=$result->fetch_assoc()){
+            $dados[$i]["id"] = $row["ID_PEDIDO"];
+            $dados[$i]["cliente"] = $row["id_cliente"];
+            $dados[$i]["endereco"] = $row["endereco"];            
+            $dados[$i]["valor"] = $row["valor"];
+            $dados[$i]["pagamento"] = $row["pagamento"];
+            $dados[$i]["status"] = $row["status"];
+            $dados[$i]["datahora"] = $row["datahora"];
+        $i++;
+        }
+        $conn->close();
+        return $dados;
+    }else{
+        $dados["num"]=0;
+        $dados["result"]=0;
+        $conn->close();
+        return $dados;
+    }
+
+}
+
+
+function listaItens(){ //função pra listar adms 
+    require "conexao.php";
+    $sql = "SELECT * FROM pedidos";
+    $result=$conn->query($sql); 
+
+    if($result->num_rows > 0){
+        $num = $result ->num_rows;
+        $dados=array();
+        $dados["result"] = 1;
+        $dados["num"]=$num;
+        $i=1;
+        while($row=$result->fetch_assoc()){
+            $dados[$i]["id"] = $row["ID_ITENS"];
+            $dados[$i]["id_pedido"] = $row["id_pedido"];
+            $dados[$i]["id_produto"] = $row["id_produto"];            
+            $dados[$i]["valor"] = $row["valor_uni"];
+            $dados[$i]["valor_total"] = $row["valor_total"];
+            $dados[$i]["datahora"] = $row["datahora"];
+        $i++;
+        }
+        $conn->close();
+        return $dados;
+    }else{
+        $dados["num"]=0;
+        $dados["result"]=0;
+        $conn->close();
+        return $dados;
+    }
+
+}
+
 ?>

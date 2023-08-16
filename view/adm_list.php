@@ -199,8 +199,6 @@ $dados = listaAdm();
             
             echo "<input type=\"hidden\" id=\"idget".$dados[$i]["id"]."\"name=\"id\" value=\"".$dados[$i]["id"]."\">";
 
-
-
             echo "<td class=\"TabelaAdmTd\">". $dados[$i]["id"]."</td>";
             
             echo "<td class=\"TabelaAdmTd\"> <input type=\"text\" id=\"classe".$dados[$i]["id"]."\"  disabled name=\"nome\" value=\"". $dados[$i]["nome"] ."\"></td>";

@@ -61,6 +61,8 @@ if(!isset($_SESSION["ADM-ID"]) || empty($_SESSION["ADM-ID"])){ //se a variavel d
                 $_SESSION["ADM-NOME"] = $dados["nome"];
                 $_SESSION["ADM-EMAIL"] = $dados["email"];
                 $_SESSION["ADM-PODER"] = $dados["poder"]; 
+                $_SESSION["ADM-SENHA"] = $dados["senha"]; 
+                $_SESSION["ADM-TELEFONE"] = $dados["telefone"];
                 //encaminhar para a pagina de adm
                 ?>
                 <form action="../view/adm.php" name="form" id="myForm" method="POST">
@@ -247,6 +249,48 @@ if(isset($_REQUEST["adm_new"])){ //se vier do admNew (criar adm)
     }
 }
 
+
+
+  //AUTOEDITA ADM ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+   
+
+
+
+
+
+
+
+  if(isset($_REQUEST["adm_autoedit"])){
+        
+    $dados["id"] = $_REQUEST["adm_edit"];
+    $dados["nome"] = $_REQUEST["nome"];
+    $dados["email"] = $_REQUEST["email"];
+    $dados["telefone"] = $_REQUEST["telefone"];
+    $dados["poder"] = $_REQUEST["poder"];
+    $dados["status"] = $_REQUEST["status"];
+    require_once "../model/manager.php";
+    $resp=admEdit($dados);
+    if($resp==1){ //tudo certo
+        ?>
+        <form action="../view/adm_list.php" name="form" id="myForm" method="POST">
+        <input type="hidden" name="msg" value="BD50">  <!--"BD50" => "Operação realizada com sucesso.",-->
+        </form> <!--envia um formulario com a variavel "msg", que é o código da mensagem de erro (ver view/msg.php)--> 
+        <script>
+        document.getElementById('myForm').submit();//envio automático submit()
+        </script>
+        <?php  
+    }else{//erro
+        ?>
+        <form action="../view/adm_list.php" name="form" id="myForm" method="POST">
+        <input type="hidden" name="msg" value="BD02">  <!--""BD02" => "Erro ao criar registro.",-->
+        </form> <!--envia um formulario com a variavel "msg", que é o código da mensagem de erro (ver view/msg.php)--> 
+        <script>
+        document.getElementById('myForm').submit();//envio automático submit()
+        </script>
+        <?php  
+        
+    }
+}
 
 
 
@@ -466,8 +510,8 @@ if ($result["result"]==1){
     $dados["ingredientes"] = $_REQUEST["ingredientes"];    
     $dados["descricao"] = $_REQUEST["descricao"]; 
     $dados["status"] = $_REQUEST["status"];
-    
-    if (isset($_REQUEST["img"]) && $_REQUEST["img"] != ""){
+   
+    if (isset($_FILES["img"]) && ($_FILES['img']['size'] != 0)){
 
         $str = geradorStringRandom(8);
         $extPeq = pegaExtensao($_FILES["img"]["name"]);
@@ -475,14 +519,18 @@ if ($result["result"]==1){
         $imgPath="../view/media/";
         move_uploaded_file($_FILES["img"]["tmp_name"],$imgPath.$img_peq_name);
         $dados["img"] = $img_peq_name;
-        
+        $resp=img($dados);
     }
-    
-    if (isset($_REQUEST["img_hover"]) && $_REQUEST["img_hover"] != ""){
+
+    if (isset($_FILES["img_hover"]) && ($_FILES['img_hover']['size'] != 0)){
+        $str = geradorStringRandom(8);
     $extMed = pegaExtensao($_FILES["img_hover"]["name"]);
     $img_med_name = "produto_" . $str ."_imghover_." . $extMed;
+    $imgPath="../view/media/";
     move_uploaded_file($_FILES["img_hover"]["tmp_name"],$imgPath.$img_med_name);
     $dados["img_hover"] = $img_med_name;
+
+    $resp=img_hover($dados);
     }
 
 

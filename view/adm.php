@@ -11,7 +11,19 @@ session_start();
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/5b9d82b6ee.js" crossorigin="anonymous"></script>
-   
+   <script>
+      function ExecutaLogout(){
+            var resp= confirm('Deseja sair do sistema?');
+        if(resp == true){
+          location.href="adm_logout.php";
+        }else{
+            return null;
+        }
+        }
+        $(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})
+   </script>
     <title>Yara | Painel</title>
 </head>
 <style>
@@ -22,6 +34,43 @@ session_start();
         --green: #1A3D1F;
         --yellow:  #eeb249;
     }
+    .dropdown-container {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 100px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  border-radius: 10px;
+}
+
+.dropdown-content a {
+  color: #1A3D1F;
+  font-family: 'Glacial Indifference';
+  padding: 5px 10px;
+  text-decoration: none;
+  display: block;
+  transition: 0.2s;
+}
+
+.dropdown-content a:hover {
+  color: #1A3D1F;
+  font-family: 'Glacial Indifference';
+  padding: 5px 10px;
+  text-decoration: underline;
+  transition: 0.2s;
+  display: block;
+}
+
+/* Mostrando o dropdown ao passar o mouse */
+.dropdown-container:hover .dropdown-content {
+  display: block;
+}
     body{
       background-color: #f9f9f9;
         height: 100%;
@@ -254,11 +303,19 @@ color: #eeb249;
         <a class="navbar-brand" href="#">Y.</a>
 
         <ul class="nav justify-content-end">
-           
+        <div class="dropdown-container">
             <li class="nav-item icon">
-              <a class="nav-link" href="#"><i class="fa-solid fa-circle-user fa-2xl" style="color: #f9f9f9;"></i></a>
+              <a class="nav-link" href="#"><i class=" dropdown-link fa-solid fa-circle-user fa-2xl" style="color: #f9f9f9;"></i></a>
+              
             </li>
-          
+            <div class="dropdown-content">
+      <a href="#" data-toggle="modal" data-target="#ExemploModalCentralizado">Meu Perfil</a><!-- Botão para acionar modal -->
+
+
+      
+      <a href="#" onclick="ExecutaLogout()">LogOut</a>
+    </div>
+        </div>
           </ul>
         </ul>
       </nav>
@@ -266,7 +323,7 @@ color: #eeb249;
         <div class="row d-flex  ">
         <div class="col-10  titulo">
         <p class="title d-flex ">
-           <span class="ola"> Olá, Stela! </span><br>
+           <span class="ola"> Olá, <?php echo strtok($_SESSION["ADM-NOME"], " ");?>! </span><br>
             <p class="subtitle"> Este é o seu painel administrativo</p>
         </p>
     </div>
@@ -365,5 +422,114 @@ if($_SESSION["ADM-PODER"]>=2){?>
             </div>
         </div>
     </div>
-</body>
+
+<!-- Modal -->
+
+<style>
+
+.table-container {
+        
+        width: 100vw;
+        width: 100%;
+        display: table;
+        border-collapse: collapse;
+      }
+  
+      .table-row {
+        display: table-row;
+      }
+  
+      .table-cell {
+        display: table-cell;
+        padding: 10px;
+      }
+  
+      .align-left {
+        text-align: left;
+      }
+      
+    .p, .table-container{
+        margin-top: 0.5em;
+    }
+    .label{
+        text-align: left;
+        
+    }
+    .input, select, option{
+        border-radius: 5px;
+        background-color: #DDDDDD;
+        border: none;
+        padding: 5px 10px 5px 10px ;
+    }
+  
+</style>
+
+
+
+
+<div class="modal fade" id="ExemploModalCentralizado" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="TituloModalCentralizado">Seu perfil, <?php echo strtok($_SESSION["ADM-NOME"], " ");?></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      <form action="../controller/controller_adm.php" method="post" class="form">
+    <input type="hidden" name="adm_autoedit" value="1">
+<div class="container">
+   
+    <div class="row">
+    <div class="table-container">
+    <div class="table-row">
+    
+      <div class="table-cell align-right">
+        <label for="nome" class="label">Nome</label><br>
+        <input type="text" name="nome" id="" placeholder="Seu nome..." required class="input" value="<?php echo $_SESSION["ADM-NOME"];?>">
+      </div>
+      <div class="table-cell align-left">
+      <label for="nome" class="label">Senha</label><br>
+        <input type="password" name="senha" id="" required minlength="6" value="<?php echo $_SESSION["ADM-SENHA"];?> placeholder="Min. 6 caracteres" class="input"></div>
+    </div>
+    <div class="table-row">
+      <div class="table-cell align-right">
+       <label for="nome" class="label">Email</label><br>
+        <input type="email" name="email" placeholder="Seu email..." required  id="" class="input" value="<?php echo $_SESSION["ADM-EMAIL"];?>"></div>
+      <div class="table-cell align-left">
+      <label for="poder" class="label">Poder </label> <i class="fa-solid fa-circle-info" data-toggle="tooltip" data-placement="right" title="Você não pode mudar seu próprio poder" style="color: #1A3D1F;"></i><br>
+  <select id="poder" disabled class="input" name="poder">
+ 
+    <option <?php if ($_SESSION["ADM-PODER"]==1) {echo "selected";} ?> value="1">1 - Operador</option>
+    <option <?php if ($_SESSION["ADM-PODER"]==2) {echo "selected";} ?> value="2">2 - Setorizado</option>
+    <option <?php if ($_SESSION["ADM-PODER"]==3) {echo "selected";} ?> value="3">3 - Subgerente</option>
+    <option <?php if ($_SESSION["ADM-PODER"]==4) {echo "selected";} ?> value="4">4 - Gerente</option>
+    <option <?php if ($_SESSION["ADM-PODER"]==5) {echo "selected";} ?> value="5">5 - Sysop</option>
+  </select>
+</div>
+    </div>
+    <div class="table-row">
+      <div class="table-cell align-right">
+      <label for="nome" class="label">Telefone (celular)</label><br>
+        <input type="text" name="telefone" id="" placeholder="(DDD)9xxxxxxxx" value="<?php echo $_SESSION["ADM-TELEFONE"];?>" required  class="input"></div>
+      <div class="table-cell align-left">
+      <label for="status" class="label">Status</label> <i class="fa-solid fa-circle-info" data-toggle="tooltip" data-placement="right" title="Você não pode mudar seu próprio status" style="color: #1A3D1F;"></i><br>
+  <select id="status" class="input" disabled name="status">
+    <option value="1">Ativo</option>
+  </select></div>
+    </div>
+  </div>
+  
+    </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+        <button type="sumbmit" class="btn btn-primary">Salvar mudanças</button>
+      </div>
+      </form>
+    </div>
+  </div>
+</div>
+  </body>
 </html>
