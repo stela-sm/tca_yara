@@ -92,7 +92,7 @@ session_start();
       
       padding-left: 3%;
         padding-right: 3%;
-        padding-top: 2%;
+        padding-top: 1%;
     }
     .menu, .painel{
 font-family: 'Glacial Indifference', sans-serif;
@@ -103,18 +103,18 @@ color: var(--green);
         padding: 20px;
         background-color: var(--white);
         box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
-    width: 90%;
+    width: 100%;
     border-radius: 20px;
-        height: 50vh ;
-        margin-top:-2em;}
+        height: 55vh ;
+        margin-top:-4em;}
         
     .menubar{
         background-color: var(--white);
         padding-top:20px;
         padding-bottom:20px;
         border-radius: 20px;
-        height: 50vh ;
-        margin-top:-2em;
+        height: 55vh ;
+        margin-top:-4em;
         box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
     }
    .nav> .nav-link{
@@ -140,7 +140,7 @@ color: var(--green);
     .title{
         font-family: 'Berkshire Swash', cursive;
         font-size: 3.3em;
-        padding-top: 1.5em;
+        padding-top: 1em;
     
     }
     .subtitle{
