@@ -279,7 +279,9 @@ $dados = listaMenu();
 
 
 <?php
-$dados2=  submenuList();?>
+$dados2=  submenuList();
+
+if (isset($dados2['num']) && $dados2['num']!='0'){?>
 
 
 
@@ -312,14 +314,13 @@ $dados2=  submenuList();?>
 
     echo "<td class=\"TabelaAdmTd\"> <input type=\"text\" id=\"classe" . $dados2[$i]["id"] . "\"  disabled name=\"folder\" value=\"" . $dados2[$i]["folder"] . "\"></td>";
 
-    echo "<td class=\"TabelaAdmTd\">  <select name=\"idmenu\" id=\"\"> ";
+    echo "<td class=\"TabelaAdmTd\">  <select disabled id=\"classe" . $dados2[$i]["id"] . "\" name=\"idmenu\" > ";
     $nome="";
-    if (isset($dados['num']) && $dados['num']!='0'){
-    for($i=1;$i<$dados['num'];$i++){
-            echo "<option value='{$dados[$i]['id']}'>{$dados[$i]['id']} - {$dados[$i]['nome']}</option>";}
+    for($ii=1;$ii<count($dados)-1;$ii++){
+        if($dados[$ii]['id']==$dados2[$i]['id_menu_fk']){$word = 'selected';}else{$word='';}
+            echo "<option ".$word." name=\"idmenu\" value='{$dados[$ii]['id']}'>{$dados[$ii]['id']} - {$dados[$ii]['nome']}</option>";}
     
-            
-    }
+       
     
 
 echo"  </select></td>";
@@ -387,7 +388,8 @@ if(isset($_REQUEST["msg"])){
 echo "<script>alert('" . $MSG[$cod] . "');</script>";
 
 }
-
+     
+}
 ?>
 </body>
 </html>

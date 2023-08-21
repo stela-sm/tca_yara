@@ -766,6 +766,7 @@ if(isset($_REQUEST["produto_delete"])){ //deleçao
         $dados["id"]= $_REQUEST["id"];
         $dados["idmenu"]= $_REQUEST["id"];
         $dados["folder"]= $_REQUEST["folder"];
+        $dados["idmenu"]= $_REQUEST["idmenu"];
         $dados["nomesub"]= $_REQUEST["nome"];
         $dados["url"]= $_REQUEST["url"];
         $dados["status"]= $_REQUEST["status"];

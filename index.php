@@ -1,6 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
+
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
@@ -9,172 +10,72 @@
    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yara | Adminstração</title>
+    <title>Yara | Home</title>
 </head>
-<style>
-     @import url('https://fonts.googleapis.com/css2?family=Berkshire+Swash&display=swap');
-    @import url('https://fonts.cdnfonts.com/css/glacial-indifference-2');
-    :root{
-        --white: #f9f9f9;
-        --green: #1A3D1F;
-        --yellow:  #eeb249;
-    --lgreen: #B9C394;
-    }
-     body{
-        margin: 0;
-        background-image: url(view/media/yara_bg.png);
-        background-repeat: no-repeat;
-        background-size: contain;
-        background-attachment: fixed;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-
-    }
-    .row{
-        align-items: center;
-        align-self: center;
-        justify-content: center;
-        display: flex;
-
-    }
-    #col{
-        background-color: #f9f9f9;
-        border-radius: 20px;
-        border:none;
-        
-        box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
-        height: 80vh;
-    }
-    .adm, .row{
-        font-family: 'Glacial Indifference';
-        
-    }
-        .adm{
-            font-size: 1.5em;
-            margin-top: 10%;
-           
-        }
-    .row{
-        height: 26%;
-    }
-    .input{
-        background-color: var(--lgreen);
-        padding: 20px 25px 10px 25px;
-        border: none;
-        width: 60%;
-        border-radius: 10px;
-
-    }
-   
-    .title{
-        font-family: 'Berkshire Swash';
-        font-size: 2em;
-        margin-right: 3%;
-    }
-    .cont{
-        margin-top: 10%;
-    }
-    .es{
-        margin-top: 15%;
-      
-    }
-    .esqueci{
-        text-decoration: underline;
-        color: gray;
-        text-transform: none;
-    }
-    .submit{
-        color: var(--green);
-        font-size: 1.3em;
-        background-color: transparent;
-        border: none;
-        text-decoration: underline;
-        
-        transition: 0.2s;
-    }
-    .submit:hover{
-        transform: scale(1.1);
-        transition: 0.2s;
-        cursor: pointer;
-    }
-    @media screen and (max-width: 1300px) {
-  body{
-        height: 100%;
-        margin: 0;
-        background-image: url(view/media/yara_bg.png);
-        background-repeat: no-repeat;
-        background-size: auto;
-        background-attachment: initial;
-  }
-  .input{
-        background-color: var(--lgreen);
-        padding: 10px 15px 10px 15px;
-        border: none;
-        width: 80%;
-        border-radius: 10px;
-
-    }
-    .adm{
-            font-size: 1.3em;
-            margin-top: 10%;
-           
-        }
-    }
-</style>
-<script>
-      function updateElementClass() {
-      const element = document.getElementById('col');
-
-      if (window.innerWidth <= 1000) {  // Tamanho da tela abaixo de 768 pixels
-        element.classList.remove('col-5');
-        element.classList.add('col-10');
-      } else {
-        element.classList.remove('col-10');
-        element.classList.add('col-5');
-      }
-    }
-
-    window.addEventListener('load', updateElementClass);
-    window.addEventListener('resize', updateElementClass);
-
-
-    </script>
 <body>
+    <style>
+        a{
+            text-decoration: none;
+        }
+        li, ul{
+            list-style: none;
+        }
+        </style>
+  <nav class="navbar navbar-expand-lg  ">
     <div class="container">
-        <div class="row">
-            <div class="col-5" id="col">
-                <div class="row adm">
-                   <span class="title"> Y.  </span>   Administração
-                </div>
-                
-                <form action="controller/controller_adm.php" method="post" name="loginform">
-                    <input type="hidden" name="loginsenha" value="1">
-                <div class="row">
-                    <input type="text" name="login" class="input" rquired placeholder="Seu email..">
-                </div>
-                <br>
-                <div class="row">
-                    <input type="password" name="senha" class="input" required placeholder="Sua senha..">
-                </div>
-                <div class="row cont">
-                    <button class="submit" type="submit">Continuar</button>
-                </div>
-                <div class="row es">
-                    <a href="" class="esqueci">Esqueci a senha</a>
-                </div>
-                </form>
-            </div>
+      <a class="navbar-brand" href="#">Logo</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+       
+      <?php
+                            require_once "manager.php";
+                            $dados= pegaMenusSubmenus("r"); //chama função dos menus com a folder "r"
+                            $dadosSUB = pegasubmenu("r"); //chama função dos submenus com a folder "r"
+                           
+                           
+                           if(isset($dados["result"]) && $dados["result"] != 0){  // se vier resultado da função dos menus
+
+                            $ii=0; //variavel ii (contagem de submenus) = 0 
+                            for($i = 0;$i<$dados["num"];$i++){ //enquando i for menor que a quantidade de menus...
+                            
+                              
+                              if($dados[$i]["ID_MENU"] == $dadosSUB[$ii]["ID_MENU_FK"] && $ii<$dados["num"] ){ //...verifique SE os IDs batem e se ii permanece menor que a quantidade de submenus 
+
+                                echo "<li class='nav-item dropdown'> 
+                                  <a class='nav-link dropdown-toggle' href=''".$dados[$i]["URL_MENU"]."' id='navbarDropdownMenuLink' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
+                                  ".$dados[$i]["NOME_MENU"]."
+                                  </a>
+                                  <div class='dropdown-menu' aria-labelledby='navbarDropdown'>
+                                  <a class='dropdown-item' href='".$dadosSUB[$ii]["URL_SUBMENU"]."'>".$dadosSUB[$ii]["NOME_SUBMENU"]."</a>                      
+                                  "; // echo do dropdown
+                                  
+                                  $ii=$ii+1; //soma 1 à variavel de contagem de submenu
+                                 
+                                } //fecha if
+                              
+
+                              else{ //mas se os IDs não batem, ou todos os submenus já foram impressos, então...
+                            
+                              echo "<li class='nav-item active'>
+                            <a class='nav-link' href='".$dados[$i]["URL_MENU"]."'>".$dados[$i]["NOME_MENU"]."</a>
+                          </li> ";  //imprime link sem dropdown
+
+                              }//fecha else
+                        }//fecha for
+                           
+                      }//fecha if
+                           
+                          
+                           ?>
+         
         </div>
-        </div>
-        <?php
-if(isset($_REQUEST["msg"])){
-	$cod = $_REQUEST["msg"];
-	require_once "model/msg.php";
-	echo "<script>alert('" . $MSG[$cod] . "');</script>";
-    unset($cod);
-}
-?>
+    </div>
+  </nav>
+
+  <!-- Adicione os links para os arquivos JavaScript do Bootstrap e jQuery -->
+  <script src="caminho-para-o-jquery.min.js"></script>
+  <script src="caminho-para-o-bootstrap.min.js"></script>
 </body>
 </html>
