@@ -56,6 +56,18 @@ function admEdit($dados){
 
 }
 
+
+function admAutoedit($dados){
+   
+    require "conexao.php";
+   
+            $sql= "UPDATE adm SET nome = '{$dados['nome']}', email = '{$dados['email']}', datahora = now() ,celular = '{$dados['telefone']}' WHERE ID_ADM = '{$dados['id']}'";
+
+    $result = $conn->query($sql);
+    return $result;
+    $conn-> close();
+
+} 
 function admDelete($id){
     require "conexao.php";
     $sql="DELETE FROM adm WHERE ID_ADM = {$id}";

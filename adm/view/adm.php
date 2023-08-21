@@ -20,9 +20,23 @@ session_start();
             return null;
         }
         }
+
         $(function () {
   $('[data-toggle="tooltip"]').tooltip()
 })
+
+
+function confirma(){
+    document.getElementById("auto").addEventListener("submit", function(event) {
+      event.preventDefault();
+      if (window.confirm("Tem certeza de que deseja alterar seus dados? Será necessário refazer seu login")) {
+        
+        this.submit();
+      } else {
+        
+      }
+    });}
+
    </script>
     <title>Yara | Painel</title>
 </head>
@@ -462,6 +476,49 @@ if($_SESSION["ADM-PODER"]>=2){?>
         padding: 5px 10px 5px 10px ;
     }
   
+/*MODAL CSS*/
+
+.modal-title{
+  
+color: var(--green);
+font-family: 'Berkshire Swash', cursive;
+}
+    
+.modal-body{
+  font-family: 'Glacial Indifference', sans-serif;
+}
+
+.btn-submit{
+  background-color: var(--yellow);
+  color: white;
+  border-radius: 10px;
+}
+ input{
+  border-radius: 20px;
+}
+.modal{
+  border-radius: 40%;
+}
+.btn-secondary{
+  background-color: transparent;
+  color: var(--green);
+  transition: 0.2s;  
+  border-radius: 10px;
+  
+}
+.btn-secondary:hover{
+  background-color: var(--green);
+  opacity: 0.8;
+  border-radius: 10px;
+}
+
+.btn-submit:hover{
+  border: 1px var(--yellow) solid;
+  background-color: transparent;
+  color: var(--yellow);
+  transition: 0.2s;  
+  border-radius: 10px;
+}
 </style>
 
 
@@ -471,13 +528,13 @@ if($_SESSION["ADM-PODER"]>=2){?>
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="TituloModalCentralizado">Seu perfil, <?php echo strtok($_SESSION["ADM-NOME"], " ");?></h5>
+        <h4 class="modal-title" id="TituloModalCentralizado">Seu perfil, <?php echo strtok($_SESSION["ADM-NOME"], " ");?></h4>
         <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-      <form action="../controller/controller_adm.php" method="post" class="form">
+      <form action="../controller/controller_adm.php" method="post" id="auto" class="form">
     <input type="hidden" name="adm_autoedit" value="1">
 <div class="container">
    
@@ -490,14 +547,6 @@ if($_SESSION["ADM-PODER"]>=2){?>
         <input type="text" name="nome" id="" placeholder="Seu nome..." required class="input" value="<?php echo $_SESSION["ADM-NOME"];?>">
       </div>
       <div class="table-cell align-left">
-      <label for="nome" class="label">Senha</label><br>
-        <input type="password" name="senha" id="" required minlength="6" value="<?php echo $_SESSION["ADM-SENHA"];?> placeholder="Min. 6 caracteres" class="input"></div>
-    </div>
-    <div class="table-row">
-      <div class="table-cell align-right">
-       <label for="nome" class="label">Email</label><br>
-        <input type="email" name="email" placeholder="Seu email..." required  id="" class="input" value="<?php echo $_SESSION["ADM-EMAIL"];?>"></div>
-      <div class="table-cell align-left">
       <label for="poder" class="label">Poder </label> <i class="fa-solid fa-circle-info" data-toggle="tooltip" data-placement="right" title="Você não pode mudar seu próprio poder" style="color: #1A3D1F;"></i><br>
   <select id="poder" disabled class="input" name="poder">
  
@@ -508,28 +557,43 @@ if($_SESSION["ADM-PODER"]>=2){?>
     <option <?php if ($_SESSION["ADM-PODER"]==5) {echo "selected";} ?> value="5">5 - Sysop</option>
   </select>
 </div>
+       </div>
+   
+    <div class="table-row">
+      <div class="table-cell align-right">
+       <label for="nome" class="label">Email</label><br>
+        <input type="email" name="email" placeholder="Seu email..." required  id="" class="input" value="<?php echo $_SESSION["ADM-EMAIL"];?>"></div>
+        <div class="table-cell align-left">
+      <label for="status" class="label">Status</label> <i class="fa-solid fa-circle-info" data-toggle="tooltip" data-placement="right" title="Você não pode mudar seu próprio status" style="color: #1A3D1F;"></i><br>
+  <select id="status" class="input" disabled name="status">
+    <option value="1">Ativo</option>
+  </select>
+<br>
+<br>
+</div>
     </div>
     <div class="table-row">
       <div class="table-cell align-right">
       <label for="nome" class="label">Telefone (celular)</label><br>
         <input type="text" name="telefone" id="" placeholder="(DDD)9xxxxxxxx" value="<?php echo $_SESSION["ADM-TELEFONE"];?>" required  class="input"></div>
-      <div class="table-cell align-left">
-      <label for="status" class="label">Status</label> <i class="fa-solid fa-circle-info" data-toggle="tooltip" data-placement="right" title="Você não pode mudar seu próprio status" style="color: #1A3D1F;"></i><br>
-  <select id="status" class="input" disabled name="status">
-    <option value="1">Ativo</option>
-  </select></div>
+     
     </div>
   </div>
   
     </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-        <button type="sumbmit" class="btn btn-primary">Salvar mudanças</button>
+        
+        <button type="sumbmit" onclick="confirma()" class="btn btn-submit">Salvar mudanças</button>
+      
+        </form>
       </div>
-      </form>
     </div>
   </div>
 </div>
   </body>
 </html>
+
+
+ 
+

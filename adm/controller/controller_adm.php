@@ -262,17 +262,16 @@ if(isset($_REQUEST["adm_new"])){ //se vier do admNew (criar adm)
 
   if(isset($_REQUEST["adm_autoedit"])){
         
-    $dados["id"] = $_REQUEST["adm_edit"];
+    $dados["id"] = $_REQUEST["adm_autoedit"];
     $dados["nome"] = $_REQUEST["nome"];
     $dados["email"] = $_REQUEST["email"];
     $dados["telefone"] = $_REQUEST["telefone"];
-    $dados["poder"] = $_REQUEST["poder"];
-    $dados["status"] = $_REQUEST["status"];
+
     require_once "../model/manager.php";
-    $resp=admEdit($dados);
+    $resp=admAutoedit($dados);
     if($resp==1){ //tudo certo
         ?>
-        <form action="../view/adm_list.php" name="form" id="myForm" method="POST">
+        <form action="../index.php" name="form" id="myForm" method="POST">
         <input type="hidden" name="msg" value="BD50">  <!--"BD50" => "Operação realizada com sucesso.",-->
         </form> <!--envia um formulario com a variavel "msg", que é o código da mensagem de erro (ver view/msg.php)--> 
         <script>
