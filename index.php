@@ -30,7 +30,7 @@
       <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
        
       <?php
-                            require_once "manager.php";
+                            require_once "model/manager.php";
                             $dados= pegaMenusSubmenus("r"); //chama função dos menus com a folder "r"
                             $dadosSUB = pegasubmenu("r"); //chama função dos submenus com a folder "r"
                            

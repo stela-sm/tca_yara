@@ -588,6 +588,76 @@ return 0;
 
 
 
+//PAINEL----------------------------------------------------------------
+
+function dataPeriod($dados){
+    require "conexao.php";
+    $sql = "SELECT * FROM pedidos WHERE datahora BETWEEN '{$dados['inicio']}' AND '{$dados['fim']}'";
+    $result = $conn->query($sql);
+   
+    if($result->num_rows > 0){
+        $num = $result ->num_rows;
+        $dados=array();
+        $dados["result"] = 1;
+        $dados["num"]=$num;
+        $conn->close();
+        return $dados;
+    }else{
+        $dados["result"]=0;
+        $dados["num"]=0;
+        $conn->close();
+        return $dados;
+    }
+
+}
+
+function dataFaturamento($dados){
+    require "conexao.php";
+    $sql= "SELECT SUM(valor) as total FROM pedidos WHERE datahora BETWEEN '{$dados['inicio']}' AND '{$dados['fim']}';";
+
+    $result = $conn->query($sql);
+   
+    if($result->num_rows > 0){
+        $num = $result ->num_rows;
+        $dados=array();
+        $dados["result"] = 1;
+        $linha = mysqli_fetch_assoc($result);
+        $dados["num"]=$linha["total"];
+        $conn->close();
+        return $dados;
+    }else{
+        $dados["result"]=0;
+        $dados["num"]='0.00';
+        $conn->close();
+        return $dados;
+    }
+
+}
+
+
+function dataClientes($dados){
+    require "conexao.php";
+    $sql = "SELECT * FROM cliente WHERE datahora BETWEEN '{$dados['inicio']}' AND '{$dados['fim']}';";
+
+    $result = $conn->query($sql);
+   
+    if($result->num_rows > 0){
+        $num = $result ->num_rows;
+        $dados=array();
+        $dados["result"] = 1;
+        $dados["num"]=$num;
+        $conn->close();
+        return $dados;
+    }else{
+        $dados["result"]=0;
+        $dados["num"]=0;
+        $conn->close();
+        return $dados;
+    }
+
+}
+
+
 
 
 ?>

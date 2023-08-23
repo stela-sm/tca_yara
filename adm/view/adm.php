@@ -37,6 +37,19 @@ function confirma(){
       }
     });}
 
+function button(){
+       const buttons = document.querySelectorAll('.fa-solid');
+
+buttons.forEach(button => {
+    button.addEventListener('click', () => {
+        buttons.forEach(btn => btn.classList.remove('active'));
+        
+        button.classList.add('active');
+    });
+});}
+
+document.onload = button();
+
    </script>
     <title>Yara | Painel</title>
 </head>
@@ -141,6 +154,9 @@ color: var(--green);
     .navbar-brand{
         font-size: 3.5em;
     }
+    .navbar-brand:hover{
+      color: var(--white);
+    }
     .nav-link{
         font-size: 1.3em;
         font-family: 'Glacial Indifference', sans-serif;;
@@ -177,16 +193,19 @@ color: var(--green);
     i{
         margin-right: 0.5em;
     }
-    .active{
-color: #eeb249;
-    }
-
+   
     iframe{
       width: 100%;
       height: 100%;
     }
     .link2{
       display:none;
+    }
+    .fa-solid{
+      color: var(--green)
+    }
+    .active{
+      color: var(--yellow);
     }
 
     @media screen and (max-width: 1739px) {
@@ -354,11 +373,11 @@ color: #eeb249;
                 <ul class="nav flex-column " >
                     <li class="nav-item">
                       
-                      <a target='iframe' style="color: var(--green);" class="link1 nav-link active" href="painel.php"><i class="fa-solid fa-house" style="color: #eeb249;"></i> Painel</a>
+                      <a target='iframe' style="color: var(--green);" class="link1 nav-link active" href="painel.php"><i class="fa-solid fa-house" ></i> Painel</a>
                       
                       
                       
-                      <a  target='iframe' style="color: var(--green);" class="link2 nav-link active" href="painel.php"><i class="fa-solid fa-house" style="color: #eeb249;"></i></a>
+                      <a  target='iframe' style="color: var(--green);" class="link2 nav-link active" href="painel.php"><i class="fa-solid fa-house" ></i></a>
                     </li>
 
 
@@ -368,29 +387,29 @@ color: #eeb249;
 if($_SESSION["ADM-PODER"]>=4){?>
 
                     <li class="nav-item">
-                      <a target='iframe' style="color: var(--green);"  class="link1 nav-link menulink" href="adm_list.php"><i class="fa-solid fa-users fa-sm" style="color: #1A3D1F;"></i> Administradores</a>
+                      <a target='iframe' style="color: var(--green);"  class="link1 nav-link menulink" href="adm_list.php"><i class="fa-solid fa-users fa-sm"></i> Administradores</a>
                       
                       
-                      <a target='iframe' style="color: var(--green);"  class="link2 nav-link menulink" href="adm_list.php"><i class="fa-solid fa-users fa-sm" style="color: #1A3D1F;"></i> </a>
+                      <a target='iframe' style="color: var(--green);"  class="link2 nav-link menulink" href="adm_list.php"><i class="fa-solid fa-users fa-sm" ></i> </a>
                     </li>
 
 
 
                     <li class="nav-item">
-                      <a target='iframe' style="color: var(--green);"  class="link1 nav-link menulink" href="senhas.php"><i class="fa-solid fa-key" style="color: #1A3D1F;"></i></i>Trocar senhas</a>
+                      <a target='iframe' style="color: var(--green);"  class="link1 nav-link menulink" href="senhas.php"><i class="fa-solid fa-key" ></i></i>Trocar senhas</a>
 <?php 
 }?>                      
                       
-                      <a target='iframe' style="color: var(--green);"  class="link2 nav-link menulink" href="senhas.php"><i class="fa-solid fa-key" style="color: #1A3D1F;"></i></i></a>
+                      <a target='iframe' style="color: var(--green);"  class="link2 nav-link menulink" href="senhas.php"><i class="fa-solid fa-key"></i></i></a>
                     </li>
 
                     <?php
 if($_SESSION["ADM-PODER"]>=3){?>
 
                     <li class="nav-item">
-                      <a target='iframe' style="color: var(--green);" class="link1 nav-link menulink" href="menus_list.php"><i class="fa-solid fa-arrow-up-right-from-square" style="color: #1A3D1F;"></i>Menus e Submenus</a>
+                      <a target='iframe' style="color: var(--green);" class="link1 nav-link menulink" href="menus_list.php"><i class="fa-solid fa-arrow-up-right-from-square"></i>Menus e Submenus</a>
 
-                      <a target='iframe'style="color: var(--green);" class="link2 nav-link menulink" href="menus_list.php"><i class="fa-solid fa-arrow-up-right-from-square" style="color: #1A3D1F;"></i></a>
+                      <a target='iframe'style="color: var(--green);" class="link2 nav-link menulink" href="menus_list.php"><i class="fa-solid fa-arrow-up-right-from-square" ></i></a>
                     </li>
                       <?php 
 }?>                      
@@ -399,17 +418,17 @@ if($_SESSION["ADM-PODER"]>=3){?>
 
 
                     <li class="nav-item">
-                        <a target='iframe' style="color: var(--green);"  class="link1 nav-link menulink" href="produtos_list.php"><i class="fa-solid fa-bag-shopping" style="color: #1A3D1F;"></i>Produtos</a>
+                        <a target='iframe' style="color: var(--green);"  class="link1 nav-link menulink" href="produtos_list.php"><i class="fa-solid fa-bag-shopping" ></i>Produtos</a>
 
 
-                        <a target='iframe' style="color: var(--green);"  class="link2 nav-link menulink" href="produtos_list.php"><i class="fa-solid fa-bag-shopping" style="color: #1A3D1F;"></i></a>
+                        <a target='iframe' style="color: var(--green);"  class="link2 nav-link menulink" href="produtos_list.php"><i class="fa-solid fa-bag-shopping" ></i></a>
                       </li>
 
                       <li class="nav-item">
-                        <a target='iframe' style="color: var(--green);"  class="link1 nav-link menulink" href="vitrine_list.php"><i class="fa-solid fa-store" style="color: #1A3D1F;"></i>Vitrine</a>
+                        <a target='iframe' style="color: var(--green);"  class="link1 nav-link menulink" href="vitrine_list.php"><i class="fa-solid fa-store"></i>Vitrine</a>
 
 
-                        <a target='iframe' style="color: var(--green);"  class="link2 nav-link menulink" href="vitrine_list.php"><i class="fa-solid fa-store" style="font-size: 0.8em;  color: #1A3D1F;"></i></a>
+                        <a target='iframe' style="color: var(--green);"  class="link2 nav-link menulink" href="vitrine_list.php"><i class="fa-solid fa-store" style="font-size: 0.8em; "></i></a>
                       </li>
 
 
@@ -418,10 +437,10 @@ if($_SESSION["ADM-PODER"]>=2){?>
 
                       <li class="nav-item menulink">
 
-                        <a target='iframe' style="color: var(--green);"  class="link1 nav-link menulink" href="pedidos_list.php"><i class="fa-solid fa-box" style="color: #1A3D1F;"></i>Pedidos</a>
+                        <a target='iframe' style="color: var(--green);"  class="link1 nav-link menulink" href="pedidos_list.php"><i class="fa-solid fa-box" ></i>Pedidos</a>
 
 
-                        <a target='iframe' style="color: var(--green);"  class="link2 nav-link menulink" href="pedidos_list.php"><i class="fa-solid fa-box" style="color: #1A3D1F;"></i></a>
+                        <a target='iframe' style="color: var(--green);"  class="link2 nav-link menulink" href="pedidos_list.php"><i class="fa-solid fa-box" ></i></a>
                       </li>
 
                       <?php 
@@ -429,7 +448,7 @@ if($_SESSION["ADM-PODER"]>=2){?>
                   </ul>
             </div>
             <div class="col-10 painel">
-              <iframe src="iframe.html" name="iframe" scrolling="auto" id="iframe"frameborder="0">
+              <iframe src="painel.php" name="iframe" scrolling="auto" id="iframe"frameborder="0">
 
               </iframe>
            
