@@ -1,0 +1,343 @@
+@import url("https://fonts.googleapis.com/css2?family=Berkshire+Swash&display=swap");
+@import url("https://fonts.cdnfonts.com/css/glacial-indifference-2");
+:root {
+    --white: #f9f9f9;
+    --green: #1a3d1f;
+    --yellow: #eeb249;
+} 
+
+.table-container {
+    width: 100vw;
+    width: 100%;
+    display: table;
+    border-collapse: collapse;
+ }
+
+ .table-row {
+    display: table-row;
+ }
+
+ .table-cell {
+    display: table-cell;
+    padding: 10px;
+ }
+
+ .align-left {
+    text-align: left;
+ }
+
+ .p,
+ .table-container {
+    margin-top: 0.5em;
+ }
+
+ .label {
+    text-align: left;
+ }
+
+ .input,
+ select,
+ option {
+    border-radius: 5px;
+    background-color: #DDDDDD;
+    border: none;
+    padding: 5px 10px 5px 10px;
+ }
+
+ /*MODAL CSS*/
+ .modal-title {
+    color: var(--green);
+    font-family: 'Berkshire Swash', cursive;
+ }
+
+ .modal-body {
+    font-family: 'Glacial Indifference', sans-serif;
+ }
+
+ .btn-submit {
+    background-color: var(--yellow);
+    color: white;
+    border-radius: 10px;
+ }
+
+ input {
+    border-radius: 20px;
+ }
+
+ .modal {
+    border-radius: 40%;
+ }
+
+ .btn-secondary {
+    background-color: transparent;
+    color: var(--green);
+    transition: 0.2s;
+    border-radius: 10px;
+ }
+
+ .btn-secondary:hover {
+    background-color: var(--green);
+    opacity: 0.8;
+    border-radius: 10px;
+ }
+
+ .btn-submit:hover {
+    border: 1px var(--yellow) solid;
+    background-color: transparent;
+    color: var(--yellow);
+    transition: 0.2s;
+    border-radius: 10px;
+ }
+.dropdown-container {
+    position: relative;
+    display: inline-block;
+}
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 100px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    border-radius: 10px;
+}
+.dropdown-content a {
+    color: #1a3d1f;
+    font-family: "Glacial Indifference";
+    padding: 5px 10px;
+    text-decoration: none;
+    display: block;
+    transition: 0.2s;
+}
+.dropdown-content a:hover {
+    color: #1a3d1f;
+    font-family: "Glacial Indifference";
+    padding: 5px 10px;
+    text-decoration: underline;
+    transition: 0.2s;
+    display: block;
+}
+/* Mostrando o dropdown ao passar o mouse */
+.dropdown-container:hover .dropdown-content {
+    display: block;
+}
+body {
+    background-color: #f9f9f9;
+    height: 100vh;
+    margin: 0;
+    background-image: url(../media/yara_bg.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-attachment: fixed;
+}
+.painel,
+.menu {
+    padding-left: 5%;
+    padding-right: 5%;
+    padding-top: 2%;
+}
+header {
+    padding-left: 3%;
+    padding-right: 3%;
+    padding-top: 1%;
+}
+.menu,
+.painel {
+    font-family: "Glacial Indifference", sans-serif;
+    color: var(--green);
+}
+.painel {
+    padding: 20px;
+    background-color: var(--white);
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px,
+        rgba(0, 0, 0, 0.22) 0px 10px 10px;
+    width: 100%;
+    border-radius: 20px;
+    height: 55vh;
+    margin-top: -4em;
+}
+.menubar {
+    background-color: var(--white);
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-radius: 20px;
+    height: 55vh;
+    margin-top: -4em;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px,
+        rgba(0, 0, 0, 0.22) 0px 10px 10px;
+}
+.nav > .nav-link {
+    color: var(--green);
+    
+}
+.navbar-brand,
+.nav-link {
+    color: var(--white);
+    font-family: "Berkshire Swash", cursive;
+}
+.navbar-brand {
+    font-size: 3.5em;
+}
+.navbar-brand:hover {
+    color: var(--white);
+}
+.nav-link {
+    font-size: 1.2em;
+    font-family: "Glacial Indifference", sans-serif;
+}
+.titulo {
+    color: var(--white);
+    height: 30vh;
+    vertical-align: middle;
+    display: table-cell;
+    position: relative;
+}
+.title {
+    font-family: "Berkshire Swash", cursive;
+    font-size: 3.3em;
+    padding-top: 1em;
+}
+.subtitle {
+    font-size: 1.8em;
+    margin-top: -1em;
+    font-family: "Glacial Indifference", sans-serif;
+}
+#voltar {
+    background-color: var(--white);
+    font-family: "Glacial Indifference", sans-serif;
+    padding: 15px 20px 15px 20px;
+    font-size: 1.3em;
+    width: 100%;
+    border: none;
+    border-radius: 30px;
+    margin-top: -1.7em;
+    margin-right: 1.2em;
+}
+i {
+    margin-right: 0.5em;
+}
+iframe {
+    width: 100%;
+    height: 100%;
+}
+.link2 {
+    display: none;
+}
+.active {
+    color: var(--yellow);
+}
+
+
+
+
+@media screen and (max-width: 1700px) {
+    #voltar {
+        background-color: var(--white);
+        font-family: "Glacial Indifference", sans-serif;
+        padding: 15px 20px 15px 20px;
+        font-size: 1em;
+        border: none;
+        width: 100%;
+        border-radius: 30px;
+        margin-top: -1.7em;
+        margin-right: 1.2em;
+    }
+    .nav-link {
+        font-size: 0.9em;
+        font-family: "Glacial Indifference", sans-serif;
+    }
+
+}
+@media screen and (max-width: 1250px) {
+    .nav-link {
+        font-size: 1.6em;
+        font-family: "Glacial Indifference", sans-serif;
+        padding-left: 1em;
+    }
+    .link1 {
+        display: none;
+    }
+    .link2 {
+        display: block;
+        margin-bottom: 5%;
+    }
+    .menubar {
+        background-color: var(--white);
+        padding-top: 20px;
+        padding-bottom: 20px;
+        height: fit-content;
+        border-radius: 20px;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        margin-top: -3em;
+        box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px,
+            rgba(0, 0, 0, 0.22) 0px 10px 10px;
+    }
+    .flex-column {
+        display: flex;
+    }
+    .icon {
+        margin-right: -1cm;
+        font-size: 0.6em;
+    }
+}
+@media screen and (max-width: 1300px) {
+    body {
+        height: 100%;
+        margin: 0;
+        background-image: url(../media/yara_bg.png);
+        background-repeat: no-repeat;
+        background-size: auto;
+        background-attachment: initial;
+    }
+    .icon {
+        margin-right: -1cm;
+        font-size: 0.6em;
+    }
+    .menubar,
+    .painel {
+        margin-top: -5em;
+    }
+    .subtitle {
+        font-size: 1.4em;
+        margin-top: -1em;
+        font-family: "Glacial Indifference", sans-serif;
+    }
+}
+@media screen and (max-width: 671px) {
+    .link2 {
+        font-size: 1.5em;
+        font-family: "Glacial Indifference", sans-serif;
+        padding-left: 1em;
+        margin-bottom: 10%;
+    }
+    #voltar {
+        display: none;
+    }
+    .title {
+        font-family: "Berkshire Swash", cursive;
+        font-size: 3.1em;
+        padding-top: 1.5em;
+    }
+    .subtitle {
+        font-size: 1.3em;
+        margin-top: -1em;
+        font-family: "Glacial Indifference", sans-serif;
+    }
+    .col-1{
+        max-width: 10%;
+        margin-left: 1%;
+    }
+}
+@media screen and (max-width: 360px) {
+    .col-1 {
+        display: none;
+    }
+}
+.col-10 {
+    margin-left: 0.5cm;
+}
+.col-2 {
+    margin-left: -0.5cm;
+}

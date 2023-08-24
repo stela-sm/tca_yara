@@ -239,22 +239,22 @@ $dados = listaPedidos();
 
             echo"<tr><form  name=\"formEdit\" action=\"../controller/controller_adm.php\" method=\"post\">";
 
-            echo "<input type=\"hidden\" name=\"adm_edit\" value=\"".$dados[$i]["id"]."\">";
+            echo "<input type=\"hidden\" name=\"pedidos_edit\" value=\"".$dados[$i]["id"]."\">";
             
             echo "<input type=\"hidden\" id=\"idget".$dados[$i]["id"]."\"name=\"id\" value=\"".$dados[$i]["id"]."\">";
 
             echo "<td class=\"TabelaAdmTd\">". $dados[$i]["id"]."</td>";
             
-            echo "<td class=\"TabelaAdmTd\"> <input type=\"text\" id=\"classe".$dados[$i]["id"]."\"  disabled name=\"nome\" value=\"". $dados[$i]["cliente"] ."\"></td>";
+            echo "<td class=\"TabelaAdmTd\"> <input type=\"text\"  disabled name=\"nome\" value=\"". $dados[$i]["cliente"] ."\"></td>";
             
-            echo "<td class=\"TabelaAdmTd email\"> <input type=\"text\"  classe=\"end\" id=\"classe".$dados[$i]["id"]."\" disabled name=\"endereco\" value=\"". $dados[$i]["endereco"] ."\"></td>";
+            echo "<td class=\"TabelaAdmTd email\"> <input type=\"text\"  classe=\"end\"  disabled name=\"endereco\" value=\"". $dados[$i]["endereco"] ."\"></td>";
 
-            echo "<td class=\"TabelaAdmTd\"> <textarea id=\"classe".$dados[$i]["id"]."\" disabled name=\"itens\">";for ($ii=1;$ii<=$resp['num2']+1;$ii++){ echo nl2br($itens[$ii]). "\n";  };echo "</textarea></td>";
+            echo "<td class=\"TabelaAdmTd\"> <textarea  disabled name=\"itens\">";for ($ii=1;$ii<=$resp['num2']+1;$ii++){ echo nl2br($itens[$ii]). "\n";  };echo "</textarea></td>";
             
 
-            echo "<td class=\"TabelaAdmTd\"> <input type=\"text\" id=\"classe".$dados[$i]["id"]."\" disabled name=\"valor\" value=\"". $dados[$i]["valor"] ."\"></td>";
+            echo "<td class=\"TabelaAdmTd\"> <input type=\"text\" disabled name=\"valor\" value=\"". $dados[$i]["valor"] ."\"></td>";
 
-            echo "<td class=\"TabelaAdmTd\"> <input type=\"text\" id=\"classe".$dados[$i]["id"]."\" disabled name=\"pagamento\" value=\"". $dados[$i]["pagamento"] ."\"></td>";
+            echo "<td class=\"TabelaAdmTd\"> <input type=\"text\"  disabled name=\"pagamento\" value=\"". $dados[$i]["pagamento"] ."\"></td>";
             
             echo "<td class=\"TabelaAdmTd data\">" . $dados[$i]["datahora"] ."</td>";
             
@@ -263,12 +263,36 @@ $dados = listaPedidos();
             echo "<td class=\"TabelaAdmTd\"> <select disabled name=\"status\" id=\"classe".$dados[$i]["id"]."\"> 
             
             <option value=\"1\""; if($dados[$i]["status"]==1){
-                echo "selected";} echo ">Ativo</option><br>
+                echo "selected";} echo ">Pagamento</option><br>
 
-            <option value=\"0\""; if($dados[$i]["status"]==0){
-                echo "selected";} echo ">Inativo</option><br>
+            <option value=\"2\""; if($dados[$i]["status"]==2){
+                echo "selected";} echo ">Em preparação</option><br>
 
 
+                <option value=\"3\""; if($dados[$i]["status"]==3){
+                    echo "selected";} echo ">Em rota</option><br>
+    
+
+                    <option value=\"4\""; if($dados[$i]["status"]==4){
+                        echo "selected";} echo ">Devolução</option><br>
+        
+
+                        <option value=\"5\""; if($dados[$i]["status"]==5){
+                            echo "selected";} echo ">Estornado</option><br>
+            
+
+                            <option value=\"6\""; if($dados[$i]["status"]==6){
+                                echo "selected";} echo ">Cancelado</option><br>
+                
+
+                                <option value=\"7\""; if($dados[$i]["status"]==7){
+                                    echo "selected";} echo ">Inativo</option><br>
+                    
+
+                                    <option value=\"8\""; if($dados[$i]["status"]==8){
+                                        echo "selected";} echo ">Tentativa de entrega</option><br>
+                        
+                                                                                    
 </select></td> <td class=\"TabelaAdmTd\">";
             ?>
 
@@ -285,7 +309,7 @@ $dados = listaPedidos();
            echo "<td class=\"TabelaAdmTd\">";
             ?>
 
-<button style="background-color:transparent; display:block; border:none;" onclick="confirmDelete(<?=$dados[$i]['id'];?>)" id="ex<?php echo $dados[$i]["id"];?>" ><i class="fa-solid fa-trash-can" style="color: #5b5757;"></i></i></button>
+<button style="background-color:transparent; display:block; border:none;" onclick="confirmDelete(<?=$dados[$i]['id'];?>)" id="ex<?php echo $dados[$i]["id"];?>" ><i class="fa-solid fa-trash-can" style="color: transparent;"></i></i></button>
 
 
 <button style="background-color:transparent; display:none;  border:none;"  onclick="css2(this.value)" id="cancel<?php echo $dados[$i]["id"];?>" type="button" value= "<?php echo $dados[$i]["id"];?>"><i class="fa-solid fa-circle-xmark" style="color: #b71f1f;"></i></button>

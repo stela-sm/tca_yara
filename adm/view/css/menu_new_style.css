@@ -1,0 +1,116 @@
+@import url('https://fonts.googleapis.com/css2?family=Berkshire+Swash&display=swap');
+    @import url('https://fonts.cdnfonts.com/css/glacial-indifference-2');
+    :root{
+        --white: #f9f9f9;
+        --green: #1A3D1F;
+        --yellow:  #eeb249;
+    --lgreen: #B9C394;
+    }
+    body {
+      margin: 0;
+      padding: 0;
+      width: 100vw;
+     background-color: transparent;
+     align-items: center;
+     justify-content: center;
+     display: flex;
+     font-family: 'Glacial Indifference';
+   overflow-x: hidden;
+    }
+        
+        .yellow{
+        height: 2.5em;
+        text-align: center;
+        font-weight: 800;
+        width: 100%;
+        background-color: var(--yellow);
+        color: var(--white);
+        border-radius: 10px;
+        border: none;
+      text-transform: uppercase;
+     
+    }
+    th, td {
+    
+    padding: 8px;
+  }
+
+  .double-input-cell {
+    vertical-align: top;
+  }
+
+  label{
+    padding-top: 2em;
+    margin-right: 63%;
+  }
+  table, tbody{
+   
+    border-radius: 20px;
+    border-collapse: collapse;
+    width: 100vw;
+    font-size: 1em;
+  }
+  input[type=text],input[type=number], select, option{
+        border-radius: 5px;
+        width: 70%;
+        background-color: #DDDDDD;
+        border: none;
+        padding: 5px 10px 5px 10px ;
+    }
+  table, tbody, th, tr, td{
+    border: none;
+  } 
+  th,tr,td{
+    width: 50%;
+  }
+  tr{
+    padding-top: 50px;
+  }
+  .a{
+    padding: 0px;
+text-align: right;
+width: 92%;
+position: absolute;
+  }
+  .right{
+    text-align: right;
+  }
+  .replicalabel{
+    padding-top: 4em;
+    width: 100%;
+  }
+  .replicalabel2{
+    padding-top: -5em;
+    width: 100%;
+  }
+  .cancelar{
+        text-decoration: underline;
+        color: #1A3D1F;
+        font-size: 1em;
+        transition: 0.2s;
+        padding-left: 2em;        
+      padding-top: 3em;
+      background-color: transparent;
+        margin: 0;
+        border: none;
+    }
+    .adicionar{
+      padding-top: 3em;
+        text-decoration: underline;
+        color: var(--yellow);        
+        font-size: 1.1em;
+        transition: 0.2s;
+        padding-right: 3em;
+        background-color: transparent;
+        margin: 0;
+        border: none;
+    }
+    .adicionar:hover, .cancelar:hover{
+        
+        cursor: pointer;
+        transform: scale(1.1);
+        transition: 0.2s;
+    }
+    .cancelar:hover{
+        color: #1A3D1F;
+    }

@@ -1,0 +1,103 @@
+@import url('https://fonts.googleapis.com/css2?family=Berkshire+Swash&display=swap');
+@import url('https://fonts.cdnfonts.com/css/glacial-indifference-2');
+:root{
+    --white: #f9f9f9;
+    --green: #1A3D1F;
+    --yellow:  #eeb249;
+--lgreen: #B9C394;
+}
+body {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+ background-color: transparent;
+ align-items: center;
+ justify-content: center;
+ display: flex;
+ font-family: 'Glacial Indifference';
+overflow-x: hidden;
+text-align: center;
+}
+.table-container {
+    
+  width: 100vw;
+  width: 100%;
+  display: table;
+  border-collapse: collapse;
+}
+
+.table-row {
+  display: table-row;
+}
+
+.table-cell {
+  display: table-cell;
+  padding: 10px;
+}
+
+.align-left {
+  text-align: left;
+}
+
+.align-right {
+  text-align: right;
+}
+.yellow{
+    height: 2.5em;
+    text-align: center;
+    font-weight: 800;
+    width: 100%;
+    background-color: var(--yellow);
+    color: var(--white);
+    border-radius: 10px;
+    border: 1px var(--yellow) solid;
+  text-transform: uppercase;
+ 
+}
+.container, .form{
+    max-width: none;
+    width: 100vw;
+    align-items: center;
+    justify-content: center;
+
+}
+.p, .table-container{
+    margin-top: 0.5em;
+}
+.label{
+    text-align: left;
+    width: 70%;
+}
+.input, select, option{
+    border-radius: 5px;
+    width: 70%;
+    background-color: #DDDDDD;
+    border: none;
+    padding: 5px 10px 5px 10px ;
+}
+.cancelar{
+    text-decoration: underline;
+    color: #1A3D1F;
+    font-size: 1.1em;
+    transition: 0.2s;
+    padding-left: 3em;
+}
+.adicionar{
+    text-decoration: underline;
+    color: var(--yellow);        
+    font-size: 1.1em;
+    transition: 0.2s;
+    padding-right: 3em;
+    background-color: transparent;
+    margin: 0;
+    border: none;
+}
+.adicionar:hover, .cancelar:hover{
+    
+    cursor: pointer;
+    transform: scale(1.1);
+    transition: 0.2s;
+}
+.cancelar:hover{
+    color: #1A3D1F;
+}

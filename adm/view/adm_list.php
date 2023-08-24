@@ -7,109 +7,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/5b9d82b6ee.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="css/adm_list_style.css">
+
     <title>Yara</title>
     <script>
-        function confirmDelete(id){
-            var resp = confirm("Tem certeza que deseja deletar esse registro?");
-            if(resp==true){
-                    location.href="../controller/controller_adm.php?adm_delete=1&id="+id;
-            }else{
-                return null;
-            }
-        }
+      
         </script>
 </head>
-<style>
-  
 
-   body {
-      margin: 0;
-      padding: 0;
-      display: block;
-    }
-    
-    table {
-      width: 100vw;
-      border-collapse: collapse;
-      table-layout: auto;
-      border-radius: 20px;
-      overflow: hidden;
-      border-radius: 10px;
-      font-family: 'Glacial Indifference';
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    }
-    
-    th, td, tr {
-        
-        font-size: 1em;
-      border-bottom: 1px solid #ddd;
-      padding: 10px;
-      text-align: center;
-      align-items: center;
-     
-      width: fit-content;
-    }
-    
-    input, select{
-        margin-left: 18%;
-        font-size: 0.9em;
-        display: flex;
-        height: max-content;
-        text-align: center;   
-        font-family: 'Glacial Indifference';
-        background-color: transparent;
-        color: black;
-        border: none;
-        width: 3cm;
-        background-color: #dbdbdb;
-    width: 110%;
-    max-width: 3.6cm;
-    }
-    
-    
-    input:focus{
-        border: 1px gray dotted;
-    }
-    
-   
-    input:disabled, select:disabled, option{
-        margin-left: 18%;
-        opacity: 1;
-        text-decoration: none;
-        display: flex;
-        height: max-content;
-        text-align: center;   
-        font-family: 'Glacial Indifference';
-        background-color: transparent;
-        color: var(--green);
-        border: none;
-    width: 110%;
-    min-width: 3.6cm;
-    }
-    .poder{
-        width: 2em;
-        margin-left: -2em;
-    }
-    .data{
-        font-size: 0.9em;
-    } 
-   .email{
-    max-width: 4cm;
-    width:4cm;
-   }
-    #yellow{
-        color: var(--white);
-      text-transform: uppercase;
-        background-color: var(--yellow);
-    }
-
-.confirm{
-    display:none;
-}
-i{
-    cursor:pointer;
-}
-</style>
 <body>
     <div id="admTabela">
 <?php
@@ -118,7 +23,15 @@ $dados = listaAdm();
 ?>
 
 <script>
-     
+     function confirmDelete(id){
+    var resp = confirm("Tem certeza que deseja deletar esse registro?");
+    if(resp==true){
+            location.href="../../controller/controller_adm.php?adm_delete=1&id="+id;
+    }else{
+        return null;
+    }
+}
+
     
     function css(valor){
     const toggleButton = document.getElementById('edit');

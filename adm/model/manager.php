@@ -291,6 +291,17 @@ function listaPedidos(){ //função pra listar adms
 
 }
 
+function pedidosEdit($dados){
+    require "conexao.php";
+   
+            $sql= "UPDATE pedidos SET  status = {$dados['status']},  datahora = now() WHERE ID_PEDIDO = '{$dados['id']}'";
+
+    $result = $conn->query($sql);
+    return $result;
+    $conn-> close();
+
+}
+
 
 function listaItens($pedido){ 
     require "conexao.php";

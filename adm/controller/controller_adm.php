@@ -556,6 +556,47 @@ if ($resp ==1){ //tudo certo
 }
 }
 
+
+
+
+
+
+    
+     
+   //EDITAR PEDIDO  ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+   
+        
+
+
+
+
+   if(isset($_REQUEST["pedidos_edit"])){ //se veio do editar submenu
+    require_once "../model/manager.php";
+    $dados["id"] = $_REQUEST["pedidos_edit"];
+    $dados["status"] = $_REQUEST["status"];
+    require_once "../model/manager.php";
+    $resp=pedidosEdit($dados);
+if ($resp ==1){ //tudo certo
+?>
+    <form action="../view/pedidos_list.php" name="form" id="myForm" method="POST">
+    <input type="hidden" name="msg" value="BD53">  <!-- "BD54" => "Registro apagado com sucesso.",-->
+    </form> <!--envia um formulario com a variavel "msg", que é o código da mensagem de erro (ver view/msg.php)--> 
+    <script>
+    document.getElementById('myForm').submit();//envio automático submit()
+    </script>
+<?php  
+}else{//falha
+?>
+        <form action="../view/pedidos_list.php" name="form" id="myForm" method="POST">
+        <input type="hidden" name="msg" value="BD03">  <!-- "BD54" => "Registro apagado com sucesso.",-->
+        </form> <!--envia um formulario com a variavel "msg", que é o código da mensagem de erro (ver view/msg.php)--> 
+        <script>
+        document.getElementById('myForm').submit();//envio automático submit()
+        </script>
+<?php  
+}
+}
+
 //DELETA PRODUTO ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 

@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/5b9d82b6ee.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="css/vitrine_list_style.css">
     <title>Yara</title>
     <script>
         function confirmDelete(id){
@@ -20,148 +21,7 @@
         </script>
 </head>
 <style>
-        @import url('https://fonts.googleapis.com/css2?family=Berkshire+Swash&display=swap');
-    @import url('https://fonts.cdnfonts.com/css/glacial-indifference-2');
-    :root{
-        --white: #f9f9f9;
-        --green: #1A3D1F;
-        --yellow:  #eeb249;
-        --grey: gray;
-    }
 
-  
-    
-   body {
-      margin: 0;
-      padding: 0;
-      display: block;
-    }
-    
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      table-layout: auto;
-      border-radius: 20px;
-      overflow: hidden;
-      border-radius: 10px;
-      font-family: 'Glacial Indifference';
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    }
-    
-    th, td, tr {
-        
-        font-size: 0.9em;
-      border-bottom: 1px solid #ddd;
-      padding: 10px;
-      padding-left: 0px;
-      padding-right: 0px;
-      text-align: center;
-      align-items: center;
-     
-      width: fit-content;
-    }
-    
-    input, select{
-       
-        font-size: 1.1em;
-        opacity: 1;
-        text-decoration: none;
-        display: flex;
-        height: max-content;
-        text-align: center;   
-        font-family: 'Glacial Indifference';
-        background-color: #dbdbdb;
-        color: var(--green);
-        border: none;
-
-    width: 100%;
-    min-width: 3cm;
-   }
-    
-    
-    input:focus{
-        border: 1px gray dotted;
-    }
-    
-   
-    input:disabled, select:disabled, option{
-        
-        font-size: 1.1em;
-        opacity: 1;
-        text-decoration: none;
-        display: flex;
-        height: max-content;
-        text-align: center;   
-        font-family: 'Glacial Indifference';
-        background-color: transparent;
-        color: var(--green);
-        border: none;
-
-    width: 100%;
-    min-width: 3cm;
-    }
-   
-    .data{
-        font-size: 0.9em;
-    }
-   .email{
-    width:20%
-   }
-    #yellow{
-        color: var(--white);
-      text-transform: uppercase;
-        background-color: var(--yellow);
-    }
-
-.confirm{
-    display:none;
-}
-i{
-    cursor:pointer;
-}
-textarea::-webkit-scrollbar {
-    width: 0.2em;
-}
-
-textarea::-webkit-scrollbar-track {
-    -webkit-box-shadow: inset 0 0 2px rgba(0,0,0,0.3);
-}
-
-textarea::-webkit-scrollbar-thumb {
-  background-color: var(--yellow);
-  outline: none;
-}
-
-textarea:disabled{
-    resize: none;
-    max-height: 4cm;
-    max-width: 3cm;
-    padding: 5px 10px 5px 10px;
-    border-radius: 10px; 
-    font-family: 'Glacial Indifference';
-    background-color: transparent;
-    color: black;
-    border: 1px #DADADA solid;  
-      
-   
-}
-
-label{
-    text-align: center;
-    align-items: center;
-    justify-content: center;
-}
-textarea{
-    resize: none;
-    max-height: 4cm;
-    max-width: 3cm;
-    padding: 5px 10px 5px 10px;
-    border-radius: 10px; 
-    font-family: 'Glacial Indifference';
-    background-color: #dbdbdb;
-    color: black;
-    border: 1px #DADADA solid;  
-}
 </style>
 <body>
     <div id="admTabela">
