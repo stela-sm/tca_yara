@@ -131,9 +131,10 @@ textarea::-webkit-scrollbar-thumb {
   background-color: var(--yellow);
   outline: none;
 }
+
 textarea:disabled{
     resize: none;
-    height: 4cm;
+    max-height: 4cm;
     max-width: 3cm;
     padding: 5px 10px 5px 10px;
     border-radius: 10px; 
@@ -152,7 +153,7 @@ label{
 }
 textarea{
     resize: none;
-    height: 4cm;
+    max-height: 4cm;
     max-width: 3cm;
     padding: 5px 10px 5px 10px;
     border-radius: 10px; 

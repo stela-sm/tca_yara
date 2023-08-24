@@ -59,52 +59,89 @@
     }
     
     input, select{
-        margin-left: 18%;
-        font-size: 0.9em;
-        display: flex;
-        height: max-content;
-        text-align: center;   
-        font-family: 'Glacial Indifference';
-        background-color: transparent;
-        color: black;
-        border: none;
-        width: 3cm;
-        background-color: #dbdbdb;
+    white-space: normal;
+    font-size: 0.9em;
+    display: flex;
+    max-height: 400px;
+    text-align: center;   
+    font-family: 'Glacial Indifference';
+    background-color: #DADADA;
+    color: black;
+    border: none;
+    width: 3cm;
     width: 110%;
-    max-width: 3.6cm;
+    max-width: 4.2cm;
     }
+    input:disabled, select:disabled{
+    white-space: normal;
+    font-size: 0.9em;
+    display: flex;
+    max-height: 400px;
+    text-align: center;   
+    font-family: 'Glacial Indifference';
+    background-color: transparent;
+    color: black;
+    border: none;
+    width: 3cm;
+    width: 110%;
+    max-width: 4.2cm;
+    }
+
+   
+   
+
+    textarea::-webkit-scrollbar {
+    width: 0.2em;
+}
+
+textarea::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 2px rgba(0,0,0,0.3);
+}
+
+textarea::-webkit-scrollbar-thumb {
+  background-color: var(--yellow);
+  outline: none;
+}
+
+textarea:disabled{
+    resize: none;
+    max-height: 4cm;
+    max-width: 5cm;
+    margin-left: 10%;
+    padding: 5px 10px 5px 10px;
+    border-radius: 10px; 
+    font-family: 'Glacial Indifference';
+    background-color: transparent;
+    color: black;
+    border: 1px #DADADA solid;  
+      
+   
+}
+textarea
+
+{
+    resize: none;
+    max-height: 4cm;
+    max-width: 3cm;
+    padding: 5px 10px 5px 10px;
+    border-radius: 10px; 
+    font-family: 'Glacial Indifference';
+    background-color: #DADADA;
+    color: black;
+    border: 1px #DADADA solid;  
+      
+   
+}
     
-    
+    .end{
+        min-width: 4.6cm;
+    }
     input:focus{
         border: 1px gray dotted;
     }
     
    
-    input:disabled, select:disabled, option{
-        margin-left: 18%;
-        opacity: 1;
-        text-decoration: none;
-        display: flex;
-        height: max-content;
-        text-align: center;   
-        font-family: 'Glacial Indifference';
-        background-color: transparent;
-        color: var(--green);
-        border: none;
-    width: 110%;
-    min-width: 3.6cm;
-    }
-    .poder{
-        width: 2em;
-        margin-left: -2em;
-    }
-    .data{
-        font-size: 0.9em;
-    } 
-   .email{
-    max-width: 4cm;
-    width:4cm;
-   }
+
     #yellow{
         color: var(--white);
       text-transform: uppercase;
@@ -121,7 +158,7 @@ i{
 <body>
     <div id="admTabela">
 <?php
-require_once "../model/manager.php";
+require "../model/manager.php";
 $dados = listaPedidos();
 ?>
 
@@ -187,13 +224,19 @@ $dados = listaPedidos();
             <th class="TabelaAdmTh">Itens</th>         
             <th class="TabelaAdmTh">Valor</th>
             <th class="TabelaAdmTh">Forma de Pagamento</th>
-            <th class="TabelaAdmTh poder">Status</th>
-            <th class="TabelaAdmTh">Data</th>
+            <th class="TabelaAdmTh poder">Data</th>
+            <th class="TabelaAdmTh">Status</th>
             <th class="TabelaAdmTh">&nbsp;</th>
             <th class="TabelaAdmTh">&nbsp;</th>
         </tr>
         <?php
         for($i=1;$i<=$dados["num"];$i++){
+            
+            $resp = listaItens($dados[$i]["id"]);
+            for ($ii=1;$ii<=$resp['num2']+1;$ii++){
+            $itens[$ii] = $resp[$ii]["itens"];}
+      
+
             echo"<tr><form  name=\"formEdit\" action=\"../controller/controller_adm.php\" method=\"post\">";
 
             echo "<input type=\"hidden\" name=\"adm_edit\" value=\"".$dados[$i]["id"]."\">";
@@ -202,44 +245,19 @@ $dados = listaPedidos();
 
             echo "<td class=\"TabelaAdmTd\">". $dados[$i]["id"]."</td>";
             
-            echo "<td class=\"TabelaAdmTd\"> <input type=\"text\" id=\"classe".$dados[$i]["id"]."\"  disabled name=\"nome\" value=\"". $dados[$i]["nome"] ."\"></td>";
+            echo "<td class=\"TabelaAdmTd\"> <input type=\"text\" id=\"classe".$dados[$i]["id"]."\"  disabled name=\"nome\" value=\"". $dados[$i]["cliente"] ."\"></td>";
             
-            echo "<td class=\"TabelaAdmTd email\"> <input type=\"email\"  classe=\"email\" id=\"classe".$dados[$i]["id"]."\" disabled name=\"email\" value=\"". $dados[$i]["email"] ."\"></td>";
+            echo "<td class=\"TabelaAdmTd email\"> <input type=\"text\"  classe=\"end\" id=\"classe".$dados[$i]["id"]."\" disabled name=\"endereco\" value=\"". $dados[$i]["endereco"] ."\"></td>";
 
-            echo "<td class=\"TabelaAdmTd\"> <input type=\"text\" maxwidth=\"11\" id=\"classe".$dados[$i]["id"]."\" disabled name=\"telefone\" value=\"". $dados[$i]["telefone"] ."\"></td>";
-            
-            echo "<td class=\"TabelaAdmTd data\"> <input disabled value=\"". $dados[$i]["datahora"] ."\"></td>";
+            echo "<td class=\"TabelaAdmTd\"> <textarea id=\"classe".$dados[$i]["id"]."\" disabled name=\"itens\">";for ($ii=1;$ii<=$resp['num2']+1;$ii++){ echo nl2br($itens[$ii]). "\n";  };echo "</textarea></td>";
             
 
+            echo "<td class=\"TabelaAdmTd\"> <input type=\"text\" id=\"classe".$dados[$i]["id"]."\" disabled name=\"valor\" value=\"". $dados[$i]["valor"] ."\"></td>";
 
-            echo "<td class=\"TabelaAdmTd poder\"> <select  id=\"classe".$dados[$i]["id"]."\" disabled name=\"poder\">
+            echo "<td class=\"TabelaAdmTd\"> <input type=\"text\" id=\"classe".$dados[$i]["id"]."\" disabled name=\"pagamento\" value=\"". $dados[$i]["pagamento"] ."\"></td>";
             
-            <option value=\"1\""; if($dados[$i]["poder"]==1){
-                echo "selected";} echo ">1 - Operador</option><br>
-
-            <option value=\"2\""; if($dados[$i]["poder"]==2){
-                echo "selected";} echo ">2 - Setorizado</option><br>
-
-                <option value=\"3\""; if($dados[$i]["poder"]==3){
-                    echo "selected";} echo ">3 - Sub Gerente</option><br>
-    
-                <option value=\"4\""; if($dados[$i]["poder"]==4){
-                    echo "selected";} echo ">4 - Gerente</option><br>
-                  
-                    <option value=\"5\""; if($dados[$i]["poder"]==5){
-                        echo "selected";} echo ">5 - Sysop </option><br>
+            echo "<td class=\"TabelaAdmTd data\">" . $dados[$i]["datahora"] ."</td>";
             
-            
-            
-            
-            </td>";
-            
-
-
-
-
-
-
 
 
             echo "<td class=\"TabelaAdmTd\"> <select disabled name=\"status\" id=\"classe".$dados[$i]["id"]."\"> 

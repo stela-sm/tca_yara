@@ -261,11 +261,23 @@ function listaPedidos(){ //função pra listar adms
         while($row=$result->fetch_assoc()){
             $dados[$i]["id"] = $row["ID_PEDIDO"];
             $dados[$i]["cliente"] = $row["id_cliente"];
-            $dados[$i]["endereco"] = $row["endereco"];            
+            $dados[$i]["endereco"] = $row["id_endereco"];            
             $dados[$i]["valor"] = $row["valor"];
             $dados[$i]["pagamento"] = $row["pagamento"];
             $dados[$i]["status"] = $row["status"];
             $dados[$i]["datahora"] = $row["datahora"];
+
+            $sql2 = "SELECT nome FROM cliente WHERE ID_CLIENTE = {$row["id_cliente"]}; ";
+            $result2=$conn->query($sql2);
+            $row2 = $result2->fetch_assoc(); 
+            $dados[$i]["cliente"] = $row2['nome'] ;
+            
+            $sql3 = "SELECT rua FROM endereco WHERE ID_ENDERECO = {$row["id_endereco"]}; ";
+            $result3=$conn->query($sql3);         
+            $row3 = $result3->fetch_assoc(); 
+            $dados[$i]["endereco"] = $row3['rua'] ;
+            
+
         $i++;
         }
         $conn->close();
@@ -280,10 +292,12 @@ function listaPedidos(){ //função pra listar adms
 }
 
 
-function listaItens(){ //função pra listar adms 
+function listaItens($pedido){ 
     require "conexao.php";
-    $sql = "SELECT * FROM pedidos";
+    $sql = "SELECT * FROM itens WHERE id_pedido = {$pedido}";
     $result=$conn->query($sql); 
+
+  
 
     if($result->num_rows > 0){
         $num = $result ->num_rows;
@@ -292,14 +306,23 @@ function listaItens(){ //função pra listar adms
         $dados["num"]=$num;
         $i=1;
         while($row=$result->fetch_assoc()){
-            $dados[$i]["id"] = $row["ID_ITENS"];
+            $dados[$i]["id_itens"] = $row["ID_ITENS"];
             $dados[$i]["id_pedido"] = $row["id_pedido"];
             $dados[$i]["id_produto"] = $row["id_produto"];            
             $dados[$i]["valor"] = $row["valor_uni"];
             $dados[$i]["valor_total"] = $row["valor_total"];
             $dados[$i]["datahora"] = $row["datahora"];
-        $i++;
+
+            $sql2 = "SELECT nome FROM produtos WHERE ID_PRODUTO = {$row["id_produto"]}; ";
+            $result2=$conn->query($sql2);
+            $row2 = $result2->fetch_assoc(); 
+            $dados[$i]["itens"] = $row2['nome'] ;
+            $dados["num2"]=count($row2);  
+
+               
+            $i++;
         }
+        
         $conn->close();
         return $dados;
     }else{

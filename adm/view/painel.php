@@ -33,6 +33,7 @@
     width: 100%;
     border-collapse: collapse;
     border:none;
+    height: 90vh;
   }
 
   th, td {
