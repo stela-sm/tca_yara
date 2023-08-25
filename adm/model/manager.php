@@ -48,7 +48,7 @@ function admNew($dados){ //função pra criar adm
 function admEdit($dados){
     require "conexao.php";
    
-            $sql= "UPDATE adm SET nome = '{$dados['nome']}', email = '{$dados['email']}', poder = {$dados['poder']}, status = {$dados['status']},  datahora = now() WHERE ID_ADM = '{$dados['id']}'";
+            $sql= "UPDATE adm SET nome = '{$dados['nome']}', email = '{$dados['email']}', poder = {$dados['poder']}, celular = {$dados['telefone']}, status = {$dados['status']},  datahora = now() WHERE ID_ADM = '{$dados['id']}'";
 
     $result = $conn->query($sql);
     return $result;
@@ -692,6 +692,79 @@ function dataClientes($dados){
 }
 
 
+
+
+
+//CLIENTES-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+function listaClientes(){
+    require "conexao.php";
+    $sql = "SELECT * FROM cliente";
+    $result=$conn->query($sql); 
+
+    if($result->num_rows > 0){
+        $num = $result ->num_rows;
+        $dados=array();
+        $i=1;
+        while($row=$result->fetch_assoc()){
+            $dados[$i]["id"] = $row["ID_CLIENTE"];
+            $dados[$i]["nome"] = $row["nome"];
+            $dados[$i]["email"] = $row["email"];
+            $dados[$i]["telefone"] = $row["celular"];            
+            $dados[$i]["telefone"] = $row["celular"];
+            $dados[$i]["datahora"] = $row["datahora"];
+            $dados[$i]["cpf"] = $row["cpf"];
+            $dados[$i]["status"] = $row["status"];
+        $i++;
+        }
+        $dados["result"] = 1;
+        $dados["num"]=$num;
+        $conn->close();
+        return $dados;
+    }else{
+        $dados["result"]=0;
+        $dados["num"]=0;
+        $conn->close();
+        return $dados;
+    }
+
+}
+
+
+
+function clienteNew($dados){ //função pra criar adm
+    require "conexao.php";
+    $sql="INSERT INTO cliente (nome,email,senha,celular,datahora,cpf,status) VALUES ('{$dados["nome"]}', '{$dados["email"]}', '{$dados["senha"]}','{$dados["telefone"]}', now(), '{$dados["cpf"]}', '{$dados["status"]}')";
+    $result = $conn -> query($sql);
+    if($conn->errno == 1062){
+        $conn->close();
+        return 0;
+    }    else{
+        $conn->close();
+        return 1;
+    }
+
+} 
+
+
+
+function clienteEdit($dados){
+    require "conexao.php";
+   
+            $sql= "UPDATE cliente SET nome = '{$dados['nome']}', email = '{$dados['email']}', cpf = {$dados['cpf']}, celular = {$dados['telefone']}, status = {$dados['status']},  datahora = now() WHERE ID_CLIENTE = '{$dados['id']}'";
+
+    $result = $conn->query($sql);
+    if($conn->errno == 1062){
+        $conn->close();
+        return 0;
+    }    else{
+        $conn->close();
+        return 1;
+    }
+
+}
 
 
 ?>
