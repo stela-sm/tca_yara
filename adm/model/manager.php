@@ -767,4 +767,45 @@ function clienteEdit($dados){
 }
 
 
+
+//trocar senha ------------------------
+
+
+
+
+function verificarDados($dados){ //função pro form de editar menu
+    require "conexao.php";
+    $sql = "SELECT * FROM adm WHERE cpf = {$dados["cpf"]}";
+    $result = $conn->query($sql);
+    if($result->num_rows > 0){
+        $dados["result"] = 1;
+while($row=$result->fetch_assoc()){
+    
+    $dados["nome"] = $row["nome"];
+    $dados["celular"] = $row["celular"];
+  
+};
+$conn->close(); 
+return $dados;
+}else{
+        $dados["result"] = 0;
+        $conn->close();    
+        return $dados;
+}}
+
+function alteraSenha($dados){ //função pro form de editar menu
+    require "conexao.php";
+    $sql = "UPDATE {$dados["tabela"]} SET senha = {$dados["senha"]} WHERE cpf = {$dados["cpf"]}";
+    $result = $conn->query($sql);
+    if($result->num_rows > 0){
+        $dados["result"] = 1;
+$conn->close(); 
+return $dados;
+}else{
+        $dados["result"] = 0;
+        $conn->close();    
+        return $dados;
+}}
+
+
 ?>

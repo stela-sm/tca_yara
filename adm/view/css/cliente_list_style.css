@@ -1,3 +1,4 @@
+
 @import url("https://fonts.googleapis.com/css2?family=Berkshire+Swash&display=swap");
 @import url("https://fonts.cdnfonts.com/css/glacial-indifference-2");
 :root {
@@ -33,25 +34,28 @@ body {
     width: fit-content;
   }
   
+ 
+  
   input, select{
-      margin-left: 18%;
+    margin-left: 0%;
+      opacity: 1;
+      text-decoration: none;
       display: flex;
       height: max-content;
       text-align: center;   
       font-family: 'Glacial Indifference';
-      background-color: transparent;
-      color: black;
+      background-color: #dadada;
+      color: var(--green);
       border: none;
-      background-color: #dbdbdb;
-  width: 110%;
-  max-width: 3.6cm;
+  width: 100%;
+  min-width: 3.4cm;
   }
   
   
   
  
   input:disabled, select:disabled, option{
-      margin-left: 18%;
+      margin-left: 0%;
       opacity: 1;
       text-decoration: none;
       display: flex;
@@ -61,16 +65,11 @@ body {
       background-color: transparent;
       color: var(--green);
       border: none;
-  width: 110%;
-  min-width: 3.6cm;
+  width: 100%;
+  min-width: 3.4cm;
   }
-  .poder{
-      width: 2em;
-      margin-left: -2em;
-  }
-  .data{
-      font-size: 0.9em;
-  } 
+  
+  
  .email{
   max-width: 4cm;
   width:4cm;

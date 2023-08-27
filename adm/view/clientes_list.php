@@ -14,7 +14,8 @@
       
         </script>
 </head>
-
+<style>
+</style>
 <body>
     <div id="admTabela">
 <?php

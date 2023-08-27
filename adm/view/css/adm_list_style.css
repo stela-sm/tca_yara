@@ -34,7 +34,6 @@ body {
   }
   
   input, select{
-      margin-left: 18%;
       font-size: 0.9em;
       display: flex;
       height: max-content;
@@ -56,7 +55,7 @@ body {
   
  
   input:disabled, select:disabled, option{
-      margin-left: 18%;
+
       opacity: 1;
       text-decoration: none;
       display: flex;
@@ -82,7 +81,7 @@ body {
  }
   #yellow{
       color: var(--white);
-    text-transform: uppercase;
+      text-transform: uppercase;
       background-color: var(--yellow);
   }
 

@@ -14,7 +14,9 @@
       
         </script>
 </head>
-
+<style>
+    
+</style>
 <body>
     <div id="admTabela">
 <?php
@@ -90,6 +92,8 @@ $dados = listaAdm();
             <th class="TabelaAdmTh">Nome</th>
             <th class="TabelaAdmTh">Email</th>            
             <th class="TabelaAdmTh">Telefone</th>
+                    
+            <th class="TabelaAdmTh">Telefone</th>
             <th class="TabelaAdmTh">Data</th>
             <th class="TabelaAdmTh poder">Poder</th>
             <th class="TabelaAdmTh">Status</th>
@@ -110,6 +114,7 @@ $dados = listaAdm();
             
             echo "<td class=\"TabelaAdmTd email\"> <input type=\"email\"  classe=\"email\" id=\"classe".$dados[$i]["id"]."\" disabled name=\"email\" value=\"". $dados[$i]["email"] ."\"></td>";
 
+            echo "<td class=\"TabelaAdmTd\"> <input type=\"text\" maxwidth=\"11\" id=\"classe".$dados[$i]["id"]."\" disabled name=\"telefone\" value=\"". $dados[$i]["telefone"] ."\"></td>";
             echo "<td class=\"TabelaAdmTd\"> <input type=\"text\" maxwidth=\"11\" id=\"classe".$dados[$i]["id"]."\" disabled name=\"telefone\" value=\"". $dados[$i]["telefone"] ."\"></td>";
             
             echo "<td class=\"TabelaAdmTd data\"> <input disabled value=\"". $dados[$i]["datahora"] ."\"></td>";

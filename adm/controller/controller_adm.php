@@ -952,6 +952,33 @@ if(isset($_REQUEST["cliente_new"])){ //se vier do admNew (criar adm)
 }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 if(isset($_REQUEST["cliente_edit"])){
         
     $dados["id"] = $_REQUEST["cliente_edit"];
@@ -970,6 +997,9 @@ if(isset($_REQUEST["cliente_edit"])){
         <script>
         document.getElementById('myForm').submit();//envio automático submit()
         </script>
+
+
+
         <?php  
     }else{//erro
         ?>
