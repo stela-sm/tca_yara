@@ -34,46 +34,65 @@
                             $dados= pegaMenusSubmenus("r"); //chama função dos menus com a folder "r"
                             $dadosSUB = pegasubmenu("r"); //chama função dos submenus com a folder "r"
                            
-                           
                            if(isset($dados["result"]) && $dados["result"] != 0){  // se vier resultado da função dos menus
 
                             $ii=0; //variavel ii (contagem de submenus) = 0 
-                            for($i = 0;$i<$dados["num"];$i++){ //enquando i for menor que a quantidade de menus...
-                            
-                              
-                              if($dados[$i]["ID_MENU"] == $dadosSUB[$ii]["ID_MENU_FK"] && $ii<$dados["num"] ){ //...verifique SE os IDs batem e se ii permanece menor que a quantidade de submenus 
+                            //enquando i for menor que a quantidade de menus...
+                            for($i = 0;$i<$dados["num"];$i++){
+                              echo "<div class=\"nav-item\">
+                              <div class=\"dropdown\">
+                              <li class=\"nav-item\">
+                              <button class=\"nav-link active-link\"><span
+                                      class=\"nav-link greenwhite\"><a style='color:black; text-decoration:none;' href=''".$dados[$i]["URL_MENU"]."'>".$dados[$i]["NOME_MENU"]."</a></span></button>
+                          </li>
+                          <div class=\"dropdown-content\">";
 
-                                echo "<li class='nav-item dropdown'> 
-                                  <a class='nav-link dropdown-toggle' href=''".$dados[$i]["URL_MENU"]."' id='navbarDropdownMenuLink' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
-                                  ".$dados[$i]["NOME_MENU"]."
-                                  </a>
-                                  <div class='dropdown-menu' aria-labelledby='navbarDropdown'>
-                                  <a class='dropdown-item' href='".$dadosSUB[$ii]["URL_SUBMENU"]."'>".$dadosSUB[$ii]["NOME_SUBMENU"]."</a>                      
-                                  "; // echo do dropdown
+                              for($count = 0; $count < $dadosSUB["num"] ; $count++){
+                                if($dados[$i]["ID_MENU"] == $dadosSUB[$count]["ID_MENU_FK"] && $count<$dados["num"] ){
+                                  echo"
                                   
-                                  $ii=$ii+1; //soma 1 à variavel de contagem de submenu
-                                 
+                                  <a style='color:black; text-decoration:none;' href='".$dadosSUB[$count]["URL_SUBMENU"]."'>".$dadosSUB[$count]["NOME_SUBMENU"]."</a> </br>
+    
+                             
+                                          
+                                  "; // echo do dropdown
+                                
+                                
                                 } //fecha if
-                              
-
-                              else{ //mas se os IDs não batem, ou todos os submenus já foram impressos, então...
-                            
-                              echo "<li class='nav-item active'>
-                            <a class='nav-link' href='".$dados[$i]["URL_MENU"]."'>".$dados[$i]["NOME_MENU"]."</a>
-                          </li> ";  //imprime link sem dropdown
-
-                              }//fecha else
-                        }//fecha for
-                           
-                      }//fecha if
-                           
+                              }echo"</div></div></div>";
+                            }
+                            }
+                    
                           
                            ?>
          
         </div>
     </div>
   </nav>
+  <style>.scroll-content/* Estilos para o dropdown */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
 
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* Estilo para o ícone */
+.dropdown-icon {
+    cursor: pointer;
+}
+</style>
   <!-- Adicione os links para os arquivos JavaScript do Bootstrap e jQuery -->
   <script src="caminho-para-o-jquery.min.js"></script>
   <script src="caminho-para-o-bootstrap.min.js"></script>

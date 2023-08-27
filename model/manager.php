@@ -35,13 +35,8 @@ function pegaMenusSubmenus($folder){
   
 }
 
+
 function pegasubmenu($folder){
-
-
-
-
-
-
 
   require "conexao.php";
  
@@ -66,6 +61,8 @@ function pegasubmenu($folder){
       $conn->close();
       return $dadosSUB;
   }else{
+    
+    $dadosSUB["num"] = 0;
       $dadosSUB["result"] = 0; 
       $conn->close();
       return $dadosSUB;
