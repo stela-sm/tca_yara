@@ -32,7 +32,23 @@ function VerifDadosADM($email,$senha){ //função pra verificar senha e login do
 
 function admNew($dados){ //função pra criar adm
     require "conexao.php";
-    $sql="INSERT INTO adm (nome,email,senha,celular,datahora,poder,status) VALUES ('{$dados["nome"]}', '{$dados["email"]}', '{$dados["senha"]}','{$dados["telefone"]}', now(), '{$dados["poder"]}', '{$dados["status"]}')";
+    $query = "CALL CheckEmailCPF(' {$dados["email"]}',  '{$dados["cpf"]}', @result, @user_id)";
+    $conn->query($query);
+
+// Obtém o resultado da procedure
+$resultQuery = $conn->query("SELECT @result as result");
+$row = $resultQuery->fetch_assoc();
+$result = $row['result'];
+
+// Cria uma condição com base no resultado
+if ($result != 0) {
+    $conn->close();
+        return 2;
+    
+} else {
+    
+
+    $sql="INSERT INTO adm (nome,email,senha,celular,cpf,datahora,poder,status) VALUES ('{$dados["nome"]}', '{$dados["email"]}', '{$dados["senha"]}','{$dados["telefone"]}', '{$dados["cpf"]}', now(), '{$dados["poder"]}', '{$dados["status"]}')";
     $result = $conn -> query($sql);
     if($result == true){
         $conn->close();
@@ -43,18 +59,41 @@ function admNew($dados){ //função pra criar adm
     }
 
 } 
+}
+
+
+
 
 
 function admEdit($dados){
     require "conexao.php";
-   
-            $sql= "UPDATE adm SET nome = '{$dados['nome']}', email = '{$dados['email']}', poder = {$dados['poder']}, celular = {$dados['telefone']}, status = {$dados['status']},  datahora = now() WHERE ID_ADM = '{$dados['id']}'";
+    $query = "CALL CheckEmailCPF(' {$dados["email"]}',  '{$dados["cpf"]}', @result, @user_id)";
+    $conn->query($query);
+
+// Obtém o resultado da procedure
+$resultQuery = $conn->query("SELECT @result as result, @user_id as id");
+$row = $resultQuery->fetch_assoc();
+$result = $row['result'];
+
+// Cria uma condição com base no resultado
+if ($result != 0 && $row['id']!=$dados['id']) {
+    $conn->close();
+        return 2;
+    
+} else {
+
+    $sql= "UPDATE adm SET nome = '{$dados['nome']}', email = '{$dados['email']}', poder = {$dados['poder']}, celular = {$dados['telefone']}, status = {$dados['status']},  datahora = now() WHERE ID_ADM = '{$dados['id']}'";
 
     $result = $conn->query($sql);
     return $result;
     $conn-> close();
 
 }
+}
+
+
+
+
 
 
 function admAutoedit($dados){
@@ -68,6 +107,11 @@ function admAutoedit($dados){
     $conn-> close();
 
 } 
+
+
+
+
+
 function admDelete($id){
     require "conexao.php";
     $sql="DELETE FROM adm WHERE ID_ADM = {$id}";
@@ -75,6 +119,12 @@ function admDelete($id){
     $conn->close();
     return $result;
 }
+
+
+
+
+
+
 
 function listaAdm(){ //função pra listar adms 
     require "conexao.php";
@@ -90,7 +140,8 @@ function listaAdm(){ //função pra listar adms
         while($row=$result->fetch_assoc()){
             $dados[$i]["id"] = $row["ID_ADM"];
             $dados[$i]["nome"] = $row["nome"];
-            $dados[$i]["email"] = $row["email"];            
+            $dados[$i]["email"] = $row["email"]; 
+            $dados[$i]["cpf"] = $row["cpf"];            
             $dados[$i]["telefone"] = $row["celular"];
             $dados[$i]["datahora"] = $row["datahora"];
             $dados[$i]["poder"] = $row["poder"];
@@ -111,7 +162,7 @@ function listaAdm(){ //função pra listar adms
 
 
 
-//PODUTOS -------------------------------------------------------------------------------------------------------------------------------------------------------
+//PRODUTOS -------------------------------------------------------------------------------------------------------------------------------------------------------
 
 function listaProdutos(){ //função pra listar adms 
     require "conexao.php";
@@ -735,36 +786,67 @@ function listaClientes(){
 
 
 function clienteNew($dados){ //função pra criar adm
-    require "conexao.php";
-    $sql="INSERT INTO cliente (nome,email,senha,celular,datahora,cpf,status) VALUES ('{$dados["nome"]}', '{$dados["email"]}', '{$dados["senha"]}','{$dados["telefone"]}', now(), '{$dados["cpf"]}', '{$dados["status"]}')";
+     require "conexao.php";
+    $query = "CALL CheckEmailCPFCliente(' {$dados["email"]}',  '{$dados["cpf"]}', @result, @user_id)";
+    $conn->query($query);
+
+// Obtém o resultado da procedure
+$resultQuery = $conn->query("SELECT @result as result");
+$row = $resultQuery->fetch_assoc();
+$result = $row['result'];
+
+// Cria uma condição com base no resultado
+if ($result != 0) {
+    $conn->close();
+        return 2;
+    
+} else {
+    
+     $sql="INSERT INTO cliente (nome,email,senha,celular,datahora,cpf,status) VALUES ('{$dados["nome"]}', '{$dados["email"]}', '{$dados["senha"]}','{$dados["telefone"]}', now(), '{$dados["cpf"]}', '{$dados["status"]}')";
     $result = $conn -> query($sql);
-    if($conn->errno == 1062){
-        $conn->close();
-        return 0;
-    }    else{
+    if($result == true){
         $conn->close();
         return 1;
+    }    else{
+        $conn->close();
+        return 0;
     }
+
 
 } 
 
-
+}
 
 function clienteEdit($dados){
     require "conexao.php";
+    $query = "CALL CheckEmailCPF(' {$dados["email"]}',  '{$dados["cpf"]}', @result, @user_id)";
+    $conn->query($query);
+
+// Obtém o resultado da procedure
+$resultQuery = $conn->query("SELECT @result as result, @user_id as id");
+$row = $resultQuery->fetch_assoc();
+$result = $row['result'];
+
+// Cria uma condição com base no resultado
+if ($result != 0 && $row['id']!=$dados['id']) {
+    $conn->close();
+        return 2;
+    
+} else {
    
             $sql= "UPDATE cliente SET nome = '{$dados['nome']}', email = '{$dados['email']}', cpf = {$dados['cpf']}, celular = {$dados['telefone']}, status = {$dados['status']},  datahora = now() WHERE ID_CLIENTE = '{$dados['id']}'";
 
     $result = $conn->query($sql);
-    if($conn->errno == 1062){
-        $conn->close();
-        return 0;
-    }    else{
+    if($result == true){
         $conn->close();
         return 1;
+    }    else{
+        $conn->close();
+        return 0;
     }
 
-}
+
+}}
 
 
 

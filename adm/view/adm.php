@@ -72,7 +72,7 @@ if($_SESSION["ADM-PODER"]>=4){?> <li class="nav-item">
                      <a target='iframe' style="color: var(--green);" class="link1 nav-link menulink" href="clientes_list.php">
                      <i class="fa-regular fa-address-card"></i> Clientes </a>
                      <a target='iframe' style="color: var(--green);" class="link2 nav-link menulink" href="clientes_list.php">
-                        <i class="fa-solid fa-users fa-sm"></i>
+                        <i class="fa-regular fa-address-card"></i>
                      </a>
                   </li>
                   <li class="nav-item">

@@ -31,20 +31,17 @@
                   <label for="nome" class="label">Nome</label>
                   <br>
                   <input type="text" name="nome" id="" placeholder="Seu nome..." required class="input">
+                  <br>
+                  <br>
+                  <label for="cpf" class="label">CPF</label>
+                  <br>
+                  <input type="text" name="cpf" id="" placeholder="Ex. 12345678910..." required class="input">
                 </div>
                 <div class="table-cell align-left">
                   <label for="nome" class="label">Senha</label>
                   <br>
                   <input type="password" name="senha" id="" required minlength="6" placeholder="Min. 6 caracteres" class="input">
-                </div>
-              </div>
-              <div class="table-row">
-                <div class="table-cell align-right">
-                  <label for="nome" class="label">Email</label>
-                  <br>
-                  <input type="email" name="email" placeholder="Seu email..." required id="" class="input">
-                </div>
-                <div class="table-cell align-left">
+                  <br><br>
                   <label for="poder" class="label">Poder</label>
                   <select id="poder" class="input" name="poder">
                     <option value="1">1 - Operador</option>
@@ -57,16 +54,26 @@
               </div>
               <div class="table-row">
                 <div class="table-cell align-right">
+                  <label for="nome" class="label">Email</label>
+                  <br>
+                  <input type="email" name="email" placeholder="Seu email..." required id="" class="input">
+                </div>
+                <div class="table-cell align-left">
+                <label for="status" class="label">Status</label>
+                  <select id="status" class="input" name="status">
+                    <option value="1">Ativo</option>
+                    <option value="0">Inativo</option>
+                  </select>
+                </div>
+              </div>
+              <div class="table-row">
+                <div class="table-cell align-right">
                   <label for="nome" class="label">Telefone (celular)</label>
                   <br>
                   <input type="text" name="telefone" id="" placeholder="(DDD)9xxxxxxxx" required class="input">
                 </div>
                 <div class="table-cell align-left">
-                  <label for="status" class="label">Status</label>
-                  <select id="status" class="input" name="status">
-                    <option value="1">Ativo</option>
-                    <option value="0">Inativo</option>
-                  </select>
+               
                 </div>
               </div>
             </div>

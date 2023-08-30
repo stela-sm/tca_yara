@@ -180,6 +180,18 @@ if(isset($_REQUEST["adm_new"])){ //se vier do admNew (criar adm)
     $dados["poder"] = $_REQUEST["poder"];
     $dados["telefone"] = $_REQUEST["telefone"];
     $dados["status"] = $_REQUEST["status"];
+    $valida = validaCPF($_REQUEST["cpf"]);
+    if($valida==0){
+        ?>
+        <form action="../view/adm_list.php" name="form" id="myForm" method="POST">
+        <input type="hidden" name="msg" value="FR26">  <!--""BD02" => "Erro ao criar registro.",-->
+        </form> <!--envia um formulario com a variavel "msg", que é o código da mensagem de erro (ver view/msg.php)--> 
+        <script>
+        document.getElementById('myForm').submit();//envio automático submit()
+        </script>
+        <?php  
+    }else{
+    $dados["cpf"] = $_REQUEST["cpf"];    
     require_once "../model/manager.php";
     $resp=admNew($dados);
     if($resp==1){ //tudo certo
@@ -191,8 +203,7 @@ if(isset($_REQUEST["adm_new"])){ //se vier do admNew (criar adm)
         document.getElementById('myForm').submit();//envio automático submit()
         </script>
         <?php  
-    }else{//erro
-        ?>
+    }else if($resp==0){?>
         <form action="../view/adm_list.php" name="form" id="myForm" method="POST">
         <input type="hidden" name="msg" value="BD02">  <!--""BD02" => "Erro ao criar registro.",-->
         </form> <!--envia um formulario com a variavel "msg", que é o código da mensagem de erro (ver view/msg.php)--> 
@@ -201,9 +212,18 @@ if(isset($_REQUEST["adm_new"])){ //se vier do admNew (criar adm)
         </script>
         <?php  
         
+    }else if($resp==2){?>
+        <form action="../view/adm_list.php" name="form" id="myForm" method="POST">
+        <input type="hidden" name="msg" value="FR27">  <!--""BD02" => "Erro ao criar registro.",-->
+        </form> <!--envia um formulario com a variavel "msg", que é o código da mensagem de erro (ver view/msg.php)--> 
+        <script>
+        document.getElementById('myForm').submit();//envio automático submit()
+        </script>
+        <?php  
+        
     }
 }
-
+}
 
 
 
@@ -220,11 +240,25 @@ if(isset($_REQUEST["adm_new"])){ //se vier do admNew (criar adm)
    if(isset($_REQUEST["adm_edit"])){
         
     $dados["id"] = $_REQUEST["adm_edit"];
-    $dados["nome"] = $_REQUEST["nome"];
+    $dados["nome"] = $_REQUEST["nome"];    
+    $dados["cpf"] = $_REQUEST["cpf"];
     $dados["email"] = $_REQUEST["email"];
     $dados["telefone"] = $_REQUEST["telefone"];
     $dados["poder"] = $_REQUEST["poder"];
     $dados["status"] = $_REQUEST["status"];
+    require_once "../model/ferramentas.php";
+    $valida = validaCPF($_REQUEST["cpf"]);
+    if($valida==0){
+        ?>
+        <form action="../view/adm_list.php" name="form" id="myForm" method="POST">
+        <input type="hidden" name="msg" value="FR26">  <!--""BD02" => "Erro ao criar registro.",-->
+        </form> <!--envia um formulario com a variavel "msg", que é o código da mensagem de erro (ver view/msg.php)--> 
+        <script>
+        document.getElementById('myForm').submit();//envio automático submit()
+        </script>
+        <?php  
+    }else{
+    $dados["cpf"] = $_REQUEST["cpf"];    
     require_once "../model/manager.php";
     $resp=admEdit($dados);
     if($resp==1){ //tudo certo
@@ -236,7 +270,7 @@ if(isset($_REQUEST["adm_new"])){ //se vier do admNew (criar adm)
         document.getElementById('myForm').submit();//envio automático submit()
         </script>
         <?php  
-    }else{//erro
+    }else if($resp==0){//erro
         ?>
         <form action="../view/adm_list.php" name="form" id="myForm" method="POST">
         <input type="hidden" name="msg" value="BD02">  <!--""BD02" => "Erro ao criar registro.",-->
@@ -244,9 +278,18 @@ if(isset($_REQUEST["adm_new"])){ //se vier do admNew (criar adm)
         <script>
         document.getElementById('myForm').submit();//envio automático submit()
         </script>
+        <?php      
+    }else if($resp==2){?>
+        <form action="../view/adm_list.php" name="form" id="myForm" method="POST">
+        <input type="hidden" name="msg" value="FR27">  <!--""BD02" => "Erro ao criar registro.",-->
+        </form> <!--envia um formulario com a variavel "msg", que é o código da mensagem de erro (ver view/msg.php)--> 
+        <script>
+        document.getElementById('myForm').submit();//envio automático submit()
+        </script>
         <?php  
         
     }
+}
 }
 
 
@@ -924,24 +967,44 @@ if(isset($_REQUEST["cliente_new"])){ //se vier do admNew (criar adm)
     $dados["email"] = $_REQUEST["email"];
     require_once "../model/ferramentas.php";
     $dados["senha"] =  hash256($_REQUEST["senha"]);
-    $dados["cpf"] = $_REQUEST["cpf"];
     $dados["telefone"] = $_REQUEST["telefone"];
     $dados["status"] = $_REQUEST["status"];
+    $valida = validaCPF($_REQUEST["cpf"]);
+    if($valida==0){
+        ?>
+        <form action="../view/cliente_list.php" name="form" id="myForm" method="POST">
+        <input type="hidden" name="msg" value="FR26">  <!--""BD02" => "Erro ao criar registro.",-->
+        </form> <!--envia um formulario com a variavel "msg", que é o código da mensagem de erro (ver view/msg.php)--> 
+        <script>
+        document.getElementById('myForm').submit();//envio automático submit()
+        </script>
+        <?php  
+    }else{
+    $dados["cpf"] = $_REQUEST["cpf"];    
     require_once "../model/manager.php";
     $resp=clienteNew($dados);
     if($resp==1){ //tudo certo
         ?>
-        <form action="../view/adm_list.php" name="form" id="myForm" method="POST">
+        <form action="../view/cliente_list.php" name="form" id="myForm" method="POST">
         <input type="hidden" name="msg" value="BD50">  <!--"BD50" => "Operação realizada com sucesso.",-->
         </form> <!--envia um formulario com a variavel "msg", que é o código da mensagem de erro (ver view/msg.php)--> 
         <script>
         document.getElementById('myForm').submit();//envio automático submit()
         </script>
         <?php  
-    }else{//erro
+    }else if($resp==0){//erro
         ?>
-        <form action="../view/adm_list.php" name="form" id="myForm" method="POST">
+        <form action="../view/cliente_list.php" name="form" id="myForm" method="POST">
         <input type="hidden" name="msg" value="BD02">  <!--""BD02" => "Erro ao criar registro.",-->
+        </form> <!--envia um formulario com a variavel "msg", que é o código da mensagem de erro (ver view/msg.php)--> 
+        <script>
+        document.getElementById('myForm').submit();//envio automático submit()
+        </script>
+        <?php  
+        
+    }else if($resp==2){?>
+        <form action="../view/cliente_list.php" name="form" id="myForm" method="POST">
+        <input type="hidden" name="msg" value="FR27">  <!--""BD02" => "Erro ao criar registro.",-->
         </form> <!--envia um formulario com a variavel "msg", que é o código da mensagem de erro (ver view/msg.php)--> 
         <script>
         document.getElementById('myForm').submit();//envio automático submit()
@@ -950,28 +1013,7 @@ if(isset($_REQUEST["cliente_new"])){ //se vier do admNew (criar adm)
         
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+}
 
 
 
@@ -985,8 +1027,20 @@ if(isset($_REQUEST["cliente_edit"])){
     $dados["nome"] = $_REQUEST["nome"];
     $dados["email"] = $_REQUEST["email"];
     $dados["telefone"] = $_REQUEST["telefone"];
-    $dados["cpf"] = $_REQUEST["cpf"];
     $dados["status"] = $_REQUEST["status"];
+    require_once "../model/ferramentas.php";
+    $valida = validaCPF($_REQUEST["cpf"]);
+    if($valida==0){
+        ?>
+        <form action="../view/cliente_list.php" name="form" id="myForm" method="POST">
+        <input type="hidden" name="msg" value="FR26">  <!--""BD02" => "Erro ao criar registro.",-->
+        </form> <!--envia um formulario com a variavel "msg", que é o código da mensagem de erro (ver view/msg.php)--> 
+        <script>
+        document.getElementById('myForm').submit();//envio automático submit()
+        </script>
+        <?php  
+    }else{
+    $dados["cpf"] = $_REQUEST["cpf"];    
     require_once "../model/manager.php";
     $resp=clienteEdit($dados);
     if($resp==1){ //tudo certo
@@ -1001,7 +1055,7 @@ if(isset($_REQUEST["cliente_edit"])){
 
 
         <?php  
-    }else{//erro
+    }else if($resp==0){//erro
         ?>
         <form action="../view/cliente_list.php" name="form" id="myForm" method="POST">
         <input type="hidden" name="msg" value="BD02">  <!--""BD02" => "Erro ao criar registro.",-->
@@ -1011,8 +1065,17 @@ if(isset($_REQUEST["cliente_edit"])){
         </script>
         <?php  
         
+    }else if($resp==2){?>
+        <form action="../view/adm_list.php" name="form" id="myForm" method="POST">
+        <input type="hidden" name="msg" value="FR27">  <!--""BD02" => "Erro ao criar registro.",-->
+        </form> <!--envia um formulario com a variavel "msg", que é o código da mensagem de erro (ver view/msg.php)--> 
+        <script>
+        document.getElementById('myForm').submit();//envio automático submit()
+        </script>
+        <?php  
+        
     }
 }
+}
 
-    
-    ?>
+?>
