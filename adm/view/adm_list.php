@@ -8,16 +8,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/5b9d82b6ee.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="css/adm_list_style.css">
+   
 
     <title>Yara</title>
-    <script>
-      
-        </script>
+   
 </head>
-<style>
-    
-</style>
 <body>
+<form action="">
+<div id="menu">
+<button type="submit" class="option"><i class="fa-solid fa-magnifying-glass"></i></button>
+    <div id="input-container">       
+      <input type="search" id="search-input" placeholder="Pesquise por...">
+    </div>
+   <div class="botoes">
+<button type="button"class="option2" onclick="troca()" ><i data-toggle="tooltip"  data-placement="top" title="ID" class="fa-solid fa-fingerprint choose option"></i></button>   
+<button type="button"class="option2" onclick="troca()" ><i data-toggle="tooltip"  data-placement="top" title="Nome" class="fa-solid fa-n choose option"></i></button>
+<button type="button"class="option2" onclick="troca()" ><i data-toggle="tooltip"  data-placement="top" title="Email" class="fa-solid fa-at choose option"></i></button>
+<button type="button"class="option2" onclick="troca()" ><i data-toggle="tooltip"  data-placement="top" title="Telefone" class="fa-solid fa-phone choose option"></i></button>
+<button type="button"class="option2" onclick="troca()" ><i data-toggle="tooltip"  data-placement="top" title="CPF" class="fa-regular fa-user choose option"></i></button>
+<button type="button"class="option2" onclick="troca()" ><i data-toggle="tooltip"  data-placement="top" title="Data" class="fa-regular fa-calendar choose option"></i></button>
+<button type="button"class="option2" onclick="troca()" ><i data-toggle="tooltip"  data-placement="top" title="Poder" class="fa-solid fa-bolt choose option"></i></button>
+<button type="button"class="option2" onclick="troca()" ><i data-toggle="tooltip"  data-placement="top" title="Status" class="fa-solid fa-signal choose option"></i></button>
+  </div>
+  </div>
+  </form>
     <div id="admTabela">
 <?php
 require_once "../model/manager.php";
@@ -25,6 +39,32 @@ $dados = listaAdm();
 ?>
 
 <script>
+function troca(){
+    const optionButtons = document.querySelectorAll('.option2');
+
+// Função para trocar a cor do botão clicado
+function toggleColor(button) {
+  // Remover a classe "chosen" de todos os botões
+  optionButtons.forEach(btn => {
+    btn.classList.remove('chosen');
+  });
+
+  // Adicionar a classe "chosen" apenas ao botão clicado
+  button.classList.add('chosen');
+}
+
+// Adicionar um evento de clique a cada botão
+optionButtons.forEach(button => {
+  button.addEventListener('click', () => {
+    toggleColor(button);
+  });
+});
+}
+
+$(function() {
+    $('[data-toggle="tooltip"]').tooltip()
+})
+
      function confirmDelete(id){
     var resp = confirm("Tem certeza que deseja deletar esse registro?");
     if(resp==true){
