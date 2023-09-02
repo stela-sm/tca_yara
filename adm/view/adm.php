@@ -14,10 +14,94 @@ session_start();
       <link rel="stylesheet" href="css/adm_style.css">
       <script src="js/adm_js.js"></script>
       <title>Yara | Painel</title>
+      <script>
+         
+
+function atualizarClasseElemento() {
+    const larguraJanela = window.innerWidth;
+    const elemento = document.querySelector('.col-10');  
+    const elemento2 = document.querySelector('.col-12'); 
+
+  if (larguraJanela < 700) {
+      elemento.classList.remove('col-10');
+      elemento.classList.add('col-12');
+    } 
+    
+    if (larguraJanela > 700){
+      elemento2.classList.remove('col-12');
+      elemento2.classList.add('col-10');
+    }
+    
+  }
+setInterval(atualizarClasseElemento, 1);
+atualizarClasseElemento();
+
+
+
+      </script>
+      <style>
+         .responsivo{
+            display:none;
+         }
+@media screen and (max-width: 700px) { /*mudar menu*/
+
+#voltar{
+   display: none !important; 
+}
+.responsivo{
+   z-index: 300;
+            display:block;
+         }
+.menubar{
+   display: none !important; 
+}
+.menu1{display:none;}
+}
+      </style>
    </head>
    <body>
       <header>
-         <nav class="navbar">
+         
+          <nav class="responsivo navbar navbar-expand-lg navbar-light bg-light">
+          <a class="navbar-brand" href="#">Y.</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#textoNavbar" aria-controls="textoNavbar" aria-expanded="false" aria-label="Alterna navegação">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="textoNavbar">
+    <ul class="navbar-nav mr-auto">
+
+      <li class="nav-item active">
+      <a target='iframe' style="color: var(--green);" onclick="click()" class="link2 nav-link active" href="painel.php"> Painel </a>
+      </li>
+      <li class="nav-item active">
+      <a target='iframe' style="color: var(--green);" onclick="click()" class="link2 nav-link active" href="painel.php"> Admnistradores </a>
+      </li>
+      <li class="nav-item active">
+      <a target='iframe' style="color: var(--green);" onclick="click()" class="link2 nav-link active" href="painel.php"> Clientes </a>
+      </li>
+      <li class="nav-item active">
+      <a target='iframe' style="color: var(--green);" onclick="click()" class="link2 nav-link active" href="painel.php"> Senhas </a>
+      </li>
+      <li class="nav-item active">
+      <a target='iframe' style="color: var(--green);" onclick="click()" class="link2 nav-link active" href="painel.php"> Menus e Submenus </a>
+      </li>
+      <li class="nav-item active">
+      <a target='iframe' style="color: var(--green);" onclick="click()" class="link2 nav-link active" href="painel.php"> Produtos </a>
+      </li>
+      <li class="nav-item active">
+      <a target='iframe' style="color: var(--green);" onclick="click()" class="link2 nav-link active" href="painel.php"> Vitrine </a>
+      </li>
+      <li class="nav-item active">
+      <a target='iframe' style="color: var(--green);" onclick="click()" class="link2 nav-link active" href="painel.php"> Pedidos </a>
+      </li>
+     
+    </ul>
+    <span class="navbar-text">
+      Texto navbar com um elemento inline
+    </span>
+  </div>
+</nav>
+         <nav class="navbar menu1">
             <a class="navbar-brand" href="#">Y.</a>
             <ul class="nav justify-content-end">
                <div class="dropdown-container">
@@ -35,7 +119,7 @@ session_start();
             </ul>
             </ul>
          </nav>
-         <div class="container-flex">
+         <div class="container-flex ">
             <div class="row d-flex  ">
                <div class="col-10  titulo">
                   <p class="title d-flex ">
@@ -50,6 +134,8 @@ session_start();
             </div>
          </div>
       </header>
+     
+
       <div class="container-flex menu">
          <div class="row">
             <div class="col-2 menubar ">
