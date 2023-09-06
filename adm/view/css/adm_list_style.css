@@ -93,53 +93,8 @@ i{
 }
 
 
-
-#menu {
-  display: inline-flex;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  background-color: transparent;
-  color: white;
-  padding: 10px;
-  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
-  z-index: 1000;
-  
-}
-
-#input-container {
-  width: 100% !important;
-  margin: 0 !important;
- 
-  padding-left: 5px;
-  padding-right: 1px;
-
-}
-
-#search-input {
-  margin-top: 3px;
-  max-width: 90% !important;
-  width: 100%;
-  padding: 5px;
-  border: none;
-  border-radius: 5px;
-}
-.botoes{
-  margin-left: -2cm;
- padding: 0;
-}
-
 #admTabela {
-  margin-top: 70px; /* Para evitar que o conteúdo fique oculto pelo menu */
-}
-.chosen{
-  color: var(--yellow);
-}
-.choose{
-  border-bottom: 1px solid gray !important;
-  border-radius: 5px !important;
-  color: var(--green);
+  margin-top: 60px; /* Para evitar que o conteúdo fique oculto pelo menu */
 }
 .option, .option2{
   padding: 5px;

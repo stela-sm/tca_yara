@@ -890,4 +890,13 @@ return $dados;
 }}
 
 
+
+//PESQUISA----------------------------------------------------------------
+function pesquisa($dados){
+    require "conexao.php";
+     
+    $sql = "SELECT * FROM {$dados["tabela"]} WHERE  {$dados["campo"]} =  {$dados["pesquisa"]}";
+    $result=$conn->query($sql); 
+}
+
 ?>

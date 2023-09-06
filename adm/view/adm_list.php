@@ -11,27 +11,80 @@
    
 
     <title>Yara</title>
-   
+ <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+          
+         margin-top: -60px;
+          position: fixed;
+            width: 99%;
+            border-radius: 10px;
+            display: flex;
+            background-color: #f9f9f9;
+            align-items: center;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            padding-left: 10px;
+            padding-right: 10px;box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+            
+        }
+        input:focus {
+    outline: none;
+    border: none;
+    border-bottom: dotted #ccc 0.5px;
+}
+
+        .icon {
+            margin-right: 10px;
+        }
+
+        .search-input {
+            flex-grow: 2; /* Ocupa 60% do espaço lateral */
+            padding: 7px;
+            border-radius: 5px;
+            font-size: 16px;        
+            max-width: none !important;
+            text-align: left !important;
+            background-color: transparent;
+            border: none;
+            border-bottom: dotted transparent 0.5px;
+          }
+
+        .submit-button {
+          border: 1px solid #ccc;
+            background-color: transparent;
+           
+            padding: 5px;
+            border-radius: 5px;
+            margin-left: 10px;
+            cursor: pointer;
+        }
+
+        
+    </style>
 </head>
 <body>
-<form action="">
-<div id="menu">
-<button type="submit" class="option"><i class="fa-solid fa-magnifying-glass"></i></button>
-    <div id="input-container">       
-      <input type="search" id="search-input" placeholder="Pesquise por...">
-    </div>
-   <div class="botoes">
-<button type="button"class="option2" onclick="troca()" ><i data-toggle="tooltip"  data-placement="top" title="ID" class="fa-solid fa-fingerprint choose option"></i></button>   
-<button type="button"class="option2" onclick="troca()" ><i data-toggle="tooltip"  data-placement="top" title="Nome" class="fa-solid fa-n choose option"></i></button>
-<button type="button"class="option2" onclick="troca()" ><i data-toggle="tooltip"  data-placement="top" title="Email" class="fa-solid fa-at choose option"></i></button>
-<button type="button"class="option2" onclick="troca()" ><i data-toggle="tooltip"  data-placement="top" title="Telefone" class="fa-solid fa-phone choose option"></i></button>
-<button type="button"class="option2" onclick="troca()" ><i data-toggle="tooltip"  data-placement="top" title="CPF" class="fa-regular fa-user choose option"></i></button>
-<button type="button"class="option2" onclick="troca()" ><i data-toggle="tooltip"  data-placement="top" title="Data" class="fa-regular fa-calendar choose option"></i></button>
-<button type="button"class="option2" onclick="troca()" ><i data-toggle="tooltip"  data-placement="top" title="Poder" class="fa-solid fa-bolt choose option"></i></button>
-<button type="button"class="option2" onclick="troca()" ><i data-toggle="tooltip"  data-placement="top" title="Status" class="fa-solid fa-signal choose option"></i></button>
-  </div>
-  </div>
-  </form>
+      <form action="../controller/controller_search.php" method="post" name="search_form">
+    <div class="container">
+        <div class="icon"><i class="fa-solid fa-magnifying-glass"></i></div>
+        <input type="hidden" name="tabela" value="adm">
+        <input type="text" name="search" class="search-input" placeholder="Pesquisar...">
+        <button name="campo" value="ID_ADM"class="submit-button"><i class="fa-solid fa-fingerprint" data-toggle="tooltip" data-placement="right" title="ID" style="color: #1A3D1F;"></i></button>
+        <button name="campo" value="nome" class="submit-button"><i class="fa-solid fa-n" data-toggle="tooltip" data-placement="right" title="Nome" style="color: #1A3D1F;"></i></button>
+        <button name="campo" value="email" class="submit-button"><i class="fa-solid fa-at" data-toggle="tooltip" data-placement="right" title="Email" style="color: #1A3D1F;"></i></button>
+        <button name="campo" value="telefone" class="submit-button"><i class="fa-solid fa-phone" data-toggle="tooltip" data-placement="right" title="Telefone" style="color: #1A3D1F;"></i></button>
+        <button name="campo" value="cpf" class="submit-button"><i class="fa-solid fa-user" data-toggle="tooltip" data-placement="right" title="CPF" style="color: #1A3D1F;"></i></button>
+        <button name="campo" value="datahora" class="submit-button"><i class="fa-solid fa-calendar" data-toggle="tooltip" data-placement="right" title="Data" style="color: #1A3D1F;"></i></button>
+        <button name="campo" value="poder" class="submit-button"><i class="fa-solid fa-bolt" data-toggle="tooltip" data-placement="right" title="Poder" style="color: #1A3D1F;"></i></button>
+        <button name="campo" value="status" class="submit-button"><i class="fa-solid fa-signal" data-toggle="tooltip" data-placement="right" title="Status" style="color: #1A3D1F;"></i></button>
+        </form>
+      </div>
+
     <div id="admTabela">
 <?php
 require_once "../model/manager.php";
