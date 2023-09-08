@@ -126,9 +126,16 @@ function admDelete($id){
 
 
 
-function listaAdm(){ //função pra listar adms 
+function listaAdm($search){ //função pra listar adms 
+
     require "conexao.php";
-    $sql = "SELECT * FROM adm";
+    if($search["search"] != "" && $search["campo"] != "")
+    {
+        $termo= $search["search"];
+        $sql = "SELECT * FROM adm WHERE {$search["campo"]} LIKE '%$termo%' ORDER BY ID_ADM DESC";
+    }else{
+        $sql = "SELECT * FROM adm ORDER BY ID_ADM DESC";
+    }
     $result=$conn->query($sql); 
 
     if($result->num_rows > 0){
@@ -164,9 +171,15 @@ function listaAdm(){ //função pra listar adms
 
 //PRODUTOS -------------------------------------------------------------------------------------------------------------------------------------------------------
 
-function listaProdutos(){ //função pra listar adms 
+function listaProdutos($search){ //função pra listar adms 
     require "conexao.php";
-    $sql = "SELECT * FROM produtos";
+    if($search["search"] != "" && $search["campo"] != "")
+    {
+        $termo= $search["search"];
+        $sql = "SELECT * FROM produtos WHERE {$search["campo"]} LIKE '%$termo%' ORDER BY ID_PRODUTO DESC";
+    }else{
+        $sql = "SELECT * FROM produtos ORDER BY ID_PRODUTO DESC";
+    }
     $result=$conn->query($sql); 
 
     if($result->num_rows > 0){
@@ -298,9 +311,15 @@ function produtoDelete($id){
 
 //PEDIDOS -------------------------------------------------------------------------------------------------------------------------------------------------------
 
-function listaPedidos(){ //função pra listar adms 
+function listaPedidos($search){ //função pra listar adms 
     require "conexao.php";
-    $sql = "SELECT * FROM pedidos";
+    if($search["search"] != "" && $search["campo"] != "")
+    {
+        $termo= $search["search"];
+        $sql = "SELECT * FROM pedidos WHERE {$search["campo"]} LIKE '%$termo%' ORDER BY ID_PEDIDO DESC";
+    }else{
+        $sql = "SELECT * FROM pedidos ORDER BY ID_PEDIDO DESC";
+    }
     $result=$conn->query($sql); 
 
     if($result->num_rows > 0){
@@ -750,9 +769,16 @@ function dataClientes($dados){
 
 
 
-function listaClientes(){
+function listaClientes($search){
     require "conexao.php";
-    $sql = "SELECT * FROM cliente";
+    if($search["search"] != "" && $search["campo"] != "")
+    {
+        $termo= $search["search"];
+        $sql = "SELECT * FROM cliente WHERE {$search["campo"]} LIKE '%$termo%' ORDER BY ID_CLIENTE DESC";
+    }else{
+        $sql = "SELECT * FROM cliente ORDER BY ID_CLIENTE DESC";
+    }
+    
     $result=$conn->query($sql); 
 
     if($result->num_rows > 0){

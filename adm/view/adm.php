@@ -148,16 +148,16 @@ atualizarClasseElemento();
                      </a>
                   </li><?php
 if($_SESSION["ADM-PODER"]>=4){?> <li class="nav-item">
-                     <a target='iframe' style="color: var(--green);" class="link1 nav-link menulink" href="adm_list.php">
+                     <a target='iframe' style="color: var(--green);" class="link1 nav-link menulink" href="adm_list.php?campo=">
                         <i class="fa-solid fa-users fa-sm"></i> Administradores </a>
-                     <a target='iframe' style="color: var(--green);" class="link2 nav-link menulink" href="adm_list.php">
+                     <a target='iframe' style="color: var(--green);" class="link2 nav-link menulink" href="adm_list.php?campo=">
                         <i class="fa-solid fa-users fa-sm"></i>
                      </a>
                   </li>
                       <li class="nav-item">
-                     <a target='iframe' style="color: var(--green);" class="link1 nav-link menulink" href="clientes_list.php">
+                     <a target='iframe' style="color: var(--green);" class="link1 nav-link menulink" href="clientes_list.php?campo=">
                      <i class="fa-regular fa-address-card"></i> Clientes </a>
-                     <a target='iframe' style="color: var(--green);" class="link2 nav-link menulink" href="clientes_list.php">
+                     <a target='iframe' style="color: var(--green);" class="link2 nav-link menulink" href="clientes_list.php?campo=">
                         <i class="fa-regular fa-address-card"></i>
                      </a>
                   </li>
@@ -171,30 +171,30 @@ if($_SESSION["ADM-PODER"]>=4){?> <li class="nav-item">
                      </a>
                   </li><?php
 if($_SESSION["ADM-PODER"]>=3){?> <li class="nav-item">
-                     <a target='iframe' style="color: var(--green);" class="link1 nav-link menulink" href="menus_list.php">
+                     <a target='iframe' style="color: var(--green);" class="link1 nav-link menulink" href="menus_list.php?campo=">
                         <i class="fa-solid fa-arrow-up-right-from-square"></i>Menus e Submenus </a>
-                     <a target='iframe' style="color: var(--green);" class="link2 nav-link menulink" href="menus_list.php">
+                     <a target='iframe' style="color: var(--green);" class="link2 nav-link menulink" href="menus_list.php?campo=">
                         <i class="fa-solid fa-arrow-up-right-from-square"></i>
                      </a>
                   </li> <?php 
 }?> <li class="nav-item">
-                     <a target='iframe' style="color: var(--green);" class="link1 nav-link menulink" href="produtos_list.php">
+                     <a target='iframe' style="color: var(--green);" class="link1 nav-link menulink" href="produtos_list.php?campo=">
                         <i class="fa-solid fa-bag-shopping"></i>Produtos </a>
-                     <a target='iframe' style="color: var(--green);" class="link2 nav-link menulink" href="produtos_list.php">
+                     <a target='iframe' style="color: var(--green);" class="link2 nav-link menulink" href="produtos_list.php?campo=">
                         <i class="fa-solid fa-bag-shopping"></i>
                      </a>
                   </li>
                   <li class="nav-item">
-                     <a target='iframe' style="color: var(--green);" class="link1 nav-link menulink" href="vitrine_list.php">
+                     <a target='iframe' style="color: var(--green);" class="link1 nav-link menulink" href="vitrine_list.php?campo=">
                         <i class="fa-solid fa-store"></i>Vitrine </a>
-                     <a target='iframe' style="color: var(--green);" class="link2 nav-link menulink" href="vitrine_list.php">
+                     <a target='iframe' style="color: var(--green);" class="link2 nav-link menulink" href="vitrine_list.php?campo=">
                         <i class="fa-solid fa-store" style="font-size: 0.8em; "></i>
                      </a>
                   </li><?php
 if($_SESSION["ADM-PODER"]>=2){?> <li class="nav-item menulink">
-                     <a target='iframe' style="color: var(--green);" class="link1 nav-link menulink" href="pedidos_list.php">
+                     <a target='iframe' style="color: var(--green);" class="link1 nav-link menulink" href="pedidos_list.php?campo=">
                         <i class="fa-solid fa-box"></i>Pedidos </a>
-                     <a target='iframe' style="color: var(--green);" class="link2 nav-link menulink" href="pedidos_list.php">
+                     <a target='iframe' style="color: var(--green);" class="link2 nav-link menulink" href="pedidos_list.php?campo=">
                         <i class="fa-solid fa-box"></i>
                      </a>
                   </li> <?php 

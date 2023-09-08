@@ -65,15 +65,20 @@
             cursor: pointer;
         }
 
-        
+        .x_button{
+          border: none;
+          padding: 0;
+          margin:0;
+          background-color: transparent;
+        }
     </style>
 </head>
 <body>
-      <form action="../controller/controller_search.php" method="post" name="search_form">
+<form action="adm_list.php" onsubmit="preventSubmit(event)" method="get" name="search_form">
     <div class="container">
-        <div class="icon"><i class="fa-solid fa-magnifying-glass"></i></div>
+        <div class="icon"> <?php if(($_GET["campo"]=="")){echo "<i class=\"fa-solid fa-magnifying-glass\"></i>";}else{echo "<button class=\"x_button\"name=\"campo\" value=\"\"><i class=\"fa-solid fa-x\"></i></button>";} ?></div>
         <input type="hidden" name="tabela" value="adm">
-        <input type="text" name="search" class="search-input" placeholder="Pesquisar...">
+        <input type="text" name="search" <?php if(isset($_GET["campo"])&&$_GET["campo"]!=""){echo "value=\"".$_GET["search"]."\"";} else{echo"";}?>class="search-input" placeholder="Pesquisar...">
         <button name="campo" value="ID_ADM"class="submit-button"><i class="fa-solid fa-fingerprint" data-toggle="tooltip" data-placement="right" title="ID" style="color: #1A3D1F;"></i></button>
         <button name="campo" value="nome" class="submit-button"><i class="fa-solid fa-n" data-toggle="tooltip" data-placement="right" title="Nome" style="color: #1A3D1F;"></i></button>
         <button name="campo" value="email" class="submit-button"><i class="fa-solid fa-at" data-toggle="tooltip" data-placement="right" title="Email" style="color: #1A3D1F;"></i></button>
@@ -88,10 +93,26 @@
     <div id="admTabela">
 <?php
 require_once "../model/manager.php";
-$dados = listaAdm();
+if((!isset($_GET["search"]))){
+  $pesquisa["search"] = "";
+}else{
+  $pesquisa["search"] = $_GET["search"];
+  $pesquisa["campo"] = $_GET["campo"];
+}  
+$dados = listaAdm($pesquisa);
 ?>
 
 <script>
+       document.addEventListener("DOMContentLoaded", function () {
+            var form = document.querySelector("form");
+
+            form.addEventListener("keydown", function (event) {
+                // Impedir o envio do formulário quando a tecla "Enter" é pressionada
+                if (event.key === "Enter") {
+                    event.preventDefault();
+                }
+            });
+        });
 function troca(){
     const optionButtons = document.querySelectorAll('.option2');
 
