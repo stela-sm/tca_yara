@@ -224,9 +224,9 @@ i{
         <button name="campo" value="id_cliente" class="submit-button"><i class="fa-solid fa-n" data-toggle="tooltip" data-placement="right" title="Nome" style="color: #1A3D1F;"></i></button>
         <button name="campo" value="id_endereco" class="submit-button"><i class="fa-solid fa-at" data-toggle="tooltip" data-placement="right" title="Email" style="color: #1A3D1F;"></i></button>
         <button name="campo" value="id_itens" class="submit-button"><i class="fa-solid fa-phone" data-toggle="tooltip" data-placement="right" title="Telefone" style="color: #1A3D1F;"></i></button>
-        <button name="campo" value="valor" class="submit-button"><i class="fa-solid fa-user" data-toggle="tooltip" data-placement="right" title="CPF" style="color: #1A3D1F;"></i></button>
-        <button name="campo" value="payway" class="submit-button"><i class="fa-solid fa-calendar" data-toggle="tooltip" data-placement="right" title="Data" style="color: #1A3D1F;"></i></button>
-        <button name="campo" value="datahora" class="submit-button"><i class="fa-solid fa-signal" data-toggle="tooltip" data-placement="right" title="Status" style="color: #1A3D1F;"></i></button>
+        <button name="campo" value="valor" class="submit-button"><i class="fa-solid fa-brazilian-real-sign" data-toggle="tooltip" data-placement="right" title="CPF" style="color: #1A3D1F;"></i></button>
+        <button name="campo" value="pagamento" class="submit-button"><i class="fa-solid fa-credit-card" data-toggle="tooltip" data-placement="right" title="Data" style="color: #1A3D1F;"></i></button>
+        <button name="campo" value="datahora" class="submit-button"><i class="fa-solid fa-calendar" data-toggle="tooltip" data-placement="right" title="Status" style="color: #1A3D1F;"></i></button>
         <button name="campo" value="status" class="submit-button"><i class="fa-solid fa-signal" data-toggle="tooltip" data-placement="right" title="Status" style="color: #1A3D1F;"></i></button>
         </form>
       </div>

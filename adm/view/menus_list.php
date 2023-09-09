@@ -30,12 +30,96 @@
         }
         </script>
 </head>
-
+<style>
+    
+.container {
+          
+          margin-top: -60px;
+           position: fixed;
+             width: 99%;
+             border-radius: 10px;
+             display: flex;
+             background-color: #f9f9f9;
+             align-items: center;
+             padding-top: 5px;
+             padding-bottom: 5px;
+             padding-left: 10px;
+             padding-right: 10px;box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+             
+         }
+         input:focus {
+     outline: none;
+     border: none;
+     border-bottom: dotted #ccc 0.5px;
+ }
+ 
+         .icon {
+             margin-right: 10px;
+         }
+ 
+         .search-input {
+             flex-grow: 2; /* Ocupa 60% do espaço lateral */
+             padding: 7px;
+             border-radius: 5px;
+             font-size: 16px;        
+             max-width: none !important;
+             text-align: left !important;
+             background-color: transparent;
+             border: none;
+             border-bottom: dotted transparent 0.5px;
+             margin: 0 !important;
+           }
+ 
+         .submit-button {
+           border: 1px solid #ccc;
+             background-color: transparent;
+            
+             padding: 5px;
+             border-radius: 5px;
+             margin-left: 10px;
+             cursor: pointer;
+         }
+ 
+         .x_button{
+           border: none;
+           padding: 0;
+           margin:0;
+           background-color: transparent;
+         }
+         
+ #admTabela {
+   margin-top: 60px; /* Para evitar que o conteúdo fique oculto pelo menu */
+ }
+</style>
 <body>
-    <div id="admTabela">
+     
+<form action="menus_list.php" onsubmit="preventSubmit(event)" method="get" name="search_form">
+    <div class="container">
+        <div class="icon"> <?php if(($_GET["campo"]=="")){echo "<i class=\"fa-solid fa-magnifying-glass\"></i>";}else{echo "<button class=\"x_button\"name=\"campo\" value=\"\"><i class=\"fa-solid fa-x\"></i></button>";} ?></div>
+        <input type="hidden" name="tabela" value="adm">
+        <input type="text" name="search" <?php if(isset($_GET["campo"])&&$_GET["campo"]!=""){echo "value=\"".$_GET["search"]."\"";} else{echo"";}?>class="search-input" placeholder="Pesquisar...">
+        <button name="campo" value="ID_PRODUTO"class="submit-button"><i class="fa-solid fa-fingerprint" data-toggle="tooltip" data-placement="right" title="ID" style="color: #1A3D1F;"></i></button>
+        <button name="campo" value="nome" class="submit-button"><i class="fa-solid fa-n" data-toggle="tooltip" data-placement="right" title="Nome" style="color: #1A3D1F;"></i></button>
+        <button name="campo" value="categoria" class="submit-button"><i class="fa-solid fa-thumbtack" data-toggle="tooltip" data-placement="right" title="categoria" style="color: #1A3D1F;"></i></button>
+        <button name="campo" value="finalidade" class="submit-button"><i class="fa-solid fa-certificate" data-toggle="tooltip" data-placement="right" title="finalidade" style="color: #1A3D1F;"></i></button>
+       
+        <button name="campo" value="estoque" class="submit-button"><i class="fa-solid fa-truck-ramp-box" data-toggle="tooltip" data-placement="right" title="estoque" style="color: #1A3D1F;"></i></button>
+        <button name="campo" value="valor" class="submit-button"><i class="fa-solid  fa-brazilian-real-sign" data-toggle="tooltip" data-placement="right" title="preço" style="color: #1A3D1F;"></i></button>
+       
+        <button name="campo" value="datahora" class="submit-button"><i class="fa-solid fa-calendar" data-toggle="tooltip" data-placement="right" title="data" style="color: #1A3D1F;"></i></button>
+        <button name="campo" value="status" class="submit-button"><i class="fa-solid fa-signal" data-toggle="tooltip" data-placement="right" title="Status" style="color: #1A3D1F;"></i></button>
+        </form>
+      </div>  
+<div id="admTabela">
 <?php
-require "../model/manager.php";
-$dados = listaMenu();
+require_once "../model/manager.php";
+if((!isset($_GET["search"]))){
+  $pesquisa["search"] = "";
+}else{
+  $pesquisa["search"] = $_GET["search"];
+  $pesquisa["campo"] = $_GET["campo"];
+}  
+$dados = listaMenu($pesquisa);
 ?>
 
 <script>
@@ -188,7 +272,15 @@ $dados = listaMenu();
 
 
 <?php
-$dados2=  submenuList();
+
+require_once "../model/manager.php";
+if((!isset($_GET["search"]))){
+  $pesquisa["search"] = "";
+}else{
+  $pesquisa["search"] = $_GET["search"];
+  $pesquisa["campo"] = $_GET["campo"];
+}  
+$dados2=  submenuList($pesquisa);
 
 if (isset($dados2['num']) && $dados2['num']!='0'){?>
 

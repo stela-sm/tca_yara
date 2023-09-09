@@ -56,6 +56,7 @@
              font-size: 16px;        
              max-width: none !important;
              text-align: left !important;
+             margin: 0px !important;
              background-color: transparent;
              border: none;
              border-bottom: dotted transparent 0.5px;
@@ -64,13 +65,19 @@
          .submit-button {
            border: 1px solid #ccc;
              background-color: transparent;
-            
+          transition: 0.2s;
              padding: 5px;
              border-radius: 5px;
              margin-left: 10px;
              cursor: pointer;
          }
- 
+         .submit-button:hover>i, .icon:hover>i{
+          color: #eeb249 !important;
+          transition: 0.1s;
+         }
+         i{
+          transition: 0.2s;
+         }
          .x_button{
            border: none;
            padding: 0;
@@ -89,11 +96,14 @@
         <input type="hidden" name="tabela" value="adm">
         <input type="text" name="search" <?php if(isset($_GET["campo"])&&$_GET["campo"]!=""){echo "value=\"".$_GET["search"]."\"";} else{echo"";}?>class="search-input" placeholder="Pesquisar...">
         <button name="campo" value="ID_PRODUTO"class="submit-button"><i class="fa-solid fa-fingerprint" data-toggle="tooltip" data-placement="right" title="ID" style="color: #1A3D1F;"></i></button>
-        <button name="campo" value="id_cliente" class="submit-button"><i class="fa-solid fa-n" data-toggle="tooltip" data-placement="right" title="Nome" style="color: #1A3D1F;"></i></button>
-        <button name="campo" value="id_endereco" class="submit-button"><i class="fa-solid fa-at" data-toggle="tooltip" data-placement="right" title="Email" style="color: #1A3D1F;"></i></button>
-        <button name="campo" value="id_itens" class="submit-button"><i class="fa-solid fa-phone" data-toggle="tooltip" data-placement="right" title="Telefone" style="color: #1A3D1F;"></i></button>
-        <button name="campo" value="valor" class="submit-button"><i class="fa-solid fa-user" data-toggle="tooltip" data-placement="right" title="CPF" style="color: #1A3D1F;"></i></button>
-        <button name="campo" value="datahora" class="submit-button"><i class="fa-solid fa-signal" data-toggle="tooltip" data-placement="right" title="Status" style="color: #1A3D1F;"></i></button>
+        <button name="campo" value="nome" class="submit-button"><i class="fa-solid fa-n" data-toggle="tooltip" data-placement="right" title="Nome" style="color: #1A3D1F;"></i></button>
+        <button name="campo" value="categoria" class="submit-button"><i class="fa-solid fa-thumbtack" data-toggle="tooltip" data-placement="right" title="categoria" style="color: #1A3D1F;"></i></button>
+        <button name="campo" value="finalidade" class="submit-button"><i class="fa-solid fa-certificate" data-toggle="tooltip" data-placement="right" title="finalidade" style="color: #1A3D1F;"></i></button>
+       
+        <button name="campo" value="estoque" class="submit-button"><i class="fa-solid fa-truck-ramp-box" data-toggle="tooltip" data-placement="right" title="estoque" style="color: #1A3D1F;"></i></button>
+        <button name="campo" value="valor" class="submit-button"><i class="fa-solid  fa-brazilian-real-sign" data-toggle="tooltip" data-placement="right" title="preço" style="color: #1A3D1F;"></i></button>
+       
+        <button name="campo" value="datahora" class="submit-button"><i class="fa-solid fa-calendar" data-toggle="tooltip" data-placement="right" title="data" style="color: #1A3D1F;"></i></button>
         <button name="campo" value="status" class="submit-button"><i class="fa-solid fa-signal" data-toggle="tooltip" data-placement="right" title="Status" style="color: #1A3D1F;"></i></button>
         </form>
       </div>

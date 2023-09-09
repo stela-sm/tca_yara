@@ -89,11 +89,13 @@
         <input type="hidden" name="tabela" value="adm">
         <input type="text" name="search" <?php if(isset($_GET["campo"])&&$_GET["campo"]!=""){echo "value=\"".$_GET["search"]."\"";} else{echo"";}?>class="search-input" placeholder="Pesquisar...">
         <button name="campo" value="ID_PRODUTO"class="submit-button"><i class="fa-solid fa-fingerprint" data-toggle="tooltip" data-placement="right" title="ID" style="color: #1A3D1F;"></i></button>
-        <button name="campo" value="id_cliente" class="submit-button"><i class="fa-solid fa-n" data-toggle="tooltip" data-placement="right" title="Nome" style="color: #1A3D1F;"></i></button>
-        <button name="campo" value="id_endereco" class="submit-button"><i class="fa-solid fa-at" data-toggle="tooltip" data-placement="right" title="Email" style="color: #1A3D1F;"></i></button>
-        <button name="campo" value="id_itens" class="submit-button"><i class="fa-solid fa-phone" data-toggle="tooltip" data-placement="right" title="Telefone" style="color: #1A3D1F;"></i></button>
-        <button name="campo" value="valor" class="submit-button"><i class="fa-solid fa-user" data-toggle="tooltip" data-placement="right" title="CPF" style="color: #1A3D1F;"></i></button>
-        <button name="campo" value="datahora" class="submit-button"><i class="fa-solid fa-signal" data-toggle="tooltip" data-placement="right" title="Status" style="color: #1A3D1F;"></i></button>
+        <button name="campo" value="nome" class="submit-button"><i class="fa-solid fa-n" data-toggle="tooltip" data-placement="right" title="Nome" style="color: #1A3D1F;"></i></button>
+        <button name="campo" value="descricao" class="submit-button"><i class="fa-solid fa-list" data-toggle="tooltip" data-placement="right" title="Descrição" style="color: #1A3D1F;"></i></button>
+        <button name="campo" value="ingredientes" class="submit-button"><i class="fa-solid fa-atom" data-toggle="tooltip" data-placement="right" title="composição" style="color: #1A3D1F;"></i></button>
+        <button name="campo" value="img" class="submit-button"><i class="fa-solid fa-image" data-toggle="tooltip" data-placement="right" title="Imagem" style="color: #1A3D1F;"></i></button>
+        <button name="campo" value="img_hover" class="submit-button"><i class="fa-solid fa-images" data-toggle="tooltip" data-placement="right" title="Imagem hover" style="color: #1A3D1F;"></i></button>
+        
+        <button name="campo" value="datahora" class="submit-button"><i class="fa-solid fa-calendar" data-toggle="tooltip" data-placement="right" title="data" style="color: #1A3D1F;"></i></button>
         <button name="campo" value="status" class="submit-button"><i class="fa-solid fa-signal" data-toggle="tooltip" data-placement="right" title="Status" style="color: #1A3D1F;"></i></button>
         </form>
       </div>
@@ -170,7 +172,7 @@ $dados = listaProdutos($pesquisa);
             <th class="TabelaAdmTh">ID</th>
             <th class="TabelaAdmTh">Nome</th>     
             <th class="TabelaAdmTh poder">Descrição</th>            
-            <th class="TabelaAdmTh poder">Ingredientes</th>
+            <th class="TabelaAdmTh poder">Composição</th>
             <th class="TabelaAdmTh">Imagem</th>
             <th class="TabelaAdmTh">Imagem hover</th>
             <th class="TabelaAdmTh">Datahora</th>

@@ -421,9 +421,15 @@ function listaItens($pedido){
 
 
 
-function listaMenu(){
+function listaMenu($search){
     require "conexao.php";
-    $sql = "SELECT * FROM menu";
+    if($search["search"] != "" && $search["campo"] != "")
+    {
+        $termo= $search["search"];
+        $sql = "SELECT * FROM menu WHERE {$search["campo"]} LIKE '%$termo%' ORDER BY ID_MENU DESC";
+    }else{
+        $sql = "SELECT * FROM menu ORDER BY ID_MENU DESC";
+    }
     $result=$conn->query($sql); 
 
     if($result->num_rows > 0){
@@ -571,7 +577,7 @@ return 0;
 
 function submenuNew($dados){
     require "conexao.php";
-    $sql = "INSERT INTO submenu (ID_MENU_FK,folder,nomesub,url,datahora,status) VALUES ('{$dados["idmenu"]}','{$dados["folder"]}','{$dados["nomesub"]}', '{$dados["url"]}', now(),'{$dados["status"]}');";
+    $sql = "INSERT INTO submenu (ID_MENU_FK,folder,nome,url,datahora,status) VALUES ('{$dados["idmenu"]}','{$dados["folder"]}','{$dados["nomesub"]}', '{$dados["url"]}', now(),'{$dados["status"]}');";
     $result=$conn->query($sql); 
 
 
@@ -581,7 +587,7 @@ function submenuNew($dados){
         $dados["idmenu"] = $dados["idmenu"] +1 ;
         $dados["folder"] = "r";
         $dados["url"] = "view/" . $dados["url"];
-        $sql = "INSERT INTO submenu (ID_MENU_FK,folder,nomesub,url,datahora,status) VALUES ('{$dados["idmenu"]}','{$dados["folder"]}','{$dados["nomesub"]}', '{$dados["url"]}', now(),'{$dados["status"]}');";
+        $sql = "INSERT INTO submenu (ID_MENU_FK,folder,nome,url,datahora,status) VALUES ('{$dados["idmenu"]}','{$dados["folder"]}','{$dados["nomesub"]}', '{$dados["url"]}', now(),'{$dados["status"]}');";
         $result=$conn->query($sql); 
                 if($result==true){
                 $conn->close();
@@ -609,7 +615,7 @@ while($row=$result->fetch_assoc()){
     $dados["id"] = $row["ID_SUBMENU"];
     $dados["folder"] = $row["folder"];    
     $dados["ID_MENU_FK"] = $row["ID_MENU_FK"];
-    $dados["nomesub"] = $row["nomesub"];
+    $dados["nomesub"] = $row["nome"];
     $dados["url"] = $row["url"];
     $dados["datahora"] = $row["datahora"]; 
     $dados["status"] = $row["status"];
@@ -625,9 +631,16 @@ return $dados;
 
 
 
-function submenuList(){
+function submenuList($search){
     require "conexao.php";
-    $sql = "SELECT * FROM submenu";
+    require "conexao.php";
+    if($search["search"] != "" && $search["campo"] != "")
+    {
+        $termo= $search["search"];
+        $sql = "SELECT * FROM submenu WHERE {$search["campo"]} LIKE '%$termo%' ORDER BY ID_SUBMENU DESC";
+    }else{
+        $sql = "SELECT * FROM submenu ORDER BY ID_SUBMENU DESC";
+    }
     $result=$conn->query($sql); 
 
     if($result->num_rows > 0){
@@ -638,7 +651,7 @@ function submenuList(){
         $i=1;
         while($row=$result->fetch_assoc()){
             $dados[$i]["id"] = $row["ID_SUBMENU"];
-            $dados[$i]["nomesub"] = $row["nomesub"];
+            $dados[$i]["nomesub"] = $row["nome"];
             $dados[$i]["id_menu_fk"] = $row["ID_MENU_FK"];
             $dados[$i]["folder"] = $row["folder"];
             $dados[$i]["datahora"] = $row["datahora"];
@@ -661,7 +674,7 @@ function submenuList(){
 function submenuEdit($dados){
     
     require "conexao.php";
-    $sql="UPDATE submenu set folder='{$dados['folder']}',ID_MENU_FK='{$dados['idmenu']}', nomesub='{$dados['nomesub']}',url='{$dados['url']}',status={$dados['status']} WHERE ID_SUBMENU = '{$dados['id']}'";
+    $sql="UPDATE submenu set folder='{$dados['folder']}',ID_MENU_FK='{$dados['idmenu']}', nome='{$dados['nomesub']}',url='{$dados['url']}',status={$dados['status']} WHERE ID_SUBMENU = '{$dados['id']}'";
     $result = $conn -> query($sql);
     if($result==true){
         $conn->close();
@@ -917,12 +930,5 @@ return $dados;
 
 
 
-//PESQUISA----------------------------------------------------------------
-function pesquisa($dados){
-    require "conexao.php";
-     
-    $sql = "SELECT * FROM {$dados["tabela"]} WHERE  {$dados["campo"]} =  {$dados["pesquisa"]}";
-    $result=$conn->query($sql); 
-}
 
 ?>
