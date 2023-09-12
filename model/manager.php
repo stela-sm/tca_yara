@@ -73,4 +73,44 @@ function pegasubmenu($folder){
 }
 
 
+
+function carrinho($id){
+
+  require "conexao.php";
+ 
+  $sqlSUB = "SELECT * FROM carrinho  WHERE id_cliente = '{$id}'";
+ 
+ 
+  $result = $conn->query($sqlSUB);
+  $dadosSUB=array();
+
+  if ($result->num_rows>0){
+      $dadosSUB["result"] = 1;
+      $i = 0;
+      while($row = $result->fetch_assoc()){
+          $dadosSUB[$i]["id_carrinho"] = $row["ID_SUBMENU"];
+          $dadosSUB[$i]["id_cliente"] = $row["ID_MENU_FK"];
+          $dadosSUB[$i]["id_produto"] = $row["nomesub"];
+          $dadosSUB[$i]["quantidade"] = $row["quantidade"];
+          $dadosSUB[$i]["preco"] = $row["preco"];
+          $i++;
+          $dadosSUB["num"] = $i;
+      }
+     
+      $conn->close();
+      return $dadosSUB;
+  }else{
+    
+    $dadosSUB["num"] = 0;
+      $dadosSUB["result"] = 0; 
+      $conn->close();
+      return $dadosSUB;
+
+  }
+
+
+}
+
+
+
 ?>
