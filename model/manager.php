@@ -88,11 +88,10 @@ function carrinho($id){
       $dadosSUB["result"] = 1;
       $i = 0;
       while($row = $result->fetch_assoc()){
-          $dadosSUB[$i]["id_carrinho"] = $row["ID_SUBMENU"];
-          $dadosSUB[$i]["id_cliente"] = $row["ID_MENU_FK"];
-          $dadosSUB[$i]["id_produto"] = $row["nomesub"];
+          $dadosSUB[$i]["id_carrinho"] = $row["ID_CARRINHO"];
+          $dadosSUB[$i]["id_cliente"] = $row["id_cliente"];
+          $dadosSUB[$i]["id_produto"] = $row["id_produto"];
           $dadosSUB[$i]["quantidade"] = $row["quantidade"];
-          $dadosSUB[$i]["preco"] = $row["preco"];
           $i++;
           $dadosSUB["num"] = $i;
       }
@@ -111,6 +110,24 @@ function carrinho($id){
 
 }
 
+function produtoBusca($id){
+ 
+  require "conexao.php";
+  $sqlSUB = "SELECT * FROM produtos  WHERE id_produto = '{$id}'";
+  $result = $conn->query($sqlSUB);
+  
+while($row=$result->fetch_assoc()){
+    
+  $dados["id_produto"] = $row["ID_PRODUTO"];
+  $dados["nome"] = $row["nome"];
+  $dados["img"] = $row["img"];
+  $dados["img_hover"] = $row["img_hover"];
+  $dados["valor"] = $row["valor_uni"];
+  $dados["status"] = $row["status"];
+  $dados["estoque"] = $row["estoque"];
 
+}
+return $dados;
+}
 
 ?>

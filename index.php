@@ -123,6 +123,53 @@
             padding-top: 0.5rem !important;
             padding-bottom: 0.5rem !important;
         }
+        @import url('https://fonts.googleapis.com/css2?family=Berkshire+Swash&display=swap');
+@import url('https://fonts.cdnfonts.com/css/glacial-indifference-2');
+                            :root{
+    --white: #f9f9f9;
+    --green: #1A3D1F;
+    --yellow:  #eeb249;
+--lgreen: #B9C394;
+}
+                            table {
+                                width: 100%;
+                                border-collapse: collapse;
+                            font-family: 'Glacial Indifference';
+                            }
+                    
+                            td {
+                                
+                                font-size: 0.5em;
+                                border: none;
+                                padding: 10px;
+                            }
+                    
+                            .esquerda {
+                                text-align: left;
+                                border-top: 2px gray dotted;
+                                padding-bottom: 1em;
+                            }
+                    
+                            .direita {
+                                text-align: right;
+                                
+                                padding-bottom: 1em;
+                                border-top: 2px gray dotted;
+                            }
+                    
+                            .centro {
+                                border-radius: 10px;
+                                background-color: var(--yellow);
+                                text-align: center;
+                                color: var(--white);
+                            }
+                            .checkout, .checkout:hover{
+                                color: var(--white);
+                                text-decoration: none;
+                            }
+                      
+
+
     </style>
 </head>
 
@@ -212,59 +259,11 @@
                         </button>
                     </div>
                     <div class="modal-body" style="padding: 0.5rem !important;">
-                        <iframe class="iframe" style="width: 100%; min-height: 70vh;"src="view/cart_layout.html" frameborder="0"></iframe>
-                        <style>
-                            
-    @import url('https://fonts.googleapis.com/css2?family=Berkshire+Swash&display=swap');
-@import url('https://fonts.cdnfonts.com/css/glacial-indifference-2');
-                            :root{
-    --white: #f9f9f9;
-    --green: #1A3D1F;
-    --yellow:  #eeb249;
---lgreen: #B9C394;
-}
-                            table {
-                                width: 100%;
-                                border-collapse: collapse;
-                            font-family: 'Glacial Indifference';
-                            }
+                        <?php
+                        
+if(ISSET($_SESSION['ID_CLIENTE'])){?>
+                        <iframe class="iframe" style="width: 100%; min-height: 70vh;"src="view/cart_layout.php" frameborder="0"></iframe>
                     
-                            td {
-                                
-                                font-size: 0.5em;
-                                border: none;
-                                padding: 10px;
-                            }
-                    
-                            .esquerda {
-                                text-align: left;
-                                border-top: 2px gray dotted;
-                                padding-bottom: 1em;
-                            }
-                    
-                            .direita {
-                                text-align: right;
-                                
-                                padding-bottom: 1em;
-                                border-top: 2px gray dotted;
-                            }
-                    
-                            .centro {
-                                border-radius: 10px;
-                                background-color: var(--yellow);
-                                text-align: center;
-                                color: var(--white);
-                            }
-                            .checkout, .checkout:hover{
-                                color: var(--white);
-                                text-decoration: none;
-                            }
-                      
-
-
-                        </style>
-                    </head>
-                    <body>
                         <table>
                             <tr>
                                 <td class="esquerda">Subtotal</td>
@@ -274,7 +273,12 @@
                                 <td colspan="2" class="centro"><a href="checkout" class="checkout">Checkout</a></td>
                             </tr>
                         </table>
+                    <?php }else{ ?>
+                    
+                    
+                        <?php }?>
                     </div>
+
                 </div>
             </div>
         </div>

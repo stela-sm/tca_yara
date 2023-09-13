@@ -445,7 +445,7 @@ $extPeq = pegaExtensao($_FILES["img"]["name"]);
 $extMed = pegaExtensao($_FILES["img_hover"]["name"]);
 $img_peq_name = "produto_" . $str ."_img_." .  $extPeq;
 $img_med_name = "produto_" . $str ."_imghover_." . $extMed;
-$imgPath="../view/media/";
+$imgPath="../../view/media";
 
 
 move_uploaded_file($_FILES["img"]["tmp_name"],$imgPath.$img_peq_name);
