@@ -98,8 +98,8 @@
         <div class="icon"> <?php if(($_GET["campo"]=="")){echo "<i class=\"fa-solid fa-magnifying-glass\"></i>";}else{echo "<button class=\"x_button\"name=\"campo\" value=\"\"><i class=\"fa-solid fa-x\"></i></button>";} ?></div>
         <input type="hidden" name="tabela" value="adm">
         <input type="text" name="search" <?php if(isset($_GET["campo"])&&$_GET["campo"]!=""){echo "value=\"".$_GET["search"]."\"";} else{echo"";}?>class="search-input" placeholder="Pesquisar...">
-        <button name="campo" value="ID_PRODUTO"class="submit-button"><i class="fa-solid fa-fingerprint" data-toggle="tooltip" data-placement="right" title="ID" style="color: #1A3D1F;"></i></button>
-        <button name="campo" value="nome" class="submit-button"><i class="fa-solid fa-n" data-toggle="tooltip" data-placement="right" title="Nome" style="color: #1A3D1F;"></i></button>
+        <button name="campo" value="ID_MENU"class="submit-button"><i class="fa-solid fa-fingerprint" data-toggle="tooltip" data-placement="right" title="ID" style="color: #1A3D1F;"></i></button>
+        <button name="campo" value="url" class="submit-button"><i class="fa-solid fa-n" data-toggle="tooltip" data-placement="right" title="Nome" style="color: #1A3D1F;"></i></button>
         <button name="campo" value="categoria" class="submit-button"><i class="fa-solid fa-thumbtack" data-toggle="tooltip" data-placement="right" title="categoria" style="color: #1A3D1F;"></i></button>
         <button name="campo" value="finalidade" class="submit-button"><i class="fa-solid fa-certificate" data-toggle="tooltip" data-placement="right" title="finalidade" style="color: #1A3D1F;"></i></button>
        
@@ -282,7 +282,10 @@ if((!isset($_GET["search"]))){
 }  
 $dados2=  submenuList($pesquisa);
 
-if (isset($dados2['num']) && $dados2['num']!='0'){?>
+if (isset($dados2['num']) && $dados2['num']!='0'){
+  $pesquisaa["search"] = "";
+$dados_menu = listaMenu($pesquisaa);
+  ?>
 
 
 
@@ -317,9 +320,10 @@ if (isset($dados2['num']) && $dados2['num']!='0'){?>
 
     echo "<td class=\"TabelaAdmTd\">  <select disabled id=\"classe" . $dados2[$i]["id"] . "\" name=\"idmenu\" > ";
     $nome="";
-    for($ii=1;$ii<count($dados)-1;$ii++){
-        if($dados[$ii]['id']==$dados2[$i]['id_menu_fk']){$word = 'selected';}else{$word='';}
-            echo "<option ".$word." name=\"idmenu\" value='{$dados[$ii]['id']}'>{$dados[$ii]['id']} - {$dados[$ii]['nome']}</option>";}
+    
+    for($ii=1;$ii<count($dados_menu)-1;$ii++){
+        if($dados_menu[$ii]['id']==$dados2[$i]['id_menu_fk']){$word = 'selected';}else{$word='';}
+            echo "<option ".$word." name=\"idmenu\" value='{$dados_menu[$ii]['id']}'>{$dados_menu[$ii]['id']} - {$dados_menu[$ii]['nome']}</option>";}
     
        
     
