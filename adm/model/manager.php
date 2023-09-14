@@ -311,10 +311,77 @@ function produtoDelete($id){
 
 //PEDIDOS -------------------------------------------------------------------------------------------------------------------------------------------------------
 
+function buscar($termo){
+    require "conexao.php";
+    $sql = "SELECT ID_ENDERECO FROM endereco WHERE rua LIKE '%$termo%';";
+    $result=$conn->query($sql); 
+    if($result->num_rows > 0){
+        $dados=array();
+        $dados["result"] = 1;
+        while($row=$result->fetch_assoc()){
+           
+    $dados["id"] = $row["ID_ENDERECO"];
+        }
+    return $dados;
+    $conn-> close();
+}else{
+    $dados2["id"] = "";
+    return $dados2;
+    $conn-> close();
+    }
+
+
+
+}
+
+
+function buscarItens($termo){
+    require "conexao.php";
+    $sql = "SELECT ID_PRODUTO FROM produtos WHERE nome LIKE '%$termo%';";
+    $result=$conn->query($sql); 
+    if($result->num_rows > 0){
+        $dados=array();
+        $dados["result"] = 1;
+        while($row=$result->fetch_assoc()){
+           
+    $dados["id"] = $row["ID_PRODUTO"];
+        }
+        
+    $sql2 = "SELECT id_pedido FROM itens WHERE id_produto =  '{$dados["id"]}'";
+    $result2=$conn->query($sql2);
+    if($result2->num_rows > 0){
+        $dados2=array();
+        $dados2["result"] = 1;
+        while($row2=$result2->fetch_assoc()){
+           
+    $dados2["id"] = $row2["id_pedido"];
+        } } else{
+        $dados2["id"] = "";
+        }
+        return $dados2;
+    $conn-> close();
+}else{
+    $dados2["id"] = "";
+    return $dados2;
+    $conn-> close();
+    }
+
+}
+
+
 function listaPedidos($search){ //função pra listar adms 
     require "conexao.php";
     if($search["search"] != "" && $search["campo"] != "")
     {
+        if($search["campo"] == "id_endereco"){
+            $busca = buscar($search["search"]);
+            $search["campo"] == $busca["id"];
+        }
+        if($search["campo"] == "ID_ITENS"){
+            $busca = buscarItens($search["search"]);
+            $search["search"] = $busca["id"];
+        $search["campo"] = "ID_PEDIDO";
+        }
         $termo= $search["search"];
         $sql = "SELECT * FROM pedidos WHERE {$search["campo"]} LIKE '%$termo%' ORDER BY ID_PEDIDO DESC";
     }else{
@@ -414,290 +481,6 @@ function listaItens($pedido){
     }
 
 }
-
-
-
-//MENU-------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-
-
-function listaMenu($search){
-    require "conexao.php";
-    if($search["search"] != "" && $search["campo"] != "")
-    {
-        $termo= $search["search"];
-        $sql = "SELECT * FROM menu WHERE {$search["campo"]} LIKE '%$termo%' ORDER BY ID_MENU DESC";
-    }else{
-        $sql = "SELECT * FROM menu ORDER BY ID_MENU DESC";
-    }
-    $result=$conn->query($sql); 
-
-    if($result->num_rows > 0){
-        $num = $result ->num_rows;
-        $dados=array();
-        $dados["result"] = 1;
-        $dados["num"]=$num;
-        $i=1;
-        while($row=$result->fetch_assoc()){
-            $dados[$i]["id"] = $row["ID_MENU"];
-            $dados[$i]["nome"] = $row["nome"];
-            $dados[$i]["folder"] = $row["folder"];
-            $dados[$i]["datahora"] = $row["datahora"];
-            $dados[$i]["url"] = $row["url"];
-            $dados[$i]["status"] = $row["status"];
-        $i++;
-        }
-        
-        $conn->close();
-        return $dados;
-    }else{
-        $dados["result"]=0;
-        $dados["num"]=0;
-        $conn->close();
-        return $dados;
-    }
-
-}
-
-
-
-
-function menuNew($dados){
-    require "conexao.php";
-    $sql = "INSERT INTO menu (folder,nome,url,datahora,status) VALUES ('{$dados["folder"]}','{$dados["nome"]}', '{$dados["url"]}', now(),'{$dados["status"]}');";
-    $result=$conn->query($sql); 
-
-
-    if ($result==true) {
-  
-        if(isset($dados["replica"]) && ($dados["replica"]==1)){
-  
-        $dados["folder"] = "r";
-        $dados["url"] = "view/" . $dados["url"];
-        $sql = "INSERT INTO menu (folder,nome,url,datahora,status) VALUES ('{$dados["folder"]}','{$dados["nome"]}', '{$dados["url"]}', now(),'{$dados["status"]}');";
-        $result=$conn->query($sql); 
-                if($result==true){
-                $conn->close();
-                 return 1;} 
-        }else{ $conn->close();
-            return 1;}      
-
-    }else{
-    $conn->close();
-    return 0;
-    }   
-
-}
-
-
-
-
-function pegaRegMenu($id){ //função pro form de editar menu
-    $dados=array();
-    require "conexao.php";
-    $sql = "SELECT * FROM menu WHERE ID_MENU = {$id}";
-    $result = $conn->query($sql);
-    if($result->num_rows > 0){
-        $dados["result"] = 1;
-while($row=$result->fetch_assoc()){
-    
-    $dados["id"] = $row["ID_MENU"];
-    $dados["folder"] = $row["folder"];
-    $dados["nome"] = $row["nome"];
-    $dados["url"] = $row["url"];
-    $dados["datahora"] = $row["datahora"]; 
-    $dados["status"] = $row["status"];
-     
-};
-$conn->close(); 
-return $dados;
-}else{
-        $dados["result"] = 0;
-        $conn->close();    
-        return $dados;
-}}
-
-
-
-
-function menuEdit($dados){
-    require "conexao.php";
-    $sql="UPDATE menu set folder='{$dados['folder']}',nome='{$dados['nome']}',url='{$dados['url']}',status={$dados['status']} WHERE ID_MENU = '{$dados['id']}'";
-    $result = $conn -> query($sql);
-    if($result==true){//tudo certo
-
-        if (isset($dados["status"])){ //pequena alteração!
-            $sql="UPDATE submenu set status = '{$dados["status"]}' WHERE ID_MENU_FK = '{$dados['id']}'";
-            $result = $conn -> query($sql);
-            
-            if($result==true){//tudo certo
-                $conn->close();
-                return 1;
-              
-        }else{
-        $conn->close();
-        return 1;
-        }            
-        
-    }else{ 
-    $conn->close();
-    return 0;
-    }
-}
-
-
-}
-
-
-
-function menuDelete($id){ 
-    require "conexao.php";
-    $sql="DELETE FROM menu WHERE ID_MENU = {$id}";
-    $result = $conn -> query($sql);
-    if($result==true){
-        $conn->close();
-         return 1;
-}else{
-$conn->close();
-return 0;
-}  //como as FKS estão em CASCADE não foi necessário criar a deleção dos submenus adjacentes
- }
-
-
-
-
-
-
-
-
-
-// SUBMENU --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-
-
-function submenuNew($dados){
-    require "conexao.php";
-    $sql = "INSERT INTO submenu (ID_MENU_FK,folder,nome,url,datahora,status) VALUES ('{$dados["idmenu"]}','{$dados["folder"]}','{$dados["nomesub"]}', '{$dados["url"]}', now(),'{$dados["status"]}');";
-    $result=$conn->query($sql); 
-
-
-    if ($result==true) {
-
-        if(isset($dados["replica"]) && ($dados["replica"]==1)){
-        $dados["idmenu"] = $dados["idmenu"] +1 ;
-        $dados["folder"] = "r";
-        $dados["url"] = "view/" . $dados["url"];
-        $sql = "INSERT INTO submenu (ID_MENU_FK,folder,nome,url,datahora,status) VALUES ('{$dados["idmenu"]}','{$dados["folder"]}','{$dados["nomesub"]}', '{$dados["url"]}', now(),'{$dados["status"]}');";
-        $result=$conn->query($sql); 
-                if($result==true){
-                $conn->close();
-                 return 1;
-                } 
-        }else{ $conn->close();
-            return 1;}      
-
-    }else{
-    $conn->close();
-    return 0;
-    }   
-
-}
-
-
-function pegaRegSubmenu($id){ //função pro form de editar submenu
-    $dados=array();
-    require "conexao.php";
-    $sql = "SELECT * FROM submenu WHERE ID_SUBMENU = {$id}";
-    $result = $conn->query($sql);
-    if($result->num_rows>0){
-        $dados["result"] = 1;
-while($row=$result->fetch_assoc()){
-    $dados["id"] = $row["ID_SUBMENU"];
-    $dados["folder"] = $row["folder"];    
-    $dados["ID_MENU_FK"] = $row["ID_MENU_FK"];
-    $dados["nomesub"] = $row["nome"];
-    $dados["url"] = $row["url"];
-    $dados["datahora"] = $row["datahora"]; 
-    $dados["status"] = $row["status"];
-     
-}
-$conn->close(); 
-return $dados;
-}else{
-        $dados["result"] = 0;
-        $conn->close();    
-        return $dados;
-}}
-
-
-
-function submenuList($search){
-    require "conexao.php";
-    require "conexao.php";
-    if($search["search"] != "" && $search["campo"] != "")
-    {
-        $termo= $search["search"];
-        $sql = "SELECT * FROM submenu WHERE {$search["campo"]} LIKE '%$termo%' ORDER BY ID_SUBMENU DESC";
-    }else{
-        $sql = "SELECT * FROM submenu ORDER BY ID_SUBMENU DESC";
-    }
-    $result=$conn->query($sql); 
-
-    if($result->num_rows > 0){
-        $num = $result ->num_rows;
-        $dados=array();
-        $dados["result"] = 1;
-        $dados["num"]=$num;
-        $i=1;
-        while($row=$result->fetch_assoc()){
-            $dados[$i]["id"] = $row["ID_SUBMENU"];
-            $dados[$i]["nomesub"] = $row["nome"];
-            $dados[$i]["id_menu_fk"] = $row["ID_MENU_FK"];
-            $dados[$i]["folder"] = $row["folder"];
-            $dados[$i]["datahora"] = $row["datahora"];
-            $dados[$i]["url"] = $row["url"];
-            $dados[$i]["status"] = $row["status"];
-        $i++;
-        }
-        $conn->close();
-        return $dados;
-    }else{
-        $dados["result"]=0;
-        $dados["num"]=0;
-        $conn->close();
-        return $dados;
-    }
-
-}
-
-
-function submenuEdit($dados){
-    
-    require "conexao.php";
-    $sql="UPDATE submenu set folder='{$dados['folder']}',ID_MENU_FK='{$dados['idmenu']}', nome='{$dados['nomesub']}',url='{$dados['url']}',status={$dados['status']} WHERE ID_SUBMENU = '{$dados['id']}'";
-    $result = $conn -> query($sql);
-    if($result==true){
-        $conn->close();
-         return 1;
-}else{
-$conn->close();
-return 0;
-}   }
-
-
-
-function submenuDelete($id){
-    require "conexao.php";
-    $sql="DELETE FROM submenu WHERE ID_SUBMENU = {$id}";
-    $result = $conn -> query($sql);
-    if($result==true){
-        $conn->close();
-         return 1;
-}else{
-$conn->close();
-return 0;
-}   }
-
 
 
 

@@ -83,9 +83,6 @@ atualizarClasseElemento();
       <a target='iframe' style="color: var(--green);" onclick="click()" class="link2 nav-link active" href="painel.php"> Senhas </a>
       </li>
       <li class="nav-item active">
-      <a target='iframe' style="color: var(--green);" onclick="click()" class="link2 nav-link active" href="painel.php"> Menus e Submenus </a>
-      </li>
-      <li class="nav-item active">
       <a target='iframe' style="color: var(--green);" onclick="click()" class="link2 nav-link active" href="painel.php"> Produtos </a>
       </li>
       <li class="nav-item active">
@@ -127,10 +124,7 @@ atualizarClasseElemento();
                      <br>
                   <p class="subtitle"> Este é o seu painel administrativo</p>
                   </p>
-               </div>
-               <div class="col-2 d-flex justify-content-end align-items-center">
-                  <button id="voltar">Voltar </button>
-               </div>
+</div>
             </div>
          </div>
       </header>
@@ -164,20 +158,13 @@ if($_SESSION["ADM-PODER"]>=4){?> <li class="nav-item">
                   <li class="nav-item">
                      <a target='iframe' style="color: var(--green);" class="link1 nav-link menulink" href="senhas.php">
                         <i class="fa-solid fa-key"></i>
-                        </i>Senhas</a> <?php 
-}?> <a target='iframe' style="color: var(--green);" class="link2 nav-link menulink" href="senhas.php">
+                        </i>Senhas</a>
+ <a target='iframe' style="color: var(--green);" class="link2 nav-link menulink" href="senhas.php">
                         <i class="fa-solid fa-key"></i>
                         </i>
                      </a>
-                  </li><?php
-if($_SESSION["ADM-PODER"]>=3){?> <li class="nav-item">
-                     <a target='iframe' style="color: var(--green);" class="link1 nav-link menulink" href="menus_list.php?campo=">
-                        <i class="fa-solid fa-arrow-up-right-from-square"></i>Menus e Submenus </a>
-                     <a target='iframe' style="color: var(--green);" class="link2 nav-link menulink" href="menus_list.php?campo=">
-                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                     </a>
-                  </li> <?php 
-}?> <li class="nav-item">
+                  </li>
+                  <?php  }?>
                      <a target='iframe' style="color: var(--green);" class="link1 nav-link menulink" href="produtos_list.php?campo=">
                         <i class="fa-solid fa-bag-shopping"></i>Produtos </a>
                      <a target='iframe' style="color: var(--green);" class="link2 nav-link menulink" href="produtos_list.php?campo=">
@@ -229,8 +216,7 @@ if($_SESSION["ADM-PODER"]>=2){?> <li class="nav-item menulink">
                                  <div class="table-cell align-right">
                                     <label for="nome" class="label">Nome</label>
                                     <br>
-                                    <input type="text" name="nome" id="" placeholder="Seu nome..." required class="input" value="
-																	<?php echo $_SESSION["ADM-NOME"];?>">
+                                    <input type="text" name="nome" id="" placeholder="Seu nome..." required class="input" value="<?php echo $_SESSION["ADM-NOME"]; ?>">
                                  </div>
                                  <div class="table-cell align-left">
                                     <label for="poder" class="label">Poder </label>
@@ -267,8 +253,7 @@ if($_SESSION["ADM-PODER"]>=2){?> <li class="nav-item menulink">
                                  <div class="table-cell align-right">
                                     <label for="nome" class="label">Telefone (celular)</label>
                                     <br>
-                                    <input type="text" name="telefone" id="" placeholder="(DDD)9xxxxxxxx" value="
-																									<?php echo $_SESSION["ADM-TELEFONE"];?>" required class="input">
+                                    <input type="text" name="telefone" id="" placeholder="(DDD)9xxxxxxxx" value="<?php ECHO ($_SESSION["ADM-TELEFONE"]); ?>" required class="input">
                                  </div>
                               </div>
                            </div>
