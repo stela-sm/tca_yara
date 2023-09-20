@@ -101,11 +101,12 @@
         <button name="campo" value="finalidade" class="submit-button"><i class="fa-solid fa-certificate" data-toggle="tooltip" data-placement="right" title="finalidade" style="color: #1A3D1F;"></i></button>
        
         <button name="campo" value="estoque" class="submit-button"><i class="fa-solid fa-truck-ramp-box" data-toggle="tooltip" data-placement="right" title="estoque" style="color: #1A3D1F;"></i></button>
-        <button name="campo" value="valor" class="submit-button"><i class="fa-solid  fa-brazilian-real-sign" data-toggle="tooltip" data-placement="right" title="preço" style="color: #1A3D1F;"></i></button>
+        <button name="campo" value="valor_uni" class="submit-button"><i class="fa-solid  fa-brazilian-real-sign" data-toggle="tooltip" data-placement="right" title="preço" style="color: #1A3D1F;"></i></button>
        
         <button name="campo" value="datahora" class="submit-button"><i class="fa-solid fa-calendar" data-toggle="tooltip" data-placement="right" title="data" style="color: #1A3D1F;"></i></button>
         <button name="campo" value="status" class="submit-button"><i class="fa-solid fa-signal" data-toggle="tooltip" data-placement="right" title="Status" style="color: #1A3D1F;"></i></button>
-        </form>
+      
+      </form>
       </div>
     <div id="admTabela">
 <?php
@@ -118,6 +119,7 @@ if((!isset($_GET["search"]))){
   $pesquisa["campo"] = $_GET["campo"];
 }  
 $dados = listaProdutos($pesquisa);
+
 ?>
 
 <script>
@@ -183,15 +185,16 @@ $dados = listaProdutos($pesquisa);
             <th class="TabelaAdmTh">Estoque</th>
             <th class="TabelaAdmTh">Preço</th>
             <th class="TabelaAdmTh">Datahora</th>
-            <th class="TabelaAdmTh">Status</th>
+            <th class="TabelaAdmTh">Status </th>
             <th class="TabelaAdmTh"><a href="produto_new.php"><i class="fa-solid fa-user-plus" style=" color:  #4da037;"></i></a></th>
             <th class="TabelaAdmTh">&nbsp;</th>
         </tr>
         <?php
         for($i=1;$i<=$dados["num"];$i++){
+         
             echo"<tr><form  name=\"formEdit\" action=\"../controller/controller_adm.php\" method=\"post\">";
 
-            echo "<input type=\"hidden\" name=\"produto_edit\" value=\"".$dados[$i]["id"]."\">";
+            echo "<input type=\"hidden\" name=\"produto_edit\" value=\"".$dados[$i]["id"] ."\">";
             
             echo "<input type=\"hidden\" id=\"idget".$dados[$i]["id"]."\"name=\"id\" value=\"".$dados[$i]["id"]."\">";
 

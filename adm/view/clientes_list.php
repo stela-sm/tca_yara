@@ -88,7 +88,7 @@
         <button name="campo" value="ID_CLIENTE"class="submit-button"><i class="fa-solid fa-fingerprint" data-toggle="tooltip" data-placement="right" title="ID" style="color: #1A3D1F;"></i></button>
         <button name="campo" value="nome" class="submit-button"><i class="fa-solid fa-n" data-toggle="tooltip" data-placement="right" title="Nome" style="color: #1A3D1F;"></i></button>
         <button name="campo" value="email" class="submit-button"><i class="fa-solid fa-at" data-toggle="tooltip" data-placement="right" title="Email" style="color: #1A3D1F;"></i></button>
-        <button name="campo" value="telefone" class="submit-button"><i class="fa-solid fa-phone" data-toggle="tooltip" data-placement="right" title="Telefone" style="color: #1A3D1F;"></i></button>
+        <button name="campo" value="celular" class="submit-button"><i class="fa-solid fa-phone" data-toggle="tooltip" data-placement="right" title="Telefone" style="color: #1A3D1F;"></i></button>
         <button name="campo" value="cpf" class="submit-button"><i class="fa-solid fa-user" data-toggle="tooltip" data-placement="right" title="CPF" style="color: #1A3D1F;"></i></button>
         <button name="campo" value="datahora" class="submit-button"><i class="fa-solid fa-calendar" data-toggle="tooltip" data-placement="right" title="Data" style="color: #1A3D1F;"></i></button>
         <button name="campo" value="status" class="submit-button"><i class="fa-solid fa-signal" data-toggle="tooltip" data-placement="right" title="Status" style="color: #1A3D1F;"></i></button>

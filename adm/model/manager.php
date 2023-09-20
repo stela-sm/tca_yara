@@ -347,30 +347,18 @@ function buscar($termo){
 }
 
 
-function buscarItens($termo){
+function buscar_cliente($termo){
     require "conexao.php";
-    $sql = "SELECT ID_PRODUTO FROM produtos WHERE nome LIKE '%$termo%';";
+    $sql = "SELECT ID_CLIENTE FROM cliente WHERE nome LIKE '%$termo%';";
     $result=$conn->query($sql); 
     if($result->num_rows > 0){
         $dados=array();
         $dados["result"] = 1;
         while($row=$result->fetch_assoc()){
            
-    $dados["id"] = $row["ID_PRODUTO"];
+    $dados["id"] = $row["ID_CLIENTE"];
         }
-        
-    $sql2 = "SELECT id_pedido FROM itens WHERE id_produto =  '{$dados["id"]}'";
-    $result2=$conn->query($sql2);
-    if($result2->num_rows > 0){
-        $dados2=array();
-        $dados2["result"] = 1;
-        while($row2=$result2->fetch_assoc()){
-           
-    $dados2["id"] = $row2["id_pedido"];
-        } } else{
-        $dados2["id"] = "";
-        }
-        return $dados2;
+    return $dados;
     $conn-> close();
 }else{
     $dados2["id"] = "";
@@ -378,6 +366,14 @@ function buscarItens($termo){
     $conn-> close();
     }
 
+
+
+}
+
+
+function buscar_itens($termo){
+    require "conexao.php";
+   
 }
 
 
@@ -387,21 +383,25 @@ function listaPedidos($search){ //função pra listar adms
     {
         if($search["campo"] == "id_endereco"){
             $busca = buscar($search["search"]);
-            $search["campo"] == $busca["id"];
-        }
-        if($search["campo"] == "ID_ITENS"){
-            $busca = buscarItens($search["search"]);
             $search["search"] = $busca["id"];
-        $search["campo"] = "ID_PEDIDO";
         }
+        if($search["campo"] == "id_cliente"){
+            $busca = buscar_cliente($search["search"]);
+            $search["search"] = $busca["id"];
+            
+        }
+       
         $termo= $search["search"];
+        if($search["search"] == ""){ $termo = "0"; };
         $sql = "SELECT * FROM pedidos WHERE {$search["campo"]} LIKE '%$termo%' ORDER BY ID_PEDIDO DESC";
+        
     }else{
         $sql = "SELECT * FROM pedidos ORDER BY ID_PEDIDO DESC";
     }
     $result=$conn->query($sql); 
 
     if($result->num_rows > 0){
+
         $num = $result ->num_rows;
         $dados=array();
         $dados["result"] = 1;
@@ -430,6 +430,7 @@ function listaPedidos($search){ //função pra listar adms
         $i++;
         }
         $conn->close();
+        $dados["sql"]=$sql;
         return $dados;
     }else{
         $dados["num"]=0;
@@ -452,8 +453,11 @@ function pedidosEdit($dados){
 }
 
 
-function listaItens($pedido){ 
+function listaItens($pedido, $pesquisa){ 
     require "conexao.php";
+    if($search["search"] != "" && $search["campo"] != ""){
+
+    }else{
     $sql = "SELECT * FROM itens WHERE id_pedido = {$pedido}";
     $result=$conn->query($sql); 
 
@@ -493,7 +497,7 @@ function listaItens($pedido){
     }
 
 }
-
+}
 
 
 
