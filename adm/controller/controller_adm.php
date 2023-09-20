@@ -404,6 +404,7 @@ if(isset($_REQUEST["adm_delete"])){ //deleçao
     $_REQUEST["estoque"] == "" || 
     $_REQUEST["status"] == "" ||
     $_FILES["img"] == "" || 
+    $_FILES["img_sec"] == "" || 
     $_FILES["img_hover"] == "" ){ //se tiver algo vazio
         ?>
             <form action="../view/produtos_list.php" name="form" id="myForm" method="POST">
@@ -417,7 +418,8 @@ if(isset($_REQUEST["adm_delete"])){ //deleçao
    
     $extPeq = validaExtImg($_FILES["img"]["name"]);
     $extMed = validaExtImg($_FILES["img_hover"]["name"]);
-    if ($extPeq == 0 || $extMed == 0){
+    $extGra = validaExtImg($_FILES["img_sec"]["name"]);
+    if ($extPeq == 0 || $extMed == 0 || $extGra == 0 ) {
         ?>
         <form action="../view/produtos_list.php" name="form" id="myForm" method="POST">
         <input type="hidden" name="msg" value="FR19">  <!-- "BD54" => "Registro apagado com sucesso.",-->
@@ -445,16 +447,20 @@ $dados["status"]=$_REQUEST["status"];
 $str = geradorStringRandom(8);
 $extPeq = pegaExtensao($_FILES["img"]["name"]);
 $extMed = pegaExtensao($_FILES["img_hover"]["name"]);
+$extGra = pegaExtensao($_FILES["img_sec"]["name"]);
 $img_peq_name = "produto_" . $str ."_img_." .  $extPeq;
 $img_med_name = "produto_" . $str ."_imghover_." . $extMed;
+$img_med_name = "produto_" . $str ."_imgsec_." . $extGra;
 $imgPath="../../view/media";
 
 
 move_uploaded_file($_FILES["img"]["tmp_name"],$imgPath.$img_peq_name);
 move_uploaded_file($_FILES["img_hover"]["tmp_name"],$imgPath.$img_med_name);
+move_uploaded_file($_FILES["img_sec"]["tmp_name"],$imgPath.$img_gra_name);
 
 $dados["img"] = $img_peq_name;
 $dados["img_hover"] = $img_med_name;
+$dados["img_sec"] = $img_gra_name;
 
 $result=produtoNew($dados);
 
@@ -560,7 +566,7 @@ if ($result["result"]==1){
         $str = geradorStringRandom(8);
         $extPeq = pegaExtensao($_FILES["img"]["name"]);
         $img_peq_name = "produto_" . $str ."_img_." .  $extPeq;
-        $imgPath="../view/media/";
+        $imgPath="../../view/media/";
         move_uploaded_file($_FILES["img"]["tmp_name"],$imgPath.$img_peq_name);
         $dados["img"] = $img_peq_name;
         $resp=img($dados);
@@ -570,11 +576,21 @@ if ($result["result"]==1){
         $str = geradorStringRandom(8);
     $extMed = pegaExtensao($_FILES["img_hover"]["name"]);
     $img_med_name = "produto_" . $str ."_imghover_." . $extMed;
-    $imgPath="../view/media/";
+    $imgPath="../../view/media/";
     move_uploaded_file($_FILES["img_hover"]["tmp_name"],$imgPath.$img_med_name);
     $dados["img_hover"] = $img_med_name;
 
     $resp=img_hover($dados);
+    }
+    if (isset($_FILES["img_sec"]) && ($_FILES['img_sec']['size'] != 0)){
+        $str = geradorStringRandom(8);
+    $extMed = pegaExtensao($_FILES["img_sec"]["name"]);
+    $img_med_name = "produto_" . $str ."_imgsec_." . $extMed;
+    $imgPath="../../view/media/";
+    move_uploaded_file($_FILES["img_sec"]["tmp_name"],$imgPath.$img_med_name);
+    $dados["img_sec"] = $img_med_name;
+
+    $resp=img_sec($dados);
     }
 
 

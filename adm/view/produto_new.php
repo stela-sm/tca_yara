@@ -37,10 +37,10 @@
 </select>
     </td>
     <td>
-      <p><label class="input size" style="
-    margin-right: 10%;" for="img">Imagem</label><label class="input size" for="img_hover">Hover</label></p>
+      <p><label class="input size" style="width: 2cm;margin-right:5%;" for="img">Imagem</label><label class="input size" for="img_hover"  style="width: 2cm;margin-right:5%;">Hover</label><label  style="width: 2.5cm;" class="input size" for="img_hover">Secundária</label></p>
       <input type="file" name="img" required id="img">
       <input type="file" name="img_hover" required id="img_hover">
+      <input type="file" name="img_sec" required id="img_sec">
     </td>
   </tr>
   <tr>

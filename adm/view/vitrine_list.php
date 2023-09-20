@@ -85,19 +85,20 @@
     
 <form action="vitrine_list.php" onsubmit="preventSubmit(event)" method="get" name="search_form">
     <div class="container">
-        <div class="icon"> <?php if(($_GET["campo"]=="")){echo "<i class=\"fa-solid fa-magnifying-glass\"></i>";}else{echo "<button class=\"x_button\"name=\"campo\" value=\"\"><i class=\"fa-solid fa-x\"></i></button>";} ?></div>
+        <div class="icon"> <?php if(!isset($_GET["campo"]) || $_GET["campo"]==""){echo "<i class=\"fa-solid fa-magnifying-glass\"></i>";}else{echo "<button class=\"x_button\"name=\"campo\" value=\"\"><i class=\"fa-solid fa-x\"></i></button>";} ?></div>
         <input type="hidden" name="tabela" value="adm">
         <input type="text" name="search" <?php if(isset($_GET["campo"])&&$_GET["campo"]!=""){echo "value=\"".$_GET["search"]."\"";} else{echo"";}?>class="search-input" placeholder="Pesquisar...">
         <button name="campo" value="ID_PRODUTO"class="submit-button"><i class="fa-solid fa-fingerprint" data-toggle="tooltip" data-placement="right" title="ID" style="color: #1A3D1F;"></i></button>
         <button name="campo" value="nome" class="submit-button"><i class="fa-solid fa-n" data-toggle="tooltip" data-placement="right" title="Nome" style="color: #1A3D1F;"></i></button>
         <button name="campo" value="descricao" class="submit-button"><i class="fa-solid fa-list" data-toggle="tooltip" data-placement="right" title="Descrição" style="color: #1A3D1F;"></i></button>
         <button name="campo" value="ingredientes" class="submit-button"><i class="fa-solid fa-atom" data-toggle="tooltip" data-placement="right" title="composição" style="color: #1A3D1F;"></i></button>
-        <button name="campo" value="img" class="submit-button"><i class="fa-solid fa-image" data-toggle="tooltip" data-placement="right" title="Imagem" style="color: #1A3D1F;"></i></button>
+        <button name="campo" value="img" class="submit-button"><i class="fa-solid fa-image" data-toggle="tooltip" data-placement="right" title="Imagem" style="color: #1A3D1F;"></i></button>        
+        <button name="campo" value="img_sec" class="submit-button"><i class="fa-regular fa-image" data-toggle="tooltip" data-placement="right" title="Imagem secundária" style="color: #1A3D1F;"></i></button>
         <button name="campo" value="img_hover" class="submit-button"><i class="fa-solid fa-images" data-toggle="tooltip" data-placement="right" title="Imagem hover" style="color: #1A3D1F;"></i></button>
-        
         <button name="campo" value="datahora" class="submit-button"><i class="fa-solid fa-calendar" data-toggle="tooltip" data-placement="right" title="data" style="color: #1A3D1F;"></i></button>
         <button name="campo" value="status" class="submit-button"><i class="fa-solid fa-signal" data-toggle="tooltip" data-placement="right" title="Status" style="color: #1A3D1F;"></i></button>
         </form>
+
       </div>
     <div id="admTabela">
 <?php
@@ -174,6 +175,7 @@ $dados = listaProdutos($pesquisa);
             <th class="TabelaAdmTh poder">Descrição</th>            
             <th class="TabelaAdmTh poder">Composição</th>
             <th class="TabelaAdmTh">Imagem</th>
+            <th class="TabelaAdmTh">2° Imagem</th>
             <th class="TabelaAdmTh">Imagem hover</th>
             <th class="TabelaAdmTh">Datahora</th>
             <th class="TabelaAdmTh">Status</th>
@@ -200,11 +202,11 @@ $dados = listaProdutos($pesquisa);
 
             echo "<td class=\"TabelaAdmTd\"> <textarea  class=\"classe".$dados[$i]["id"]."\" disabled name=\"ingredientes\">". $dados[$i]["ingredientes"] ."</textarea></td>";
 
-            echo "<td class=\"TabelaAdmTd\"> <label  for=\"img\">
-            <img style=\"width:3cm;\"src=\"media/".$dados[$i]["img"] ."\" alt=\"\"></label><input type=\"file\" disabled style=\"display:none;\" id=\"img\"class=\"classe".$dados[$i]["id"]."\" name=\"img\"></td>";
+            echo "<td class=\"TabelaAdmTd\"> <label  for=\"img\"><img style=\"width:3cm;\"src=\"../../view/media/".$dados[$i]["img"] ."\" alt=\"\"></label><input type=\"file\" disabled style=\"display:none;\" id=\"img\"class=\"classe".$dados[$i]["id"]."\" name=\"img\"></td>";
+            
+            echo "<td class=\"TabelaAdmTd\"> <label  for=\"img_sec\"><img style=\"width:3cm;\"src=\"../../view/media/".$dados[$i]["img_sec"] ."\" alt=\"\"></label><input type=\"file\" disabled style=\"display:none;\" id=\"img_sec\"class=\"classe".$dados[$i]["id"]."\" name=\"img_sec\"></td>";
 
-            echo "<td class=\"TabelaAdmTd\"> <label   for=\"img_hover\">
-            <img style=\"width:3cm;\"src=\"media/".$dados[$i]["img_hover"] ."\" alt=\"\"></label><input type=\"file\" disabled style=\"display:none;\" id=\"img_hover\"class=\"classe".$dados[$i]["id"]."\" name=\"img_hover\"></td>";
+            echo "<td class=\"TabelaAdmTd\"> <label   for=\"img_hover\"><img style=\"width:3cm;\"src=\"../../view/media/".$dados[$i]["img_hover"] ."\" alt=\"\"></label><input type=\"file\" disabled style=\"display:none;\" id=\"img_hover\"class=\"classe".$dados[$i]["id"]."\" name=\"img_hover\"></td>";
 
            
            
