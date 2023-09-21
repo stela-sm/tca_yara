@@ -354,8 +354,7 @@ function buscar_cliente($termo){
     if($result->num_rows > 0){
         $dados=array();
         $dados["result"] = 1;
-        while($row=$result->fetch_assoc()){
-           
+        while($row=$result->fetch_assoc()){   
     $dados["id"] = $row["ID_CLIENTE"];
         }
     return $dados;
@@ -373,6 +372,11 @@ function buscar_cliente($termo){
 
 function buscar_itens($termo){
     require "conexao.php";
+    
+    $sql = "SELECT id_pedido FROM itens WHERE nome LIKE '%$termo%';";
+    $result=$conn->query($sql); 
+
+ 
    
 }
 
@@ -381,20 +385,26 @@ function listaPedidos($search){ //função pra listar adms
     require "conexao.php";
     if($search["search"] != "" && $search["campo"] != "")
     {
+     
+        if($search["campo"] == "itens"){
+            $busca = buscar_itens($search["search"]);   
+           $id = $busca[1]["id_pedido"];        
+        $sql = "SELECT * FROM pedidos WHERE id_pedido = '{$id}' ORDER BY ID_PEDIDO DESC";
+            
+        }else
         if($search["campo"] == "id_endereco"){
             $busca = buscar($search["search"]);
             $search["search"] = $busca["id"];
-        }
+        } else
         if($search["campo"] == "id_cliente"){
             $busca = buscar_cliente($search["search"]);
             $search["search"] = $busca["id"];
             
-        }
-       
+        } else{
         $termo= $search["search"];
         if($search["search"] == ""){ $termo = "0"; };
         $sql = "SELECT * FROM pedidos WHERE {$search["campo"]} LIKE '%$termo%' ORDER BY ID_PEDIDO DESC";
-        
+        }
     }else{
         $sql = "SELECT * FROM pedidos ORDER BY ID_PEDIDO DESC";
     }
@@ -453,11 +463,9 @@ function pedidosEdit($dados){
 }
 
 
-function listaItens($pedido, $pesquisa){ 
+function listaItens($pedido){ 
     require "conexao.php";
-    if($search["search"] != "" && $search["campo"] != ""){
 
-    }else{
     $sql = "SELECT * FROM itens WHERE id_pedido = {$pedido}";
     $result=$conn->query($sql); 
 
@@ -496,7 +504,6 @@ function listaItens($pedido, $pesquisa){
         return $dados;
     }
 
-}
 }
 
 
