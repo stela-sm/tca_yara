@@ -48,7 +48,9 @@
          .icon {
              margin-right: 10px;
          }
- 
+
+
+     
          .search-input {
              flex-grow: 2; /* Ocupa 60% do espaço lateral */
              padding: 7px;

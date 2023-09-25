@@ -47,25 +47,26 @@
         }
 
         .search-input {
-            flex-grow: 2; /* Ocupa 60% do espaço lateral */
-            padding: 7px;
-            border-radius: 5px;
-            font-size: 16px;        
-            max-width: none !important;
-            text-align: left !important;
-            background-color: transparent;
-            border: none;
-            border-bottom: dotted transparent 0.5px;
+          flex-grow: 2; /* Ocupa 60% do espaço lateral */
+             padding: 7px;
+             border-radius: 5px;
+             font-size: 16px;        
+             max-width: none !important;
+             text-align: left !important;
+             margin: 0px !important;
+             background-color: transparent;
+             border: none;
+             border-bottom: dotted transparent 0.5px;
           }
 
         .submit-button {
           border: 1px solid #ccc;
-            background-color: transparent;
-           
-            padding: 5px;
-            border-radius: 5px;
-            margin-left: 10px;
-            cursor: pointer;
+             background-color: transparent;
+          transition: 0.2s;
+             padding: 5px;
+             border-radius: 5px;
+             margin-left: 10px;
+             cursor: pointer;
         }
 
         .x_button{

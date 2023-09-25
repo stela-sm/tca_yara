@@ -56,10 +56,18 @@ atualizarClasseElemento();
    display: none !important; 
 }
 .menu1{display:none;}
-.navbar-light>.nav-item{color: white;;}
+.navbar-light>.nav-item>a{
+   color: white;
+padding: 3cm !important; 
+height:0.5em;}
 .collapse{
    background-color: #f9f9f9;
    border-radius: 20px;
+   height: 9CM;
+   padding-right: 20PX ;
+   box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px,
+        rgba(0, 0, 0, 0.22) 0px 10px 10px;
+   text-align: right;
 }
 }
 
@@ -77,30 +85,36 @@ atualizarClasseElemento();
     <ul class="navbar-nav mr-auto">
 
       <li class="nav-item active">
-      <a target='iframe' style="color: var(--green); font-size: 0.4cm;" onclick="click()" class="link2 nav-link active" href="painel.php"> Painel </a>
+      <a target='iframe' style="color: var(--green); font-size: 0.4cm;  height:0.5em;" onclick="click()" class="link2 nav-link active" href="painel.php?campo="> Painel </a>
       </li>
       <li class="nav-item active">
-      <a target='iframe' style="color: var(--green); font-size: 0.4cm;" onclick="click()" class="link2 nav-link active" href="painel.php"> Admnistradores </a>
+      <a target='iframe' style="color: var(--green); font-size: 0.4cm;  height:0.5em;" onclick="click()" class="link2 nav-link active" href="adm_list.php?campo="> Admnistradores </a>
       </li>
       <li class="nav-item active">
-      <a target='iframe' style="color: var(--green); font-size: 0.4cm; " onclick="click()" class="link2 nav-link active" href="painel.php"> Clientes </a>
+      <a target='iframe' style="color: var(--green); font-size: 0.4cm;  height:0.5em;" onclick="click()" class="link2 nav-link active" href="clientes_list.php?campo="> Clientes </a>
       </li>
       <li class="nav-item active">
-      <a target='iframe' style="color: var(--green); font-size: 0.4cm;" onclick="click()" class="link2 nav-link active" href="painel.php"> Senhas </a>
+      <a target='iframe' style="color: var(--green); font-size: 0.4cm;  height:0.5em;" onclick="click()" class="link2 nav-link active" href="senhas.php?campo="> Senhas </a>
       </li>
       <li class="nav-item active">
-      <a target='iframe' style="color: var(--green); font-size: 0.4cm;" onclick="click()" class="link2 nav-link active" href="painel.php"> Produtos </a>
+      <a target='iframe' style="color: var(--green); font-size: 0.4cm;  height:0.5em;" onclick="click()" class="link2 nav-link active" href="produtos_list.php?campo="> Produtos </a>
       </li>
       <li class="nav-item active">
-      <a target='iframe' style="color: var(--green); font-size: 0.4cm;" onclick="click()" class="link2 nav-link active" href="painel.php"> Vitrine </a>
+      <a target='iframe' style="color: var(--green); font-size: 0.4cm;  height:0.5em;" onclick="click()" class="link2 nav-link active" href="vitrine_list.php?campo="> Vitrine </a>
       </li>
       <li class="nav-item active">
-      <a target='iframe' style="color: var(--green); font-size: 0.4cm;" onclick="click()" class="link2 nav-link active" href="painel.php"> Pedidos </a>
+      <a target='iframe' style="color: var(--green); font-size: 0.4cm;  height:0.5em;" onclick="click()" class="link2 nav-link active" href="pedidos_list.php?campo="> Pedidos </a>
       </li>
+      <li class="nav-item active">
+     <b> <a href="#" class="link2 nav-link active"  style="color: var(--green); font-size: 0.4cm;  height:0.5em;" data-toggle="modal" data-target="#ExemploModalCentralizado">Meu Perfil</a>
+</b></li>
+      <li class="nav-item active">
+      <b><a href="#" class="link2 nav-link active"  style="color: var(--green); font-size: 0.4cm;  height:0.5em;" onclick="ExecutaLogout()">LogOut</a>
+</b></li>
      
     </ul>
     <span class="navbar-text">
-      Texto navbar com um elemento inline
+    
     </span>
   </div>
 </nav>
