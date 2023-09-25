@@ -50,46 +50,52 @@ atualizarClasseElemento();
 }
 .responsivo{
    z-index: 300;
-            display:block;
+            display:flex;
          }
 .menubar{
    display: none !important; 
 }
 .menu1{display:none;}
+.navbar-light>.nav-item{color: white;;}
+.collapse{
+   background-color: #f9f9f9;
+   border-radius: 20px;
 }
+}
+
       </style>
    </head>
    <body>
       <header>
          
-          <nav class="responsivo navbar navbar-expand-lg navbar-light bg-light">
-          <a class="navbar-brand" href="#">Y.</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#textoNavbar" aria-controls="textoNavbar" aria-expanded="false" aria-label="Alterna navegação">
-    <span class="navbar-toggler-icon"></span>
+          <nav class="responsivo navbar navbar-expand-lg navbar-light ">
+          <a class="navbar-brand" href="#" style="color:white">Y.</a>
+  <button class="navbar-toggler"style="background-color:white"  type="button" data-toggle="collapse" data-target="#textoNavbar" aria-controls="textoNavbar" aria-expanded="false" aria-label="Alterna navegação">
+    <span class="navbar-toggler-icon" ></span>
   </button>
   <div class="collapse navbar-collapse" id="textoNavbar">
     <ul class="navbar-nav mr-auto">
 
       <li class="nav-item active">
-      <a target='iframe' style="color: var(--green);" onclick="click()" class="link2 nav-link active" href="painel.php"> Painel </a>
+      <a target='iframe' style="color: var(--green); font-size: 0.4cm;" onclick="click()" class="link2 nav-link active" href="painel.php"> Painel </a>
       </li>
       <li class="nav-item active">
-      <a target='iframe' style="color: var(--green);" onclick="click()" class="link2 nav-link active" href="painel.php"> Admnistradores </a>
+      <a target='iframe' style="color: var(--green); font-size: 0.4cm;" onclick="click()" class="link2 nav-link active" href="painel.php"> Admnistradores </a>
       </li>
       <li class="nav-item active">
-      <a target='iframe' style="color: var(--green);" onclick="click()" class="link2 nav-link active" href="painel.php"> Clientes </a>
+      <a target='iframe' style="color: var(--green); font-size: 0.4cm; " onclick="click()" class="link2 nav-link active" href="painel.php"> Clientes </a>
       </li>
       <li class="nav-item active">
-      <a target='iframe' style="color: var(--green);" onclick="click()" class="link2 nav-link active" href="painel.php"> Senhas </a>
+      <a target='iframe' style="color: var(--green); font-size: 0.4cm;" onclick="click()" class="link2 nav-link active" href="painel.php"> Senhas </a>
       </li>
       <li class="nav-item active">
-      <a target='iframe' style="color: var(--green);" onclick="click()" class="link2 nav-link active" href="painel.php"> Produtos </a>
+      <a target='iframe' style="color: var(--green); font-size: 0.4cm;" onclick="click()" class="link2 nav-link active" href="painel.php"> Produtos </a>
       </li>
       <li class="nav-item active">
-      <a target='iframe' style="color: var(--green);" onclick="click()" class="link2 nav-link active" href="painel.php"> Vitrine </a>
+      <a target='iframe' style="color: var(--green); font-size: 0.4cm;" onclick="click()" class="link2 nav-link active" href="painel.php"> Vitrine </a>
       </li>
       <li class="nav-item active">
-      <a target='iframe' style="color: var(--green);" onclick="click()" class="link2 nav-link active" href="painel.php"> Pedidos </a>
+      <a target='iframe' style="color: var(--green); font-size: 0.4cm;" onclick="click()" class="link2 nav-link active" href="painel.php"> Pedidos </a>
       </li>
      
     </ul>

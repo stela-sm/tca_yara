@@ -376,9 +376,28 @@ function buscar_itens($termo){
     $sql = "SELECT id_pedido FROM itens WHERE nome LIKE '%$termo%';";
     $result=$conn->query($sql); 
 
- 
-   
+    if($result->num_rows > 0){
+        $num = $result ->num_rows;
+        $dados=array();
+        $dados["result"] = 1;
+        $dados["num"]=$num;
+        $i=1;
+        while($row=$result->fetch_assoc()){
+            $dados[$i]["id"] = $row["id_pedido"];
+
+        $i++;
+        }
+        $conn->close();
+        return $dados;
+    }else{
+        $dados["num"]=0;
+        $dados["result"]=0;
+        $conn->close();
+        return $dados;
+    }
+
 }
+   
 
 
 function listaPedidos($search){ //função pra listar adms 
@@ -388,8 +407,9 @@ function listaPedidos($search){ //função pra listar adms
      
         if($search["campo"] == "itens"){
             $busca = buscar_itens($search["search"]);   
-           $id = $busca[1]["id_pedido"];        
-        $sql = "SELECT * FROM pedidos WHERE id_pedido = '{$id}' ORDER BY ID_PEDIDO DESC";
+            if ($busca["result"]=="0"){$search["search"]="0";$search["campo"]="ID_PEDIDO";}else{
+           $id = $busca[1]["id"];        
+        $sql = "SELECT * FROM pedidos WHERE id_pedido = '{$id}' ORDER BY ID_PEDIDO DESC";}
             
         }else
         if($search["campo"] == "id_endereco"){
@@ -400,9 +420,12 @@ function listaPedidos($search){ //função pra listar adms
             $busca = buscar_cliente($search["search"]);
             $search["search"] = $busca["id"];
             
-        } else{
+        } 
         $termo= $search["search"];
         if($search["search"] == ""){ $termo = "0"; };
+
+
+        if($search["campo"] != "itens"){
         $sql = "SELECT * FROM pedidos WHERE {$search["campo"]} LIKE '%$termo%' ORDER BY ID_PEDIDO DESC";
         }
     }else{
