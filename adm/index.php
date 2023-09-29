@@ -17,7 +17,7 @@
     :root{
         --white: #f9f9f9;
         --green: #1A3D1F;
-        --yellow:  #eeb249;
+        --yellow:  #B9C394;
     --lgreen: #B9C394;
     }
      body{

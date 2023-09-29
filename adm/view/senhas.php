@@ -25,7 +25,7 @@ $(function() {
 :root {
     --white: #f9f9f9;
     --green: #1a3d1f;
-    --yellow: #eeb249;
+    --yellow: #B9C394;
 } 
 body {
   width: 99vw;
