@@ -760,4 +760,48 @@ return $dados;
 
 
 
+
+function listaEnderecos($search){
+    require "conexao.php";
+    if($search["search"] != "" && $search["campo"] != "")
+    {
+        $termo= $search["search"];
+        $sql = "SELECT * FROM endereco WHERE {$search["campo"]} LIKE '%$termo%' ORDER BY ID_ENDERECO DESC";
+    }else{
+        $sql = "SELECT * FROM endereco ORDER BY ID_ENDERECO DESC";
+    }
+    
+    $result=$conn->query($sql); 
+
+    if($result->num_rows > 0){
+        $num = $result ->num_rows;
+        $dados=array();
+        $i=1;
+        while($row=$result->fetch_assoc()){
+            $dados[$i]["id"] = $row["ID_ENDERECO"];
+            $dados[$i]["cliente"] = $row["id_cliente"];
+            $dados[$i]["cep"] = $row["cep"];
+            $dados[$i]["estado"] = $row["estado"];            
+            $dados[$i]["cidade"] = $row["cidade"];
+            $dados[$i]["bairro"] = $row["bairro"];
+            $dados[$i]["rua"] = $row["rua"];
+            $dados[$i]["bloco"] = $row["bloco"];
+            $dados[$i]["apto"] = $row["apto"];
+            $dados[$i]["referencia"] = $row["referencia"];
+            $dados[$i]["datahora"] = $row["datahora"];
+        $i++;
+        }
+        $dados["result"] = 1;
+        $dados["num"]=$num;
+        $conn->close();
+        return $dados;
+    }else{
+        $dados["result"]=0;
+        $dados["num"]=0;
+        $conn->close();
+        return $dados;
+    }
+
+}
+
 ?>

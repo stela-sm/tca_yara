@@ -176,6 +176,13 @@ if($_SESSION["ADM-PODER"]>=4){?> <li class="nav-item">
                      </a>
                   </li>
                   <li class="nav-item">
+                     <a target='iframe' style="color: var(--green);" class="link1 nav-link menulink" href="enderecos_list.php?campo=">
+                     <i class="fa-solid fa-magnifying-glass-location"></i> Endereços </a>
+                     <a target='iframe' style="color: var(--green);" class="link2 nav-link menulink" href="enderecos_list.php?campo=">
+                        <i class="fa-solid fa-magnifying-glass-location"></i>
+                     </a>
+                  </li>
+                  <li class="nav-item">
                      <a target='iframe' style="color: var(--green);" class="link1 nav-link menulink" href="senhas.php">
                         <i class="fa-solid fa-key"></i>
                         </i>Senhas</a>
