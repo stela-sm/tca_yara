@@ -360,6 +360,8 @@ function buscar_cliente($termo){
     return $dados;
     $conn-> close();
 }else{
+    
+    $dados2["result"] = 0;
     $dados2["id"] = "";
     return $dados2;
     $conn-> close();
@@ -764,10 +766,20 @@ return $dados;
 function listaEnderecos($search){
     require "conexao.php";
     if($search["search"] != "" && $search["campo"] != "")
-    {
+    { 
+         
+            if($search["campo"] == "cliente"){
+
+                $busca = buscar_cliente($search["search"]);  
+
+                                if ($busca["result"]=="0"){$termo="0";$search["campo"]="id_cliente";  $sql = "SELECT * FROM endereco WHERE {$search["campo"]} LIKE '%$termo%' ORDER BY ID_ENDERECO DESC";}
+                                else{$id = $busca["id"]; $sql = "SELECT * FROM endereco WHERE id_cliente = '{$id}' ORDER BY ID_ENDERECO DESC";}}
+                else 
+                if($search["campo"] != "cliente"){            
         $termo= $search["search"];
-        $sql = "SELECT * FROM endereco WHERE {$search["campo"]} LIKE '%$termo%' ORDER BY ID_ENDERECO DESC";
-    }else{
+        $sql = "SELECT * FROM endereco WHERE {$search["campo"]} LIKE '%$termo%' ORDER BY ID_ENDERECO DESC";}
+
+}else{
         $sql = "SELECT * FROM endereco ORDER BY ID_ENDERECO DESC";
     }
     
@@ -787,9 +799,37 @@ function listaEnderecos($search){
             $dados[$i]["rua"] = $row["rua"];
             $dados[$i]["bloco"] = $row["bloco"];
             $dados[$i]["apto"] = $row["apto"];
-            $dados[$i]["referencia"] = $row["referencia"];
             $dados[$i]["datahora"] = $row["datahora"];
         $i++;
+        }
+        $dados["result"] = 1;
+        $dados["num"]=$num;
+        $conn->close();
+        return $dados;
+    }else{
+        $dados["result"]=0;
+        $dados["num"]=0;
+        $conn->close();
+        return $dados;
+    }
+
+}
+
+function nomeCliente($id){
+
+    require "conexao.php";
+ 
+        $sql = "SELECT * FROM cliente WHERE ID_CLIENTE = {$id} ";
+  
+    
+    $result=$conn->query($sql); 
+
+    if($result->num_rows > 0){
+        $num = $result ->num_rows;
+        $dados=array();
+        while($row=$result->fetch_assoc()){
+            $dados["nome"] = $row["nome"];
+          
         }
         $dados["result"] = 1;
         $dados["num"]=$num;

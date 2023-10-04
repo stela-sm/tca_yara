@@ -87,19 +87,19 @@ width: 1cm !important;
 }
 </style>
 <body>
-<form action="clientes_list.php" onsubmit="preventSubmit(event)" method="get" name="search_form">
+<form action="enderecos_list.php" onsubmit="preventSubmit(event)" method="get" name="search_form">
     <div class="container">
         <div class="icon"> <?php if(($_GET["campo"]=="")){echo "<i class=\"fa-solid fa-magnifying-glass\"></i>";}else{echo "<button class=\"x_button\"name=\"campo\" value=\"\"><i class=\"fa-solid fa-x\"></i></button>";} ?></div>
         <input type="hidden" name="tabela" value="adm">
         <input type="text" name="search" <?php if(isset($_GET["campo"])&&$_GET["campo"]!=""){echo "value=\"".$_GET["search"]."\"";} else{echo"";}?>class="search-input" placeholder="Pesquisar...">
         <button name="campo" value="ID_ENDERECO"class="submit-button"><i class="fa-solid fa-fingerprint" data-toggle="tooltip" data-placement="right" title="ID" style="color: #1A3D1F;"></i></button>
-        <button name="campo" value="cliente" class="submit-button"><i class="fa-solid fa-n" data-toggle="tooltip" data-placement="right" title="Nome" style="color: #1A3D1F;"></i></button>
-        <button name="campo" value="cep" class="submit-button"><i class="fa-solid fa-at" data-toggle="tooltip" data-placement="right" title="Email" style="color: #1A3D1F;"></i></button>
-        <button name="campo" value="estado" class="submit-button"><i class="fa-solid fa-phone" data-toggle="tooltip" data-placement="right" title="Telefone" style="color: #1A3D1F;"></i></button>
-        <button name="campo" value="bairro" class="submit-button"><i class="fa-solid fa-user" data-toggle="tooltip" data-placement="right" title="CPF" style="color: #1A3D1F;"></i></button>
-        <button name="campo" value="rua" class="submit-button"><i class="fa-solid fa-user" data-toggle="tooltip" data-placement="right" title="CPF" style="color: #1A3D1F;"></i></button>
-        <button name="campo" value="bloco" class="submit-button"><i class="fa-solid fa-user" data-toggle="tooltip" data-placement="right" title="CPF" style="color: #1A3D1F;"></i></button>
-        <button name="campo" value="apto" class="submit-button"><i class="fa-solid fa-user" data-toggle="tooltip" data-placement="right" title="CPF" style="color: #1A3D1F;"></i></button>
+        <button name="campo" value="cliente" class="submit-button"><i class="fa-solid fa-user" data-toggle="tooltip" data-placement="right" title="Nome" style="color: #1A3D1F;"></i></button>
+        <button name="campo" value="cep" class="submit-button"><i class="fa-solid fa-location-crosshairs" data-toggle="tooltip" data-placement="right" title="Email" style="color: #1A3D1F;"></i></button>
+        <button name="campo" value="estado" class="submit-button"><i class="fa-solid fa-city" data-toggle="tooltip" data-placement="right" title="Telefone" style="color: #1A3D1F;"></i></button>
+        <button name="campo" value="bairro" class="submit-button"><i class="fa-solid fa-sign-hanging" data-toggle="tooltip" data-placement="right" title="CPF" style="color: #1A3D1F;"></i></button>
+        <button name="campo" value="rua" class="submit-button"><i class="fa-solid fa-road" data-toggle="tooltip" data-placement="right" title="CPF" style="color: #1A3D1F;"></i></button>
+        <button name="campo" value="bloco" class="submit-button"><i class="fa-solid fa-building" data-toggle="tooltip" data-placement="right" title="CPF" style="color: #1A3D1F;"></i></button>
+        <button name="campo" value="apto" class="submit-button"><i class="fa-regular fa-building" data-toggle="tooltip" data-placement="right" title="CPF" style="color: #1A3D1F;"></i></button>
         <button name="campo" value="datahora" class="submit-button"><i class="fa-solid fa-calendar" data-toggle="tooltip" data-placement="right" title="Data" style="color: #1A3D1F;"></i></button>
        
         </form>
@@ -202,7 +202,9 @@ $dados = listaEnderecos($pesquisa);
 
             echo "<td class=\"TabelaAdmTd\" id=\"idinput\">". $dados[$i]["id"]."</td>";
             
-            echo "<td class=\"TabelaAdmTd\"> <input type=\"text\" id=\"classe".$dados[$i]["id"]."\"  disabled name=\"cliente\" value=\"". $dados[$i]["cliente"] ."\"></td>";
+            $nome = nomeCliente($dados[$i]["cliente"]);
+
+            echo "<td class=\"TabelaAdmTd\"> <input type=\"text\" id=\"classe".$dados[$i]["id"]."\"  disabled name=\"cliente\" value=\"". $nome["nome"] ."\"></td>";
             
             echo "<td class=\"TabelaAdmTd email\"> <input type=\"text\"  classe=\"cep\" id=\"classe".$dados[$i]["cep"]."\" disabled name=\"email\" value=\"". $dados[$i]["cep"] ."\"></td>";
 
