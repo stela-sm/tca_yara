@@ -93,13 +93,13 @@ width: 1cm !important;
         <input type="hidden" name="tabela" value="adm">
         <input type="text" name="search" <?php if(isset($_GET["campo"])&&$_GET["campo"]!=""){echo "value=\"".$_GET["search"]."\"";} else{echo"";}?>class="search-input" placeholder="Pesquisar...">
         <button name="campo" value="ID_ENDERECO"class="submit-button"><i class="fa-solid fa-fingerprint" data-toggle="tooltip" data-placement="right" title="ID" style="color: #1A3D1F;"></i></button>
-        <button name="campo" value="cliente" class="submit-button"><i class="fa-solid fa-user" data-toggle="tooltip" data-placement="right" title="Nome" style="color: #1A3D1F;"></i></button>
-        <button name="campo" value="cep" class="submit-button"><i class="fa-solid fa-location-crosshairs" data-toggle="tooltip" data-placement="right" title="Email" style="color: #1A3D1F;"></i></button>
-        <button name="campo" value="estado" class="submit-button"><i class="fa-solid fa-city" data-toggle="tooltip" data-placement="right" title="Telefone" style="color: #1A3D1F;"></i></button>
-        <button name="campo" value="bairro" class="submit-button"><i class="fa-solid fa-sign-hanging" data-toggle="tooltip" data-placement="right" title="CPF" style="color: #1A3D1F;"></i></button>
-        <button name="campo" value="rua" class="submit-button"><i class="fa-solid fa-road" data-toggle="tooltip" data-placement="right" title="CPF" style="color: #1A3D1F;"></i></button>
-        <button name="campo" value="bloco" class="submit-button"><i class="fa-solid fa-building" data-toggle="tooltip" data-placement="right" title="CPF" style="color: #1A3D1F;"></i></button>
-        <button name="campo" value="apto" class="submit-button"><i class="fa-regular fa-building" data-toggle="tooltip" data-placement="right" title="CPF" style="color: #1A3D1F;"></i></button>
+        <button name="campo" value="cliente" class="submit-button"><i class="fa-solid fa-user" data-toggle="tooltip" data-placement="right" title="Cliente" style="color: #1A3D1F;"></i></button>
+        <button name="campo" value="cep" class="submit-button"><i class="fa-solid fa-location-crosshairs" data-toggle="tooltip" data-placement="right" title="CEP" style="color: #1A3D1F;"></i></button>
+        <button name="campo" value="estado" class="submit-button"><i class="fa-solid fa-city" data-toggle="tooltip" data-placement="right" title="estado" style="color: #1A3D1F;"></i></button>
+        <button name="campo" value="bairro" class="submit-button"><i class="fa-solid fa-sign-hanging" data-toggle="tooltip" data-placement="right" title="bairro" style="color: #1A3D1F;"></i></button>
+        <button name="campo" value="rua" class="submit-button"><i class="fa-solid fa-road" data-toggle="tooltip" data-placement="right" title="Rua" style="color: #1A3D1F;"></i></button>
+        <button name="campo" value="bloco" class="submit-button"><i class="fa-solid fa-building" data-toggle="tooltip" data-placement="right" title="Bloco" style="color: #1A3D1F;"></i></button>
+        <button name="campo" value="apto" class="submit-button"><i class="fa-regular fa-building" data-toggle="tooltip" data-placement="right" title="Apartamento" style="color: #1A3D1F;"></i></button>
         <button name="campo" value="datahora" class="submit-button"><i class="fa-solid fa-calendar" data-toggle="tooltip" data-placement="right" title="Data" style="color: #1A3D1F;"></i></button>
        
         </form>
