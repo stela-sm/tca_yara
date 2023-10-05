@@ -1,5 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Arapey:ital@0;1&family=Berkshire+Swash&family=Questrial&display=swap');
-
+*, :after, :before {
+    box-sizing: inherit;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
 :root {
     --cotainer-size: 84%;
     --side-spacing: 8%;
@@ -9,6 +12,11 @@
     --base-brown: #85573f;
     --base-white: #ddd;
 
+    --verde-V2: ##7e9995;
+    --verde-V3: #afc5ae;
+    --verde-V4: #7e9995;
+
+
     --title-font: 'Berkshire Swash', cursive !important;
     --body-font: 'Questrial', sans-serif !important;
     --base-font: 'Arapey', serif !important;
@@ -16,16 +24,63 @@
     --base-tam-font: 25pt;
     --min-tam-font: 16px;
 }
+.rotate-180 {
+    transform: rotate(180deg);
+}
 
+.non-major-display{
+    display: none;
+}
 body>* {
     overflow: hidden;
 }
+html{
+    scroll-behavior: smooth;
+}
+.parallax {
+
+    width: 100% !important;
+    position: relative !important;
+    overflow: hidden !important;
+    background-position: 50% 50% !important;
+    background-repeat: no-repeat !important;
+    height: 100%;
+    background-attachment: fixed !important;
+    background-size: cover !important;
+    -webkit-background-size: cover !important;
+    -moz-background-size: cover !important;
+    -o-background-size: cover !important;
+}
+
+.menor-container,
+.menor-container_one {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.parallax::after {
+    content: "" !important;
+    width: 100% !important;
+    height: 100% !important;
+    position: absolute !important;
+    z-index: 8 !important;
+    /* background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0, rgba(0, 0, 0, 0) 40%, #000 100%) !important; */
+}
+
+.parallax-1 {
+    background-image: url(../media/joia.webp);
+    /*  background-image: url('https://previews.123rf.com/images/kivitimof/kivitimof1609/kivitimof160900041/62627645-green-background-from-plants-with-narrow-leaves-lengthwise.jpg'); */
+
+}
 
 body {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
     scroll-behavior: smooth;
     box-sizing: border-box;
     width: 100vw !important;
-    scroll-snap-align: start;
     margin: 0 !important;
 }
 
@@ -64,9 +119,7 @@ html {
     background-color: blue !important;
 }
 
-.bg-light {
-    background-color: #ccccccb6;
-}
+
 
 .owl-dots {
     display: none !important;
@@ -100,7 +153,6 @@ html {
     backdrop-filter: blur(10px) !important;
     border-radius: 50px !important;
     box-shadow: 0 0 30px rgba(0, 0, 0, .051);
-   
 
 }
 
@@ -175,6 +227,10 @@ html {
     border-radius: 1.3rem;
 }
 
+.product-img:hover {
+    transform: scale(6) !important;
+}
+
 .category-item .category--img {
     width: 100%;
     height: 11.6rem;
@@ -189,6 +245,10 @@ html {
     box-shadow: 0 0 30px rgba(0, 0, 0, .051);
 
     z-index: 1;
+}
+
+#product-img {
+    width: 11.6rem !important;
 }
 
 .category-item .category--img {
@@ -254,7 +314,9 @@ html {
     font-family: var(--body-font);
     line-height: .6;
 }
-
+p,h1,h2,h3,h4,h5,h6,span{
+    cursor: default !important;
+}
 .botao-adicionar {
     position: absolute;
     bottom: -100%;
@@ -294,7 +356,7 @@ html {
 
 .owl-carousel .owl-item img {
     display: block;
-    width: auto !important;
+    width: auto;
 }
 
 .zdex9 {
@@ -314,6 +376,12 @@ html {
 
     50% {
         font-size: 1.3rem;
-        /* Tamanho máximo durante a animação */
     }
+}
+
+footer {
+    background-color: var(--soft-green);
+    clip-path: circle(100% at 50% 50%);
+    text-align: center;
+    width: 100vw !important;
 }

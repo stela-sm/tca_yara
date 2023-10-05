@@ -1,76 +1,5 @@
 <?php
-function pegaMenusSubmenus($folder){
-  
-  $sql= "SELECT menu.ID_MENU AS ID_MENU, menu.nome as NOME_MENU, menu.url AS URL_MENU  FROM menu WHERE menu.folder = '{$folder}' AND menu.status = 1;"; //perguntar pro celso pq só vem os que tem submenu
 
-
-
-
-  require "conexao.php";
-
-
-
-  $result = $conn->query($sql);
-  $dados=array();
-  if ($result->num_rows>0){
-      $dados["result"] = 1;
-      $i = 0;
-      while($row = $result->fetch_assoc()){
-          $dados[$i]["ID_MENU"] = $row["ID_MENU"];
-          $dados[$i]["NOME_MENU"] = $row["NOME_MENU"];
-          $dados[$i]["URL_MENU"] = $row["URL_MENU"];
-          $i++;
-      }
-      $dados["num"] = $i;
-      $conn->close();
-      return $dados;
-  }else{
-      $dados["result"] = 0; 
-      $conn->close();
-      return $dados;
-
-  }
-
-
-  
-}
-
-
-function pegasubmenu($folder){
-
-  require "conexao.php";
- 
-  $sqlSUB = "SELECT * FROM submenu  WHERE folder = '{$folder}'";
- 
- 
-  $result = $conn->query($sqlSUB);
-  $dadosSUB=array();
-
-  if ($result->num_rows>0){
-      $dadosSUB["result"] = 1;
-      $i = 0;
-      while($row = $result->fetch_assoc()){
-          $dadosSUB[$i]["ID_SUBMENU"] = $row["ID_SUBMENU"];
-          $dadosSUB[$i]["ID_MENU_FK"] = $row["ID_MENU_FK"];
-          $dadosSUB[$i]["NOME_SUBMENU"] = $row["nomesub"];
-          $dadosSUB[$i]["URL_SUBMENU"] = $row["url"];
-          $i++;
-          $dadosSUB["num"] = $i;
-      }
-     
-      $conn->close();
-      return $dadosSUB;
-  }else{
-    
-    $dadosSUB["num"] = 0;
-      $dadosSUB["result"] = 0; 
-      $conn->close();
-      return $dadosSUB;
-
-  }
-
-
-}
 
 
 
@@ -130,4 +59,108 @@ while($row=$result->fetch_assoc()){
 return $dados;
 }
 
+
+
+
+function VerifDadosUSER2($login,$senha){
+
+ require "conexao.php";
+ $sql = "SELECT * FROM cliente WHERE email='$login' AND senha='$senha'";
+ $result=$conn->query($sql); 
+
+ if($result->num_rows > 0){
+     $dados=array();
+     $dados["result"] = 1;
+     while($row=$result->fetch_assoc()){
+         $dados["id"] = $row["ID_CLIENTE"];
+         $dados["nome"] = $row["nome"];
+         $dados["email"] = $row["email"];
+         $dados["cpf"] = $row["cpf"];
+     }
+     $conn->close();
+     return $dados;
+ }else{
+     $dados["result"] = 0;
+     $conn->close();
+     return $dados;
+     }
+
+}
+
+
+
+function VerifDadosUSER($login,$senha){ //função pra verificar senha e login do adm 
+ require "conexao.php";
+ $sql = "SELECT * FROM cliente WHERE cpf='$login' AND senha='$senha'";
+ $result=$conn->query($sql); 
+
+ if($result->num_rows > 0){
+     $dados=array();
+     $dados["result"] = 1;
+     while($row=$result->fetch_assoc()){
+         $dados["id"] = $row["ID_CLIENTE"];
+         $dados["nome"] = $row["nome"];
+         $dados["email"] = $row["email"];
+         $dados["cpf"] = $row["cpf"];
+     }
+     $conn->close();
+     return $dados;
+ }else{
+     $verif = VerifDadosUSER2($login,$senha);
+     if ($verif["result"] == 0){
+         $dados["result"] = 0;
+         $conn->close();
+         return $dados;
+     }else{
+         $conn->close();
+         return $verif;
+     }
+     }
+
+ 
+
+}
+
+
+function search($email, $cpf){
+ require "conexao.php";
+ $sql="SELECT * FROM cliente WHERE email = '$email' or cpf = $cpf";
+ $result = $conn -> query($sql);
+ if($result->num_rows>0){
+     $conn->close();
+     return 1;
+ }    else{
+     $conn->close();
+     return 0;
+ }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function userNew($dados){ //função pra criar user
+
+
+ require "conexao.php";
+ $sql="INSERT INTO cliente (nome,email,senha,datahora,cpf) VALUES ('{$dados["nome"]}', '{$dados["email"]}', '{$dados["senha"]}', now(), '{$dados["cpf"]}')";
+ $result = $conn -> query($sql);
+ if($result == true){
+     $conn->close();
+     return 1;
+ }    else{
+     $conn->close();
+     return 0;
+ }
+
+} 
 ?>

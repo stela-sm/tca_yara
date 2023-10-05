@@ -140,9 +140,6 @@ a {
   display: flex
 }
 
-.navbar.sticked .navbar-logo {
-  color: #000
-}
 
 @media(min-width:1024px) {
   .navbar.sticked .navbar-logo:hover {
@@ -165,7 +162,7 @@ a {
 
 .navbar.sticked .nav-items ul li a.active-link span,
 .navbar.sticked .nav-items ul li button.active-link span {
-  color: #000 !important
+  color: #fff !important
 }
 
 .navbar.sticked .nav-items ul li.shoping-bag svg {
@@ -506,23 +503,79 @@ a {
   transform: translateX(var(--sheenX)) translateY(var(--sheenY));
 }
 
-.sobre-imgEsq {
-  position: absolute !important;
-  left: 0;
-}
+
 
 .sobre-txtDir {
   position: absolute !important;
   right: 0;
 }
 
+.sobre-txtEsq {
+  position: absolute !important;
+  left: 0;
+}
+
+.sobre-imgEsq {
+  position: absolute !important;
+  left: 0;
+}
+
+.sobre-imgDir {
+  position: absolute !important;
+  right: 0;
+}
+
 .modal-mobileNav {
-  display: none;
+  display: none !important;
 }
 
 @media (width<1024px) {
+
+  .w90vw {
+    width: 90vw !important;
+  }
+
+  .conector2-bolha {
+    margin: 0 !important;
+    width: 100vw;
+  }
+  .bolha-card svg {
+    position: absolute;
+    opacity: 1;
+    width: 87%;
+}
+  .conector-bolha {
+    width: 100vw !important;
+    margin: 0 !important;
+    padding: 0 !important;
+
+    justify-content: center !important;
+    align-items: center;
+  }
+
+  .main-conectorBolha {
+    display: flex;
+    padding: 0 !important;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 !important;
+  }
+
+  .feature-row {
+    gap: 0 !important;
+  }
+
+  .navbar-logo.navbar-brand {
+    position: absolute;
+  }
+
   #mobile-nav-tog {
     display: block !important;
+  }
+
+  .modal-mobileNav {
+    display: initial !important;
   }
 
   .itemNo-mob {
@@ -601,8 +654,21 @@ a {
   }
 
   .yara-cursor {
-    display: none;
+    display: none !important;
   }
+
+  .sobre-txtA,
+  .sobre-txt {
+    display: none !important;
+  }
+
+  .hidden-ico-major {
+    display: block;
+  }
+}
+
+.hidden-ico-major {
+  display: none;
 }
 
 #mobile-nav-tog {
@@ -611,6 +677,12 @@ a {
 
 .itemNo-mob {
   display: block;
+}
+
+@media (width>1024px) {
+  .itemNo-major {
+    display: none !important;
+  }
 }
 
 .owl-nav {
@@ -628,6 +700,7 @@ a {
   border: none !important;
 
 }
+
 .owl-prev:hover,
 .owl-next:hover,
 .owl-prev:active,
@@ -636,14 +709,17 @@ a {
   background-color: transparent !important;
   border: none !important;
 }
+
 .owl-prev {
   left: -5%;
 }
+
 button.owl-next,
-button.owl-prev{
+button.owl-prev {
   border: none !important;
 
 }
+
 .owl-next {
   right: -5%;
 }
@@ -652,27 +728,188 @@ button.owl-prev{
   height: 100%;
   margin-top: 15%;
 }
+
 .owl-theme .owl-nav {
   margin-top: 0 !important;
 }
+
 .owl-next span,
-.owl-prev span{
+.owl-prev span {
   font-size: 3rem;
   color: var(--soft-green);
   font-family: var(--title-font) !important;
 }
-.bolha_home{
+
+.bolha_home {
   border: none !important;
-  background-color: transparent !important;
   font-family: var(--base-font);
 }
-.card-txt-bolha{
+
+.card-txt-bolha {
   font-size: .46rem;
-line-height: .64rem;
+  line-height: .64rem;
 }
-.card-title-bolha{
+
+.card-title-bolha {
   margin-bottom: .684rem;
-text-align: center;
-font-size: .82rem;
-font-weight: 500;
+  text-align: center;
+  font-size: .82rem;
+  font-weight: 500;
+}
+
+.majorH10 {
+  height: 250px;
+}
+
+.altEQUAL {
+  overflow: hidden;
+  padding: 0;
+  margin: 0;
+}
+
+section {
+  overflow: hidden !important;
+}
+
+.menor-container {
+  height: 100%;
+  position: absolute;
+  left: 0;
+  overflow: hidden;
+  border-radius: 0 40rem 40rem 0;
+  width: 90%;
+  bottom: 3%;
+}
+
+.menor-containerB {
+  height: 100%;
+  position: absolute;
+  right: 0;
+  overflow: hidden;
+  border-radius: 0 40rem 40rem 0;
+  width: 90%;
+  bottom: 3%;
+}
+
+.menor-container_one {
+  height: 85%;
+  position: absolute;
+  right: 0;
+  overflow: hidden;
+  border-radius: 40rem 0 0 40rem;
+  width: 90%;
+  bottom: 3%;
+}
+
+.img-base {
+  overflow: hidden;
+  border-radius: 0 35% 35% 0/0 50% 50% 0;
+}
+
+.img-base img {
+  width: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+}
+
+.img-base_one img {
+  width: 100%;
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 100%;
+}
+
+.title_sobreTWO {
+  font-size: calc(2rem - 16px);
+  line-height: 1.46rem;
+  font-weight: bold;
+  margin-bottom: .82rem;
+  color: var(--base-green);
+  font-family: var(--body-font) !important;
+}
+
+.p-sobre2_index {
+  font-size: calc(22pt);
+  line-height: 1.6rem;
+  font-weight: bold;
+  color: #6e6e73;
+  margin-bottom: .912rem;
+}
+
+.sobre-txt {
+  padding-left: 4%;
+  padding-right: 14%;
+  padding-top: 20%;
+  text-align: left;
+}
+
+.sobre-txtA {
+  padding-right: 4%;
+  padding-left: 14%;
+  padding-top: 20%;
+  text-align: left;
+}
+
+.primBtn {
+  display: block;
+  background-color: transparent;
+  padding: 0.484rem 0.7rem;
+  background-color: #87ab854f;
+  color: var(--soft-green) !important;
+  transition: background-color .4s ease;
+  border-radius: 60px;
+  font-size: .5rem;
+  font-weight: bolder;
+}
+
+.bolha-card {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-self: center;
+  align-items: center;
+}
+
+.bolha-card svg {
+  position: absolute;
+  opacity: 0;
+  transition: opacity .3s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+}
+
+.container.container-pined {
+  position: absolute;
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 0 !important;
+  margin-right: auto;
+  margin-left: 0 !important;
+}
+
+.bolha-card .card {
+  background-color: transparent;
+
+}
+
+.bolha-card:hover svg {
+  opacity: 1;
+}
+.bolhaC-right,
+.bolhaC-left,
+.bolha-middle{
+  padding: 10%;
+}
+.conector2-bolha{
+  width: 100vw !important;
+  
+}
+.container.container-pined {
+  position: absolute;
+  width: 100vw !important;
+  padding-right: 15px;
+  padding: 0 !important;
+  margin-right: auto;
+  margin: 0 !important;
 }

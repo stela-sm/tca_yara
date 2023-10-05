@@ -1,0 +1,226 @@
+/* geral */
+body,
+html {
+    height: 100% !important;
+    margin: 0 !important;
+    overflow: hidden !important;
+    background-color: #f0f0f0 !important;
+}
+
+.login-container {
+    display: flex !important;
+    height: 100% !important;
+}
+
+/* imagem */
+.image-section, .form-section {
+    flex: 50% !important;
+}
+
+.image-section img {
+    object-fit: cover !important;
+    width: 50% !important;
+    height: 100% !important;
+}
+
+/* link */
+a, a:before, a:after, a:hover, a:visited, a:active {
+    text-decoration: underline;
+    color: #1A3D1F;
+    font-family: 'Questrial', sans-serif !important;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* formulário geral */
+.form-section-login,
+.form-section-cadastro {
+    position: absolute;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 20px !important;
+    right: 0;
+    height: 100%;
+    width: 50%;
+}
+
+.title-text {
+    translate: none !important;
+    rotate: none !important;
+    scale: none !important;
+    transform: translate(0px, 0px) !important;
+    opacity: 1 !important;
+    font-family: 'Berkshire Swash' !important;
+    color: #1A3D1F;
+}
+
+.paragraph-text {
+    font-family: 'Questrial', sans-serif !important;
+    margin-top: -10px;
+    font-size: 14px;
+}
+
+.username-inpt, .pass-inpt, .name-inpt, .email-inpt, .cpf-inpt, .tel-inpt{
+    font-family: 'Questrial', sans-serif !important;
+    border-top: none; 
+    border-left: none; 
+    border-right: none; 
+    border-bottom: 1px solid;
+    border-radius: 0;
+    background-color: transparent;
+    margin-top: 5px;
+    font-size: 14px;
+    padding: 1px;
+    margin: 0;
+    text-align: left;
+    box-shadow: none;
+}
+
+.username-inpt:active, .pass-inpt:active, .name-inpt:active, .email-inpt:active, .cpf-inpt:hover:active, .tel-inpt:active{
+    font-family: 'Questrial', sans-serif !important;
+    border-top: none; 
+    border-left: none; 
+    border-right: none; 
+    border-bottom: 1px solid;
+    border-radius: 0;
+    background-color: transparent;
+    margin-top: 5px;
+    font-size: 14px;
+    padding: 1px;
+    margin: 0;
+    text-align: left;
+    box-shadow: none;
+}
+
+.btn {
+    background-color: transparent;
+    border-radius: 25px;
+    border: 2px solid #1a3d1ffb;
+    color: #1A3D1F;
+    margin-top: 10px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.btn:hover, .btn::before, .btn:active, .btn::after, .btn:visited  {
+    background-color: #1a3d1fe2;
+    border: 2px solid #1a3d1fe2;
+    color: #f0f0f0;
+    font-weight: bold;
+}
+
+.bnt-primary {
+    box-shadow: none;
+    background-color: transparent;
+    border-color: transparent;
+}
+
+/* formulário cadastro */
+.form-section-cadastro {
+    display: none;
+}
+
+.form-check-label{
+    font-size: 14px;
+    font-family: 'Questrial', sans-serif !important;
+}
+
+.form-check-input[type="checkbox"] {
+    display: none;
+}
+
+.form-check-label::before {
+    content: "";
+    position: absolute;
+    display: inline-block;
+    width: 14px; 
+    height: 14px; 
+    border: 1px solid #1A3D1F; 
+    border-radius: 50%;
+    margin-left: -20px;
+    margin-right: 5px;
+    margin-top: 3px;
+    cursor: pointer;
+} 
+
+.form-check-input:checked + .form-check-label::before {
+    content: "";
+    position: absolute;
+    display: inline-block;
+    width: 14px; 
+    height: 14px; 
+    background-color: transparent;
+    border: 5px solid #1A3D1F; 
+    border-radius: 50%;
+    margin-left: -20px;
+    margin-right: 5px;
+    margin-top: 3px;
+    cursor: pointer;
+} 
+
+ /* formulário login */
+.form-section-login {
+    display: flex;
+}
+
+
+
+
+
+
+
+
+/* responsividade */
+@media (max-width: 720px) {
+    .login-container {
+        flex-direction: column !important;
+    }
+
+    .image-section {
+        height: 100% !important;
+        overflow: hidden !important;
+    }
+
+    .image-section img {
+        object-fit: cover !important;
+        width: 100% !important;
+        height: 100% !important;
+    }
+
+    .form-section-login,
+    .form-section-cadastro {
+        background-color: #f0f0f0 !important;
+        padding: 1.16rem .93rem 4rem !important;
+        flex-direction: column !important;
+        border-radius: 30px 30px 0 0 !important;
+        margin-top: 20px !important;
+        width: 100% !important;
+        position: absolute !important;
+        align-items: center !important;
+        justify-content: center !important;
+        height: calc(50% + 3rem) !important;
+    }
+
+    .login-container {
+        display: flex !important;
+        height: 100% !important;
+        flex-direction: column !important;
+        width: 100% !important;
+        justify-content: center !important;
+        align-items: center !important;
+    }
+
+    .form-section-login,
+    .form-section-cadastro {
+        position: absolute !important;
+        background-color: #f0f0f0 !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
+        padding: 20px !important;
+        bottom: 0 !important;
+        height: calc (50% + 10px);
+        width: 100% !important;
+    }
+}

@@ -196,7 +196,7 @@
                                 class="nav-link greenwhite"><a>Home</a></span></button>
                     </li>
                     <li class="nav-item itemNo-mob">
-                        <ion-icon name="person-circle-outline"></ion-icon>
+                        <a href="view/login.php"><ion-icon name="person-circle-outline"></ion-icon></a>
                     </li>
                     <div class="mobileJunc d-flex flex-row justify-content-center align-center">
                         <li type="button" data-toggle="modal" data-target="#nav-cart"
