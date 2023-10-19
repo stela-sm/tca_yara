@@ -14,7 +14,7 @@ html {
 
 /* imagem */
 .image-section, .form-section {
-    flex: 50% !important;
+    flex: 50%;
 }
 
 .image-section img {
@@ -24,7 +24,7 @@ html {
 }
 
 /* link */
-a, a:before, a:after, a:hover, a:visited, a:active {
+.link-forgout, .link-forgout:before, .link-forgout:after, .link-forgout:hover, .link-forgout:visited, .link-forgout:active {
     text-decoration: underline;
     color: #1A3D1F;
     font-family: 'Questrial', sans-serif !important;
@@ -39,26 +39,11 @@ a, a:before, a:after, a:hover, a:visited, a:active {
     flex-direction: column !important;
     align-items: center !important;
     justify-content: center !important;
-    padding: 20px !important;
+    padding: 4% !important;
     right: 0;
     height: 100%;
     width: 50%;
-}
-
-.title-text {
-    translate: none !important;
-    rotate: none !important;
-    scale: none !important;
-    transform: translate(0px, 0px) !important;
-    opacity: 1 !important;
-    font-family: 'Berkshire Swash' !important;
-    color: #1A3D1F;
-}
-
-.paragraph-text {
-    font-family: 'Questrial', sans-serif !important;
-    margin-top: -10px;
-    font-size: 14px;
+    margin-left: -150px !important;
 }
 
 .username-inpt, .pass-inpt, .name-inpt, .email-inpt, .cpf-inpt, .tel-inpt{
@@ -93,28 +78,83 @@ a, a:before, a:after, a:hover, a:visited, a:active {
     box-shadow: none;
 }
 
+input:not([type="file" i], [type="image" i], [type="checkbox" i], [type="radio" i]), input:active {
+    font-family: 'Questrial', sans-serif !important;
+    border-top: none !important; 
+    border-left: none !important; 
+    border-right: none !important; 
+    border-bottom: 1px solid !important;
+    border-radius: 0 !important;
+    background-color: transparent !important;
+    margin-top: 5px !important;
+    font-size: 14px !important;
+    padding: 1px !important;
+    margin: 0 !important;
+    text-align: left !important;
+    box-shadow: none !important;
+}
+
+/* texto */
+.title-text-l, .title-text-c {
+    translate: none !important;
+    rotate: none !important;
+    scale: none !important;
+    transform: translate(0px, 0px) !important;
+    opacity: 1 !important;
+    font-family: 'Berkshire Swash' !important;
+    color: #1A3D1F;
+}
+
+.title-text-l {
+    margin-left: -9px;
+}
+
+.title-text-c {
+    margin-left: -1px;
+}
+
+.paragraph-text {
+    font-family: 'Questrial', sans-serif !important;
+    margin-top: -10px;
+    font-size: 14px;
+}
+
+/* botão */
 .btn {
     background-color: transparent;
     border-radius: 25px;
     border: 2px solid #1a3d1ffb;
     color: #1A3D1F;
     margin-top: 10px;
+    box-shadow: none !important;
+    outline: none !important;
     cursor: pointer;
     font-weight: bold;
 }
 
 .btn:hover, .btn::before, .btn:active, .btn::after, .btn:visited  {
     background-color: #1a3d1fe2;
+    box-shadow: none !important;
+    outline: none !important;
     border: 2px solid #1a3d1fe2;
     color: #f0f0f0;
     font-weight: bold;
 }
 
-.bnt-primary {
+.bnt-primary, .bnt-primary::before, .bnt-primary::after, .bnt-primary:visited, .bnt-primary:active {
     box-shadow: none;
     background-color: transparent;
     border-color: transparent;
 }
+
+.btn-primary:not(:disabled):not(.disabled).active, .btn-primary:not(:disabled):not(.disabled):active, .show>.btn-primary.dropdown-toggle {
+    box-shadow: none !important;
+    background-color: #1a3d1fe2 !important;
+    border-color: transparent !important;
+    color: #f0f0f0 !important;
+    border: 2px solid #1a3d1fe2 !important;
+}
+
 
 /* formulário cadastro */
 .form-section-cadastro {
@@ -164,6 +204,62 @@ a, a:before, a:after, a:hover, a:visited, a:active {
     display: flex;
 }
 
+/* menu */
+.menu {
+    background-color: transparent !important;
+    position: absolute; 
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 3%;
+    margin: 15px 0px 0px;
+    top: 0;
+    z-index: 3;
+}
+
+.logo {
+    font-family: 'Berkshire Swash';
+    font-size: 28pt;
+    text-decoration: none !important;
+    color: #f0f0f0;
+    cursor: pointer;
+}
+
+.logo:hover {
+    font-family: 'Berkshire Swash';
+    font-size: 28pt;
+    text-decoration: none !important;
+    color: #f0f0f0;
+}
+
+.menu-links {
+    justify-content: space-between !important;
+    display: flex;
+    align-items: center;
+    height: 40px;
+    padding: 0 1.2%;
+}
+
+.menu-link {
+    margin-left: 30px;
+    font-family: "Questrial", sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    color: #000;
+    text-decoration: none;
+    transition: color 0.3s, text-decoration 0.3s;
+}
+
+.menu-link:hover {
+    font-family: "Questrial", sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    color: #1A3D1F;
+    text-decoration: none;
+    color: #FDBE50;
+}
+
 
 
 
@@ -172,26 +268,30 @@ a, a:before, a:after, a:hover, a:visited, a:active {
 
 
 /* responsividade */
-@media (max-width: 720px) {
+@media (max-width: 620px) {
+    /* geral */
     .login-container {
         flex-direction: column !important;
     }
 
+    /* imagem */
     .image-section {
-        height: 100% !important;
+        height: 100vh !important;
+        width: 100vh !important;
         overflow: hidden !important;
     }
 
     .image-section img {
         object-fit: cover !important;
-        width: 100% !important;
+        width: calc(100% + 3rem) !important;
         height: 100% !important;
     }
 
+    /* form geral */
     .form-section-login,
     .form-section-cadastro {
         background-color: #f0f0f0 !important;
-        padding: 1.16rem .93rem 4rem !important;
+        padding: 20px !important;
         flex-direction: column !important;
         border-radius: 30px 30px 0 0 !important;
         margin-top: 20px !important;
@@ -200,6 +300,8 @@ a, a:before, a:after, a:hover, a:visited, a:active {
         align-items: center !important;
         justify-content: center !important;
         height: calc(50% + 3rem) !important;
+        bottom: 0 !important;
+        box-shadow: #000000;
     }
 
     .login-container {
@@ -211,16 +313,68 @@ a, a:before, a:after, a:hover, a:visited, a:active {
         align-items: center !important;
     }
 
-    .form-section-login,
-    .form-section-cadastro {
-        position: absolute !important;
-        background-color: #f0f0f0 !important;
-        flex-direction: column !important;
-        align-items: center !important;
-        justify-content: center !important;
-        padding: 20px !important;
-        bottom: 0 !important;
-        height: calc (50% + 10px);
+    .username-inpt:active, .pass-inpt:active, .name-inpt:active, .email-inpt:active, .cpf-inpt:hover:active, .tel-inpt:active{
+        font-family: 'Questrial', sans-serif !important;
+        border-top: none; 
+        border-left: none; 
+        border-right: none; 
+        border-bottom: 1px solid;
+        border-radius: 0;
+        background-color: transparent;
+        margin-top: 5px;
+        font-size: 10px;
+        padding: 5px;
+        margin: 0;
+        text-align: left;
+        box-shadow: none;
         width: 100% !important;
     }
-}
+
+    .title-text-l, .title-text-c {
+        translate: none !important;
+        rotate: none !important;
+        scale: none !important;
+        transform: translate(0px, 0px) !important;
+        opacity: 1 !important;
+        font-family: 'Berkshire Swash' !important;
+        color: #1A3D1F;
+        font-size: 28px;
+        margin-left: -5px;
+    }
+    
+    /* form cadastro */
+    .form-section-cadastro {
+        overflow-y: scroll;
+        max-height: 80vh;
+    }
+
+    .form-section-cadastro::-webkit-scrollbar {
+        width: 7px;
+        position: fixed;
+        right: 0;
+    }
+      
+    .form-section-cadastro::-webkit-scrollbar-track {
+        background: transparent;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        -webkit-transition: opacity 0.5s 0.5s ease-out;
+        transition: opacity 0.5s 0.5s ease-out;     
+    }
+      
+    .form-section-cadastro::-webkit-scrollbar-thumb {
+        width: 8px;
+        height: 8px;
+        background: rgba(0, 0, 0, .5);
+        border-radius: 4px;
+    }
+
+    .title-text-c {
+        margin-top: 42%;
+        position: relative;
+        margin-left: -1px ;
+    }
+}   
+

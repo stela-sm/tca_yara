@@ -1,0 +1,77 @@
+/* geral */
+body,
+html {
+    height: 100% !important;
+    margin: 0 !important;
+    overflow: hidden !important;
+    background-color: #f0f0f0 !important;
+}
+
+
+/* menu */
+.menu {
+    background-color: transparent !important;
+    position: absolute; 
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 3%;
+    margin: 15px 0px 0px;
+    top: 0;
+    z-index: 3;
+}
+
+.logo {
+    font-family: 'Berkshire Swash';
+    font-size: 28pt;
+    text-decoration: none !important;
+    color: #fafafa;
+    cursor: pointer;
+}
+
+.logo:hover {
+    font-family: 'Berkshire Swash';
+    font-size: 28pt;
+    text-decoration: none !important;
+    color: #f3f3f3;
+}
+
+.menu-links {
+    justify-content: space-between !important;
+    display: flex;
+    align-items: center;
+    height: 40px;
+    padding: 0 1.2%;
+}
+
+.menu-link {
+    margin-left: 30px;
+    font-family: "Questrial", sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    color: #d6d6d6;
+    text-decoration: none;
+    transition: color 0.3s, text-decoration 0.3s;
+}
+
+.menu-link:hover {
+    font-family: "Questrial", sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    color: #1A3D1F;
+    text-decoration: none;
+    color: #FDBE50;
+}
+
+
+
+
+
+
+/* header */
+header{
+    background-image: url("../media/yara_bg.png");
+}
+
+

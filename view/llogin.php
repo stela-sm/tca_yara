@@ -12,54 +12,38 @@
     <title>Login</title>
 </head>
 <body>
-
-    <!-- menu -->
-    <header>
-    <div class="menu">
-        <a class="logo" href="#">
-            Yara.
-        </a>
-        <div class="menu-links">
-            <a class="menu-link" href="#">Home</a>
-            <a class="menu-link" href="#">Shop</a>
-            <a class="menu-link" href="#">Sobre</a>
-            <a class="menu-link" href="#">Contato</a>
-        </div>
-    </div>
-    </header>
-
     <div class="login-container">
         <!-- imagem (50%) à direita -->
-        <div class="image-section" style="order: 2;">
-            <img src="../assets/media/planta_bg.png" alt="Imagem de Fundo">
+        <div class="image-section" style="flex: 50%; order: 2;">
+            <img width="100%" height="100%" src="../assets/media/planta_bg.png" alt="imagem de fundo">
         </div>
 
         <!-- formulário login -->
-        <div class="form-section-login" style="order: 1;">
+        <div class="form-section-login" style="flex: 50%; order: 1;">
             <div class="login-title w-100">
-                <h1 class="title-text-l mb-4">Bem vindo de volta!</h1>
+                <h1 class="title-text mb-4" style="margin-left: -8px;">Bem vindo de volta!</h1>
                 <div class="mb-3">
                     <p class="paragraph-text account">Informe seus dados para login.    
-                        <a class="custom-link" style="color: #1A3D1F; text-decoration: none; font-weight: bold; cursor:pointer">Não tem conta?</a></p>
+                        <a class="custom-link" style="color: #1A3D1F; text-decoration: none; color: #1A3D1F; text-decoration: none; font-weight: bold">Não tem conta?</a></p>
                 </div>
                 <!-- área do formulário -->
                 <form class="w-100" action="../controller/controller_client.php" method="post">
                     <input type="hidden" name="login" value="1">
                     <!-- email -->
                     <div class="form-group-email">
-                        <input type="email" class="username-inpt form-control" id="usuário" placeholder="Email ou CPF" autocomplete="off">
+                        <input type="email" class="username-inpt form-control" name="login" id="usuário" placeholder="Email ou CPF" autocomplete="off">
                     </div>
                     <br>
                     <!-- senha -->
                     <div class="form-group-senha">
-                        <input type="password" class="pass-inpt form-control" id="senha" placeholder="Senha">
+                        <input type="password" class="pass-inpt form-control" name="senha" id="senha" placeholder="Senha">
                     </div>
                      <!-- link senha -->
                      <div class="mb-3 mt-3">
-                        <a class="link-forgout" href="#" style="font-size: 12px;">Esqueceu sua senha?</a>
+                        <a href="#" style="font-size: 12px;">Esqueceu sua senha?</a>
                     </div>
                     <!-- botão entrar -->
-                    <button type="submit" class="btn w-100">Entrar</button>
+                    <button type="submit" class="btn btn-primary w-100">Entrar</button>
                 </form>
             </div>
         </div>
@@ -67,40 +51,40 @@
         <!-- formulário cadastro -->
         <div class="form-section-cadastro" style="flex: 50%; order: 1;">
             <div class="login-title w-100">
-                <h1 class="title-text-c mb-4">Seja bem vindo!</h1>
+                <h1 class="title-text mb-4">Seja bem vindo!</h1>
                 <div class="mb-3">
                     <p class="paragraph-text login-back">Informe seus dados para cadastro.   
-                        <a class="custom-link" style="color: #1A3D1F; text-decoration: none; font-weight: bold; cursor: pointer;">Já tem conta?</a></p>
+                        <a class="custom-link" style="color: #1A3D1F; text-decoration: none; font-weight: bold">Já tem conta?</a></p>
                 </div>
                 <!-- área do formulário -->
                 <form class="w-100" action="../controller/controller_client.php" method="post">
                     <input type="hidden" name="cadastro" value="1">
                     <!-- nome -->
                     <div class="form-group-name">
-                        <input type="text" class="name-inpt form-control" id="nome" placeholder="Nome Completo" autocomplete="off">
+                        <input type="text" class="name-inpt form-control" name="nome" id="nome" placeholder="Nome Completo" autocomplete="off">
                     </div>
                     <br>
                     <!-- email -->
                     <div class="form-group-name">
-                        <input type="email" class="email-inpt form-control" id="nome" placeholder="Email"
+                        <input type="email" class="email-inpt form-control" name="email" id="nome" placeholder="Email"
                             autocomplete="off">
                     </div>
                     <br>
                     <!-- cep -->
                     <div class="form-group-name">
-                        <input type="tel" class="cpf-inpt form-control" id="nome" placeholder="CPF"
+                        <input type="tel" class="cpf-inpt form-control" id="nome" name="cpf" placeholder="CPF"
                             autocomplete="off">
                     </div>
                     <br>
                     <!-- telefone -->
                     <div class="form-group-name">
-                        <input type="tel" class="tel-inpt form-control" id="nome" placeholder="Telefone"
+                        <input type="tel" class="tel-inpt form-control" id="nome" name="tel" placeholder="Telefone"
                             autocomplete="off">
                     </div>
                     <br>
                     <!-- senha -->
                     <div class="form-group-senha">
-                        <input type="password" class="pass-inpt form-control" id="senha" placeholder="Password">
+                        <input type="password" class="pass-inpt form-control" id="senha" name="senha" placeholder="Password">
                     </div>
                     <br>
                     <!-- termos de uso -->
@@ -141,7 +125,6 @@ verde claro: #87AB85
 amarelo: #FDBE50
 marrom: #85573F
 -->
-
 <?php
 
 if(isset($_REQUEST["msg"])){
