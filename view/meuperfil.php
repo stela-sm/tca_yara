@@ -139,24 +139,20 @@
                     <!--menu lateral-->
                     <div class="col-3">
                         <ul class="menubar">
-                            <li target="iframe" class="linkmenu">
-                                <i style="color:var(--green); margin-right:18px" class="fa-regular fa-user"></i>
-                                Meu Perfil</li>
-                            <li target="iframe" class="linkmenu">
-                                <i
-                                    style="color:var(--green); margin-right:20px"
-                                    class="fa-solid fa-location-dot"></i>Endereços</li>
-                            <li target="iframe" class="linkmenu">
-                                <i
-                                    style="color:var(--green); margin-right:20px"
-                                    class="fa-solid fa-clipboard-list"></i>Histórico</li>
-                            <li target="iframe" class="linkmenu">
+                            <li  class="linkmenu">
+                            <a href="dados.php" target="iframe_perfil">  <i style="color:var(--green); margin-right:18px" class="fa-regular fa-user"></i>
+                               Meu Perfil </li></a>
+                            <li  class="linkmenu">
+                            <a href="endereco.php" target="iframe_perfil">  <i style="color:var(--green); margin-right:20px" class="fa-solid fa-location-dot"></i>Endereços</a></li>
+                            <li  class="linkmenu">
+                            <a href="historico.php" target="iframe_perfil">  <i style="color:var(--green); margin-right:20px" class="fa-solid fa-clipboard-list"></i>Histórico</a></li>
+                            <li  class="linkmenu">
                                 <i style="color:var(--green); margin-right:20px" class="fa-solid fa-key"></i>Mudar senha</li>
                         </ul>
                     </div>
 
                     <div class="col-8">
-                        <iframe src="dados.php" width="150%" height="150%" frameborder="0"></iframe>
+                        <iframe  src="dados.php" name="iframe_perfil" id="iframe" width="150%" height="150%" frameborder="0"></iframe>
                     </div>
                 </div>
             </div>
