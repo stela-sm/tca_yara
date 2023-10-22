@@ -45,6 +45,7 @@
                 --yellow: #B9C394;
                 --lgreen: #B9C394;
             }
+            
             header {
                 background-image: url("../assets/media/yara_bg.png");
                 height: 10cm;
@@ -58,10 +59,15 @@
                 border-radius: 50%;
                 cursor: pointer;
             }
-            .col-4 {
-                padding: 0 4%;
+            .col-12 {
+                padding: 3%;
                 margin: 10% 0 0;
                 position: absolute;
+            }
+            a, a:hover{
+             text-decoration: none;
+             color: #1A3D1F;
+
             }
             #name {
                 line-height: 3cm;
@@ -118,7 +124,7 @@
             </div>
             <div class="container">
                 <div class="row">
-                    <div class="col-4">
+                    <div class="col-12">
                         <input type="file" name="pfp" id="pfp">
                         <div class="row">
                             <label for="pfp"><img
@@ -140,23 +146,308 @@
                     <div class="col-3">
                         <ul class="menubar">
                             <li  class="linkmenu">
-                            <a href="dados.php" target="iframe_perfil">  <i style="color:var(--green); margin-right:18px" class="fa-regular fa-user"></i>
+                            <a href="dados.php" target="iframe_perfil"  onclick="endereco('1')">  <i style="color:var(--green); margin-right:18px" class="fa-regular fa-user"></i>
                                Meu Perfil </li></a>
                             <li  class="linkmenu">
-                            <a href="endereco.php" target="iframe_perfil">  <i style="color:var(--green); margin-right:20px" class="fa-solid fa-location-dot"></i>Endereços</a></li>
+                            <a onclick="endereco('0')">  <i style="color:var(--green); margin-right:20px" class="fa-solid fa-location-dot"></i>Endereços</a></li>
                             <li  class="linkmenu">
-                            <a href="historico.php" target="iframe_perfil">  <i style="color:var(--green); margin-right:20px" class="fa-solid fa-clipboard-list"></i>Histórico</a></li>
+                            <a  href="historico.php" target="iframe_perfil" onclick="endereco('1')">  <i style="color:var(--green); margin-right:20px" class="fa-solid fa-clipboard-list"></i>Histórico</a></li>
                             <li  class="linkmenu">
                                 <i style="color:var(--green); margin-right:20px" class="fa-solid fa-key"></i>Mudar senha</li>
                         </ul>
                     </div>
 
                     <div class="col-8">
-                        <iframe  src="dados.php" name="iframe_perfil" id="iframe" width="150%" height="150%" frameborder="0"></iframe>
+                        <iframe  src="" name="iframe_perfil" id="iframe_perfil" width="150%" height="150%" frameborder="0"></iframe>
+                  
+                  
+                  
+                  
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        table, th, td {
+            border: none;
+        }
+        th, td {
+            text-align: left;
+            padding: 8px;
+        }
+        #last{
+            text-align: left;
+        }
+        .input_perfil{
+            background-color: #dddddd;
+            border: none;
+            box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+            padding: 10px;
+            width: 50%;
+            margin-right: 3em;
+            border-radius: 5px;
+        }
+        .label{
+            color:var(--green);
+            padding-left: -1cm;
+            width: 20%;
+        }
+        #title{
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-top: 0.8cm;
+        }
+        #divform{
+            margin-left: 5%;
+            
+            font-family: 'Questrial';
+        }      
+         .submit{
+            background-color: transparent;
+    border-radius: 25px;
+    border: 1px solid #1a3d1ffb;
+    color: #1A3D1F;
+    margin-top: 10px;
+    box-shadow: none !important;
+    outline: none !important;
+    cursor: pointer;
+    font-weight: bold;
+    width: 60%;
+padding: 10px;        
+opacity: 0.7;
+}
+.grande{
+    width: 90%;
+    border: 0px;
+    background-color: white;
+border-radius: 20px !important;
+padding: 10px;
+box-shadow: rgba(0, 0, 0, 0.1) -4px 9px 25px -6px;
+}
+
+.apelido{
+font-weight: 600;
+text-transform: uppercase;
+color: #B9C394;
+border: 0px;
+background-color: white;
+border-radius: 20px ;
+border-bottom:1px #B9C394 solid;
+font-size: 1.1em;
+}
+
+.body_card{ 
+border: 0px; 
+font-size: 0.9em;
+}
+
+.botao_modal, .botao_modal:hover, .botao_modal:focus{
+margin-left: 77%;
+margin-top: -0.5%;
+position: absolute;
+width: 1cm;
+cursor: pointer;
+background-color: transparent !important;
+color: var(--lgreen) !important;
+border: none !important;
+box-shadow: none !important;
+}
+.card-text{
+
+    line-height: 2em;
+}
+    </style>
+</head>
+<body>
+    <?php
+    
+    $_SESSION['nome'] = "Laura Barbara Cruz";
+    $_SESSION['telefone'] = "11963220905";
+    $_SESSION['cpf'] = "40527647810";
+    $_SESSION['email'] = "laura@gmail.com";
+    
+    ?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <form action="../controller/controller_client.php" id="divform"name="update" method="post">
+        <input type="hidden" name="update_dados" value="1">
+        
+   <p id="title">Endereços</p>
+<table>
+<div class="card grande">
+  <h5 class="card-header apelido">Casa <button type="button" class="btn botao_modal btn-primary" data-toggle="modal" data-target="#ExemploModalCentralizado"><i class="fa-solid fa-pencil"></i></button>
+</h5>
+  <div class="card-body body_card">
+    <p class="card-text">
+    CEP: <span class="cep">04652150</span><br>
+    <span class="rua">Rua Damásio Rodrigues Gomes,</span><span class="numero"> 54</span><br>
+    <span class="bairro">Jardim Cidália, </span><span class="cidade">São Paulo - </span><span class="estado">SP</span>
+    </p>
+  </div>
+</div>
+</table>
+</form>
+                  
+                  
                     </div>
                 </div>
             </div>
         </div>
     </body>
+
+
+
+
+
+
+
+
+
+
+
+    <script>
+        function definirSrcDoIframe() {
+            var iframe = document.getElementById("iframe_perfil");
+            
+            iframe.src = "dados.php"; 
+        }
+
+        document.addEventListener("DOMContentLoaded", definirSrcDoIframe);
+    
+         function endereco(id){
+            var iframe = document.getElementById("iframe_perfil")
+            var div = document.getElementById("divform")
+       if(id=="0"){ 
+        iframe.style.display = "none"
+        div.style.display = "block"
+        iframe.src = ""; }
+        else{
+            iframe.style.display = "block"
+        div.style.display = "none"
+        }
+        }
+        function active(num){
+        var ipt = document.getElementById("apelido"+num)
+        ipt.disabled = false;
+
+    }
+
+    </script>
+    
+
+<!-- Modal -->
+<div class="modal fade" id="ExemploModalCentralizado" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="TituloModalCentralizado"><input type="text" id="apelido1" class="input_apelido"disabled  ondblclick="active(1)" value="Casa"></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form action="">
+      <div class="modal-body">
+      <table class="table_modal">
+       
+        <tr>
+            <td>CEP:</td>
+            <td><input type="text" value="" class="input_padrao"></td>
+            <td>Rua:</td>
+            <td><input type="text" value="" disabled class="input_padrao input2"></td>
+        </tr>
+        <tr>
+            <td>Número:</td>
+            <td><input type="text" value="" class="input_padrao"></td>
+            <td>Bairro:</td>
+            <td><input type="text" value="" disabled class="input_padrao input2"></td>
+        </tr>
+        <tr>
+            <td>Bloco:</td>
+            <td><input type="text" value="" class="input_padrao"></td>
+            <td>Cidade:</td>
+            <td><input type="text"disabled value=""class="input_padrao input2"></td>
+        </tr>
+        <tr>
+            <td>Apto:</td>
+            <td><input type="text" class="input_padrao" value=""></td>
+            <td>Estado:</td>
+            <td><input type="text" disabled value="" class="input_padrao input2"></td>
+        </tr>
+    </table>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="salvar">Salvar mudanças</button>
+      </div>
+    </div>
+  </div>
+</div>
+</form>
+<style>
+    .modal-footer{
+        justify-content: center;
+        text-align: center;
+    }
+    .input_padrao{
+        background-color: #dddddd;
+        border: none;
+        border-radius: 5px;
+        padding: 10px;
+
+    }
+    
+    .input2{
+        width: 100%;
+    }
+    .modal{
+        font-family: 'Questrial';
+        
+    }
+    .modal-body{
+        padding: 30px;
+    }
+    .table_modal{
+        font-weight: 600;
+        color: #1A3D1F;
+    }
+    .input_apelido{
+        background-color: transparent;
+        border: none;
+        color: var(--lgreen);
+        font-weight: 700;
+    }
+    .salvar, .salvar:active{
+        margin-top: 10px;
+        background-color: transparent;
+        border: none;
+        cursor:pointer;
+        color: var(--lgreen);
+        text-transform: uppercase;        
+        transition: 0.2s;        
+    }
+    .salvar:hover{
+        scale: 0.9;
+        transition: 0.2s;
+    }
+    .modal-lg{
+        max-width: 800px !important;
+        border-radius: 20px !important;
+    }
+</style>
 </html>
 <?php } ?>

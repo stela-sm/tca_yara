@@ -23,7 +23,7 @@
 }
     </style>
    
-   <p id="title">Endereços</p>
+   <p id="title">Histórico de Pedidos</p>
    <!DOCTYPE html>
 <html>
 <head>
@@ -38,6 +38,7 @@
         }
         table, th, td {
             border: none;
+
         }
         th, td {
             text-align: left;
@@ -113,12 +114,13 @@ position: absolute;
 }
 .options_td{
     text-align: right;
+    padding: 0px;
 }
 .options{
     border: none;
   outline: none; 
-  padding: 5px; 
-  width: 2.2cm;
+  padding-left: 10px; 
+  width: 2cm;
   text-decoration: underline;
   border-radius: 5px; 
   -webkit-appearance: none; 
@@ -133,7 +135,7 @@ position: absolute;
     padding-top: 0.5cm;
     padding-bottom: 0.5cm;
     text-transform: uppercase;
-    color: #B9C394;
+    
 }
 .data{
     padding-left: 0.3cm;
@@ -161,7 +163,25 @@ position: absolute;
     width: 100%;
 }
 .img{
-max-width: 3cm;
+    height: 2.5cm;
+max-width: 2.5cm;
+width: 2.5cm;
+}
+.total_valor{
+    text-align: right;
+    
+    font-weight: 700;
+    padding-top: 15px;
+}
+.ultima{
+    margin-top: 1em;
+    border-top: lightgray 1px solid;
+  
+}
+.total{
+    padding-top: 15px;
+    font-weight: 700;
+    text-transform: uppercase;
 }
     </style>
 </head>
@@ -194,7 +214,18 @@ max-width: 3cm;
     <tr><td class="img"><img src="media/img_prod.png" alt="" style="width:50px;"></td>
     <td class="produto"><span class="nome_produto">Sérum ácido hialurônico 150ml</span></td>
     <td class="quant"> <span class="quantidade">2x</span> </td>
-    <td clas="valor"><span class="preco"> R$150,00</span></td></tr>
+    <td class="valor"><span class="preco"> R$150,00</span></td></tr>
+    <tr><td class="img"><img src="media/img_prod.png" alt="" style="width:50px;"></td>
+    <td class="produto"><span class="nome_produto">Sérum ácido hialurônico 150ml</span></td>
+    <td class="quant"> <span class="quantidade">2x</span> </td>
+    <td class="valor"><span class="preco"> R$150,00</span></td></tr>
+
+    </table>
+    <table class="ultima">
+    <tr>
+        <td class="total">Total</td>
+        <td class="total_valor">R$500,00</td>
+    </tr>
     </table>
 </div>
 </form>
