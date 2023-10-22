@@ -282,27 +282,39 @@ box-shadow: none !important;
 
 
 
+<p id="title">Endereços</p>
+<?php
+$_SESSION["USER-ID"] = "1";
+require "../model/manager.php";
+$resp = buscar_endereco($_SESSION["USER-ID"]);
+if($resp["result"] == 0){ echo ""; }else{ 
+
+        for($i=0;$i<$resp["num"];$i++){
+            echo
 
 
+           "<table>
+            <form action=\"../controller/controller_client.php\" id=\"divform\"name=\"update\" method=\"post\">
+                    <input type=\"hidden\" name=\"update_dados\" value=\"1\">
+            <div class=\"card grande\">
+              <h5 class=\"card-header apelido\">".$resp[$i]["nome"]."<button type=\"button\" class=\"btn botao_modal btn-primary\" data-toggle=\"modal\" data-target=\"#ExemploModalCentralizado\"><i class=\"fa-solid fa-pencil\"></i></button>
+            </h5>
+              <div class=\"card-body body_card\">
+                <p class=\"card-text\">
+                CEP: <span class=\"cep\">".$resp[$i]["cep"]."</span><br>
+                <span class=\"rua\">".$resp[$i]["rua"].",</span><span class=\"numero\"> ".$resp[$i]["numero"]."</span><br>
+                <span class=\"bairro\">".$resp[$i]["bairro"].", </span><span class=\"cidade\">".$resp[$i]["cidade"]." - </span><span class=\"estado\">".$resp[$i]["estado"]."</span>
+                </p>
+              </div>
+            </div>
+            </table>
+            </form>";
+        }}
+?>
 
-    <form action="../controller/controller_client.php" id="divform"name="update" method="post">
-        <input type="hidden" name="update_dados" value="1">
-        
-   <p id="title">Endereços</p>
-<table>
-<div class="card grande">
-  <h5 class="card-header apelido">Casa <button type="button" class="btn botao_modal btn-primary" data-toggle="modal" data-target="#ExemploModalCentralizado"><i class="fa-solid fa-pencil"></i></button>
-</h5>
-  <div class="card-body body_card">
-    <p class="card-text">
-    CEP: <span class="cep">04652150</span><br>
-    <span class="rua">Rua Damásio Rodrigues Gomes,</span><span class="numero"> 54</span><br>
-    <span class="bairro">Jardim Cidália, </span><span class="cidade">São Paulo - </span><span class="estado">SP</span>
-    </p>
-  </div>
-</div>
-</table>
-</form>
+    
+
+   
                   
                   
                     </div>
