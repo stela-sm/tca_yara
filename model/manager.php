@@ -168,27 +168,27 @@ function userNew($dados){ //função pra criar user
 function buscar_endereco($id){
     require "conexao.php";
     $sql = "SELECT * FROM endereco WHERE id_cliente='$id'";
-    $result=$conn->query($sql); 
-   
-   
+     $result=$conn->query($sql); 
+
     if($result->num_rows > 0){
 
         $num = $result ->num_rows;
         $dados=array();
         $dados["result"] = 1;
         $dados["num"]=$num;
-        $i=1;
+        $i=0;
         while($row=$result->fetch_assoc()){
-            $dados[$i]["id"] = $row[$i]["ID_ENDERECO"];
-            $dados[$i]["id_cliente"] = $row[$i]["id_cliente"];
-            $dados[$i]["cep"] = $row[$i]["cep"];
-            $dados[$i]["estado"] = $row[$i]["estado"];
-            $dados[$i]["cidade"] = $row[$i]["cidade"];
-            $dados[$i]["bairro"] = $row[$i]["bairro"];
-            $dados[$i]["rua"] = $row[$i]["rua"];
-            $dados[$i]["bloco"] = $row[$i]["bloco"];
-            $dados[$i]["nome"] = $row[$i]["nome"];
-            
+            $dados[$i]["id"] =          $row["ID_ENDERECO"];
+            $dados[$i]["id_cliente"] =  $row["id_cliente"];
+            $dados[$i]["cep"] =         $row["cep"];
+            $dados[$i]["estado"] =      $row["estado"];
+            $dados[$i]["cidade"] =      $row["cidade"];
+            $dados[$i]["bairro"] =      $row["bairro"];
+            $dados[$i]["numero"] =      $row["numero"];
+            $dados[$i]["rua"] =         $row["rua"];
+            $dados[$i]["bloco"] =       $row["bloco"];
+            $dados[$i]["nome"] =        $row["nome"];
+         $i++;
         }
         $conn->close();
         return $dados;

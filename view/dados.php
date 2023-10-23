@@ -1,4 +1,4 @@
-<html lang="en">
+
     
 <head>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
@@ -24,13 +24,12 @@
     </style>
    
    <p id="title">Meu perfil</p>
-   <!DOCTYPE html>
-<html>
-<head>
+   
     <style>
         body{
             padding-top: 1.5em;
             font-family: 'Questrial';
+            max-width: 100%;
         }
         table {
             border-collapse: collapse;
@@ -79,8 +78,7 @@ padding: 10px;
 opacity: 0.7;
 }
     </style>
-</head>
-<body>
+
     <?php
 session_start();
     
@@ -112,8 +110,6 @@ session_start();
     </tr>
 </table>
 </form>
-</body>
-</html>
 <script>
     function active(num){
         var ipt = document.getElementById("ipt"+num)

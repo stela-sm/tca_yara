@@ -39,6 +39,9 @@
     </head>
     <body>
         <style>
+            body{
+               max-width: 100vw;
+            }
             :root {
                 --white: #f9f9f9;
                 --green: #1A3D1F;
@@ -59,7 +62,7 @@
                 border-radius: 50%;
                 cursor: pointer;
             }
-            .col-12 {
+            .col-6 {
                 padding: 3%;
                 margin: 10% 0 0;
                 position: absolute;
@@ -124,7 +127,7 @@
             </div>
             <div class="container">
                 <div class="row">
-                    <div class="col-12">
+                    <div class="col-6">
                         <input type="file" name="pfp" id="pfp">
                         <div class="row">
                             <label for="pfp"><img
@@ -164,6 +167,10 @@
                   
                   
     <style>
+        #iframe_perfil{
+            max-width: 100%;
+            
+        }
         table {
             border-collapse: collapse;
             width: 100%;
@@ -197,7 +204,7 @@
             text-transform: uppercase;
             margin-top: 0.8cm;
         }
-        #divform{
+        .divform{
             margin-left: 5%;
             
             font-family: 'Questrial';
@@ -242,7 +249,7 @@ font-size: 0.9em;
 }
 
 .botao_modal, .botao_modal:hover, .botao_modal:focus{
-margin-left: 77%;
+
 margin-top: -0.5%;
 position: absolute;
 width: 1cm;
@@ -253,8 +260,11 @@ border: none !important;
 box-shadow: none !important;
 }
 .card-text{
-
+font-size: 1.1em;
     line-height: 2em;
+}
+.card,#title{
+    display: none !important;
 }
     </style>
 </head>
@@ -287,14 +297,15 @@ box-shadow: none !important;
 $_SESSION["USER-ID"] = "1";
 require "../model/manager.php";
 $resp = buscar_endereco($_SESSION["USER-ID"]);
+
 if($resp["result"] == 0){ echo ""; }else{ 
 
         for($i=0;$i<$resp["num"];$i++){
             echo
 
 
-           "<table>
-            <form action=\"../controller/controller_client.php\" id=\"divform\"name=\"update\" method=\"post\">
+           "<table class=\"invisivel\" style=\"display:none\">
+            <form action=\"../controller/controller_client.php\" class=\"divform\"name=\"update\" method=\"post\">
                     <input type=\"hidden\" name=\"update_dados\" value=\"1\">
             <div class=\"card grande\">
               <h5 class=\"card-header apelido\">".$resp[$i]["nome"]."<button type=\"button\" class=\"btn botao_modal btn-primary\" data-toggle=\"modal\" data-target=\"#ExemploModalCentralizado\"><i class=\"fa-solid fa-pencil\"></i></button>
@@ -308,7 +319,8 @@ if($resp["result"] == 0){ echo ""; }else{
               </div>
             </div>
             </table>
-            </form>";
+            </form>
+            <br>";
         }}
 ?>
 
@@ -344,7 +356,7 @@ if($resp["result"] == 0){ echo ""; }else{
     
          function endereco(id){
             var iframe = document.getElementById("iframe_perfil")
-            var div = document.getElementById("divform")
+            var div = document.getElementsByClassName("card")
        if(id=="0"){ 
         iframe.style.display = "none"
         div.style.display = "block"
