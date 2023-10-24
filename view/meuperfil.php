@@ -8,6 +8,8 @@
     }else{
     ?>
     <head>
+        
+<script src="js/cep_ajax.js"></script>
         <link
             rel="stylesheet"
             href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
@@ -263,9 +265,6 @@ box-shadow: none !important;
 font-size: 1.1em;
     line-height: 2em;
 }
-.card,#title{
-    display: none !important;
-}
     </style>
 </head>
 <body>
@@ -304,11 +303,11 @@ if($resp["result"] == 0){ echo ""; }else{
             echo
 
 
-           "<table class=\"invisivel\" style=\"display:none\">
+           "<table class=\"invisivel\">
             <form action=\"../controller/controller_client.php\" class=\"divform\"name=\"update\" method=\"post\">
                     <input type=\"hidden\" name=\"update_dados\" value=\"1\">
             <div class=\"card grande\">
-              <h5 class=\"card-header apelido\">".$resp[$i]["nome"]."<button type=\"button\" class=\"btn botao_modal btn-primary\" data-toggle=\"modal\" data-target=\"#ExemploModalCentralizado\"><i class=\"fa-solid fa-pencil\"></i></button>
+              <h5 class=\"card-header apelido\">".$resp[$i]["nome"]."<button type=\"button\" class=\"btn botao_modal btn-primary\" data-toggle=\"modal\" data-target=\"#modal".$resp[$i]["id"]."\"><i class=\"fa-solid fa-pencil\"></i></button>
             </h5>
               <div class=\"card-body body_card\">
                 <p class=\"card-text\">
@@ -321,6 +320,56 @@ if($resp["result"] == 0){ echo ""; }else{
             </table>
             </form>
             <br>";
+
+
+            ECHO "
+            <div class=\"modal fade\" id=\"modal".$resp[$i]["id"]."\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"TituloModalCentralizado\" aria-hidden=\"true\">
+              <div class=\"modal-dialog modal-lg modal-dialog-centered\" role=\"document\">
+                <div class=\"modal-content\">
+                  <div class=\"modal-header\">
+                    <h5 class=\"modal-title\" id=\"TituloModalCentralizado\"><input type=\"text\" id=\"apelido".$resp[$i]["id"]."\" class=\"input_apelido\"disabled  ondblclick=\"active(".$resp[$i]["id"].")\" value=\"".$resp[$i]["nome"]."\"></h5>
+                    <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Fechar\" onclick=\"limpa()\">
+                      <span aria-hidden=\"true\">&times;</span>
+                    </button>
+                  </div>
+                  <form id=\"endereco_edit\" action=\"../controller/controller_client.php\" method=\"post\">
+                  <input type=\"hidden\" name=\"endereco_edit\" value=\"".$resp[$i]["id"]."\">
+                  <div class=\"modal-body\">
+                  <table class=\"table_modal\">
+                   
+                    <tr>
+                        <td>CEP:</td>
+                        <td><input type=\"text\" name=\"cep\" onblur=\"buscaCep();\" onfocus=\"change(".$resp[$i]["id"].")\" id=\"cep".$resp[$i]["id"]."\" value=".$resp[$i]["cep"]." class=\"input_padrao \"></td>
+                        <td>Rua:</td>
+                        <td><input type=\"text\" name=\"rua\" id=\"rua".$resp[$i]["id"]."\" value=\"".$resp[$i]["rua"]."\" readonly class=\"input_padrao input2\"></td>
+                    </tr>
+                    <tr>
+                        <td>Número:</td>
+                        <td><input type=\"text\" name=\"numero\" value=".$resp[$i]["numero"]." class=\"input_padrao\"></td>
+                        <td>Bairro:</td>
+                        <td><input type=\"text\" name=\"bairro\" id=\"bairro".$resp[$i]["id"]."\" value=".$resp[$i]["bairro"]." readonly class=\"input_padrao input2 \"></td>
+                    </tr>
+                    <tr>
+                        <td>Bloco:</td>
+                        <td><input type=\"text\" name=\"bloco\" value=".$resp[$i]["bloco"]." class=\"input_padrao\"></td>
+                        <td>Cidade:</td>
+                        <td><input type=\"text\" name=\"cidade\" readonly  id=\"cidade".$resp[$i]["id"]."\" value=\"".$resp[$i]["cidade"]."\" class=\"input_padrao input2 \"></td>
+                    </tr>
+                    <tr>
+                        <td>Apto:</td>
+                        <td><input type=\"text\" name=\"apto\"  class=\"input_padrao\" value=".$resp[$i]["apto"]."></td>
+                        <td>Estado:</td>
+                        <td><input type=\"text\" name=\"estado\" readonly id=\"estado".$resp[$i]["id"]."\" value=\"".$resp[$i]["estado"]."\" class=\"input_padrao input2 \"></td>
+                    </tr>
+                </table>
+                  </div>
+                  <div class=\"modal-footer\">
+                    <button type=\"submit\" class=\"salvar\">Salvar mudanças</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            </form>";
         }}
 ?>
 
@@ -342,14 +391,31 @@ if($resp["result"] == 0){ echo ""; }else{
 
 
 
+    
 
 
 
     <script>
+        function change(id){
+          var cep =  document.getElementById("cep"+id);
+          var rua = document.getElementById("rua"+id);
+          var bairro = document.getElementById("bairro"+id);
+          var cidade = document.getElementById("cidade"+id);
+          var estado = document.getElementById("estado"+id);
+          
+          cep.id = "input-cep"
+          rua.id = "input-rua";
+          bairro.id = "input-bairro";
+          cidade.id = "input-cidade";
+          estado.id = "input-estado";
+
+
+        }
         function definirSrcDoIframe() {
             var iframe = document.getElementById("iframe_perfil");
-            
+            var tabela = document.getElementsByClassName("grande");
             iframe.src = "dados.php"; 
+            tabela.style.display="none !important";
         }
 
         document.addEventListener("DOMContentLoaded", definirSrcDoIframe);
@@ -375,53 +441,7 @@ if($resp["result"] == 0){ echo ""; }else{
     </script>
     
 
-<!-- Modal -->
-<div class="modal fade" id="ExemploModalCentralizado" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado" aria-hidden="true">
-  <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="TituloModalCentralizado"><input type="text" id="apelido1" class="input_apelido"disabled  ondblclick="active(1)" value="Casa"></h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <form action="">
-      <div class="modal-body">
-      <table class="table_modal">
-       
-        <tr>
-            <td>CEP:</td>
-            <td><input type="text" value="" class="input_padrao"></td>
-            <td>Rua:</td>
-            <td><input type="text" value="" disabled class="input_padrao input2"></td>
-        </tr>
-        <tr>
-            <td>Número:</td>
-            <td><input type="text" value="" class="input_padrao"></td>
-            <td>Bairro:</td>
-            <td><input type="text" value="" disabled class="input_padrao input2"></td>
-        </tr>
-        <tr>
-            <td>Bloco:</td>
-            <td><input type="text" value="" class="input_padrao"></td>
-            <td>Cidade:</td>
-            <td><input type="text"disabled value=""class="input_padrao input2"></td>
-        </tr>
-        <tr>
-            <td>Apto:</td>
-            <td><input type="text" class="input_padrao" value=""></td>
-            <td>Estado:</td>
-            <td><input type="text" disabled value="" class="input_padrao input2"></td>
-        </tr>
-    </table>
-      </div>
-      <div class="modal-footer">
-        <button type="submit" class="salvar">Salvar mudanças</button>
-      </div>
-    </div>
-  </div>
-</div>
-</form>
+<
 <style>
     .modal-footer{
         justify-content: center;
@@ -435,8 +455,11 @@ if($resp["result"] == 0){ echo ""; }else{
 
     }
     
-    .input2{
+    .input2, .input2:active{
         width: 100%;
+        opacity: 0.5;
+        outline: none;
+
     }
     .modal{
         font-family: 'Questrial';
@@ -473,5 +496,13 @@ if($resp["result"] == 0){ echo ""; }else{
         border-radius: 20px !important;
     }
 </style>
+<?php
+if(isset($_REQUEST["msg"])){
+	$cod = $_REQUEST["msg"];
+	require_once "../model/msg.php";
+	echo "<script>alert('" . $MSG[$cod] . "');</script>";
+    unset($cod);
+}
+?>
 </html>
 <?php } ?>

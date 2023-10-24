@@ -186,6 +186,7 @@ function buscar_endereco($id){
             $dados[$i]["bairro"] =      $row["bairro"];
             $dados[$i]["numero"] =      $row["numero"];
             $dados[$i]["rua"] =         $row["rua"];
+            $dados[$i]["apto"] =         $row["apto"];
             $dados[$i]["bloco"] =       $row["bloco"];
             $dados[$i]["nome"] =        $row["nome"];
          $i++;
@@ -200,4 +201,38 @@ function buscar_endereco($id){
         }
 
 
-?>
+
+
+
+        function clienteEdit($dados){
+            require "conexao.php";
+            $query = "CALL CheckEmailCPF(' {$dados["email"]}',  '{$dados["cpf"]}', @result, @user_id)";
+            $conn->query($query);
+        
+        // Obtém o resultado da procedure
+        $resultQuery = $conn->query("SELECT @result as result, @user_id as id");
+        $row = $resultQuery->fetch_assoc();
+        $result = $row['result'];
+        
+        // Cria uma condição com base no resultado
+        if ($result != 0 && $row['id']!=$dados['id']) {
+            $conn->close();
+                return 2;
+            
+        } else {
+           
+                    $sql= "UPDATE cliente SET nome = '{$dados['nome']}', email = '{$dados['email']}', cpf = {$dados['cpf']}, celular = {$dados['telefone']},  datahora = now() WHERE ID_CLIENTE = '{$dados['id']}'";
+        
+            $result = $conn->query($sql);
+            if($result == true){
+                $conn->close();
+                return 1;
+            }    else{
+                $conn->close();
+                return 0;
+            }
+        
+        
+        }}
+        
+        ?>

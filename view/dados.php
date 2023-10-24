@@ -50,9 +50,10 @@
             border: none;
             box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
             padding: 10px;
-            width: 50%;
+            width: 80%;
             margin-right: 3em;
             border-radius: 5px;
+            transition: 0.2s;
         }
         .label{
             color:var(--green);
@@ -73,7 +74,7 @@
     outline: none !important;
     cursor: pointer;
     font-weight: bold;
-    width: 60%;
+    width: 85%;
 padding: 10px;        
 opacity: 0.7;
 }
@@ -82,40 +83,81 @@ opacity: 0.7;
     <?php
 session_start();
     
+$_SESSION['id'] = "1";
     $_SESSION['nome'] = "Laura Barbara Cruz";
     $_SESSION['telefone'] = "11963220905";
     $_SESSION['cpf'] = "40527647810";
     $_SESSION['email'] = "laura@gmail.com";?>
-    <form action="../controller/controller_client.php" name="update" method="post">
-        <input type="hidden" name="update_dados" value="1">
+    <form action="../controller/controller_client.php" name="update"id="meuForm" method="post">
+        <input type="hidden" name="update_dados" value="<?php echo $_SESSION['id'] ?>">
 <table>
     <tr>
         <td class="label">Nome Completo</td>
-        <td><input type="text" name="nome" id="ipt1" class="input_perfil" disabled ondblclick="active(1)"  value="<?php echo $_SESSION['nome'] ?>"></td>
+        <td><input type="text" name="nome" id="ipt1" class="input_perfil"  ondblclick="active(1)"  value="<?php echo $_SESSION['nome'] ?>"></td>
     </tr>
     <tr>
         <td class="label">CPF</td>
-        <td><input type="text" name="nome" id="ipt2" class="input_perfil" disabled ondblclick="active(2)"  value="<?php echo $_SESSION['cpf']?>"></td>
+        <td><input type="text" name="cpf" id="ipt2" class="input_perfil"  ondblclick="active(2)"  value="<?php echo $_SESSION['cpf']?>"></td>
     </tr>
     <tr>
         <td class="label"> Email</td>
-        <td><input type="text" name="nome" id="ipt3" class="input_perfil" disabled ondblclick="active(3)"  value="<?php echo $_SESSION['email']?>"></td>
+        <td><input type="text" name="email" id="ipt3" class="input_perfil" ondblclick="active(3)"  value="<?php echo $_SESSION['email']?>"></td>
     </tr>
     <tr>
         <td class="label">Número de telefone</td>
-        <td><input type="text" name="nome" id="ipt4" class="input_perfil" disabled ondblclick="active(4)" value="<?php echo $_SESSION['telefone']?>"></td>
+        <td><input type="text" name="telefone" id="ipt4" class="input_perfil"  ondblclick="active(4)" value="<?php echo $_SESSION['telefone']?>"></td>
     </tr>
     <tr>
-        <td id="last"colspan="2"><button type="submit" class="submit">Salvar</button></td>
+        <td id="last"colspan="2"><button type="submit" onclick="verificarAlteracoes(event)"class="submit">Salvar</button></td>
     </tr>
 </table>
 </form>
 <script>
     function active(num){
         var ipt = document.getElementById("ipt"+num)
-        ipt.disabled = false;
+        ipt.readOnly = false;
+        ipt.style.backgroundColor = "#eee";
+        ipt.style.opacity="1.0";
+    }
+   
 
+
+    const campo1 = document.getElementById("ipt1");
+      const campo2 = document.getElementById("ipt2");
+      const campo3 = document.getElementById("ipt3");
+      const campo4 = document.getElementById("ipt4");
+
+      campo1.readOnly = true; // Define o campo como somente leitura
+      campo2.readOnly = true;
+      campo3.readOnly = true;
+      campo4.readOnly = true;
+
+      campo1.style.opacity="0.6";
+      campo2.style.opacity="0.6";
+      campo3.style.opacity="0.6";
+      campo4.style.opacity="0.6";
+    
+      // Armazene os valores iniciais dos campos
+      const valorInicialCampo1 = campo1.value;
+      const valorInicialCampo2 = campo2.value;
+      const valorInicialCampo3 = campo3.value;
+      const valorInicialCampo4 = campo4.value;
+
+    function verificarAlteracoes(event) {
+      // Verifique se os valores foram alterados
+      if (campo1.value === valorInicialCampo1 && campo2.value === valorInicialCampo2 && campo3.value === valorInicialCampo3 && campo4.value === valorInicialCampo4) {
+        alert("Nenhum campo foi alterado.");
+        event.preventDefault(); // Impede o envio do formulário
+      }
     }
 </script>
+<?php
+if(isset($_REQUEST["msg"])){
+	$cod = $_REQUEST["msg"];
+	require_once "../model/msg.php";
+	echo "<script>alert('" . $MSG[$cod] . "');</script>";
+    unset($cod);
+}
+?>
 </body>
 </html>

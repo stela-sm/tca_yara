@@ -153,5 +153,68 @@ else{ //se o emial é repetido
 
 
 
+// update usuario -------------------------------------------------------------------------------
+
+if (isset($_REQUEST["update_dados"]) || isset($_SESSION["USER-NAME"])){    
+
+        
+    $dados["id"] = $_REQUEST["update_dados"];
+    $dados["nome"] = $_REQUEST["nome"];
+    $dados["email"] = $_REQUEST["email"];
+    $dados["telefone"] = $_REQUEST["telefone"];
+    $dados["cpf"] = $_REQUEST["cpf"];
+    require_once "../model/ferramentas.php";
+    $valida = validaCPF($_REQUEST["cpf"]);
+    if($valida==0){
+        ?>
+        <form action="../view/dados.php" name="form" id="myForm" method="POST">
+        <input type="hidden" name="msg" value="FR26">  <!--""BD02" => "Erro ao criar registro.",-->
+        </form> <!--envia um formulario com a variavel "msg", que é o código da mensagem de erro (ver view/msg.php)--> 
+        <script>
+        document.getElementById('myForm').submit();//envio automático submit()
+        </script>
+        <?php  
+    }else{
+    require_once "../model/manager.php";
+    $resp=clienteEdit($dados);
+    if($resp==1){ //tudo certo
+        ?>
+        <form action="../view/dados.php" name="form" id="myForm" method="POST">
+        <input type="hidden" name="msg" value="BD50">  <!--"BD50" => "Operação realizada com sucesso.",-->
+        </form> <!--envia um formulario com a variavel "msg", que é o código da mensagem de erro (ver view/msg.php)--> 
+        <script>
+        document.getElementById('myForm').submit();//envio automático submit()
+        </script>
+
+
+
+        <?php  
+    }else if($resp==0){//erro
+        ?>
+        <form action="../view/dados.php" name="form" id="myForm" method="POST">
+        <input type="hidden" name="msg" value="BD02">  <!--""BD02" => "Erro ao criar registro.",-->
+        </form> <!--envia um formulario com a variavel "msg", que é o código da mensagem de erro (ver view/msg.php)--> 
+        <script>
+        document.getElementById('myForm').submit();//envio automático submit()
+        </script>
+        <?php  
+        
+    }else if($resp==2){?>
+        <form action="../view/dados.php" name="form" id="myForm" method="POST">
+        <input type="hidden" name="msg" value="FR27">  <!--""BD02" => "Erro ao criar registro.",-->
+        </form> <!--envia um formulario com a variavel "msg", que é o código da mensagem de erro (ver view/msg.php)--> 
+        <script>
+        document.getElementById('myForm').submit();//envio automático submit()
+        </script>
+        <?php  
+        
+    }
+}
+}
+
+if (isset($_REQUEST["endereco_edit"]) || isset($_SESSION["USER-NAME"])){ 
+    
+}
+
 
 ?>
