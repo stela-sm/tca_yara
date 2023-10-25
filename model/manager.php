@@ -238,23 +238,13 @@ function buscar_endereco($id){
 
         function enderecoEdit($dados){
             require "conexao.php";
-            $query = "CALL VerificarEndereco(' {$dados["cep"]}',  '{$dados["cliente"]}', @result)";
-            $conn->query($query);
-        
-        // Obtém o resultado da procedure
-        $resultQuery = $conn->query("SELECT @result as result");
-        $row = $resultQuery->fetch_assoc();
-        $result = $row['result'];
-        
-        // Cria uma condição com base no resultado
-        if ($result == 0) {
-            $conn->close();
-                return 2;
-            
-        } else {
-           
+            if ($dados['numero']=="0") {$dados['numero'] = null;};
+            if ($dados['apto']=="0") {$dados['apto'] = null;};
+            if ($dados['bloco']=="0") {$dados['bloco'] = null;};
+
+
             $sql = "UPDATE endereco SET cep = '{$dados["cep"]}', estado = '{$dados["estado"]}', cidade = '{$dados["cidade"]}', 
-            bairro = '{$dados["bairro"]}', rua = '{$dados["rua"]}', bloco = '{$dados["bloco"]}', apto = '{$dados["apto"]}',numero = '{$dados["numero"]}', datahora = 'now()' WHERE ID_ENDERECO = {$dados["id"]}";
+            bairro = '{$dados["bairro"]}', rua = '{$dados["rua"]}',nome = '{$dados["nome"]}', bloco = '{$dados["bloco"]}', apto = '{$dados["apto"]}',numero = '{$dados["numero"]}', datahora = 'now()' WHERE ID_ENDERECO = {$dados["id"]}";
         
             $result = $conn->query($sql);
             if($result == true){
@@ -266,6 +256,25 @@ function buscar_endereco($id){
             }
         
         
-        }}
+        }
+        function enderecoNew($dados){
+            require "conexao.php";
+            if ($dados['numero']=="0") {$dados['numero'] = null;};
+            if ($dados['apto']=="0") {$dados['apto'] = null;};
+            if ($dados['bloco']=="0") {$dados['bloco'] = null;};
+
+            $sql = "INSERT INTO endereco (cep,estado,cidade,bairro,rua,bloco,apto,numero,id_cliente,datahora,nome) VALUES ('{$dados["cep"]}','{$dados["estado"]}','{$dados["cidade"]}','{$dados["bairro"]}', '{$dados["rua"]}','{$dados["bloco"]}', '{$dados["apto"]}', '{$dados["numero"]}', '1', 'now()','{$dados["nome"]}')";
+        
+            $result = $conn->query($sql);
+            if($result == true){
+                $conn->close();
+                return 1;
+            }    else{
+                $conn->close();
+                return 0;
+            }
+        
+        
+        }
         
         ?>

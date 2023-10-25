@@ -291,7 +291,7 @@ font-size: 1.1em;
 
 
 
-<p id="title">Endereços</p>
+<p id="title">Endereços <button type="button" class="btn botao_modal btn-primary" data-toggle="modal" data-target="#novo_endereco"><i class="fa-solid fa-plus"></i></button></p>
 <?php
 $_SESSION["USER-ID"] = "1";
 require "../model/manager.php";
@@ -312,7 +312,7 @@ if($resp["result"] == 0){ echo ""; }else{
               <div class=\"card-body body_card\">
                 <p class=\"card-text\">
                 CEP: <span class=\"cep\">".$resp[$i]["cep"]."</span><br>
-                <span class=\"rua\">".$resp[$i]["rua"].",</span><span class=\"numero\"> ".$resp[$i]["numero"]."</span><br>
+                <span class=\"rua\">".$resp[$i]["rua"].",</span><span class=\"numero\"> "; if (isset($resp[$i]["numero"])){echo 'nº'.$resp[$i]["numero"].", ";} if (isset($resp[$i]["bloco"])){echo 'b.'.$resp[$i]["bloco"].", ";} if (isset($resp[$i]["apto"])){echo 'apto.'.$resp[$i]["apto"].", ";} echo "</span><br>
                 <span class=\"bairro\">".$resp[$i]["bairro"].", </span><span class=\"cidade\">".$resp[$i]["cidade"]." - </span><span class=\"estado\">".$resp[$i]["estado"]."</span>
                 </p>
               </div>
@@ -323,16 +323,17 @@ if($resp["result"] == 0){ echo ""; }else{
 
 
             ECHO "
+            <form id=\"endereco_edit\" action=\"../controller/controller_client.php\" method=\"post\">
             <div class=\"modal fade\" id=\"modal".$resp[$i]["id"]."\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"TituloModalCentralizado\" aria-hidden=\"true\">
               <div class=\"modal-dialog modal-lg modal-dialog-centered\" role=\"document\">
                 <div class=\"modal-content\">
                   <div class=\"modal-header\">
-                    <h5 class=\"modal-title\" id=\"TituloModalCentralizado\"><input type=\"text\" id=\"apelido".$resp[$i]["id"]."\" class=\"input_apelido\"disabled  ondblclick=\"active(".$resp[$i]["id"].")\" value=\"".$resp[$i]["nome"]."\"></h5>
-                    <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Fechar\" onclick=\"limpa()\">
+                    <h5 class=\"modal-title\" id=\"TituloModalCentralizado\"><input type=\"text\" name=\"apelido\" id=\"apelido".$resp[$i]["id"]."\" class=\"input_apelido\" readonly  ondblclick=\"active(".$resp[$i]["id"].")\" value=\"".$resp[$i]["nome"]."\"></h5>
+                    <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Fechar\" onclick=\"limpa('endereco_edit')\">
                       <span aria-hidden=\"true\">&times;</span>
                     </button>
                   </div>
-                  <form id=\"endereco_edit\" action=\"../controller/controller_client.php\" method=\"post\">
+                  
                   <input type=\"hidden\" name=\"endereco_edit\" value=\"".$resp[$i]["id"]."\">
                   <input type=\"hidden\" name=\"id_cliente\" value=\"".$resp[$i]["id_cliente"]."\">
                   <div class=\"modal-body\">
@@ -352,7 +353,7 @@ if($resp["result"] == 0){ echo ""; }else{
                     </tr>
                     <tr>
                         <td>Bloco:</td>
-                        <td><input type=\"text\" name=\"bloco\" value=".$resp[$i]["bloco"]." class=\"input_padrao\"></td>
+                        <td><input type=\"text\" name=\"bloco\" value=\"".$resp[$i]["bloco"]." \"class=\"input_padrao\"></td>
                         <td>Cidade:</td>
                         <td><input type=\"text\" name=\"cidade\" readonly  id=\"cidade".$resp[$i]["id"]."\" value=\"".$resp[$i]["cidade"]."\" class=\"input_padrao input2 \"></td>
                     </tr>
@@ -376,7 +377,52 @@ if($resp["result"] == 0){ echo ""; }else{
 
     
 
-   
+<form id="endereco_new" action="../controller/controller_client.php" method="post">
+<div class="modal fade" id="novo_endereco" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+      <h5 class="modal-title" id="TituloModalCentralizado"><input type="text" id="input-apelido-novo" name="apelido" class="input_apelido" value="Novo Endereço" style="text-decoration:underline;"></h5>
+<button type="button" class="close" data-dismiss="modal" aria-label="Fechar" onclick="limpa('endereco_new')">
+  <span aria-hidden="true">&times;</span>
+</button>
+</div>
+<input type="hidden" name="endereco_new" value="1" placeholder="">
+<input type="hidden" name="id_cliente" placeholder="" value="<?php $_SESSION["USER-ID"] ?>">
+<div class="modal-body">
+<table class="table_modal">
+  <tr>
+    <td>CEP:</td>
+    <td><input type="text" name="cep" onblur="buscaCepN();" id="input-cep-novo" placeholder="" class="input_padrao "></td>
+    <td>Rua:</td>
+    <td><input type="text" name="rua" id="input-rua-novo" placeholder="" readonly class="input_padrao input2"></td>
+  </tr>
+  <tr>
+    <td>Número:</td>
+    <td><input type="text" name="numero" placeholder="" class="input_padrao"></td>
+    <td>Bairro:</td>
+    <td><input type="text" name="bairro" id="input-bairro-novo" placeholder="" readonly class="input_padrao input2 "></td>
+  </tr>
+  <tr>
+    <td>Bloco:</td>
+    <td><input type="text" name="bloco" placeholder="" class="input_padrao"></td>
+    <td>Cidade:</td>
+    <td><input type="text" name="cidade" readonly id="input-cidade-novo" placeholder="" class="input_padrao input2 "></td>
+  </tr>
+  <tr>
+    <td>Apto:</td>
+    <td><input type="text" name="apto" class="input_padrao" placeholder=""></td>
+    <td>Estado:</td>
+    <td><input type="text" name="estado" readonly id="input-estado-novo" placeholder="" class="input_padrao input2 "></td>
+  </tr>
+</table>
+</div>
+<div class="modal-footer">
+                    <button type="submit" class="salvar">Adicionar</button>
+                  </div>
+    </div>
+  </div>
+</div>
                   
                   
                     </div>
@@ -397,6 +443,11 @@ if($resp["result"] == 0){ echo ""; }else{
 
 
     <script>
+        function limpa(id){
+            document.getElementById(id).reset();
+  };
+
+        
         function change(id){
           var cep =  document.getElementById("cep"+id);
           var rua = document.getElementById("rua"+id);
@@ -435,14 +486,15 @@ if($resp["result"] == 0){ echo ""; }else{
         }
         function active(num){
         var ipt = document.getElementById("apelido"+num)
-        ipt.disabled = false;
+        ipt.readOnly = false;
 
     }
+    
 
     </script>
     
 
-<
+
 <style>
     .modal-footer{
         justify-content: center;
@@ -503,7 +555,11 @@ if(isset($_REQUEST["msg"])){
 	require_once "../model/msg.php";
 	echo "<script>alert('" . $MSG[$cod] . "');</script>";
     unset($cod);
+
 }
 ?>
+
+
+
 </html>
 <?php } ?>
