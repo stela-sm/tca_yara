@@ -234,5 +234,38 @@ function buscar_endereco($id){
         
         
         }}
+
+
+        function enderecoEdit($dados){
+            require "conexao.php";
+            $query = "CALL VerificarEndereco(' {$dados["cep"]}',  '{$dados["cliente"]}', @result)";
+            $conn->query($query);
+        
+        // Obtém o resultado da procedure
+        $resultQuery = $conn->query("SELECT @result as result");
+        $row = $resultQuery->fetch_assoc();
+        $result = $row['result'];
+        
+        // Cria uma condição com base no resultado
+        if ($result == 0) {
+            $conn->close();
+                return 2;
+            
+        } else {
+           
+            $sql = "UPDATE endereco SET cep = '{$dados["cep"]}', estado = '{$dados["estado"]}', cidade = '{$dados["cidade"]}', 
+            bairro = '{$dados["bairro"]}', rua = '{$dados["rua"]}', bloco = '{$dados["bloco"]}', apto = '{$dados["apto"]}',numero = '{$dados["numero"]}', datahora = 'now()' WHERE ID_ENDERECO = {$dados["id"]}";
+        
+            $result = $conn->query($sql);
+            if($result == true){
+                $conn->close();
+                return 1;
+            }    else{
+                $conn->close();
+                return 0;
+            }
+        
+        
+        }}
         
         ?>

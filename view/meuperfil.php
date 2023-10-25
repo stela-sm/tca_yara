@@ -334,6 +334,7 @@ if($resp["result"] == 0){ echo ""; }else{
                   </div>
                   <form id=\"endereco_edit\" action=\"../controller/controller_client.php\" method=\"post\">
                   <input type=\"hidden\" name=\"endereco_edit\" value=\"".$resp[$i]["id"]."\">
+                  <input type=\"hidden\" name=\"id_cliente\" value=\"".$resp[$i]["id_cliente"]."\">
                   <div class=\"modal-body\">
                   <table class=\"table_modal\">
                    
