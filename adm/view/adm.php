@@ -40,6 +40,9 @@ atualizarClasseElemento();
 
       </script>
       <style>
+         .navbar-brand:hover{
+               color: white;
+         }
          .responsivo{
             display:none;
          }
@@ -77,7 +80,7 @@ height:0.5em;}
       <header>
          
           <nav class="responsivo navbar navbar-expand-lg navbar-light ">
-          <a class="navbar-brand" href="#" style="color:white">Y.</a>
+          <a class="navbar-brand" href="#" style="color:white !important">Y.</a>
   <button class="navbar-toggler"style="background-color:white"  type="button" data-toggle="collapse" data-target="#textoNavbar" aria-controls="textoNavbar" aria-expanded="false" aria-label="Alterna navegação">
     <span class="navbar-toggler-icon" ></span>
   </button>

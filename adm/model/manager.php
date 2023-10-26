@@ -725,7 +725,7 @@ if ($result != 0 && $row['id']!=$dados['id']) {
 
 
 
-function verificarDados($dados){ //função pro form de editar menu
+function verificarCPF($dados){ //função pro form de editar menu
     require "conexao.php";
     $sql = "SELECT * FROM adm WHERE cpf = {$dados["cpf"]}";
     $result = $conn->query($sql);
@@ -747,9 +747,13 @@ return $dados;
 
 function alteraSenha($dados){ //função pro form de editar menu
     require "conexao.php";
-    $sql = "UPDATE {$dados["tabela"]} SET senha = {$dados["senha"]} WHERE cpf = {$dados["cpf"]}";
-    $result = $conn->query($sql);
-    if($result->num_rows > 0){
+    if ($dados["tabela"]=="adm"){
+    $sql = "UPDATE adm SET senha = '{$dados["senha"]}' WHERE cpf = '{$dados["cpf"]}'";
+    }else{
+    $sql = "UPDATE cliente SET senha = '{$dados["senha"]}' WHERE cpf = '{$dados["cpf"]}'";
+
+    }$result = $conn->query($sql);
+    if($result==true){
         $dados["result"] = 1;
 $conn->close(); 
 return $dados;

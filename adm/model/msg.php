@@ -66,6 +66,7 @@ $MSG = array(
 	"FR25" => "Caracteres não identificados.",
     "FR26" => "CPF inválido, tente novamente.",
     "FR27" => "Usuário já existente, verifique os dados inseridos.",
+    "FR28" => "Código inválido",
 
     // 50 A 99 SUCESSOS
     "FR50" => "Formulário enviado com sucesso.",

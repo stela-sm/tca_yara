@@ -160,7 +160,7 @@ body {
     
 <form action="../model/mail.php" method="post" class="form ">
 
-    <input type="hidden" name="verif_tel" id="verif_tel" value="1">
+  <input type="hidden" name="verif_tel" id="verif_tel" value="1">
   <tr>
   <td class="text" id="firstline" colspan="3">Bem vindo à área de alteração de senhas! Por favor, informe qual o tipo do usuário que deseja alterar a senha, seu CPF e seu número de telefone. </td>
   </tr>
@@ -179,7 +179,7 @@ body {
                   <input type="text" name="cpf" id="" placeholder="Ex. 12345678910" required class="input">
     </td>
     <td class="padding second-column">
-    <label for="nome" class="label">Telefone celular </label>
+    <label for="nome" class="label">Telefone celular</label>
                   <br>
                   <input type="text" name="celular" id="" placeholder="Ex. 12345678910" required class="input">
    
@@ -194,10 +194,17 @@ body {
 
 
 
-  <?php } else if (isset($_REQUEST["fase"]) && ($_REQUEST["fase"]==1)){  ?>
+  <?php } else if (isset($_REQUEST["fase"]) && ($_REQUEST["fase"]==1)){
+    $cel = $_REQUEST["cel"]; 
+    $cpf = $_REQUEST["cpf"]; 
+    $tabela = $_REQUEST["tabela"]; ?>
   <form action="../controller/controller_senha.php" method="post">
 
-    <input type="hidden" name="verif_cod" id="verif_cod" value="<?php echo $_REQUEST["id"]?>">
+  <input type="hidden" name="cpf" id="cpf" value="<?php echo $_REQUEST["cpf"]?>">
+  <input type="hidden" name="tabela" id="tabela" value="<?php echo $_REQUEST["tabela"]?>">
+  <input type="hidden" name="verif_cod" id="verif_cod" value="<?php echo $_REQUEST["id"]?>">
+    <input type="hidden" name="cel" id="cel" value="<?php echo $_REQUEST["cel"]?>">
+
     <tr>
   <td class="text" id="firstline" colspan="1">Agora, confirme o código enviado para seu Whatsapp <a id="cel" onclick="recomecar()"><?php echo $_REQUEST["cel"] ?></a></td>
   </tr>
@@ -212,14 +219,19 @@ body {
    
   </tr>
   <tr>
-    <td class="second-column" colspan="2"><a class="cancelar">Reenviar</a></td>
+  <td class="second-column" colspan="2"><a href="../model/mailget.php?celular=<?=$cel;?>&cpf=<?=$cpf;?>&tabela=<?=$tabela;?>" class="cancelar">Reenviar</a></td>
+
     <td class="first-column"> <button type="submit" class="adicionar">Confirmar</button></td>
   </tr>
   
   </form>
 
   <?php  } if (isset($_REQUEST["fase"]) && ($_REQUEST["fase"]==2)){ ?>
+    <form action="../controller/controller_senha.php" method="post">
   
+   
+  <input type="hidden" name="cpf" id="cpf" value="<?php echo $_REQUEST["cpf"]?>">
+  <input type="hidden" name="tabela" id="tabela" value="<?php echo $_REQUEST["tabela"]?>">
     <input type="hidden" name="senha_edit" id="senha_edit" value="1">
     <tr>
   <td class="text" id="firstline" colspan="2">Insira a nova senha, e pronto!</td>
@@ -230,12 +242,12 @@ body {
   <td class="padding third-column">
     <label for="nome" class="label">Nova senha</label>
                   <br>
-                  <input type="text" name="nome" id="" placeholder="Ex. 12345678910" required class="input">
+                  <input type="text" name="senha" id="" placeholder="Ex. 12345678910" required class="input">
     </td>
     <td class="padding second-column">
     <label for="nome" class="label">Confirme a nova senha</label>
                   <br>
-                  <input type="text" name="nome" id="" placeholder="Ex. 12345678910" required class="input">
+                  <input type="text" name="senha2" id="" placeholder="Ex. 12345678910" required class="input">
    
     </td>
    

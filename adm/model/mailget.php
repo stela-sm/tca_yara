@@ -1,18 +1,6 @@
 <?php
 
-if(isset($_REQUEST["verif_tel"])){ 
-$valor = $_REQUEST["celular"];
-   $valor = str_replace([' ', '-'], '', $valor);
-    if (is_numeric($valor) && strlen($valor) == 11) {
-        
-    
-  $dados["tabela"] = $_REQUEST["tabela"];
-  $dados["celular"] = $_REQUEST["celular"];
-  $dados["cpf"] = $_REQUEST["cpf"];
-  require 'manager.php';
-  $resp=verificarCPF($dados);
-  if($resp["result"]==1){ //tudo certo
-    
+    require 'manager.php';
 function gerarCodigoVerificacao($tamanho = 6) {
   $caracteres = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
   $codigo = '';
@@ -26,8 +14,11 @@ function gerarCodigoVerificacao($tamanho = 6) {
 
 $codigoVerificacao = gerarCodigoVerificacao(6);
 
+
 $codigoverif="Olá, seu código de verificação é ".$codigoVerificacao." , válido por 5 minutos.";
-$cel = $_POST["celular"];
+
+
+$cel = $_REQUEST["celular"];
 
 $params=array(
 'token' => 'kwyiyiznivdl6388',
@@ -83,26 +74,4 @@ if ($err) {
   </script>
   <?php  
 }
-      
-}else{//erro
-    ?>
-    <form action="../view/senhas.php" name="form" id="myForm" method="POST">
-    <input type="hidden" name="msg" value="FR08">  <!--""BD02" => "Erro ao criar registro.",-->
-    </form> <!--envia um formulario com a variavel "msg", que é o código da mensagem de erro (ver view/msg.php)--> 
-    <script>
-    document.getElementById('myForm').submit();//envio automático submit()
-    </script>
-    <?php  
-    
-}
-} else {
-  ?>
-  <form action="../view/senhas.php" name="form" id="myForm" method="POST">
-  <input type="hidden" name="msg" value="FR02">  <!--""BD02" => "Erro ao criar registro.",-->
-  </form> <!--envia um formulario com a variavel "msg", que é o código da mensagem de erro (ver view/msg.php)--> 
-  <script>
-  document.getElementById('myForm').submit();//envio automático submit()
-  </script>
-  <?php  
-}}
-?>
+      ?>

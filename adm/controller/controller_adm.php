@@ -185,7 +185,7 @@ if(isset($_REQUEST["adm_new"])){ //se vier do admNew (criar adm)
     $valida = validaCPF($_REQUEST["cpf"]);
     if($valida==0){
         ?>
-        <form action="../view/adm_list.php" name="form" id="myForm" method="POST">
+        <form action="../view/adm_list.php?campo=" name="form" id="myForm" method="POST">
         <input type="hidden" name="msg" value="FR26">  <!--""BD02" => "Erro ao criar registro.",-->
         </form> <!--envia um formulario com a variavel "msg", que é o código da mensagem de erro (ver view/msg.php)--> 
         <script>
@@ -198,7 +198,7 @@ if(isset($_REQUEST["adm_new"])){ //se vier do admNew (criar adm)
     $resp=admNew($dados);
     if($resp==1){ //tudo certo
         ?>
-        <form action="../view/adm_list.php" name="form" id="myForm" method="POST">
+        <form action="../view/adm_list.php?campo=" name="form" id="myForm" method="POST">
         <input type="hidden" name="msg" value="BD50">  <!--"BD50" => "Operação realizada com sucesso.",-->
         </form> <!--envia um formulario com a variavel "msg", que é o código da mensagem de erro (ver view/msg.php)--> 
         <script>
@@ -206,7 +206,7 @@ if(isset($_REQUEST["adm_new"])){ //se vier do admNew (criar adm)
         </script>
         <?php  
     }else if($resp==0){?>
-        <form action="../view/adm_list.php" name="form" id="myForm" method="POST">
+        <form action="../view/adm_list.php?campo=" name="form" id="myForm" method="POST">
         <input type="hidden" name="msg" value="BD02">  <!--""BD02" => "Erro ao criar registro.",-->
         </form> <!--envia um formulario com a variavel "msg", que é o código da mensagem de erro (ver view/msg.php)--> 
         <script>
@@ -215,7 +215,7 @@ if(isset($_REQUEST["adm_new"])){ //se vier do admNew (criar adm)
         <?php  
         
     }else if($resp==2){?>
-        <form action="../view/adm_list.php" name="form" id="myForm" method="POST">
+        <form action="../view/adm_list.php?campo=" name="form" id="myForm" method="POST">
         <input type="hidden" name="msg" value="FR27">  <!--""BD02" => "Erro ao criar registro.",-->
         </form> <!--envia um formulario com a variavel "msg", que é o código da mensagem de erro (ver view/msg.php)--> 
         <script>
@@ -252,7 +252,7 @@ if(isset($_REQUEST["adm_new"])){ //se vier do admNew (criar adm)
     $valida = validaCPF($_REQUEST["cpf"]);
     if($valida==0){
         ?>
-        <form action="../view/adm_list.php" name="form" id="myForm" method="POST">
+        <form action="../view/adm_list.php?campo=" name="form" id="myForm" method="POST">
         <input type="hidden" name="msg" value="FR26">  <!--""BD02" => "Erro ao criar registro.",-->
         </form> <!--envia um formulario com a variavel "msg", que é o código da mensagem de erro (ver view/msg.php)--> 
         <script>
@@ -265,7 +265,7 @@ if(isset($_REQUEST["adm_new"])){ //se vier do admNew (criar adm)
     $resp=admEdit($dados);
     if($resp==1){ //tudo certo
         ?>
-        <form action="../view/adm_list.php" name="form" id="myForm" method="POST">
+        <form action="../view/adm_list.php?campo=" name="form" id="myForm" method="POST">
         <input type="hidden" name="msg" value="BD50">  <!--"BD50" => "Operação realizada com sucesso.",-->
         </form> <!--envia um formulario com a variavel "msg", que é o código da mensagem de erro (ver view/msg.php)--> 
         <script>
@@ -274,7 +274,7 @@ if(isset($_REQUEST["adm_new"])){ //se vier do admNew (criar adm)
         <?php  
     }else if($resp==0){//erro
         ?>
-        <form action="../view/adm_list.php" name="form" id="myForm" method="POST">
+        <form action="../view/adm_list.php?campo=" name="form" id="myForm" method="POST">
         <input type="hidden" name="msg" value="BD02">  <!--""BD02" => "Erro ao criar registro.",-->
         </form> <!--envia um formulario com a variavel "msg", que é o código da mensagem de erro (ver view/msg.php)--> 
         <script>
@@ -282,7 +282,7 @@ if(isset($_REQUEST["adm_new"])){ //se vier do admNew (criar adm)
         </script>
         <?php      
     }else if($resp==2){?>
-        <form action="../view/adm_list.php" name="form" id="myForm" method="POST">
+        <form action="../view/adm_list.php?campo=" name="form" id="myForm" method="POST">
         <input type="hidden" name="msg" value="FR27">  <!--""BD02" => "Erro ao criar registro.",-->
         </form> <!--envia um formulario com a variavel "msg", que é o código da mensagem de erro (ver view/msg.php)--> 
         <script>
@@ -325,7 +325,7 @@ if(isset($_REQUEST["adm_new"])){ //se vier do admNew (criar adm)
         <?php  
     }else{//erro
         ?>
-        <form action="../view/adm_list.php" name="form" id="myForm" method="POST">
+        <form action="../view/adm_list.php?campo=" name="form" id="myForm" method="POST">
         <input type="hidden" name="msg" value="BD02">  <!--""BD02" => "Erro ao criar registro.",-->
         </form> <!--envia um formulario com a variavel "msg", que é o código da mensagem de erro (ver view/msg.php)--> 
         <script>
@@ -360,7 +360,7 @@ if(isset($_REQUEST["adm_delete"])){ //deleçao
     $result = admDelete($id);
     if($result==1){//tudo certo
         ?>
-        <form action="../view/adm_list.php" name="form" id="myForm" method="POST">
+        <form action="../view/adm_list.php?campo=" name="form" id="myForm" method="POST">
         <input type="hidden" name="msg" value="BD54">  <!--"BD04" => "Erro ao apagar registro.",-->
         </form> <!--envia um formulario com a variavel "msg", que é o código da mensagem de erro (ver view/msg.php)--> 
         <script>
@@ -369,7 +369,7 @@ if(isset($_REQUEST["adm_delete"])){ //deleçao
         <?php  
     }else{//erro
         ?>
-        <form action="../view/adm_list.php" name="form" id="myForm" method="POST">
+        <form action="../view/adm_list.php?campo=" name="form" id="myForm" method="POST">
         <input type="hidden" name="msg" value="BD04">  <!-- "BD54" => "Registro apagado com sucesso.",-->
         </form> <!--envia um formulario com a variavel "msg", que é o código da mensagem de erro (ver view/msg.php)--> 
         <script>
@@ -407,7 +407,7 @@ if(isset($_REQUEST["adm_delete"])){ //deleçao
     $_FILES["img_sec"] == "" || 
     $_FILES["img_hover"] == "" ){ //se tiver algo vazio
         ?>
-            <form action="../view/produtos_list.php" name="form" id="myForm" method="POST">
+            <form action="../view/produtos_list.php?campo=" name="form" id="myForm" method="POST">
             <input type="hidden" name="msg" value="FR01">  <!-- "BD54" => "Registro apagado com sucesso.",-->
             </form> <!--envia um formulario com a variavel "msg", que é o código da mensagem de erro (ver view/msg.php)--> 
             <script>
@@ -421,7 +421,7 @@ if(isset($_REQUEST["adm_delete"])){ //deleçao
     $extGra = validaExtImg($_FILES["img_sec"]["name"]);
     if ($extPeq == 0 || $extMed == 0 || $extGra == 0 ) {
         ?>
-        <form action="../view/produtos_list.php" name="form" id="myForm" method="POST">
+        <form action="../view/produtos_list.php?campo=" name="form" id="myForm" method="POST">
         <input type="hidden" name="msg" value="FR19">  <!-- "BD54" => "Registro apagado com sucesso.",-->
         </form> <!--envia um formulario com a variavel "msg", que é o código da mensagem de erro (ver view/msg.php)--> 
         <script>
@@ -466,7 +466,7 @@ $result=produtoNew($dados);
 
 if ($result["result"]==1){
     ?>
-    <form action="../view/produtos_list.php" name="form" id="myForm" method="POST">
+    <form action="../view/produtos_list.php?campo=" name="form" id="myForm" method="POST">
     <input type="hidden" name="msg" value="BD50">  <!-- "BD54" => "Registro apagado com sucesso.",-->
     </form> <!--envia um formulario com a variavel "msg", que é o código da mensagem de erro (ver view/msg.php)--> 
     <script>
@@ -475,7 +475,7 @@ if ($result["result"]==1){
 <?php  
 }else{//falha
 ?>
-        <form action="../view/produtos_list.php" name="form" id="myForm" method="POST">
+        <form action="../view/produtos_list.php?campo=" name="form" id="myForm" method="POST">
         <input type="hidden" name="msg" value="BD04">  <!-- "BD54" => "Registro apagado com sucesso.",-->
         </form> <!--envia um formulario com a variavel "msg", que é o código da mensagem de erro (ver view/msg.php)--> 
         <script>
@@ -521,7 +521,7 @@ if ($result["result"]==1){
     $resp=produtoEdit($dados);
     if($resp==1){ //tudo certo
         ?>
-        <form action="../view/produtos_list.php" name="form" id="myForm" method="POST">
+        <form action="../view/produtos_list.php?campo=" name="form" id="myForm" method="POST">
         <input type="hidden" name="msg" value="BD50">  <!--"BD50" => "Operação realizada com sucesso.",-->
         </form> <!--envia um formulario com a variavel "msg", que é o código da mensagem de erro (ver view/msg.php)--> 
         <script>
@@ -530,7 +530,7 @@ if ($result["result"]==1){
         <?php  
     }else{//erro
         ?>
-        <form action="../view/produtos_list.php" name="form" id="myForm" method="POST">
+        <form action="../view/produtos_list.php?campo=" name="form" id="myForm" method="POST">
         <input type="hidden" name="msg" value="BD02">  <!--""BD02" => "Erro ao criar registro.",-->
         </form> <!--envia um formulario com a variavel "msg", que é o código da mensagem de erro (ver view/msg.php)--> 
         <script>
@@ -598,7 +598,7 @@ if ($result["result"]==1){
 $resp=vitrineEdit($dados);
 if ($resp ==1){ //tudo certo
 ?>
-    <form action="../view/vitrine_list.php" name="form" id="myForm" method="POST">
+    <form action="../view/vitrine_list.php?campo=" name="form" id="myForm" method="POST">
     <input type="hidden" name="msg" value="BD53">  <!-- "BD54" => "Registro apagado com sucesso.",-->
     </form> <!--envia um formulario com a variavel "msg", que é o código da mensagem de erro (ver view/msg.php)--> 
     <script>
@@ -607,7 +607,7 @@ if ($resp ==1){ //tudo certo
 <?php  
 }else{//falha
 ?>
-        <form action="../view/vitrine_list.php" name="form" id="myForm" method="POST">
+        <form action="../view/vitrine_list.php?campo=" name="form" id="myForm" method="POST">
         <input type="hidden" name="msg" value="BD03">  <!-- "BD54" => "Registro apagado com sucesso.",-->
         </form> <!--envia um formulario com a variavel "msg", que é o código da mensagem de erro (ver view/msg.php)--> 
         <script>
@@ -639,7 +639,7 @@ if ($resp ==1){ //tudo certo
     $resp=pedidosEdit($dados);
 if ($resp ==1){ //tudo certo
 ?>
-    <form action="../view/pedidos_list.php" name="form" id="myForm" method="POST">
+    <form action="../view/pedidos_list.php?campo=" name="form" id="myForm" method="POST">
     <input type="hidden" name="msg" value="BD53">  <!-- "BD54" => "Registro apagado com sucesso.",-->
     </form> <!--envia um formulario com a variavel "msg", que é o código da mensagem de erro (ver view/msg.php)--> 
     <script>
@@ -648,7 +648,7 @@ if ($resp ==1){ //tudo certo
 <?php  
 }else{//falha
 ?>
-        <form action="../view/pedidos_list.php" name="form" id="myForm" method="POST">
+        <form action="../view/pedidos_list.php?campo=" name="form" id="myForm" method="POST">
         <input type="hidden" name="msg" value="BD03">  <!-- "BD54" => "Registro apagado com sucesso.",-->
         </form> <!--envia um formulario com a variavel "msg", que é o código da mensagem de erro (ver view/msg.php)--> 
         <script>
@@ -675,7 +675,7 @@ if(isset($_REQUEST["produto_delete"])){ //deleçao
     $result = produtoDelete($id);
     if($result==1){//tudo certo
         ?>
-        <form action="../view/produtos_list.php" name="form" id="myForm" method="POST">
+        <form action="../view/produtos_list.php?campo=" name="form" id="myForm" method="POST">
         <input type="hidden" name="msg" value="BD54">  <!--"BD04" => "Erro ao apagar registro.",-->
         </form> <!--envia um formulario com a variavel "msg", que é o código da mensagem de erro (ver view/msg.php)--> 
         <script>
@@ -684,7 +684,7 @@ if(isset($_REQUEST["produto_delete"])){ //deleçao
         <?php  
     }else{//erro
         ?>
-        <form action="../view/produtos_list.php" name="form" id="myForm" method="POST">
+        <form action="../view/produtos_list.php?campo=" name="form" id="myForm" method="POST">
         <input type="hidden" name="msg" value="BD04">  <!-- "BD54" => "Registro apagado com sucesso.",-->
         </form> <!--envia um formulario com a variavel "msg", que é o código da mensagem de erro (ver view/msg.php)--> 
         <script>
@@ -719,7 +719,7 @@ if(isset($_REQUEST["cliente_new"])){ //se vier do admNew (criar adm)
     $valida = validaCPF($_REQUEST["cpf"]);
     if($valida==0){
         ?>
-        <form action="../view/cliente_list.php" name="form" id="myForm" method="POST">
+        <form action="../view/cliente_list.php?campo=" name="form" id="myForm" method="POST">
         <input type="hidden" name="msg" value="FR26">  <!--""BD02" => "Erro ao criar registro.",-->
         </form> <!--envia um formulario com a variavel "msg", que é o código da mensagem de erro (ver view/msg.php)--> 
         <script>
@@ -732,7 +732,7 @@ if(isset($_REQUEST["cliente_new"])){ //se vier do admNew (criar adm)
     $resp=clienteNew($dados);
     if($resp==1){ //tudo certo
         ?>
-        <form action="../view/cliente_list.php" name="form" id="myForm" method="POST">
+        <form action="../view/cliente_list.php?campo=" name="form" id="myForm" method="POST">
         <input type="hidden" name="msg" value="BD50">  <!--"BD50" => "Operação realizada com sucesso.",-->
         </form> <!--envia um formulario com a variavel "msg", que é o código da mensagem de erro (ver view/msg.php)--> 
         <script>
@@ -741,7 +741,7 @@ if(isset($_REQUEST["cliente_new"])){ //se vier do admNew (criar adm)
         <?php  
     }else if($resp==0){//erro
         ?>
-        <form action="../view/cliente_list.php" name="form" id="myForm" method="POST">
+        <form action="../view/cliente_list.php?campo=" name="form" id="myForm" method="POST">
         <input type="hidden" name="msg" value="BD02">  <!--""BD02" => "Erro ao criar registro.",-->
         </form> <!--envia um formulario com a variavel "msg", que é o código da mensagem de erro (ver view/msg.php)--> 
         <script>
@@ -750,7 +750,7 @@ if(isset($_REQUEST["cliente_new"])){ //se vier do admNew (criar adm)
         <?php  
         
     }else if($resp==2){?>
-        <form action="../view/cliente_list.php" name="form" id="myForm" method="POST">
+        <form action="../view/cliente_list.php?campo=" name="form" id="myForm" method="POST">
         <input type="hidden" name="msg" value="FR27">  <!--""BD02" => "Erro ao criar registro.",-->
         </form> <!--envia um formulario com a variavel "msg", que é o código da mensagem de erro (ver view/msg.php)--> 
         <script>
@@ -779,7 +779,7 @@ if(isset($_REQUEST["cliente_edit"])){
     $valida = validaCPF($_REQUEST["cpf"]);
     if($valida==0){
         ?>
-        <form action="../view/cliente_list.php" name="form" id="myForm" method="POST">
+        <form action="../view/cliente_list.php?campo=" name="form" id="myForm" method="POST">
         <input type="hidden" name="msg" value="FR26">  <!--""BD02" => "Erro ao criar registro.",-->
         </form> <!--envia um formulario com a variavel "msg", que é o código da mensagem de erro (ver view/msg.php)--> 
         <script>
@@ -792,7 +792,7 @@ if(isset($_REQUEST["cliente_edit"])){
     $resp=clienteEdit($dados);
     if($resp==1){ //tudo certo
         ?>
-        <form action="../view/cliente_list.php" name="form" id="myForm" method="POST">
+        <form action="../view/cliente_list.php?campo=" name="form" id="myForm" method="POST">
         <input type="hidden" name="msg" value="BD50">  <!--"BD50" => "Operação realizada com sucesso.",-->
         </form> <!--envia um formulario com a variavel "msg", que é o código da mensagem de erro (ver view/msg.php)--> 
         <script>
@@ -804,7 +804,7 @@ if(isset($_REQUEST["cliente_edit"])){
         <?php  
     }else if($resp==0){//erro
         ?>
-        <form action="../view/cliente_list.php" name="form" id="myForm" method="POST">
+        <form action="../view/cliente_list.php?campo=" name="form" id="myForm" method="POST">
         <input type="hidden" name="msg" value="BD02">  <!--""BD02" => "Erro ao criar registro.",-->
         </form> <!--envia um formulario com a variavel "msg", que é o código da mensagem de erro (ver view/msg.php)--> 
         <script>
@@ -813,8 +813,8 @@ if(isset($_REQUEST["cliente_edit"])){
         <?php  
         
     }else if($resp==2){?>
-        <form action="../view/adm_list.php" name="form" id="myForm" method="POST">
-        <input type="hidden" name="msg" value="FR27">  <!--""BD02" => "Erro ao criar registro.",-->
+        <form action="../view/adm_list.php?campo=" name="form" id="myForm" method="POST">
+        <input type="hidden" name="msg" value="BD50">  <!--""BD02" => "Erro ao criar registro.",-->
         </form> <!--envia um formulario com a variavel "msg", que é o código da mensagem de erro (ver view/msg.php)--> 
         <script>
         document.getElementById('myForm').submit();//envio automático submit()
