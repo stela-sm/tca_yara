@@ -170,7 +170,7 @@
                   
     <style>
         #iframe_perfil{
-            max-width: 100%;
+            width: 100%;
             
         }
         table {
@@ -204,10 +204,11 @@
         #title{
             font-weight: 700;
             text-transform: uppercase;
-            margin-top: 0.8cm;
+            font-family: 'Questrial';
+            margin-top: 0.6cm;
         }
         .divform{
-            margin-left: 5%;
+            margin-left: 10%;
             
             font-family: 'Questrial';
         }      
@@ -286,9 +287,19 @@ font-size: 1.1em;
 
 
 
+<style>
+    #php{
+        margin-left: 6%;
+    }
+    .php{
+        display: none;
+    }
+    .active{
+        display: block;
+    }
+</style>
 
-
-
+<div id="php" class="php" >
 
 
 <p id="title">Endereços <button type="button" class="btn botao_modal btn-primary" data-toggle="modal" data-target="#novo_endereco"><i class="fa-solid fa-plus"></i></button></p>
@@ -419,6 +430,7 @@ if($resp["result"] == 0){ echo ""; }else{
 </div>
 <div class="modal-footer">
                     <button type="submit" class="salvar">Adicionar</button>
+    </form>
                   </div>
     </div>
   </div>
@@ -429,6 +441,8 @@ if($resp["result"] == 0){ echo ""; }else{
                 </div>
             </div>
         </div>
+        </div>
+
     </body>
 
 
@@ -465,7 +479,7 @@ if($resp["result"] == 0){ echo ""; }else{
         }
         function definirSrcDoIframe() {
             var iframe = document.getElementById("iframe_perfil");
-            var tabela = document.getElementsByClassName("grande");
+            var tabela = document.getElementById("php");
             iframe.src = "dados.php"; 
             tabela.style.display="none !important";
         }
@@ -474,14 +488,15 @@ if($resp["result"] == 0){ echo ""; }else{
     
          function endereco(id){
             var iframe = document.getElementById("iframe_perfil")
-            var div = document.getElementsByClassName("card")
+            var div = document.getElementById("php")
        if(id=="0"){ 
         iframe.style.display = "none"
-        div.style.display = "block"
+        div.classList.remove("php");
+        div.classList.add("active");
         iframe.src = ""; }
         else{
             iframe.style.display = "block"
-        div.style.display = "none"
+        div.style.display = "none !importante"
         }
         }
         function active(num){

@@ -24,8 +24,7 @@
     </style>
    
    <p id="title">Histórico de Pedidos</p>
-   <!DOCTYPE html>
-<html>
+   <br>
 <head>
     <style>
         body{
@@ -42,7 +41,7 @@
         }
         th, td {
             text-align: left;
-            padding: 8px;
+            padding: 15px;
         }
         #last{
             text-align: left;
@@ -52,7 +51,7 @@
             border: none;
             box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
             padding: 10px;
-            width: 50%;
+            width: 80%;
             margin-right: 3em;
             border-radius: 5px;
         }
@@ -80,7 +79,7 @@
             opacity: 0.7;
 }
 .cartao{
-    width: 60%;
+    width: 100%;
     border: 0px;
     background-color: white;
 border-radius: 20px !important;
@@ -135,6 +134,7 @@ position: absolute;
     padding-top: 0.5cm;
     padding-bottom: 0.5cm;
     text-transform: uppercase;
+    font-size: 0.9em;
     
 }
 .data{
@@ -175,7 +175,7 @@ width: 2.5cm;
 }
 .ultima{
     margin-top: 1em;
-    border-top: lightgray 1px solid;
+    border-top: lightgray 1px dotted;
   
 }
 .total{
@@ -193,42 +193,58 @@ width: 2.5cm;
     $_SESSION['telefone'] = "11963220905";
     $_SESSION['cpf'] = "40527647810";
     $_SESSION['email'] = "laura@gmail.com";
+    $_SESSION['USER-ID'] = "1";
     
+
     ?>
-      <form action="">    
-<div class="cartao">
+
+    <?php
+    require '../model/manager.php';
+    $historico = historico( $_SESSION['USER-ID']);
+
+    if($historico["result"] == 0){ echo ""; }else{ 
+
+        for($i=0;$i<$historico["num"];$i++){
+            
+    echo"
+      <form action=\"\">    
+<div class=\"cartao\">
     
-<table class="tabela">
-    <tr class="th"> <td class="status">Recebido<span class="data"> 21/21/21</span></td><td class="options_td">
+<table class=\"tabela\">
+    <tr class=\"th\"> <td class=\"status\">".$historico[$i]["status"]."<span class=\"data\"> ".$historico[$i]["datahora"]."</span></td><td class=\"options_td\">
       
-<select class="options" name="options">
-  <option value="maca" selected>Opções</option>
-  <option value="banana">Rastrear o Pacote</option>
-  <option value="laranja">Devolução</option>
-  <option value="uva">Nota Fiscal</option>
+<select class=\"options\" name=\"options\">
+  <option value=\"maca\" disabled selected>Opções</option>
+  <option value=\"rastrear\">Rastrear o Pacote</option>
+  <option value=\"devolucao\">Devolução</option>
+  <option value=\"nota\">Nota Fiscal</option>
+  <option value=\"recebido\">Recebido</option>
+  <option value=\"cancelar\">Cancelar</option>
 </select></td></tr>
 </table>
-    <table>
-    
-    
-    <tr><td class="img"><img src="media/img_prod.png" alt="" style="width:50px;"></td>
-    <td class="produto"><span class="nome_produto">Sérum ácido hialurônico 150ml</span></td>
-    <td class="quant"> <span class="quantidade">2x</span> </td>
-    <td class="valor"><span class="preco"> R$150,00</span></td></tr>
-    <tr><td class="img"><img src="media/img_prod.png" alt="" style="width:50px;"></td>
-    <td class="produto"><span class="nome_produto">Sérum ácido hialurônico 150ml</span></td>
-    <td class="quant"> <span class="quantidade">2x</span> </td>
-    <td class="valor"><span class="preco"> R$150,00</span></td></tr>
+    <table>";
+    $itens = itens($historico[$i]["id"]);
+    for($ii=0;$ii<$itens["num"];$ii++){
 
+    $img = imgProduto($itens[$i]["id_produto"]);
+    echo
+"   <tr><td class=\"img\"><img src=\"media/".$img["img"]."\" alt=\"\" style=\"width:50px;\"></td>
+    <td class=\"produto\"><span class=\"nome_produto\">".$itens[$i]["nome"]."</span></td>
+    <td class=\"quant\"> <span class=\"quantidade\">".$itens[$i]["quantidade"]."x</span> </td>
+    <td class=\"valor\"><span class=\"preco\">R$".$itens[$i]["valor_total"]."</span></td></tr>";
+    };
+echo"
     </table>
-    <table class="ultima">
+    <table class=\"ultima\">
     <tr>
-        <td class="total">Total</td>
-        <td class="total_valor">R$500,00</td>
+        <td class=\"total\">Total</td>
+        <td class=\"total_valor\"> R$".$historico[$i]["valor"]."</td>
     </tr>
     </table>
 </div>
-</form>
+</form>";
+
+        }}  ?>
 
 </body>
 </html>
@@ -242,24 +258,3 @@ width: 2.5cm;
 </body>
 
 
-<!-- Modal -->
-<div class="modal fade" id="ExemploModalCentralizado" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="TituloModalCentralizado">Título do modal</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-        <button type="button" class="btn btn-primary">Salvar mudanças</button>
-      </div>
-    </div>
-  </div>
-</div>
-</html>

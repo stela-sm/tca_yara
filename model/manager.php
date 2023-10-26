@@ -277,4 +277,105 @@ function buscar_endereco($id){
         
         }
         
+
+
+        function historico($id){
+            require "conexao.php";
+            $sql = "SELECT * FROM pedidos WHERE id_cliente='$id'";
+            $result=$conn->query($sql); 
+       
+           if($result->num_rows > 0){
+       
+               $num = $result ->num_rows;
+               $dados=array();
+               $dados["result"] = 1;
+               $dados["num"]=$num;
+               $i=0;
+               while($row=$result->fetch_assoc()){
+                   $dados[$i]["id"] =          $row["ID_PEDIDO"];
+                   $dados[$i]["id_cliente"] =  $row["id_cliente"];
+                   $dados[$i]["id_endereco"] =         $row["id_endereco"];
+                   $dados[$i]["valor"] =      $row["valor"];
+                   $dados[$i]["pagamento"] =      $row["pagamento"];
+                   $dados[$i]["status"] =      $row["status"];
+                        if ($row['status']=="1"){ $dados[$i]["status"] = "Aguardando Pagamento";};
+                        if ($row['status']=="2"){ $dados[$i]["status"] = "Em Processamento";};
+                        if ($row['status']=="3"){ $dados[$i]["status"] = "Em rota de entrega";};
+                        if ($row['status']=="4"){ $dados[$i]["status"] = "Recebido";}
+                        if ($row['status']=="5"){ $dados[$i]["status"] = "Aguardando Devolução";}
+                        if ($row['status']=="6"){ $dados[$i]["status"] = "Valor Estornado";}
+                        if ($row['status']=="7"){ $dados[$i]["status"] = "Recebido";}
+                        if ($row['status']=="8"){ $dados[$i]["status"] = "Cancelado";}
+                        if ($row['status']=="9"){ $dados[$i]["status"] = "Tentativa de entrega feita";}
+
+
+                   $dados[$i]["datahora"] =      $row["datahora"];
+            
+                $i++;
+               }
+               $conn->close();
+               return $dados;
+           }else{
+               $dados["result"] = 0;
+                   $conn->close();
+                   return $dados;
+               }
+               }
+
+
+               function itens($pedido) {
+                require "conexao.php";
+            $sql = "SELECT * FROM itens WHERE id_pedido='$pedido'";
+            $result=$conn->query($sql); 
+       
+           if($result->num_rows > 0){
+       
+               $num = $result ->num_rows;
+               $dados=array();
+               $dados["result"] = 1;
+               $dados["num"]=$num;
+               $i=0;
+               while($row=$result->fetch_assoc()){
+                   $dados[$i]["id"] =          $row["ID_ITENS"];
+                   $dados[$i]["id_produto"] =  $row["id_produto"];
+                   $dados[$i]["nome"] =       $row["nome"];
+                   $dados[$i]["quantidade"] =   $row["quantidade"];
+                   $dados[$i]["valor_uni"] =      $row["valor_uni"];
+                   $dados[$i]["valor_total"] =      $row["valor_total"];
+                   $dados[$i]["datahora"] =    $row["datahora"];
+               
+                $i++;
+               }
+               $conn->close();
+               return $dados;
+           }else{
+               $dados["result"] = 0;
+                   $conn->close();
+                   return $dados;
+               }
+            }
+
+            function imgProduto($id) {
+                require "conexao.php";
+            $sql = "SELECT img FROM produtos WHERE ID_PRODUTO='$id'";
+            $result=$conn->query($sql); 
+       
+           if($result->num_rows > 0){
+       
+               $num = $result ->num_rows;
+               $dados=array();
+               $dados["result"] = 1;
+               $dados["num"]=$num;
+               
+               while($row=$result->fetch_assoc()){
+                   $dados["img"] =    $row["img"];
+               }
+               $conn->close();
+               return $dados;
+           }else{
+               $dados["result"] = 0;
+                   $conn->close();
+                   return $dados;
+               }
+            }
         ?>
