@@ -18,6 +18,20 @@
 $(function() {
     $('[data-toggle="tooltip"]').tooltip()
 })
+
+
+function recomecar(){
+  function confirmarRedirecionamento() {
+            // Exibe um diálogo de confirmação
+            var resposta = confirm("Você deseja alterar seu número?");
+
+            if (resposta) {
+                window.location.href = "senhas.html";
+            } else {
+                
+            }
+        }
+}
         </script>
 <style>
     @import url("https://fonts.googleapis.com/css2?family=Berkshire+Swash&display=swap");
@@ -138,13 +152,14 @@ body {
 </style>
 </head>
 <body>
-<form action="../controller/controller_senha.php" method="post" class="form ">
-
 <table>
   <tr>
   <td class="common-header" id="yellow" colspan="3">Alteração de senhas</td>
   </tr>
   <?php if(!isset($_REQUEST["fase"])){ ?>
+    
+<form action="../model/mail.php" method="post" class="form ">
+
     <input type="hidden" name="verif_tel" id="verif_tel" value="1">
   <tr>
   <td class="text" id="firstline" colspan="3">Bem vindo à área de alteração de senhas! Por favor, informe qual o tipo do usuário que deseja alterar a senha, seu CPF e seu número de telefone. </td>
@@ -178,11 +193,13 @@ body {
   </form>
 
 
-  <?php } else if (isset($_REQUEST["fase"]) && ($_REQUEST["fase"]==1)){ ?>
-  
-    <input type="hidden" name="verif_cod" id="verif_cod" value="1">
+
+  <?php } else if (isset($_REQUEST["fase"]) && ($_REQUEST["fase"]==1)){  ?>
+  <form action="../controller/controller_senha.php" method="post">
+
+    <input type="hidden" name="verif_cod" id="verif_cod" value="<?php echo $_REQUEST["id"]?>">
     <tr>
-  <td class="text" id="firstline" colspan="1">Agora, confirme o código enviado para o número {$numero}.</td>
+  <td class="text" id="firstline" colspan="1">Agora, confirme o código enviado para seu Whatsapp <a id="cel" onclick="recomecar()"><?php echo $_REQUEST["cel"] ?></a></td>
   </tr>
   <tr class="third-column">
   
@@ -190,7 +207,7 @@ body {
     <td class="padding third-column">
     <label for="nome" class="label">Código de verificação</label>
                   <br>
-                  <input type="text" name="nome" id="" placeholder="Ex. 12345678910" required class="input">
+                  <input type="text" name="codverif" id="" placeholder="Ex. 12345678910" required class="input">
     </td>
    
   </tr>
