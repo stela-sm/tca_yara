@@ -2,7 +2,7 @@
 
 session_start();
 
-if(isset($_REQUEST["login"])){ //verifica se vem algo do formulário pelo POST ou GET, se vier:
+if(isset($_REQUEST["loginn"])){ //verifica se vem algo do formulário pelo POST ou GET, se vier:
 
     if(empty($_REQUEST["login"]) || empty($_REQUEST["senha"])){ // se não vier senha e/ou login do formulário então:
       session_destroy();

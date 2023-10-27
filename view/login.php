@@ -11,7 +11,7 @@
     <link href="../assets/style/login.css" rel="stylesheet">
     <title>Login</title>
 </head>
-<body>
+<body >
 
     <!-- menu -->
     <header>
@@ -36,23 +36,23 @@
 
         <!-- formulário login -->
         <div class="form-section-login" style="order: 1;">
-            <div class="login-title w-100">
+            <div class="login-title fade-in w-100">
                 <h1 class="title-text-l mb-4">Bem vindo de volta!</h1>
                 <div class="mb-3">
                     <p class="paragraph-text account">Informe seus dados para login.    
                         <a class="custom-link" style="color: #1A3D1F; text-decoration: none; font-weight: bold; cursor:pointer">Não tem conta?</a></p>
                 </div>
                 <!-- área do formulário -->
-                <form class="w-100" action="../controller/controller_client.php" method="post">
-                    <input type="hidden" name="login" value="1">
+                <form class="w-100  " action="../controller/controller_client.php" method="post">
+                    <input type="hidden" name="loginn" value="1">
                     <!-- email -->
                     <div class="form-group-email">
-                        <input type="email" class="username-inpt form-control" id="usuário" placeholder="Email ou CPF" autocomplete="off">
+                        <input type="email" name="login" class="username-inpt form-control" id="usuário" placeholder="Email ou CPF" autocomplete="off">
                     </div>
                     <br>
                     <!-- senha -->
                     <div class="form-group-senha">
-                        <input type="password" class="pass-inpt form-control" id="senha" placeholder="Senha">
+                        <input type="password" class="pass-inpt form-control" id="senha" name="senha" placeholder="Senha">
                     </div>
                      <!-- link senha -->
                      <div class="mb-3 mt-3">
@@ -65,15 +65,15 @@
         </div>
 
         <!-- formulário cadastro -->
-        <div class="form-section-cadastro" style="flex: 50%; order: 1;">
-            <div class="login-title w-100">
+        <div class="form-section-cadastro " style="flex: 50%; order: 1;">
+            <div class="login-title fade-in w-100">
                 <h1 class="title-text-c mb-4">Seja bem vindo!</h1>
                 <div class="mb-3">
                     <p class="paragraph-text login-back">Informe seus dados para cadastro.   
                         <a class="custom-link" style="color: #1A3D1F; text-decoration: none; font-weight: bold; cursor: pointer;">Já tem conta?</a></p>
                 </div>
                 <!-- área do formulário -->
-                <form class="w-100" action="../controller/controller_client.php" method="post">
+                <form class="w-100 " action="../controller/controller_client.php" method="post">
                     <input type="hidden" name="cadastro" value="1">
                     <!-- nome -->
                     <div class="form-group-name">
