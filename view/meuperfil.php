@@ -108,6 +108,7 @@
             }
             iframe{
                 margin-left: 1cm;
+                height: 500%;
             }
             i{
                 margin-right: 1cm;
@@ -299,7 +300,7 @@ font-size: 1.1em;
     }
 </style>
 
-<div id="php" class="php" >
+<div id="php" class="php2 php fade-in" >
 
 
 <p id="title">Endereços <button type="button" class="btn botao_modal btn-primary" data-toggle="modal" data-target="#novo_endereco"><i class="fa-solid fa-plus"></i></button></p>
@@ -314,7 +315,7 @@ if($resp["result"] == 0){ echo ""; }else{
             echo
 
 
-           "<table class=\"invisivel\">
+           "<table class=\"invisivel fade-in\">
             <form action=\"../controller/controller_client.php\" class=\"divform\"name=\"update\" method=\"post\">
                     <input type=\"hidden\" name=\"update_dados\" value=\"1\">
             <div class=\"card grande\">
@@ -493,10 +494,15 @@ if($resp["result"] == 0){ echo ""; }else{
         iframe.style.display = "none"
         div.classList.remove("php");
         div.classList.add("active");
+        div.classList.add("fade-in");
         iframe.src = ""; }
         else{
             iframe.style.display = "block"
+            div.classList.remove("active");
+            div.classList.add("php");
         div.style.display = "none !importante"
+        div.classList.remove("fade-in");
+
         }
         }
         function active(num){

@@ -13,7 +13,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Yara | Meu Perfil</title>
 </head>
-<body>
+<body class="fade-in">
     <style>
         :root{
     --white: #f9f9f9;
@@ -21,6 +21,19 @@
     --yellow:  #B9C394;
 --lgreen: #B9C394;
 }
+.fade-in {
+    opacity: 0;
+    animation: fadeIn 0.1s ease-in forwards;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
     </style>
    
    <p id="title">Histórico de Pedidos</p>
@@ -63,6 +76,7 @@
         #title{
             font-weight: 700;
             text-transform: uppercase;
+            margin-bottom: -0.8rem;
         }
         .submit{
             background-color: transparent;
