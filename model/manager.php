@@ -378,4 +378,76 @@ function buscar_endereco($id){
                    return $dados;
                }
             }
+        
+        
+function verif_celular($cel){
+    
+ require "conexao.php";
+ $sql="SELECT * FROM cliente WHERE celular = '$cel'";
+ $result = $conn -> query($sql);
+ if($result->num_rows>0){
+     $conn->close();
+     return 1;
+ }    else{
+     $conn->close();
+     return 0;
+ }
+
+}
+
+
+function codigo($codigo){ //função pra criar adm
+    require "conexao.php";
+   
+    $sql="INSERT INTO cod_temp (codigo) VALUES ('$codigo')";
+   $result = $conn -> query($sql);
+
+   
+   if($result==true){
+
+    $dados["result"] = "1";
+    $conn->close();
+       return $dados;
+   }    else{
+       $conn->close();
+       $dados["result"] = "0";
+       return $dados;
+   }
+
+
+} 
+
+function id_cod($codigo){
+    require "conexao.php";
+    $sql="SELECT * FROM cod_temp WHERE codigo = '$codigo'";
+    $result = $conn -> query($sql); 
+
+    while($row=$result->fetch_assoc()){
+        $dados["id"] = $row["ID_COD"];
+      
+    }
+    $conn->close();
+    $dados["result"] = "1";
+    return $dados;
+}
+
+function verificar_cod($dados){
+    require "conexao.php";
+   
+    $sql="SELECT * FROM cod_temp WHERE ID_COD = '{$dados['id']}' AND codigo = '{$dados['cod']}' ";
+   $result = $conn -> query($sql);
+
+   if($result->num_rows > 0){
+     $dados["result"] = "1";
+    $conn->close();
+       return $dados;
+   }    else{
+       $conn->close();
+       $dados["result"] = "0";
+       return $dados;
+   }
+
+
+} 
+        
         ?>

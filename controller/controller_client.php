@@ -308,4 +308,27 @@ $resp=enderecoNew($dados);
             
         }
     }
+    
+    if(isset($_REQUEST["redefinir"])){
+if (isset($_REQUEST["cel"])){ 
+
+    $cel =  $_REQUEST["cel"];
+require '../model/manager.php';
+$resp=verif_celular($cel);
+    if ($resp == 1) {
+header("Location: ../model/mailget.php?celular=" . urlencode($cel));
+
+        }else if($resp==0){//erro
+            ?>
+            <form action="../view/login.php" name="form" id="myForm" method="POST">
+            <input type="hidden" name="msg" value="BD02">  <!--""BD02" => "Erro ao criar registro.",-->
+            </form> <!--envia um formulario com a variavel "msg", que é o código da mensagem de erro (ver view/msg.php)--> 
+            <script>
+            document.getElementById('myForm').submit();//envio automático submit()
+            </script>
+            <?php  
+            
+        }
+    }
+    }
 ?>
