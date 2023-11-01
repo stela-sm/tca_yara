@@ -417,6 +417,8 @@ header("Location: ../model/mailget.php?celular=" . urlencode($cel). "&cpf=". url
                             ?>
                              <form action="../view/login.php" name="form" id="myForm" method="POST"> 
                             <input type="hidden" name="msg" value="FR04">
+                            
+                        <input type="hidden" name="cpf" value="<?php  echo $_REQUEST["cpf"]; ?>"> 
                             <input type="hidden" name="autenticado" value="1">  
                             </form> 
                             <script>
