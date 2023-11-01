@@ -167,9 +167,47 @@
        
     font-family: 'Questrial', sans-serif !important;
     }
+.none{
+    display:none;
+}
+.show{
+    display: block;
+}
+.close:active{
+    border: none !important;
+    outline: none !important;
+}
 </style>
 <!-- Modal -->
-<div class="modal fade" id="ExemploModalCentralizado" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado" aria-hidden="true">
+<div class="modal fade" id="ExemploModalCentralizado" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado" aria-hidden="true" data-backdrop="static">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="TituloModalCentralizado"><b>Redefinir a Senha</b></h5>
+        <button type="button" class="close" onclick="confirma_fechar('ExemploModalCentralizado'); limpa();"></button>
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <form action="../controller/controller_client.php" id="redefenir_form" method="post">
+        <input type="hidden" name="redefinir" value="1"></input>
+      <div class="modal-body">
+        <label for="cel" class="label_padrao">Por favor, insira seu número de telefone celular</label><br>
+        <input type="text" id="celular_input" required name="cel" class="input_padrao"></input>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="salvar">enviar código</button>
+    </form>
+      </div>
+
+
+    </div>
+  </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="verficar_modal_open" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -178,23 +216,76 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <form action="../controller/controller_client.php" id="redefenir_form" method="post">
-        <input type="hidden" name="redefinir" value="">
+
+      <form action="../controller/controller_client.php" id="verificar_form" method="get">
+ 
+      <input type="hidden" name="cpf" value="<?php  echo $_REQUEST["cpf"] ?>">
       <div class="modal-body">
-        <label for="cel" class="label_padrao">Por favor, insira seu número de telefone celular</label><br>
-        <input type="text" id="celular_input" name="cel" class="input_padrao"></input>
+      
+      <input type="hidden" id="cod_verif" name="cod_verif" class="input_padrao" value="1"></input>
+  <input type="hidden" name="id" value="<?php  echo $_REQUEST["id"]; ?>"> </input>
+        <label for="cel" class="label_padrao">Insira o Código de verificação</label><br>
+        <input type="text" id="celular_input" name="cod" class="input_padrao" required></input>
       </div>
       <div class="modal-footer">
-        <button type="submit" class="salvar">enviar código</button>
-</form>
+        <button type="submit" class="salvar">verificar</button>
+    </form>
       </div>
+
+
     </div>
   </div>
 </div>
+
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="autenticado_modal_open" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="TituloModalCentralizado"><b>Redefinir a Senha</b></h5>
+        <button type="button" class="close" onclick="limpa()" data-dismiss="modal" aria-label="Fechar">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <form action="../controller/controller_client.php" id="senha_form" method="get">
+ 
+      <input type="hidden" name="cpf" value="<?php echo $_REQUEST["cpf"]; ?>">
+      <div class="modal-body">
+      
+  <input type="hidden" name="senha_alt" value="1"> </input>
+        <label for="cel" class="label_padrao">Defina sua nova senha</label><br>
+        <input type="text" id="celular_input" name="senha" class="input_padrao" required></input>
+<br><br>
+        <label for="cel" class="label_padrao">Repita sua senha</label><br>
+        <input type="text" id="celular_input" name="senha_rep" class="input_padrao" required></input>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="salvar">confirmar</button>
+    </form>
+      </div>
+
+
+    </div>
+  </div>
+</div>
+
+
 </body>
 
 <!-- javascript -->
 <script>
+    function confirma_fechar(id){
+    if(confirm("Deseja encerrar o processo de alteração de senha?") == true){
+        $('#'+id).modal('hide');  
+        limpa();
+    }else{
+        $('#'+id).modal('show'); 
+    }
+}
     let p_cadastro = document.querySelector('.account') // ir para cadastro
     let p_login = document.querySelector('.login-back') // ir para login
     let cadastro_form = document.querySelector('.form-section-cadastro') // form cadastro
@@ -233,6 +324,36 @@ echo "<script>alert('" . $MSG[$cod] . "');</script>";
 
 }
 
+if(isset($_REQUEST["return"])){
+
+
+    echo "<script>
+    $('#ExemploModalCentralizado').modal('show');  
+    
+    </script>";
+    
+    }
+if(isset($_REQUEST["modal"])){
+
+
+    echo "<script>
+    $('#verficar_modal_open').modal('show');  
+    
+    </script>";
+    
+    }
+
+
+    if(isset($_REQUEST["autenticado"])){
+
+
+        echo "<script>
+        $('#autenticado_modal_open').modal('show');  
+        
+        </script>";
+        
+        }
+      
 ?>
 
 </html>

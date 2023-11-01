@@ -42,7 +42,7 @@ if(isset($_REQUEST["loginn"])){ //verifica se vem algo do formulário pelo POST 
                                                       $_SESSION["USER-EMAIL"] = $dados["email"];
                                                       $_SESSION["USER-CPF"] = $dados["cpf"]; 
                                                       ?>
-                                                      <form action="../view/cardapio.php" name="form" id="myForm" method="POST">
+                                                      <form action="../view/meuperfil.php" name="form" id="myForm" method="POST">
                                                       <input type="hidden" name="result" value="validado"> <!--inútil-->
                                                       </form> 
                                                       <script>
@@ -109,7 +109,7 @@ if(isset($_REQUEST["cadastro"])){
       $resp=userNew($dados);
   if($resp==1){ //tudo certo
       ?>
-      <form action="../view/cardapio.php" name="form" id="myForm" method="POST">
+      <form action="../view/meuperfil.php" name="form" id="myForm" method="POST">
       <input type="hidden" name="msg" value="BD50">  <!--"BD50" => "Operação realizada com sucesso.",-->
       </form> <!--envia um formulario com a variavel "msg", que é o código da mensagem de erro (ver view/msg.php)--> 
       <script>
@@ -315,13 +315,15 @@ if (isset($_REQUEST["cel"])){
     $cel =  $_REQUEST["cel"];
 require '../model/manager.php';
 $resp=verif_celular($cel);
-    if ($resp == 1) {
-header("Location: ../model/mailget.php?celular=" . urlencode($cel));
+    if ($resp["result"] == 1) {
+        $cpf=$resp["cpf"];
+header("Location: ../model/mailget.php?celular=" . urlencode($cel). "&cpf=". urlencode($cpf));
 
-        }else if($resp==0){//erro
+        }else if($resp["result"]==0){//erro
             ?>
             <form action="../view/login.php" name="form" id="myForm" method="POST">
-            <input type="hidden" name="msg" value="BD02">  <!--""BD02" => "Erro ao criar registro.",-->
+            <input type="hidden" name="msg" value="FR08">  
+            <input type="hidden" name="return" value="1"> <!--""BD02" => "Erro ao criar registro.",-->
             </form> <!--envia um formulario com a variavel "msg", que é o código da mensagem de erro (ver view/msg.php)--> 
             <script>
             document.getElementById('myForm').submit();//envio automático submit()
@@ -331,4 +333,97 @@ header("Location: ../model/mailget.php?celular=" . urlencode($cel));
         }
     }
     }
+
+    
+        
+        if (isset($_REQUEST["cod_verif"])){ 
+            
+            $dados["cod"] =  $_REQUEST["cod"];
+            $dados["id"] =  $_REQUEST["id"];
+        require '../model/manager.php';
+        $resp=verificar_cod($dados);
+       
+            if ($resp["result"] == '1') {
+                
+
 ?>
+                <form action="../view/login.php" name="form" id="myForm" method="POST">
+               
+                <input type="hidden" name="cpf" value="<?php  echo $_REQUEST["cpf"]; ?>"> 
+                <input type="hidden" name="id" value="<?php  echo $dados["id"]; ?>"> 
+                <input type="hidden" name="autenticado" value="1"> 
+                </form> <!--envia um formulario com a variavel "msg", que é o código da mensagem de erro (ver view/msg.php)--> 
+                <script>
+                document.getElementById('myForm').submit();//envio automático submit()
+                </script>
+                <?php  
+              
+        
+                }else {//erro
+                    
+                    ?>
+                    <form action="../view/login.php" name="form" id="myForm" method="POST">
+                        
+                <input type="hidden" name="cpf" value="<?php  echo $_REQUEST["cpf"]; ?>"> 
+                        <input type="hidden" name="id" value="<?php  echo $dados["id"]; ?>"> 
+                <input type="hidden" name="modal" value="1"> 
+                    <input type="hidden" name="msg" value="FR28">  <!--""BD02" => "Erro ao criar registro.",-->
+                    </form> <!--envia um formulario com a variavel "msg", que é o código da mensagem de erro (ver view/msg.php)--> 
+                    <script>
+                    document.getElementById('myForm').submit();//envio automático submit()
+                    </script>
+                    <?php  
+                }
+                }
+
+
+
+                if (isset($_REQUEST["senha_alt"])){ 
+                    if($_REQUEST["senha"] == $_REQUEST["senha_rep"]){
+                        require '../model/ferramentas.php';
+                    $dados["senha"] = hash256($_REQUEST['senha']); 
+                    $dados["cpf"] =  $_REQUEST["cpf"];
+                require '../model/manager.php';
+                $resp=alteraSenha($dados);
+               
+                    if ($resp["result"] == '1') { //SUCESSO
+                        
+                        ?>
+                      <form action="../view/login.php" name="form" id="myForm" method="POST">
+                       
+                        <input type="hidden" name="cpf" value="<?php  echo $_REQUEST["cpf"]; ?>"> 
+                        
+                        <input type="hidden" name="msg" value="BD56"> 
+                        </form>  
+                        <script>
+                        document.getElementById('myForm').submit();
+                        </script>
+                        <?php  
+                      
+                
+                        }else if($resp["result"]=='0'){//erro
+                            
+                            ?>
+                            <form action="../view/login.php" name="form" id="myForm" method="POST">
+                            <input type="hidden" name="msg" value="FR28"> 
+                            <input type="hidden" name="autenticado" value="1">  
+                            </form> 
+                            <script>
+                            document.getElementById('myForm').submit();
+                            </script>
+                            <?php  
+                            
+                        }}else{//senhas diferentes
+                            ?>
+                             <form action="../view/login.php" name="form" id="myForm" method="POST"> 
+                            <input type="hidden" name="msg" value="FR04">
+                            <input type="hidden" name="autenticado" value="1">  
+                            </form> 
+                            <script>
+                            document.getElementById('myForm').submit();
+                            </script>
+                            <?php  
+                        
+                    }
+                }
+        ?>

@@ -35,6 +35,7 @@ $MSG = array(
     "BD53" => "Registro alterado com sucesso.",
     "BD54" => "Registro apagado com sucesso.",
     "BD55" => "Dados localizados com sucesso.",
+    "BD56" => "Senha alterada com sucesso.",
 
     /* série FR: operações com formulários  */
     // 00 a 49 ERROS
@@ -66,6 +67,7 @@ $MSG = array(
 	"FR25" => "Caracteres não identificados.",
     "FR26" => "CPF inválido, tente novamente.",
     "FR27" => "Usuário já existente, verifique os dados inseridos.",
+    "FR28" => "Código inválido ou expirado, tente novamente",
 
     // 50 A 99 SUCESSOS
     "FR50" => "Formulário enviado com sucesso.",

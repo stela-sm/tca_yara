@@ -1,0 +1,46 @@
+
+        if (isset($_REQUEST["senha_alt"])){ 
+            if($_REQUEST["senha"] == $_REQUEST["senha_rep"]){
+            $dados["senha"] =  $_REQUEST["senha"];
+            $dados["cpf"] =  $_REQUEST["cpf"];
+        require '../model/manager.php';
+        $resp=alteraSenha($dados);
+       
+            if ($resp["result"] == '1') {
+                
+                ?>
+                <!-- <form action="../view/login.php" name="form" id="myForm" method="POST"> -->
+               
+                <input type="hidden" name="id" value="<?php  echo $dados["id"]; ?>"> 
+                <input type="hidden" name="autenticado" value="1"> 
+                </form>  
+                <script>
+                document.getElementById('myForm').submit();
+                </script>
+                <?php  
+              }
+        
+                }else if($resp["result"]=='0'){//erro
+                    
+                    ?>
+                    <!-- <form action="../view/login.php" name="form" id="myForm" method="POST"> -->
+                    <input type="hidden" name="msg" value="FR28">  
+                    </form> 
+                    <script>
+                    document.getElementById('myForm').submit();
+                    </script>
+                    <?php  
+                    
+                }else{//senhas diferentes
+                    ?>
+                    <!-- <form action="../view/login.php" name="form" id="myForm" method="POST"> -->
+                    <input type="hidden" name="msg" value="FR04"> 
+                    </form> 
+                    <script>
+                    document.getElementById('myForm').submit();
+                    </script>
+                    <?php  
+                }
+        
+        }
+?>

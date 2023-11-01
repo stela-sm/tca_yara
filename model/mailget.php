@@ -50,7 +50,7 @@ curl_close($curl);
 if ($err) {
   
   ?>
-  <form action="../view/senhas.php" name="form" id="myForm" method="POST">
+  <form action="../view/login.php" name="form" id="myForm" method="POST">
   <input type="hidden" name="msg" value="FR08">  <!--""BD02" => "Erro ao criar registro.",-->
   </form> <!--envia um formulario com a variavel "msg", que é o código da mensagem de erro (ver view/msg.php)--> 
   <script>
@@ -62,12 +62,12 @@ if ($err) {
   $cod = codigo($codigoVerificacao);
   $cod2 = id_cod($codigoVerificacao);
   ?>
-  <form action="../view/senhas.php" name="form" id="myForm" method="POST">
+  <form action="../view/login.php" name="form" id="myForm" method="POST">
   <input type="hidden" name="fase" value="1"> 
   <input type="hidden" name="id" value="<?php  echo $cod2["id"]; ?>"> 
-  <input type="hidden" name="cel" value="<?php  echo $cel; ?>"> 
   <input type="hidden" name="cpf" value="<?php  echo $_REQUEST["cpf"]; ?>"> 
-  <input type="hidden" name="tabela" value="<?php  echo $_REQUEST["tabela"]; ?>"> 
+  <input type="hidden" name="cel" value="<?php  echo $cel; ?>"> 
+  <input type="hidden" name="modal" value="1"> 
   </form> <!--envia um formulario com a variavel "msg", que é o código da mensagem de erro (ver view/msg.php)--> 
   <script>
   document.getElementById('myForm').submit();//envio automático submit()

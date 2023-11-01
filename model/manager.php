@@ -383,14 +383,19 @@ function buscar_endereco($id){
 function verif_celular($cel){
     
  require "conexao.php";
- $sql="SELECT * FROM cliente WHERE celular = '$cel'";
+ $sql="SELECT cpf FROM cliente WHERE celular = '$cel'";
  $result = $conn -> query($sql);
  if($result->num_rows>0){
      $conn->close();
-     return 1;
+     $dados["result"] = 1;
+     while($row=$result->fetch_assoc()){
+        $dados["cpf"] =    $row["cpf"];
+    }
+     return $dados;
  }    else{
      $conn->close();
-     return 0;
+     $dados["result"] = 0;
+     return $dados;
  }
 
 }
@@ -437,8 +442,10 @@ function verificar_cod($dados){
     $sql="SELECT * FROM cod_temp WHERE ID_COD = '{$dados['id']}' AND codigo = '{$dados['cod']}' ";
    $result = $conn -> query($sql);
 
-   if($result->num_rows > 0){
-     $dados["result"] = "1";
+ 
+   if($result->num_rows>0){
+
+    $dados["result"] = "1";
     $conn->close();
        return $dados;
    }    else{
@@ -450,4 +457,24 @@ function verificar_cod($dados){
 
 } 
         
+
+
+function alteraSenha($dados){ //função pro form de editar menu
+    require "conexao.php";
+   
+    $sql = "UPDATE cliente SET senha = '{$dados['senha']}' WHERE cpf = '{$dados['cpf']}'";
+
+   $result = $conn->query($sql);
+    if($result==true){
+        $dados["result"] = 1;
+$conn->close(); 
+return $dados;
+}else{
+        $dados["result"] = 0;
+        $conn->close();    
+        return $dados;
+}
+}
+
+
         ?>
