@@ -428,4 +428,40 @@ header("Location: ../model/mailget.php?celular=" . urlencode($cel). "&cpf=". url
                         
                     }
                 }
+
+                if (isset($_REQUEST["excluir_endereco"])){ 
+                   
+                    $dados =  $_REQUEST["excluir_endereco"];
+                require '../model/manager.php';
+                $resp=enderecoDelete($dados);
+               
+                    if ($resp == '1') { //SUCESSO
+                        
+                        ?>
+                      <form action="../view/meuperfil.php" name="form" id="myForm" method="POST"> 
+                                             
+                        <input type="hidden" name="msg" value="BD57"> 
+                        </form>  
+                        <script>
+                        document.getElementById('myForm').submit();
+                        </script>
+                        <?php  
+                      
+                
+                        }else if($resp=='0'){//erro
+                            
+                            ?>
+                           <form action="../view/meuperfil.php" name="form" id="myForm" method="POST"> 
+                            <input type="hidden" name="msg" value="BD04"> 
+                            <input type="hidden" name="autenticado" value="1">  
+                            </form> 
+                            <script>
+                            document.getElementById('myForm').submit();
+                            </script>
+                            <?php  
+                            
+                        }
+                        
+                    }
+                
         ?>

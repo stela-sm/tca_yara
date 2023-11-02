@@ -39,54 +39,7 @@
         <title>Yara | Meu Perfil</title>
     </head>
     <body>
-<form action="../controller/controller_client.php" method="post">
-<div class="modal fade" id="novo_endereco" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado" aria-hidden="true">
-  <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-      <h5 class="modal-title" id="TituloModalCentralizado"><input type="text" id="input-apelido-novo" name="apelido" class="input_apelido" value="Novo Endereço" style="text-decoration:underline;"></h5>
-<button type="button" class="close" data-dismiss="modal" aria-label="Fechar" onclick="limpa('endereco_new')">
-  <span aria-hidden="true">&times;</span>
-</button>
-</div>
 
-<input type="hidden" name="endereco_new" value="1" placeholder="">
-<input type="hidden" name="id_cliente" placeholder="" value="<?php $_SESSION["USER-ID"] ?>">
-<div class="modal-body">
-<table class="table_modal">
-  <tr>
-    <td>CEP:</td>
-    <td><input type="text" name="cep" onblur="buscaCepN();" id="input-cep-novo" placeholder="" required class="input_padrao "></td>
-    <td>Rua:</td>
-    <td><input type="text" name="rua" id="input-rua-novo" placeholder="" readonly class="input_padrao input2"></td>
-  </tr>
-  <tr>
-    <td>Número:</td>
-    <td><input type="text" name="numero" placeholder="" class="input_padrao"></td>
-    <td>Bairro:</td>
-    <td><input type="text" name="bairro" id="input-bairro-novo" placeholder="" readonly class="input_padrao input2"></td>
-  </tr>
-  <tr>
-    <td>Bloco:</td>
-    <td><input type="text" name="bloco" placeholder="" class="input_padrao"></td>
-    <td>Cidade:</td>
-    <td><input type="text" name="cidade" readonly id="input-cidade-novo" placeholder="" class="input_padrao input2"></td>
-  </tr>
-  <tr>
-    <td>Apto:</td>
-    <td><input type="text" name="apto" class="input_padrao" placeholder=""></td>
-    <td>Estado:</td>
-    <td><input type="text" name="estado" readonly id="input-estado-novo" placeholder="" class="input_padrao input2"></td>
-  </tr>
-</table>
-</div>
-<div class="modal-footer">
-                    <button type="submit" class="salvar">Adicionar</button>
-    </form>
-                  </div>
-    </div>
-  </div>
-</div>
                   
         <style>
             body{
@@ -162,64 +115,7 @@
                 margin-right: 1cm;
                 width:10px;
             }
-        </style>
-        <!-- menu -->
-        <header>
-            <div class="menu">
-                <a class="logo" href="#">
-                    Yara.
-                </a>
-                <div class="menu-links">
-                    <a class="menu-link" href="#">Home</a>
-                    <a class="menu-link" href="#">Shop</a>
-                    <a class="menu-link" href="#">Sobre</a>
-                    <a class="menu-link" href="#">Contato</a>
-                </div>
-            </div>
-            <div class="container">
-                <div class="row">
-                    <div class="col-6">
-                        <input type="file" name="pfp" id="pfp">
-                        <div class="row">
-                            <label for="pfp"><img
-                                src="../assets/media/user-profile-icon-free-vector.jpg"
-                                id="pfp_label"
-                                alt=""
-                                srcset=""></label>
-                            <p id="name"><?php echo $_SESSION["USER-NOME"]?></p>
-                        </div>
-                    </div>
-                </div>
-            </header>
-            <!-- end of menu -->
-
-            <!--Corpo-->
-            <div class="container CONT2">
-                <div class="row corpo">
-                    <!--menu lateral-->
-                    <div class="col-3">
-                        <ul class="menubar">
-                            <li  class="linkmenu">
-                            <a href="dados.php" target="iframe_perfil"  onclick="endereco('1')">  <i style="color:var(--green); margin-right:18px" class="fa-regular fa-user"></i>
-                               Meu Perfil </li></a>
-                            <li  class="linkmenu">
-                            <a onclick="endereco('0')">  <i style="color:var(--green); margin-right:20px" class="fa-solid fa-location-dot"></i>Endereços</a></li>
-                            <li  class="linkmenu">
-                            <a  href="historico.php" target="iframe_perfil" onclick="endereco('1')">  <i style="color:var(--green); margin-right:20px" class="fa-solid fa-clipboard-list"></i>Histórico</a></li>
-                            <li  class="linkmenu">
-                                <i style="color:var(--green); margin-right:20px" class="fa-solid fa-key"></i>Mudar senha</li>
-                                <li  class="linkmenu" onclick="ExecutaLogout()">
-                                <i style="color:var(--green); margin-right:20px" class="fa-solid fa-right-from-bracket"></i>Logout</li>
-                        </ul>
-                    </div>
-                    <div class="col-8">
-                        <iframe  src="" name="iframe_perfil" id="iframe_perfil" width="150%" height="150%" frameborder="0"></iframe>
-                  
-                  
-                  
-                  
-    <style>
-        #iframe_perfil{
+            #iframe_perfil{
             width: 100%;
             
         }
@@ -316,7 +212,127 @@ box-shadow: none !important;
 font-size: 1.1em;
     line-height: 2em;
 }
-    </style>
+#php{
+        margin-left: 6%;
+    }
+    .php{
+        display: none;
+    }
+    .active{
+        display: block;
+    }
+    .modal-footer{
+        justify-content: center;
+        text-align: center;
+    }
+    .input_padrao{
+        background-color: #dddddd;
+        border: none;
+        border-radius: 5px;
+        padding: 10px;
+
+    }
+    
+    .input2, .input2:active{
+        width: 100%;
+        opacity: 0.5;
+        outline: none;
+
+    }
+    .modal{
+        font-family: 'Questrial';
+        
+    }
+    .modal-body{
+        padding: 30px;
+    }
+    .table_modal{
+        font-weight: 600;
+        color: #1A3D1F;
+    }
+    .input_apelido{
+        background-color: transparent;
+        border: none;
+        color: var(--lgreen);
+        font-weight: 700;
+    }
+    .salvar, .salvar:active{
+        margin-top: 10px;
+        background-color: transparent;
+        border: none;
+        cursor:pointer;
+        color: var(--lgreen);
+        text-transform: uppercase;        
+        transition: 0.2s;        
+    }
+    .salvar:hover{
+        scale: 0.9;
+        transition: 0.2s;
+    }
+    .modal-lg{
+        max-width: 800px !important;
+        border-radius: 20px !important;
+    }
+    .modal-footer{
+        padding-top: 20px;
+        padding-bottom: 30px;
+    }
+        </style>
+        <!-- menu -->
+        <header>
+            <div class="menu">
+                <a class="logo" href="#">
+                    Yara.
+                </a>
+                <div class="menu-links">
+                    <a class="menu-link" href="#">Home</a>
+                    <a class="menu-link" href="#">Shop</a>
+                    <a class="menu-link" href="#">Sobre</a>
+                    <a class="menu-link" href="#">Contato</a>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-6">
+                        <input type="file" name="pfp" id="pfp">
+                        <div class="row">
+                            <label for="pfp"><img
+                                src="../assets/media/user-profile-icon-free-vector.jpg"
+                                id="pfp_label"
+                                alt=""
+                                srcset=""></label>
+                            <p id="name"><?php echo $_SESSION["USER-NOME"]?></p>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            <!-- end of menu -->
+
+            <!--Corpo-->
+            <div class="container CONT2">
+                <div class="row corpo">
+                    <!--menu lateral-->
+                    <div class="col-3">
+                        <ul class="menubar">
+                            <li  class="linkmenu">
+                            <a href="dados.php" target="iframe_perfil"  onclick="endereco('1')">  <i style="color:var(--green); margin-right:18px" class="fa-regular fa-user"></i>
+                               Meu Perfil </li></a>
+                            <li  class="linkmenu">
+                            <a onclick="endereco('0')">  <i style="color:var(--green); margin-right:20px" class="fa-solid fa-location-dot"></i>Endereços</a></li>
+                            <li  class="linkmenu">
+                            <a  href="historico.php" target="iframe_perfil" onclick="endereco('1')">  <i style="color:var(--green); margin-right:20px" class="fa-solid fa-clipboard-list"></i>Histórico</a></li>
+                            <li  class="linkmenu">
+                                <i style="color:var(--green); margin-right:20px" class="fa-solid fa-key"></i>Mudar senha</li>
+                                <li  class="linkmenu" onclick="ExecutaLogout()">
+                                <i style="color:var(--green); margin-right:20px" class="fa-solid fa-right-from-bracket"></i>Logout</li>
+                        </ul>
+                    </div>
+                    <div class="col-8">
+                        <iframe  src="" name="iframe_perfil" id="iframe_perfil" width="150%" height="150%" frameborder="0"></iframe>
+                  
+                  
+                  
+             
 </head>
 <body>   
 
@@ -329,17 +345,7 @@ font-size: 1.1em;
 
 
 
-<style>
-    #php{
-        margin-left: 6%;
-    }
-    .php{
-        display: none;
-    }
-    .active{
-        display: block;
-    }
-</style>
+
 
 <div id="php" class="php2 php fade-in" >
 
@@ -373,8 +379,24 @@ if($resp["result"] == 0){ echo ""; }else{
             </form>
             <br>";
 
+        }}
+?>
 
-            ECHO "
+    
+
+
+                  
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+
+<?php
+
+for($i=0;$i<$resp["num"];$i++){
+
+ECHO "
             <form id=\"endereco_edit\" action=\"../controller/controller_client.php\" method=\"post\">
             <div class=\"modal fade\" id=\"modal".$resp[$i]["id"]."\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"TituloModalCentralizado\" aria-hidden=\"true\">
               <div class=\"modal-dialog modal-lg modal-dialog-centered\" role=\"document\">
@@ -399,9 +421,9 @@ if($resp["result"] == 0){ echo ""; }else{
                     </tr>
                     <tr>
                         <td>Número:</td>
-                        <td><input type=\"text\" name=\"numero\" value=".$resp[$i]["numero"]." class=\"input_padrao\"></td>
+                        <td><input type=\"text\" name=\"numero\" value=\"".$resp[$i]["numero"]."\" class=\"input_padrao\"></td>
                         <td>Bairro:</td>
-                        <td><input type=\"text\" name=\"bairro\" id=\"bairro".$resp[$i]["id"]."\" value=".$resp[$i]["bairro"]." readonly class=\"input_padrao input2 \"></td>
+                        <td><input type=\"text\" name=\"bairro\" id=\"bairro".$resp[$i]["id"]."\" value=\"".$resp[$i]["bairro"]."\" readonly class=\"input_padrao input2 \"></td>
                     </tr>
                     <tr>
                         <td>Bloco:</td>
@@ -411,33 +433,89 @@ if($resp["result"] == 0){ echo ""; }else{
                     </tr>
                     <tr>
                         <td>Apto:</td>
-                        <td><input type=\"text\" name=\"apto\"  class=\"input_padrao\" value=".$resp[$i]["apto"]."></td>
+                        <td><input type=\"text\" name=\"apto\"  class=\"input_padrao\" value=\"".$resp[$i]["apto"]."\"></td>
                         <td>Estado:</td>
                         <td><input type=\"text\" name=\"estado\" readonly id=\"estado".$resp[$i]["id"]."\" value=\"".$resp[$i]["estado"]."\" class=\"input_padrao input2 \"></td>
                     </tr>
                 </table>
                   </div>
                   <div class=\"modal-footer\">
-                    <button type=\"submit\" class=\"salvar\">Salvar mudanças</button>
+                    <button type=\"submit\" class=\"salvar\">Salvar mudanças</button> <button class=\"salvar\">|</button> <button type=\"button\" onclick=\"excluir('".$resp[$i]["id"]."')\" class=\"salvar\">Excluir endereço</button>
                   </div>
                 </div>
               </div>
             </div>
             </form>";
-        }}
-?>
-
-    
+}?>
 
 
-                  
-                    </div>
-                </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                <!--MODAL NOVO ENDEREÇO-->
+
+<div class="modal fade" id="novo_endereco" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado" aria-hidden="true">
+
+          <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                
+<form action="../controller/controller_client.php" method="post" name="novo_end">
+              <h5 class="modal-title" id="TituloModalCentralizado"><input type="text" id="input-apelido-novo" name="apelido" class="input_apelido" value="Novo Endereço" style="text-decoration:underline;"></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar" onclick="limpa('endereco_new')">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        </div>
+        <input type="hidden" name="endereco_new" value="1" placeholder="">
+        <input type="hidden" name="id_cliente" placeholder="" value="<?php $_SESSION["USER-ID"] ?>">
+        <div class="modal-body">
+        <table class="table_modal">
+          <tr>
+            <td>CEP:</td>
+            <td><input type="text" name="cep" onblur="buscaCepN();" id="input-cep-novo" placeholder="" class="input_padrao "></td>
+            <td>Rua:</td>
+            <td><input type="text" name="rua" id="input-rua-novo" placeholder="" readonly class="input_padrao input2"></td>
+          </tr>
+          <tr>
+            <td>Número:</td>
+            <td><input type="text" name="numero" placeholder="" class="input_padrao"></td>
+            <td>Bairro:</td>
+            <td><input type="text" name="bairro" id="input-bairro-novo" placeholder="" readonly class="input_padrao input2"></td>
+          </tr>
+          <tr>
+            <td>Bloco:</td>
+            <td><input type="text" name="bloco" placeholder="" class="input_padrao"></td>
+            <td>Cidade:</td>
+            <td><input type="text" name="cidade" readonly id="input-cidade-novo" placeholder="" class="input_padrao input2"></td>
+          </tr>
+          <tr>
+            <td>Apto:</td>
+            <td><input type="text" name="apto" class="input_padrao" placeholder=""></td>
+            <td>Estado:</td>
+            <td><input type="text" name="estado" readonly id="input-estado-novo" placeholder="" class="input_padrao input2"></td>
+          </tr>
+        </table>
+        </div>
+        <div class="modal-footer">
+                            <button type="submit" class="salvar">Adicionar</button>
+            </form>
+                          </div>
             </div>
-        </div>
+          </div>
         </div>
 
-    </body>
+ </body>
 
 
 
@@ -450,7 +528,7 @@ if($resp["result"] == 0){ echo ""; }else{
 
 
 
-    <script>
+<script>
         function ExecutaLogout() {
     var resp = confirm('Deseja sair do sistema?');
     if (resp == true) {
@@ -460,6 +538,14 @@ if($resp["result"] == 0){ echo ""; }else{
     }
 }
 
+function excluir(id){
+    var resp = confirm('Deseja excluir este este endereço?');
+    if (resp == true) {
+        location.href = `../controller/controller_client.php?excluir_endereco=${id}`;
+    } else {
+        return null;
+    }
+}
         function limpa(id){
             document.getElementById(id).reset();
   };
@@ -518,60 +604,7 @@ if($resp["result"] == 0){ echo ""; }else{
     
 
 
-<style>
-    .modal-footer{
-        justify-content: center;
-        text-align: center;
-    }
-    .input_padrao{
-        background-color: #dddddd;
-        border: none;
-        border-radius: 5px;
-        padding: 10px;
-
-    }
-    
-    .input2, .input2:active{
-        width: 100%;
-        opacity: 0.5;
-        outline: none;
-
-    }
-    .modal{
-        font-family: 'Questrial';
-        
-    }
-    .modal-body{
-        padding: 30px;
-    }
-    .table_modal{
-        font-weight: 600;
-        color: #1A3D1F;
-    }
-    .input_apelido{
-        background-color: transparent;
-        border: none;
-        color: var(--lgreen);
-        font-weight: 700;
-    }
-    .salvar, .salvar:active{
-        margin-top: 10px;
-        background-color: transparent;
-        border: none;
-        cursor:pointer;
-        color: var(--lgreen);
-        text-transform: uppercase;        
-        transition: 0.2s;        
-    }
-    .salvar:hover{
-        scale: 0.9;
-        transition: 0.2s;
-    }
-    .modal-lg{
-        max-width: 800px !important;
-        border-radius: 20px !important;
-    }
-</style>
+<
 <?php
 if(isset($_REQUEST["msg"])){
 	$cod = $_REQUEST["msg"];

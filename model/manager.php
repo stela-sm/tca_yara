@@ -165,40 +165,6 @@ function userNew($dados){ //função pra criar user
 } 
 
 
-function buscar_endereco($id){
-    require "conexao.php";
-    $sql = "SELECT * FROM endereco WHERE id_cliente='$id'";
-     $result=$conn->query($sql); 
-
-    if($result->num_rows > 0){
-
-        $num = $result ->num_rows;
-        $dados=array();
-        $dados["result"] = 1;
-        $dados["num"]=$num;
-        $i=0;
-        while($row=$result->fetch_assoc()){
-            $dados[$i]["id"] =          $row["ID_ENDERECO"];
-            $dados[$i]["id_cliente"] =  $row["id_cliente"];
-            $dados[$i]["cep"] =         $row["cep"];
-            $dados[$i]["estado"] =      $row["estado"];
-            $dados[$i]["cidade"] =      $row["cidade"];
-            $dados[$i]["bairro"] =      $row["bairro"];
-            $dados[$i]["numero"] =      $row["numero"];
-            $dados[$i]["rua"] =         $row["rua"];
-            $dados[$i]["apto"] =         $row["apto"];
-            $dados[$i]["bloco"] =       $row["bloco"];
-            $dados[$i]["nome"] =        $row["nome"];
-         $i++;
-        }
-        $conn->close();
-        return $dados;
-    }else{
-        $dados["result"] = 0;
-            $conn->close();
-            return $dados;
-        }
-        }
 
 
 
@@ -236,6 +202,49 @@ function buscar_endereco($id){
         }}
 
 
+
+
+
+        //ENDERECO----------------------------------------------------------------------------------------------------------------
+
+
+
+        function buscar_endereco($id){
+            require "conexao.php";
+            $sql = "SELECT * FROM endereco WHERE id_cliente='$id' AND status = '1'";
+             $result=$conn->query($sql); 
+        
+            if($result->num_rows > 0){
+        
+                $num = $result ->num_rows;
+                $dados=array();
+                $dados["result"] = 1;
+                $dados["num"]=$num;
+                $i=0;
+                while($row=$result->fetch_assoc()){
+                    $dados[$i]["id"] =          $row["ID_ENDERECO"];
+                    $dados[$i]["id_cliente"] =  $row["id_cliente"];
+                    $dados[$i]["cep"] =         $row["cep"];
+                    $dados[$i]["estado"] =      $row["estado"];
+                    $dados[$i]["cidade"] =      $row["cidade"];
+                    $dados[$i]["bairro"] =      $row["bairro"];
+                    $dados[$i]["numero"] =      $row["numero"];
+                    $dados[$i]["rua"] =         $row["rua"];
+                    $dados[$i]["apto"] =         $row["apto"];
+                    $dados[$i]["bloco"] =       $row["bloco"];
+                    $dados[$i]["nome"] =        $row["nome"];
+                 $i++;
+                }
+                $conn->close();
+                return $dados;
+            }else{
+                $dados["result"] = 0;
+                    $conn->close();
+                    return $dados;
+                }
+                }
+
+        
         function enderecoEdit($dados){
             require "conexao.php";
             if ($dados['numero']=="0") {$dados['numero'] = null;};
@@ -276,6 +285,34 @@ function buscar_endereco($id){
         
         
         }
+
+        function enderecoDelete($id){
+            require "conexao.php";
+            
+
+            $sql = "UPDATE endereco SET status = '0' WHERE ID_ENDERECO = '$id'";
+        
+            $result = $conn->query($sql);
+            if($result == true){
+                $conn->close();
+                return 1;
+            }    else{
+                $conn->close();
+                return 0;
+            }
+        
+        
+        }
+
+
+
+
+
+
+
+
+
+
         
 
 
