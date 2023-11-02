@@ -477,4 +477,26 @@ return $dados;
 }
 
 
+function dadosUser($id){
+    require 'conexao.php';
+    $sql = "SELECT * FROM cliente WHERE ID_CLIENTE='$id'";
+ $result=$conn->query($sql); 
+
+ if($result->num_rows > 0){
+     $dados=array();
+     $dados["result"] = 1;
+     while($row=$result->fetch_assoc()){
+        $dados["id"] = $row["ID_CLIENTE"];
+        $dados["nome"] = $row["nome"];
+        $dados["email"] = $row["email"];
+        $dados["cpf"] = $row["cpf"];
+        $dados["cel"] = $row["celular"];
+     }
+     $conn->close();
+     return $dados;
+ 
+ 
+
+}}
+
         ?>

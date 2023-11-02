@@ -95,30 +95,28 @@ opacity: 0.7;
 
     <?php
 session_start();
-    
-$_SESSION['id'] = "1";
-    $_SESSION['nome'] = "Laura Barbara Cruz";
-    $_SESSION['telefone'] = "11963220905";
-    $_SESSION['cpf'] = "40527647810";
-    $_SESSION['email'] = "laura@gmail.com";?>
+require '../model/manager.php';
+$dados_user = dadosUser($_SESSION['USER-ID']);
+
+?>
     <form action="../controller/controller_client.php" name="update"id="meuForm" method="post">
-        <input type="hidden" name="update_dados" value="<?php echo $_SESSION['id'] ?>">
+        <input type="hidden" name="update_dados" value="<?php echo $_SESSION['USER-ID'] ?>">
 <table>
     <tr>
         <td class="label">Nome Completo</td>
-        <td><input type="text" name="nome" id="ipt1" class="input_perfil"  ondblclick="active(1)"  value="<?php echo $_SESSION['nome'] ?>"></td>
+        <td><input type="text" name="nome" id="ipt1" class="input_perfil"  ondblclick="active(1)"  value="<?php echo $dados_user["nome"] ?>"></td>
     </tr>
     <tr>
         <td class="label">CPF</td>
-        <td><input type="text" name="cpf" id="ipt2" class="input_perfil"  ondblclick="active(2)"  value="<?php echo $_SESSION['cpf']?>"></td>
+        <td><input type="text" name="cpf" id="ipt2" class="input_perfil"  ondblclick="active(2)"  value="<?php echo $dados_user["cpf"]?>"></td>
     </tr>
     <tr>
         <td class="label"> Email</td>
-        <td><input type="text" name="email" id="ipt3" class="input_perfil" ondblclick="active(3)"  value="<?php echo $_SESSION['email']?>"></td>
+        <td><input type="text" name="email" id="ipt3" class="input_perfil" ondblclick="active(3)"  value="<?php echo $dados_user["email"]?>"></td>
     </tr>
     <tr>
         <td class="label">Número de telefone</td>
-        <td><input type="text" name="telefone" id="ipt4" class="input_perfil"  ondblclick="active(4)" value="<?php echo $_SESSION['telefone']?>"></td>
+        <td><input type="text" name="telefone" id="ipt4" class="input_perfil"  ondblclick="active(4)" value="<?php echo $dados_user["cel"]?>"></td>
     </tr>
     <tr>
         <td id="last"colspan="2"><button type="submit" onclick="verificarAlteracoes(event)"class="submit">Salvar</button></td>

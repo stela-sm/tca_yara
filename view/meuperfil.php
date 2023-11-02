@@ -2,10 +2,9 @@
 <?php
 
     session_start();
-   $_SESSION['username'] = "user";
-    if(!isset($_SESSION['username'])){
-        header("Location: login.php?fase=2");
-    }else{
+ 
+    if(isset($_SESSION['USER-ID'])){
+        
     ?>
     <head>
         
@@ -40,6 +39,55 @@
         <title>Yara | Meu Perfil</title>
     </head>
     <body>
+<form action="../controller/controller_client.php" method="post">
+<div class="modal fade" id="novo_endereco" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+      <h5 class="modal-title" id="TituloModalCentralizado"><input type="text" id="input-apelido-novo" name="apelido" class="input_apelido" value="Novo Endereço" style="text-decoration:underline;"></h5>
+<button type="button" class="close" data-dismiss="modal" aria-label="Fechar" onclick="limpa('endereco_new')">
+  <span aria-hidden="true">&times;</span>
+</button>
+</div>
+
+<input type="hidden" name="endereco_new" value="1" placeholder="">
+<input type="hidden" name="id_cliente" placeholder="" value="<?php $_SESSION["USER-ID"] ?>">
+<div class="modal-body">
+<table class="table_modal">
+  <tr>
+    <td>CEP:</td>
+    <td><input type="text" name="cep" onblur="buscaCepN();" id="input-cep-novo" placeholder="" required class="input_padrao "></td>
+    <td>Rua:</td>
+    <td><input type="text" name="rua" id="input-rua-novo" placeholder="" readonly class="input_padrao input2"></td>
+  </tr>
+  <tr>
+    <td>Número:</td>
+    <td><input type="text" name="numero" placeholder="" class="input_padrao"></td>
+    <td>Bairro:</td>
+    <td><input type="text" name="bairro" id="input-bairro-novo" placeholder="" readonly class="input_padrao input2"></td>
+  </tr>
+  <tr>
+    <td>Bloco:</td>
+    <td><input type="text" name="bloco" placeholder="" class="input_padrao"></td>
+    <td>Cidade:</td>
+    <td><input type="text" name="cidade" readonly id="input-cidade-novo" placeholder="" class="input_padrao input2"></td>
+  </tr>
+  <tr>
+    <td>Apto:</td>
+    <td><input type="text" name="apto" class="input_padrao" placeholder=""></td>
+    <td>Estado:</td>
+    <td><input type="text" name="estado" readonly id="input-estado-novo" placeholder="" class="input_padrao input2"></td>
+  </tr>
+</table>
+</div>
+<div class="modal-footer">
+                    <button type="submit" class="salvar">Adicionar</button>
+    </form>
+                  </div>
+    </div>
+  </div>
+</div>
+                  
         <style>
             body{
                max-width: 100vw;
@@ -138,7 +186,7 @@
                                 id="pfp_label"
                                 alt=""
                                 srcset=""></label>
-                            <p id="name">Laura Barbara Cruz</p>
+                            <p id="name"><?php echo $_SESSION["USER-NOME"]?></p>
                         </div>
                     </div>
                 </div>
@@ -160,9 +208,10 @@
                             <a  href="historico.php" target="iframe_perfil" onclick="endereco('1')">  <i style="color:var(--green); margin-right:20px" class="fa-solid fa-clipboard-list"></i>Histórico</a></li>
                             <li  class="linkmenu">
                                 <i style="color:var(--green); margin-right:20px" class="fa-solid fa-key"></i>Mudar senha</li>
+                                <li  class="linkmenu" onclick="ExecutaLogout()">
+                                <i style="color:var(--green); margin-right:20px" class="fa-solid fa-right-from-bracket"></i>Logout</li>
                         </ul>
                     </div>
-
                     <div class="col-8">
                         <iframe  src="" name="iframe_perfil" id="iframe_perfil" width="150%" height="150%" frameborder="0"></iframe>
                   
@@ -269,15 +318,7 @@ font-size: 1.1em;
 }
     </style>
 </head>
-<body>
-    <?php
-    
-    $_SESSION['nome'] = "Laura Barbara Cruz";
-    $_SESSION['telefone'] = "11963220905";
-    $_SESSION['cpf'] = "40527647810";
-    $_SESSION['email'] = "laura@gmail.com";
-    
-    ?>
+<body>   
 
 
 
@@ -305,7 +346,6 @@ font-size: 1.1em;
 
 <p id="title">Endereços <button type="button" class="btn botao_modal btn-primary" data-toggle="modal" data-target="#novo_endereco"><i class="fa-solid fa-plus"></i></button></p>
 <?php
-$_SESSION["USER-ID"] = "1";
 require "../model/manager.php";
 $resp = buscar_endereco($_SESSION["USER-ID"]);
 
@@ -389,54 +429,7 @@ if($resp["result"] == 0){ echo ""; }else{
 
     
 
-<form id="endereco_new" action="../controller/controller_client.php" method="post">
-<div class="modal fade" id="novo_endereco" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado" aria-hidden="true">
-  <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-      <h5 class="modal-title" id="TituloModalCentralizado"><input type="text" id="input-apelido-novo" name="apelido" class="input_apelido" value="Novo Endereço" style="text-decoration:underline;"></h5>
-<button type="button" class="close" data-dismiss="modal" aria-label="Fechar" onclick="limpa('endereco_new')">
-  <span aria-hidden="true">&times;</span>
-</button>
-</div>
-<input type="hidden" name="endereco_new" value="1" placeholder="">
-<input type="hidden" name="id_cliente" placeholder="" value="<?php $_SESSION["USER-ID"] ?>">
-<div class="modal-body">
-<table class="table_modal">
-  <tr>
-    <td>CEP:</td>
-    <td><input type="text" name="cep" onblur="buscaCepN();" id="input-cep-novo" placeholder="" class="input_padrao "></td>
-    <td>Rua:</td>
-    <td><input type="text" name="rua" id="input-rua-novo" placeholder="" readonly class="input_padrao input2"></td>
-  </tr>
-  <tr>
-    <td>Número:</td>
-    <td><input type="text" name="numero" placeholder="" class="input_padrao"></td>
-    <td>Bairro:</td>
-    <td><input type="text" name="bairro" id="input-bairro-novo" placeholder="" readonly class="input_padrao input2 "></td>
-  </tr>
-  <tr>
-    <td>Bloco:</td>
-    <td><input type="text" name="bloco" placeholder="" class="input_padrao"></td>
-    <td>Cidade:</td>
-    <td><input type="text" name="cidade" readonly id="input-cidade-novo" placeholder="" class="input_padrao input2 "></td>
-  </tr>
-  <tr>
-    <td>Apto:</td>
-    <td><input type="text" name="apto" class="input_padrao" placeholder=""></td>
-    <td>Estado:</td>
-    <td><input type="text" name="estado" readonly id="input-estado-novo" placeholder="" class="input_padrao input2 "></td>
-  </tr>
-</table>
-</div>
-<div class="modal-footer">
-                    <button type="submit" class="salvar">Adicionar</button>
-    </form>
-                  </div>
-    </div>
-  </div>
-</div>
-                  
+
                   
                     </div>
                 </div>
@@ -458,6 +451,15 @@ if($resp["result"] == 0){ echo ""; }else{
 
 
     <script>
+        function ExecutaLogout() {
+    var resp = confirm('Deseja sair do sistema?');
+    if (resp == true) {
+        location.href = "cliente_logout.php";
+    } else {
+        return null;
+    }
+}
+
         function limpa(id){
             document.getElementById(id).reset();
   };
@@ -583,4 +585,4 @@ if(isset($_REQUEST["msg"])){
 
 
 </html>
-<?php } ?>
+<?php } else{ header("Location: login.php?fase=2"); }?>
