@@ -277,6 +277,15 @@ font-size: 1.1em;
         padding-top: 20px;
         padding-bottom: 30px;
     }
+    .margin{
+        margin-top:10rem
+    }
+    .col-12{
+        padding-left: 50px;
+    }
+    .menubar_resp{
+        display: none;
+    }
         </style>
         <!-- menu -->
         <header>
@@ -293,7 +302,7 @@ font-size: 1.1em;
             </div>
             <div class="container">
                 <div class="row">
-                    <div class="col-6">
+                    <div class="col-6 margin">
                         <input type="file" name="pfp" id="pfp">
                         <div class="row">
                             <label for="pfp"><img
@@ -325,6 +334,19 @@ font-size: 1.1em;
                                 <i style="color:var(--green); margin-right:20px" class="fa-solid fa-key"></i>Mudar senha</li>
                                 <li  class="linkmenu" onclick="ExecutaLogout()">
                                 <i style="color:var(--green); margin-right:20px" class="fa-solid fa-right-from-bracket"></i>Logout</li>
+                        </ul>
+                        <ul class="menubar_resp">
+                            <li  class="linkmenu">
+                            <a href="dados.php" target="iframe_perfil"  onclick="endereco('1')">  <i style="color:var(--green); margin-right:18px" class="fa-regular fa-user"></i>
+                              </li></a>
+                            <li  class="linkmenu">
+                            <a onclick="endereco('0')">  <i style="color:var(--green); margin-right:20px" class="fa-solid fa-location-dot"></i></a></li>
+                            <li  class="linkmenu">
+                            <a  href="historico.php" target="iframe_perfil" onclick="endereco('1')">  <i style="color:var(--green); margin-right:20px" class="fa-solid fa-clipboard-list"></i></a></li>
+                            <li  class="linkmenu">
+                                <i style="color:var(--green); margin-right:20px" class="fa-solid fa-key"></i></li>
+                                <li  class="linkmenu" onclick="ExecutaLogout()">
+                                <i style="color:var(--green); margin-right:20px" class="fa-solid fa-right-from-bracket"></i></li>
                         </ul>
                     </div>
                     <div class="col-8">
@@ -599,6 +621,38 @@ function excluir(id){
 
     }
     
+function atualizarClasseElemento() {
+    const larguraJanela = window.innerWidth;
+    const elemento = document.querySelector('.margin'); 
+    const container = document.querySelector('.container'); 
+    const containerflex = document.querySelector('.container-fles'); 
+    const menubar = document.querySelector('.menubar'); 
+    const menubar_resp = document.querySelector('.menubar_resp'); 
+    
+
+  if (larguraJanela > 900) {
+      elemento.classList.remove('col-12');
+      elemento.classList.add('col-6');      
+      containerflex.classList.add('container');
+      containerflex.classList.remove('container-flex');
+      menubar.style.display="block";
+      menubar_resp.style.display="none";
+    } 
+    
+    if (larguraJanela < 900){
+      elemento.classList.remove('col-6');
+      elemento.classList.add('col-12');      
+      container.classList.add('container-flex');
+      container.classList.remove('container');    
+      menubar.style.display="none";
+      menubar_resp.style.display="block";
+      
+    }
+    
+  }
+setInterval(atualizarClasseElemento, 1);
+atualizarClasseElemento();
+
 
     </script>
     
