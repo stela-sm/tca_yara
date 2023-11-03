@@ -108,7 +108,7 @@ $dados_user = dadosUser($_SESSION['USER-ID']);
     </tr>
     <tr>
         <td class="label">CPF</td>
-        <td><input type="text" name="cpf" id="ipt2" class="input_perfil"  ondblclick="active(2)"  value="<?php echo $dados_user["cpf"]?>"></td>
+        <td><input type="text" name="cpf" id="ipt2" class="input_perfil"  ondblclick="inalteravel(2)"  value="<?php echo $dados_user["cpf"]?>"></td>
     </tr>
     <tr>
         <td class="label"> Email</td>
@@ -131,7 +131,9 @@ $dados_user = dadosUser($_SESSION['USER-ID']);
         ipt.style.opacity="1.0";
     }
    
-
+function inalteravel(id){
+    alert('Seu CPF é inalterável, se necessário, entre em contato com o SAC.')
+}
 
     const campo1 = document.getElementById("ipt1");
       const campo2 = document.getElementById("ipt2");
@@ -167,7 +169,7 @@ if(isset($_REQUEST["msg"])){
 	$cod = $_REQUEST["msg"];
 	require_once "../model/msg.php";
 	echo "<script>alert('" . $MSG[$cod] . "');</script>";
-    unset($cod);
+    unset($_REQUEST["msg"]);
 }
 ?>
 </body>

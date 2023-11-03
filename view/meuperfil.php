@@ -88,15 +88,14 @@
                 list-style: none;
                 font-family: "Questrial";
                 cursor: pointer;
+                line-height: 1.5cm;
+                font-size: 1.1em;
             }
             .corpo {
                 margin-top: 2%;
             }
-            .linkmenu {
-                line-height: 1.5cm;
-                font-size: 1.1em;
-            }
-            .menubar {
+           
+            .menubar, .menubar_resp {
                 background-color: white;
                 border-radius: 20px;
                 padding: 15px 15px 15px 25px;
@@ -286,6 +285,63 @@ font-size: 1.1em;
     .menubar_resp{
         display: none;
     }
+   
+
+
+    @media (max-width: 992px) {
+    .linkmenu{
+        font-size: 0.9em;
+        line-height:1.8cm ;
+    }
+    .menubar{
+        padding: 10px 10px 10px 15px;
+    }
+    .linkmenu>a>i, .linkmenu>i{
+        margin-right: 10px !important;
+    }
+    }
+    @media (max-width: 768px){
+        .menubar{
+            display: none;
+        }
+        .menubar_resp{
+            display: block;
+            justify-items: center;
+            text-align: center;
+        }
+        .linkmenu{
+        font-size: 1.2em;
+        line-height:1.6cm ;
+    }
+    }
+    @media (max-width: 465px) {
+    #name{
+        font-size: 1.8em;
+        margin-top: -4%;
+    }
+    #pfp_label{
+        width: 2cm;
+    }
+    .logo{
+        font-size: 1.5em;
+    }
+    .col-6 {
+    margin: 20% 0 0;}
+    .menu-link{
+        font-size: 12px;
+    }
+    header{
+        height: 8cm;
+    }
+    .linkmenu>a>i, .linkmenu>i{
+        margin-right: 13px !important;
+    }
+    iframe{
+        margin-left: -5%;
+    }
+   
+    }
+
         </style>
         <!-- menu -->
         <header>
@@ -318,13 +374,13 @@ font-size: 1.1em;
             <!-- end of menu -->
 
             <!--Corpo-->
-            <div class="container CONT2">
+            <div class="container CONT2 container_change">
                 <div class="row corpo">
                     <!--menu lateral-->
                     <div class="col-3">
                         <ul class="menubar">
                             <li  class="linkmenu">
-                            <a href="dados.php" target="iframe_perfil"  onclick="endereco('1')">  <i style="color:var(--green); margin-right:18px" class="fa-regular fa-user"></i>
+                            <a href="dados.php" target="iframe_perfil" style="display:inherit" onclick="endereco('1')">  <i style="color:var(--green); margin-right:18px" class="fa-regular fa-user"></i>
                                Meu Perfil </li></a>
                             <li  class="linkmenu">
                             <a onclick="endereco('0')">  <i style="color:var(--green); margin-right:20px" class="fa-solid fa-location-dot"></i>Endereços</a></li>
@@ -349,7 +405,7 @@ font-size: 1.1em;
                                 <i style="color:var(--green); margin-right:20px" class="fa-solid fa-right-from-bracket"></i></li>
                         </ul>
                     </div>
-                    <div class="col-8">
+                    <div class="col-8 col_iframe">
                         <iframe  src="" name="iframe_perfil" id="iframe_perfil" width="150%" height="150%" frameborder="0"></iframe>
                   
                   
@@ -624,32 +680,39 @@ function excluir(id){
 function atualizarClasseElemento() {
     const larguraJanela = window.innerWidth;
     const elemento = document.querySelector('.margin'); 
+    const col_iframe = document.querySelector('.col_iframe'); 
     const container = document.querySelector('.container'); 
-    const containerflex = document.querySelector('.container-fles'); 
+    const containerflex = document.querySelector('.container-flex'); 
     const menubar = document.querySelector('.menubar'); 
     const menubar_resp = document.querySelector('.menubar_resp'); 
-    
+    const link_menu = document.querySelectorAll(".linkmenu");
+    const i = document.getElementsByTagName("i");
 
-  if (larguraJanela > 900) {
+  if (larguraJanela > 901) {
       elemento.classList.remove('col-12');
       elemento.classList.add('col-6');      
-      containerflex.classList.add('container');
-      containerflex.classList.remove('container-flex');
-      menubar.style.display="block";
-      menubar_resp.style.display="none";
+      col_iframe.classList.remove('col-9');
+      col_iframe.classList.add('col-8');   
+    //   containerflex.classList.add('container');
+    //   containerflex.classList.remove('container-flex');
+    //   menubar.style.display="block";
+    //   menubar_resp.style.display="none";
     } 
     
-    if (larguraJanela < 900){
+    if (larguraJanela < 901){
       elemento.classList.remove('col-6');
-      elemento.classList.add('col-12');      
-      container.classList.add('container-flex');
-      container.classList.remove('container');    
-      menubar.style.display="none";
-      menubar_resp.style.display="block";
+      elemento.classList.add('col-12');   
+      col_iframe.classList.remove('col-8');
+      col_iframe.classList.add('col-9');
+    //   container.classList.add('container-flex');
+    //   container.classList.remove('container');    
+    //   menubar.style.display="none";
+    //   menubar_resp.style.display="block";
       
     }
     
-  }
+  
+}
 setInterval(atualizarClasseElemento, 1);
 atualizarClasseElemento();
 
@@ -658,7 +721,7 @@ atualizarClasseElemento();
     
 
 
-<
+
 <?php
 if(isset($_REQUEST["msg"])){
 	$cod = $_REQUEST["msg"];
