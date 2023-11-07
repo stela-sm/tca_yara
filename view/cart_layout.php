@@ -9,6 +9,9 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
         <script src="https://kit.fontawesome.com/5b9d82b6ee.js" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="css/adm_new_style.css">
+        <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Questrial&display=swap">
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -23,10 +26,12 @@
 --lgreen: #B9C394;
 }
 body{
-    padding: 10px;
+    
+ font-family: 'Questrial' !important;
+    padding: 60px;
 }
 .prod_background{
- font-family: 'Glacial Indifference';
+ font-family: 'Questrial';
 background-color: #ececec;
 height: 3cm;
 width: 100%;
@@ -70,6 +75,53 @@ transition: 0.2s;
     color: var(--white);
     border: 1px var(--yellow) solid;
   }
+
+
+
+
+
+
+
+  .prod_img{
+    width: 100%;
+    max-width: 3cm;
+    border-radius: 10px
+  }
+  .prod_row{
+
+    font-family: 'Questrial' !important;
+
+box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+border-radius: 10px;
+padding: 15px 0px;
+transition: 0.2s;
+  }
+  .prod_nome_div{
+    text-align: left;
+    margin-left: 14px;
+    margin-bottom: 0px;
+    font-size: 1.2rem;
+  }
+  .square_quant{
+    border-radius: 10px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    min-width: 80%;
+    display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 15px;
+  }
+  .decrease-quantity, .increase-quantity,   .decrease-quantity:active, .increase-quantity:active {
+    border: none;
+    background-color: transparent;
+    font-size: 1.6em;
+cursor: pointer;
+  }
+  .preco{
+    margin-right: 10%;
+  
+    font-size: 1.2rem;
+  }
 </style>
 <body>
                  
@@ -102,7 +154,28 @@ for($i=0;$i<$dados['result'];$i++){
 
 
 
+<div class="prod_div container-flex">
+    <div class="prod_row row">
+    <div class="col-9 d-flex align-items-center img_div">
+        <img src="media/produto_UAaRUhol_img_.jpeg" class="prod_img"alt="">
 
+    <p class="d-flex  prod_nome_div">
+        Óleo de limpeza - Aloe Vera</p>
+    </div>
+    <div class="col-2 d-flex align-items-center add_div">
+    <div class="square_quant">
+  <button class="decrease-quantity" onclick="quant('sub','1')">-</button>
+  <span id="quantidade">1</span>
+  <button class="increase-quantity" onclick="quant('add','1')">+</button>
+  </div>
+
+    </div>
+<div class="col-1 d-flex align-items-center preco_div">
+   <span class="preco"> R$10,00 </span>
+    <i class="fa-regular fa-trash-can"></i>
+</div>    
+</div>
+</div>
 
 
 
@@ -113,40 +186,13 @@ for($i=0;$i<$dados['result'];$i++){
 
 
     <script>
-        // Captura o elemento span e os botões
-        const spanQuantidade = document.getElementById('quantidade');
-        const botaoAdicionar = document.getElementById('adicionar');
-        const botaoRemover = document.getElementById('remover');
+     function quant(op,id){
 
-        // Adiciona um ouvinte de evento ao botão de adicionar
-        botaoAdicionar.addEventListener('click', function() {
-            // Obtém o valor atual do span e converte para número
-            let quantidadeAtual = parseInt(spanQuantidade.textContent);
-            
-            // Incrementa a quantidade
-            quantidadeAtual++;
-            
-            // Atualiza o valor no span
-            spanQuantidade.textContent = quantidadeAtual;
-        });
+            location.href="../controller/controller_client.php?quantidade_op="+op+"&id="+id;
+     }
+     
 
-        // Adiciona um ouvinte de evento ao botão de remover
-        botaoRemover.addEventListener('click', function() {
-            // Obtém o valor atual do span e converte para número
-            let quantidadeAtual = parseInt(spanQuantidade.textContent);
-            
-            // Se a quantidade for maior que 0, pede confirmação do usuário
-            if (quantidadeAtual > 0) {
-                const confirmacao = confirm("Deseja realmente remover 1 quantidade?");
-                if (confirmacao) {
-                    // Reduz a quantidade
-                    quantidadeAtual--;
-                    
-                    // Atualiza o valor no span
-                    spanQuantidade.textContent = quantidadeAtual;
-                }
-            }
-        });
+
     </script>
 </body>
 </html>
