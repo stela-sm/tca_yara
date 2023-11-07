@@ -213,6 +213,91 @@ box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
     font-size: 0.8rem;
 }
 }
+.accordion{
+    
+    font-family: 'Questrial' !important;
+}
+
+.etapa-name, .etapa-name:hover, .etapa-name:active{
+    font-weight: bolder;
+    color: #1A3D1F;
+    text-transform: uppercase;
+    text-decoration: none;
+
+}
+.card-header{
+    background-color: white;
+    border-bottom-left-radius: 0px !important;
+    border-bottom-right-radius: 0px !important;
+    border-top-right-radius: 15px !important;
+    border-top-left-radius: 15px !important;
+   
+}
+.card, .card-body{
+    border-radius: 15px !important;
+    border: none;
+}
+.card{
+    
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+.custom-radio {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.custom-radio input[type="radio"] {
+  display: none;
+}
+
+.custom-radio label {
+  position: relative;
+  padding-left: 30px; /* Espaço para a bolinha */
+  cursor: pointer;
+}
+
+.custom-radio label::before {
+  content: "";
+  width: 15px;
+  
+  margin-left: 7px;
+  margin-right: 6px;
+  height: 15px;
+  border: 1px solid GREY;
+  border-radius: 50%;
+  position: absolute;
+  left: 0;
+  top: 30%;
+  transform: translateY(-50%);
+  background-color: transparent; /* Fundo da bolinha transparente por padrão */
+}
+
+.custom-radio input[type="radio"]:checked + label::before {
+  background-color: black; /* Cor de fundo da bolinha quando selecionado */
+}
+
+.custom-radio input[type="radio"]:checked + label {
+  background-color: #E8EDD6; 
+  border-radius: 15px;
+}
+
+.label_padrao{
+    width: 100%;
+    padding: 5px 15px;
+    align-items: center;
+    justify-items: center;
+    font-weight: 600;
+    font-size: 0.8em;
+    padding: 10px;
+    border-radius: 15px;
+    border: 1px #F4F4F4 solid;
+}
+.azul{
+    color: lightseagreen;
+    font-weight: 500 !important;
+    
+}
         </style>
         <!-- menu -->
         <header>
@@ -244,65 +329,76 @@ box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
             <div class="row">
 
    
-<!--CARD PRODUTO-->
-<?php
 
-require '../model/manager.php';
-if(ISSET($_SESSION['USER-ID'])){
-    
-$id= $_SESSION['USER-ID'];
-$dados= carrinho($id);
-if($dados['result']=="0"){
-    echo "
-    
-    <div class=\"col-12\">
-    <br>
-<p class=\"vazio_p\">
-    Seu carrinho está vazio, veja nosso catálogo de <a href=\"\" class=\"produtos_a\">produtos</a>!
-</p></div>
-</div>
-        </div>
-    
-    ";
-}else{
-    echo "<div class=\"col-8\">";
-    $valortotal = '0';
-    for($i=0;$i<$dados['result'];$i++){
-    $produto = produtoBusca($dados[$i]['id_produto']);
-    $valor= $dados[$i]['quantidade'] * $produto['valor'];
-    
-    $valortotal = $valortotal+ $valor;
-    echo "
-    <div class=\"card prod_row\">
-  <div class=\"card-body\">
-    
-<div class=\"container-flex\">
-<div class=\"row\">
-<div class=\"col-7 d-flex align-items-center img_div\">
-    <img src=\"media/".$produto['img']."\" class=\"prod_img\"alt=\"\">
-    <p class=\"d-flex  prod_nome_div\">
-   " .$produto['nome']."</p>
+    <div class="col-8">
+    <div class="accordion " id="accordionExample">
+  <div class="card bg">
+    <div class="card-header" id="headingOne">
+      <h5 class="mb-0">
+        <button class="btn btn-link etapa-name" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+         <B> 1. Endereço de Entrega </B>
+        </button>
+      </h5>
     </div>
-    <div class=\"col-3 d-flex align-items-center add_div\">
-    <div class=\"square_quant\">
-  <button class=\"decrease-quantity\" onclick=\"quant('sub','".$dados[$i]['id_carrinho']."','".$dados[$i]['quantidade']."')\"><i class=\"fa-solid fa-minus\"></i></button>
-  <span id=\"quantidade\">".$dados[$i]['quantidade']."</span>
-  <button class=\"increase-quantity\" onclick=\"quant('add','".$dados[$i]['id_carrinho']."','".$dados[$i]['quantidade']."')\"><i class=\"fa-solid fa-plus\"></i></button>
-  </div>
-  </div>
-  <div class=\"col-2 d-flex align-items-center preco_div\">
-     <span class=\"preco\"> R$".$valor." </span>
-      
-    <a type=\"button\" onclick=\"excluir('".$dados[$i]['id_carrinho']."')\"><i class=\"fa-regular fa-trash-can\"></i></a>
-  </div>    
-  </div>
-  </div>
+    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+      <div class="card-body">
+
+      <div class="custom-radio">
+  <input type="radio" id="opcao1" name="opcoes" checked>
+  <label for="opcao1" class="label_padrao">
+    Rua Damásio Rodrigues Gomes, 54, Jardim Cidália, São Paulo - SP, 40527647810 <br>
+    <span class="azul">Editar Endereço</span>
+  </label>
+</div>
+
+
+<div class="custom-radio">
+  <input type="radio" id="opcao1" name="opcoes" checked>
+  <label for="opcao1" class="label_padrao">
+    Rua Damásio Rodrigues Gomes, 54, Jardim Cidália, São Paulo - SP, 40527647810 <br>
+    <span class="azul">Editar Endereço</span>
+  </label>
+</div>
+
+
+<span class="azul">+ Adicionar Endereço </span>
+
+      </div>
     </div>
   </div>
   <br>
-    ";}
-    
-    ?>
+  <div class="card">
+    <div class="card-header" id="headingTwo">
+      <h5 class="mb-0">
+        <button class="btn btn-link collapsed etapa-name" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+         2. Forma de Envio
+        </button>
+      </h5>
+    </div>
+    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+      <div class="card-body">
+        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+      </div>
+    </div>
+  </div>
+  <br>
+  <div class="card">
+    <div class="card-header" id="headingThree">
+      <h5 class="mb-0">
+        <button class="btn btn-link collapsed etapa-name" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+          3. Método de Pagamento
+        </button>
+      </h5>
+    </div>
+    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+      <div class="card-body">
+        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+      </div>
+    </div>
+  </div>
+</div>
+  </div>
+ 
  
   
 
@@ -327,21 +423,18 @@ if($dados['result']=="0"){
 
 
 
-<hr id="hr-div"></hr>
 
 
-
-                    </div>
 
                     <div class="col-4">
                     <div class="card subtotal_card">
   <div class="card-body">
- <table> <tr class="subtotal_row font"><td><b>Subtotal</b></td><td class="valor_div">R$<?php echo $valortotal; ?></td></tr>
+ <table> <tr class="subtotal_row font"><td><b>Subtotal</b></td><td class="valor_div">R$144,00</td></tr>
  </table>
 <table class="margin-table">
 <tr class="subtotal_row"><td class="frete">Tributos e Frete calculados na finalização da compra</td></tr></table>
 <tr><td class="button_final">
-    <a type="submit" class="button" href="checkout.php" value="<?php echo $_SESSION["USER-ID"]; ?>" name="btnCarrinho">Finalizar Compra</a>
+    <a type="submit" class="button" href="../controller/controller_compra.php" value="<?php echo $_SESSION["USER-ID"]; ?>" name="btnCarrinho">Finalizar Compra</a>
 </td></tr>
 </table>  
 </div>
@@ -400,6 +493,6 @@ if(isset($_REQUEST["msg"])){
     </script>
 
 </html>
-<?php }} else{ header("Location: login.php?fase=2"); }}?>
+<?php } else{ header("Location: login.php?fase=2"); }?>
 </body>
 </html>

@@ -464,4 +464,73 @@ header("Location: ../model/mailget.php?celular=" . urlencode($cel). "&cpf=". url
                         
                     }
                 
+                    if (isset($_REQUEST["quantidade_op"])){ 
+                        require '../model/manager.php';
+                        $op = $_REQUEST["quantidade_op"];
+                        $qtd = $_REQUEST["quant"];
+                        if ($op == 'add'){
+                            $qtd =  $qtd + 1;
+                        }else{
+                            $qtd =  $qtd-1;
+                                                  
+                        }
+                        $dados["quant"] = $qtd;
+                        $dados["id"] = $_REQUEST["id"];
+                        $resp = quantidade_op($dados);
+
+                  
+                        if ($resp["result"] == '1') { //SUCESSO
+                        
+                            ?>
+                          <form action="../view/carrinho.php" name="form" id="myForm" method="POST">
+                            </form>  
+                            <script>
+                            document.getElementById('myForm').submit();
+                            </script>
+                            <?php  
+                          
+                    
+                            }else if($resp["result"]=='0'){//erro
+                                
+                                ?>
+                                <form action="../view/carrinho.php" name="form" id="myForm" method="POST">
+                                </form> 
+                                <script>
+                                document.getElementById('myForm').submit();
+                                </script>
+                                <?php  
+                                
+                            }
+                    }
+
+                    if (isset($_REQUEST["excluir_prod"])){ 
+                        require '../model/manager.php';
+                       
+                        $dados["id"] = $_REQUEST["excluir_prod"];
+                        $resp = excluir_prod($dados);
+
+                  
+                        if ($resp["result"] == '1') { //SUCESSO
+                        
+                            ?>
+                          <form action="../view/carrinho.php" name="form" id="myForm" method="POST">
+                            </form>  
+                            <script>
+                            document.getElementById('myForm').submit();
+                            </script>
+                            <?php  
+                          
+                    
+                            }else if($resp["result"]=='0'){//erro
+                                
+                                ?>
+                                <form action="../view/carrinho.php" name="form" id="myForm" method="POST">
+                                </form> 
+                                <script>
+                                document.getElementById('myForm').submit();
+                                </script>
+                                <?php  
+                                
+                            }
+                    }
         ?>

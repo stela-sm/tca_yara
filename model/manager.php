@@ -536,4 +536,38 @@ function dadosUser($id){
 
 }}
 
+
+function quantidade_op($dados){
+    require "conexao.php";
+   
+    $sql = "UPDATE carrinho SET quantidade = '{$dados['quant']}' WHERE ID_CARRINHO = '{$dados['id']}'";
+
+   $result = $conn->query($sql);
+    if($result==true){
+        $dados["result"] = 1;
+$conn->close(); 
+return $dados;
+}else{
+        $dados["result"] = 0;
+        $conn->close();    
+        return $dados;
+}
+}
+
+function  excluir_prod($dados){
+    require "conexao.php";
+   
+    $sql = "DELETE FROM carrinho WHERE ID_CARRINHO = '{$dados['id']}'";
+
+   $result = $conn->query($sql);
+    if($result==true){
+        $dados["result"] = 1;
+$conn->close(); 
+return $dados;
+}else{
+        $dados["result"] = 0;
+        $conn->close();    
+        return $dados;
+}
+}
         ?>
