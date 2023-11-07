@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 21-Set-2023 às 01:39
+-- Tempo de geração: 27/10/2023 às 01:56
 -- Versão do servidor: 10.4.24-MariaDB
--- versão do PHP: 8.1.6
+-- Versão do PHP: 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -66,7 +66,7 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `adm`
+-- Estrutura para tabela `adm`
 --
 
 CREATE TABLE `adm` (
@@ -82,17 +82,17 @@ CREATE TABLE `adm` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Extraindo dados da tabela `adm`
+-- Despejando dados para a tabela `adm`
 --
 
 INSERT INTO `adm` (`ID_ADM`, `nome`, `email`, `cpf`, `senha`, `celular`, `poder`, `status`, `datahora`) VALUES
-(1, 'Stela ', 'stela@gmail.com', '40527647810', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', '11963220905', 5, '1', '2023-09-14 17:25:48'),
+(1, 'Stela ', 'stela@gmail.com', '40527647810', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3', '11963220905', 5, '1', '2023-09-14 17:25:48'),
 (6, 'samuel', 'samuel@gmail.com', '16511604810', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', '11993832299', 1, '1', '2023-08-29 20:34:10');
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `carrinho`
+-- Estrutura para tabela `carrinho`
 --
 
 CREATE TABLE `carrinho` (
@@ -104,7 +104,7 @@ CREATE TABLE `carrinho` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Extraindo dados da tabela `carrinho`
+-- Despejando dados para a tabela `carrinho`
 --
 
 INSERT INTO `carrinho` (`ID_CARRINHO`, `id_cliente`, `id_produto`, `quantidade`, `preco`) VALUES
@@ -113,7 +113,7 @@ INSERT INTO `carrinho` (`ID_CARRINHO`, `id_cliente`, `id_produto`, `quantidade`,
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `cliente`
+-- Estrutura para tabela `cliente`
 --
 
 CREATE TABLE `cliente` (
@@ -128,16 +128,29 @@ CREATE TABLE `cliente` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Extraindo dados da tabela `cliente`
+-- Despejando dados para a tabela `cliente`
 --
 
 INSERT INTO `cliente` (`ID_CLIENTE`, `nome`, `cpf`, `email`, `senha`, `celular`, `datahora`, `status`) VALUES
-(1, 'stela', '40527647810', 's@s.com', '5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5', '11963220905', '2023-08-25 23:03:25', 1);
+(1, 'Laura Barbara ', '40527647810', 'laura@gmail.com', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3', '11963220905', '2023-10-23 21:57:51', 1),
+(5, 'stela', '16511604810', 'stelamontenegro3@gmail.com', '96cae35ce8a9b0244178bf28e4966c2ce1b8385723a96a6b838858cdd6ca0a1e', '', '2023-10-04 22:47:33', 0);
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `endereco`
+-- Estrutura para tabela `cod_temp`
+--
+
+CREATE TABLE `cod_temp` (
+  `ID_COD` int(11) NOT NULL,
+  `codigo` varchar(6) NOT NULL,
+  `datahora` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `endereco`
 --
 
 CREATE TABLE `endereco` (
@@ -149,25 +162,27 @@ CREATE TABLE `endereco` (
   `cidade` varchar(50) DEFAULT NULL,
   `bairro` varchar(50) DEFAULT NULL,
   `rua` varchar(100) DEFAULT NULL,
-  `logradouro` varchar(50) DEFAULT NULL,
+  `numero` int(11) DEFAULT NULL,
   `bloco` varchar(10) DEFAULT NULL,
   `apto` varchar(10) DEFAULT NULL,
-  `referencia` text DEFAULT NULL,
   `nome` varchar(100) DEFAULT NULL,
   `datahora` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Extraindo dados da tabela `endereco`
+-- Despejando dados para a tabela `endereco`
 --
 
-INSERT INTO `endereco` (`ID_ENDERECO`, `id_cliente`, `cep`, `pais`, `estado`, `cidade`, `bairro`, `rua`, `logradouro`, `bloco`, `apto`, `referencia`, `nome`, `datahora`) VALUES
-(1, 1, '04652150', 'Brasil', 'SP', 'São Paulo', 'Cidade Ademar', 'Damásio rodrigues gomes', 'Casa', '0', '0', 'nenhuma', 'Minha casa', '2023-08-22 21:08:46');
+INSERT INTO `endereco` (`ID_ENDERECO`, `id_cliente`, `cep`, `pais`, `estado`, `cidade`, `bairro`, `rua`, `numero`, `bloco`, `apto`, `nome`, `datahora`) VALUES
+(1, 1, '04652150', 'Brasil', 'SP', 'São Paulo', 'Jardim', 'Rua Damásio Rodrigues Gomes', 54, '52', NULL, 'Casa Família', '0000-00-00 00:00:00'),
+(5, 1, '04652150', 'Brasil', 'SP', 'São Paulo', 'Jardim Cidália', 'Rua Damásio Rodrigues Gomes', NULL, NULL, '65', 'Escritório', '0000-00-00 00:00:00'),
+(7, 1, '04652150', NULL, 'SP', 'São Paulo', 'Jardim', 'Rua Damásio Rodrigues Gomes', 54, '3     ', NULL, 'Default', '0000-00-00 00:00:00'),
+(8, 1, '04652150', NULL, 'SP', 'São Paulo', 'Jardim', 'Rua Damásio Rodrigues Gomes', 0, '2         ', '25', 'Padrão', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `filtros`
+-- Estrutura para tabela `filtros`
 --
 
 CREATE TABLE `filtros` (
@@ -176,7 +191,7 @@ CREATE TABLE `filtros` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Extraindo dados da tabela `filtros`
+-- Despejando dados para a tabela `filtros`
 --
 
 INSERT INTO `filtros` (`ID_FILTRO`, `nome_filtro`) VALUES
@@ -185,13 +200,14 @@ INSERT INTO `filtros` (`ID_FILTRO`, `nome_filtro`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `itens`
+-- Estrutura para tabela `itens`
 --
 
 CREATE TABLE `itens` (
   `ID_ITENS` int(11) NOT NULL,
   `id_pedido` int(11) DEFAULT NULL,
   `id_produto` int(11) DEFAULT NULL,
+  `nome` varchar(100) NOT NULL,
   `quantidade` int(11) DEFAULT NULL,
   `presente` int(11) DEFAULT NULL COMMENT '1 = sim; 0 - não',
   `valor_uni` decimal(10,2) DEFAULT NULL,
@@ -200,17 +216,19 @@ CREATE TABLE `itens` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Extraindo dados da tabela `itens`
+-- Despejando dados para a tabela `itens`
 --
 
-INSERT INTO `itens` (`ID_ITENS`, `id_pedido`, `id_produto`, `quantidade`, `presente`, `valor_uni`, `valor_total`, `datahora`) VALUES
-(1, 1, 2, 2, 0, '50.00', '100.00', '2023-08-23 15:32:05'),
-(2, 1, 2, 2, 1, '50.00', '100.00', '2023-08-23 17:09:22');
+INSERT INTO `itens` (`ID_ITENS`, `id_pedido`, `id_produto`, `nome`, `quantidade`, `presente`, `valor_uni`, `valor_total`, `datahora`) VALUES
+(1, 1, 2, 'Creme aloe vera', 2, 0, 50.00, 100.00, '2023-08-23 15:32:05'),
+(2, 1, 2, 'Creme aloe vera', 2, 1, 50.00, 100.00, '2023-08-23 17:09:22'),
+(3, 2, 3, 'serum jojoba', 2, 0, 50.00, 100.00, '2023-08-23 15:32:05'),
+(4, 2, 3, 'serum jojoba', 2, 1, 50.00, 100.00, '2023-08-23 17:09:22');
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `pedidos`
+-- Estrutura para tabela `pedidos`
 --
 
 CREATE TABLE `pedidos` (
@@ -224,16 +242,17 @@ CREATE TABLE `pedidos` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Extraindo dados da tabela `pedidos`
+-- Despejando dados para a tabela `pedidos`
 --
 
 INSERT INTO `pedidos` (`ID_PEDIDO`, `id_cliente`, `id_endereco`, `valor`, `pagamento`, `status`, `datahora`) VALUES
-(1, 1, 1, '50.00', 'crédito', '3', '2023-08-24 20:26:10');
+(1, 1, 1, 50.00, 'crédito', '3', '2023-08-24 20:26:10'),
+(2, 1, 1, 50.00, 'crédito', '4', '2023-09-24 21:13:18');
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `pedidos_status`
+-- Estrutura para tabela `pedidos_status`
 --
 
 CREATE TABLE `pedidos_status` (
@@ -242,7 +261,7 @@ CREATE TABLE `pedidos_status` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Extraindo dados da tabela `pedidos_status`
+-- Despejando dados para a tabela `pedidos_status`
 --
 
 INSERT INTO `pedidos_status` (`ID_STATUS`, `status`) VALUES
@@ -258,7 +277,7 @@ INSERT INTO `pedidos_status` (`ID_STATUS`, `status`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `produtos`
+-- Estrutura para tabela `produtos`
 --
 
 CREATE TABLE `produtos` (
@@ -278,18 +297,19 @@ CREATE TABLE `produtos` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Extraindo dados da tabela `produtos`
+-- Despejando dados para a tabela `produtos`
 --
 
 INSERT INTO `produtos` (`ID_PRODUTO`, `nome`, `descricao`, `img`, `img_sec`, `img_hover`, `categoria`, `finalidade`, `estoque`, `valor_uni`, `ingredientes`, `status`, `datahora`) VALUES
-(2, 'Creme aloe vera', 'Formulado com aloe vera de alta qualidade, este creme exclusivo oferece uma experiência de cuidado da pele como nenhuma outra. A aloe vera, conhecida por suas propriedades hidratantes e curativas, é o segredo para uma pele saudável e radiante.', 'produto_UAaRUhol_img_.jpeg', 'produto_ackdASgG_imgsec_.png', 'produto_WufLjgBI_imghover_.png', 1, 1, 2225, '89.99', 'Gel de Aloe Vera: 60% (proporção maior para maximizar os benefícios)\r\nÓleo de Jojoba: 10%\r\nÓleo de Coco Fracionado: 8%\r\nGlicerina Vegetal: 5%\r\nManteiga de Karité: 5%\r\nEmulsificante Natural (como cera de abelha ou emulsificante vegetal): 6%\r\nÁgua Destilada: 4%\r\nConservante Natural (como extrato de to', '1 ', '2023-09-19 20:46:59');
+(2, 'Creme aloe vera', 'Formulado com aloe vera de alta qualidade, este creme exclusivo oferece uma experiência de cuidado da pele como nenhuma outra. A aloe vera, conhecida por suas propriedades hidratantes e curativas, é o segredo para uma pele saudável e radiante.', 'produto_UAaRUhol_img_.jpeg', 'produto_ackdASgG_imgsec_.png', 'produto_WufLjgBI_imghover_.png', 1, 1, 2225, 89.99, 'Gel de Aloe Vera: 60% (proporção maior para maximizar os benefícios)\nÓleo de Jojoba: 10%\nÓleo de Coco Fracionado: 8%\nGlicerina Vegetal: 5%\nManteiga de Karité: 5%\nEmulsificante Natural (como cera de abelha ou emulsificante vegetal): 6%\nÁgua Destilada: 4%\nConservante Natural (como extrato de to', '1 ', '2023-09-19 20:46:59'),
+(3, 'serum jojoba', 'Formulado com aloe vera de alta qualidade, este creme exclusivo oferece uma experiência de cuidado da pele como nenhuma outra. A aloe vera, conhecida por suas propriedades hidratantes e curativas, é o segredo para uma pele saudável e radiante.', 'produto_UAaRUhol_img_.jpeg', 'produto_ackdASgG_imgsec_.png', 'produto_WufLjgBI_imghover_.png', 1, 1, 2225, 89.99, 'Gel de Aloe Vera: 60% (proporção maior para maximizar os benefícios)\r\nÓleo de Jojoba: 10%\r\nÓleo de Coco Fracionado: 8%\r\nGlicerina Vegetal: 5%\r\nManteiga de Karité: 5%\r\nEmulsificante Natural (como cera de abelha ou emulsificante vegetal): 6%\r\nÁgua Destilada: 4%\r\nConservante Natural (como extrato de to', '1 ', '2023-09-19 20:46:59');
 
 --
 -- Índices para tabelas despejadas
 --
 
 --
--- Índices para tabela `adm`
+-- Índices de tabela `adm`
 --
 ALTER TABLE `adm`
   ADD PRIMARY KEY (`ID_ADM`),
@@ -297,7 +317,7 @@ ALTER TABLE `adm`
   ADD UNIQUE KEY `cpfadm` (`cpf`);
 
 --
--- Índices para tabela `carrinho`
+-- Índices de tabela `carrinho`
 --
 ALTER TABLE `carrinho`
   ADD PRIMARY KEY (`ID_CARRINHO`),
@@ -305,7 +325,7 @@ ALTER TABLE `carrinho`
   ADD KEY `id_produto` (`id_produto`);
 
 --
--- Índices para tabela `cliente`
+-- Índices de tabela `cliente`
 --
 ALTER TABLE `cliente`
   ADD PRIMARY KEY (`ID_CLIENTE`),
@@ -313,28 +333,35 @@ ALTER TABLE `cliente`
   ADD UNIQUE KEY `email` (`email`);
 
 --
--- Índices para tabela `endereco`
+-- Índices de tabela `cod_temp`
+--
+ALTER TABLE `cod_temp`
+  ADD PRIMARY KEY (`ID_COD`);
+
+--
+-- Índices de tabela `endereco`
 --
 ALTER TABLE `endereco`
   ADD PRIMARY KEY (`ID_ENDERECO`),
   ADD KEY `id_cliente` (`id_cliente`);
 
 --
--- Índices para tabela `filtros`
+-- Índices de tabela `filtros`
 --
 ALTER TABLE `filtros`
   ADD PRIMARY KEY (`ID_FILTRO`);
 
 --
--- Índices para tabela `itens`
+-- Índices de tabela `itens`
 --
 ALTER TABLE `itens`
   ADD PRIMARY KEY (`ID_ITENS`),
   ADD KEY `id_pedido` (`id_pedido`),
-  ADD KEY `id_produto` (`id_produto`);
+  ADD KEY `id_produto` (`id_produto`),
+  ADD KEY `nome_fk` (`nome`);
 
 --
--- Índices para tabela `pedidos`
+-- Índices de tabela `pedidos`
 --
 ALTER TABLE `pedidos`
   ADD PRIMARY KEY (`ID_PEDIDO`),
@@ -342,21 +369,22 @@ ALTER TABLE `pedidos`
   ADD KEY `id_endereco` (`id_endereco`);
 
 --
--- Índices para tabela `pedidos_status`
+-- Índices de tabela `pedidos_status`
 --
 ALTER TABLE `pedidos_status`
   ADD PRIMARY KEY (`ID_STATUS`);
 
 --
--- Índices para tabela `produtos`
+-- Índices de tabela `produtos`
 --
 ALTER TABLE `produtos`
   ADD PRIMARY KEY (`ID_PRODUTO`),
+  ADD UNIQUE KEY `nome` (`nome`),
   ADD KEY `categoria` (`categoria`),
   ADD KEY `finalidade` (`finalidade`);
 
 --
--- AUTO_INCREMENT de tabelas despejadas
+-- AUTO_INCREMENT para tabelas despejadas
 --
 
 --
@@ -375,13 +403,19 @@ ALTER TABLE `carrinho`
 -- AUTO_INCREMENT de tabela `cliente`
 --
 ALTER TABLE `cliente`
-  MODIFY `ID_CLIENTE` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `ID_CLIENTE` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT de tabela `cod_temp`
+--
+ALTER TABLE `cod_temp`
+  MODIFY `ID_COD` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=104;
 
 --
 -- AUTO_INCREMENT de tabela `endereco`
 --
 ALTER TABLE `endereco`
-  MODIFY `ID_ENDERECO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `ID_ENDERECO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de tabela `filtros`
@@ -393,13 +427,13 @@ ALTER TABLE `filtros`
 -- AUTO_INCREMENT de tabela `itens`
 --
 ALTER TABLE `itens`
-  MODIFY `ID_ITENS` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `ID_ITENS` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de tabela `pedidos`
 --
 ALTER TABLE `pedidos`
-  MODIFY `ID_PEDIDO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `ID_PEDIDO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de tabela `pedidos_status`
@@ -414,42 +448,51 @@ ALTER TABLE `produtos`
   MODIFY `ID_PRODUTO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- Restrições para despejos de tabelas
+-- Restrições para tabelas despejadas
 --
 
 --
--- Limitadores para a tabela `carrinho`
+-- Restrições para tabelas `carrinho`
 --
 ALTER TABLE `carrinho`
   ADD CONSTRAINT `carrinho_ibfk_1` FOREIGN KEY (`id_cliente`) REFERENCES `cliente` (`ID_CLIENTE`),
   ADD CONSTRAINT `carrinho_ibfk_2` FOREIGN KEY (`id_produto`) REFERENCES `produtos` (`ID_PRODUTO`);
 
 --
--- Limitadores para a tabela `endereco`
+-- Restrições para tabelas `endereco`
 --
 ALTER TABLE `endereco`
   ADD CONSTRAINT `endereco_ibfk_1` FOREIGN KEY (`id_cliente`) REFERENCES `cliente` (`ID_CLIENTE`);
 
 --
--- Limitadores para a tabela `itens`
+-- Restrições para tabelas `itens`
 --
 ALTER TABLE `itens`
   ADD CONSTRAINT `itens_ibfk_1` FOREIGN KEY (`id_pedido`) REFERENCES `pedidos` (`ID_PEDIDO`),
-  ADD CONSTRAINT `itens_ibfk_2` FOREIGN KEY (`id_produto`) REFERENCES `produtos` (`ID_PRODUTO`);
+  ADD CONSTRAINT `itens_ibfk_2` FOREIGN KEY (`id_produto`) REFERENCES `produtos` (`ID_PRODUTO`),
+  ADD CONSTRAINT `nome_fk` FOREIGN KEY (`nome`) REFERENCES `produtos` (`nome`) ON DELETE NO ACTION ON UPDATE CASCADE;
 
 --
--- Limitadores para a tabela `pedidos`
+-- Restrições para tabelas `pedidos`
 --
 ALTER TABLE `pedidos`
   ADD CONSTRAINT `pedidos_ibfk_1` FOREIGN KEY (`id_cliente`) REFERENCES `cliente` (`ID_CLIENTE`),
   ADD CONSTRAINT `pedidos_ibfk_2` FOREIGN KEY (`id_endereco`) REFERENCES `endereco` (`ID_ENDERECO`);
 
 --
--- Limitadores para a tabela `produtos`
+-- Restrições para tabelas `produtos`
 --
 ALTER TABLE `produtos`
   ADD CONSTRAINT `produtos_ibfk_1` FOREIGN KEY (`categoria`) REFERENCES `filtros` (`ID_FILTRO`),
   ADD CONSTRAINT `produtos_ibfk_2` FOREIGN KEY (`finalidade`) REFERENCES `filtros` (`ID_FILTRO`);
+
+DELIMITER $$
+--
+-- Eventos
+--
+CREATE DEFINER=`root`@`localhost` EVENT `ExcluirRegistrosApos5Minutos` ON SCHEDULE EVERY 1 MINUTE STARTS '2023-10-26 19:39:22' ON COMPLETION NOT PRESERVE ENABLE DO DELETE FROM cod_temp WHERE datahora < NOW() - INTERVAL 5 MINUTE$$
+
+DELIMITER ;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
