@@ -15,7 +15,10 @@
         
     ?>
     <head>
-        
+        <script>   $(document).ready(function(){
+      // Expanda todos os itens do acordeão
+      $('.collapse').addClass('show');
+    });</script>
 <script src="js/cep_ajax.js"></script>
         <link
             rel="stylesheet"
@@ -50,10 +53,7 @@
 
                   
         <style>
-            body{
-               max-width: 100vw;
-               
-            }
+           
             :root {
                 --white: #f9f9f9;
                 --green: #1A3D1F;
@@ -273,6 +273,9 @@ box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
   background-color: transparent; /* Fundo da bolinha transparente por padrão */
 }
 
+.margin-radio label::before{
+  top:50% !important;
+}
 .custom-radio input[type="radio"]:checked + label::before {
   background-color: black; /* Cor de fundo da bolinha quando selecionado */
 }
@@ -325,6 +328,7 @@ font-size: 1.1em;
         border: none;
         border-radius: 5px;
         padding: 10px;
+        width: 90%;
 
     }
     
@@ -380,6 +384,32 @@ border-radius: 20px !important;
 padding: 10px;
 box-shadow: rgba(0, 0, 0, 0.1) -4px 9px 25px -6px;
 }
+
+form{
+        width: 100%;
+    }
+    table{
+      width: 100%;
+
+    }
+    td{
+      padding: 8px;
+    }
+    .adicionar, .adicionar:active{
+      border: none;
+      background-color: transparent;
+      outline: none;
+      cursor: pointer;
+      padding: 10px 0px;
+    }
+    .editar, .editar:active{
+      border: none;
+      background-color: transparent;
+      outline: none;
+      cursor: pointer;
+      padding: 0px;
+      font-size: 0.9em;
+    }
         </style>
         <!-- menu -->
         <header>
@@ -407,6 +437,7 @@ box-shadow: rgba(0, 0, 0, 0.1) -4px 9px 25px -6px;
 
             <br>
 <br>
+<form action="../controller/controller_client.php" method="post" class="form_padrao">
             <div class="container container-RESP">
             <div class="row">
 
@@ -422,29 +453,38 @@ box-shadow: rgba(0, 0, 0, 0.1) -4px 9px 25px -6px;
         </button>
       </h5>
     </div>
-    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne">
       <div class="card-body">
 
-      <div class="custom-radio">
-  <input type="radio" id="endereco1" name="opcoes_endereco">
-  <label for="endereco1" class="label_padrao">
-    Rua Damásio Rodrigues Gomes, 54, Jardim Cidália, São Paulo - SP, 40527647810 <br>
-    <span class="azul">Editar Endereço</span>
-  </label>
-</div>
+
+      <?php
+      require "../model/manager.php";
+      $dados = buscar_endereco($_SESSION["USER-ID"]);
+      
+      if($dados["result"] == 0){ echo ""; }else{ 
+      
+              for($i=0;$i<$dados["num"];$i++){
+
+echo"  <div class=\"custom-radio\">
+<input type=\"radio\" id=\"endereco".$dados[$i]["id"]."\" name=\"opcoes_endereco\">
+<label for=\"endereco".$dados[$i]["id"]."\" class=\"label_padrao\">".$dados[$i]["rua"].", "; if ($dados[$i]["numero"]!=''){echo 'nº'.$dados[$i]["numero"].", ";} if ($dados[$i]["bloco"]!=''){echo 'b.'.$dados[$i]["bloco"].", ";} if ($dados[$i]["apto"]!=''){echo 'apto.'.$dados[$i]["apto"].", ";} echo $dados[$i]["bairro"].", ".$dados[$i]["cidade"].", ".$dados[$i]["estado"].", ".$dados[$i]["cep"]." - ".$dados[$i]["nome"]." <br>
+<button type=\"button\" class=\"btn botao_modal editar\" data-toggle=\"modal\" data-target=\"#modal".$dados[$i]["id"]."\"><span class=\"azul\">Editar Endereço</span></button> 
+</label>
+</div>";
+              }
+            
+            
+            
+            }
+      ?>
+    
 
 
-<div class="custom-radio">
-  <input type="radio" id="endereco2" name="opcoes_endereco">
-  <label for="endereco2" class="label_padrao">
-    Rua Damásio Rodrigues Gomes, 54, Jardim Cidália, São Paulo - SP, 40527647810 <br>
-    <span class="azul">Editar Endereço</span>
-  </label>
-</div>
 
 
 
-<button type="button" class="btn botao_modal " data-toggle="modal" data-target="#novo_endereco"><span class="azul">+ Adicionar Endereço </span></button>
+
+<button type="button" class="btn botao_modal adicionar " data-toggle="modal" data-target="#novo_endereco"><span class="azul">+ Adicionar Endereço </span></button>
 
       </div>
     </div>
@@ -453,26 +493,32 @@ box-shadow: rgba(0, 0, 0, 0.1) -4px 9px 25px -6px;
   <div class="card">
     <div class="card-header" id="headingTwo">
       <h5 class="mb-0">
-        <button class="btn btn-link collapsed etapa-name" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+        <button class="btn btn-link collapsed etapa-name" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
          2. Forma de Envio
         </button>
       </h5>
     </div>
-    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+    <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" >
     <div class="card-body">
 
-    <div class="custom-radio">
+    <div class="custom-radio margin-radio">
   <input type="radio" id="envio1" name="opcoes_envio">
   <label for="envio1" class="label_padrao">
-    Rua Damásio Rodrigues Gomes, 54, Jardim Cidália, São Paulo - SP, 40527647810 
+   ENVIO GRÁTIS PADRÃO - 10 dias úteis via SEDEX
   </label>
 </div>
 
 
-<div class="custom-radio">
+<div class="custom-radio margin-radio">
   <input type="radio" id="envio2" name="opcoes_envio">
   <label for="envio2" class="label_padrao">
-    Rua Damásio Rodrigues Gomes, 54, Jardim Cidália, São Paulo - SP, 40527647810 
+  R$2,00 - 5 dias úteis via SEDEX 
+  </label>
+</div>
+<div class="custom-radio margin-radio">
+  <input type="radio" id="envio3" name="opcoes_envio">
+  <label for="envio3" class="label_padrao">
+  R$10,00 - 2 dias úteis via YARA TRANSPORTADORA 
   </label>
 </div>
 
@@ -486,14 +532,33 @@ box-shadow: rgba(0, 0, 0, 0.1) -4px 9px 25px -6px;
   <div class="card">
     <div class="card-header" id="headingThree">
       <h5 class="mb-0">
-        <button class="btn btn-link collapsed etapa-name" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+        <button class="btn btn-link collapsed etapa-name" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
           3. Método de Pagamento
         </button>
       </h5>
     </div>
-    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+    <div id="collapseThree" class="collapse show" aria-labelledby="headingThree" >
       <div class="card-body">
-        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+      <div class="custom-radio margin-radio">
+  <input type="radio" id="pay1" name="opcoes_pay">
+  <label for="pay1" class="label_padrao">
+   Cartão de Crédito - confirmação imediata
+  </label>
+</div>
+
+
+<div class="custom-radio margin-radio">
+  <input type="radio" id="pay2" name="opcoes_pay">
+  <label for="pay2" class="label_padrao">
+  Boleto Bancário - Vencimento em 1 dia útil
+  </label>
+</div>
+<div class="custom-radio margin-radio">
+  <input type="radio" id="pay3" name="opcoes_pay">
+  <label for="pay3" class="label_padrao">
+  Pix - Código válido por 1 hora
+  </label>
+</div>
       </div>
     </div>
   </div>
@@ -537,6 +602,7 @@ box-shadow: rgba(0, 0, 0, 0.1) -4px 9px 25px -6px;
 <tr><td class="button_final">
     <a type="submit" class="button" href="../controller/controller_compra.php" value="<?php echo $_SESSION["USER-ID"]; ?>" name="btnCarrinho">Finalizar Compra</a>
 </td></tr>
+</form>
 </table>  
 </div>
 </div>
@@ -593,56 +659,111 @@ if(isset($_REQUEST["msg"])){
 
     </script>
     <!--MODAL NOVO ENDEREÇO-->
+<?php
+    for($i=0;$i<$dados["num"];$i++){
+
+ECHO "
+            <form id=\"endereco_edit\" action=\"../controller/controller_client.php\" method=\"post\">
+            <div class=\"modal fade\" id=\"modal".$dados[$i]["id"]."\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"TituloModalCentralizado\" aria-hidden=\"true\">
+              <div class=\"modal-dialog modal-lg modal-dialog-centered\" role=\"document\">
+                <div class=\"modal-content\">
+                <div class=\"modal-header\">
+                <h5 class=\"modal-title\" id=\"TituloModalCentralizado\"><input type=\"text\" name=\"apelido\" id=\"apelido".$dados[$i]["id"]."\" class=\"input_apelido\" readonly  ondblclick=\"active(".$dados[$i]["id"].")\" value=\"".$dados[$i]["nome"]."\"></h5>
+                <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Fechar\" onclick=\"limpa('endereco_edit')\">
+                  <span aria-hidden=\"true\">&times;</span>
+                </button>
+              </div>
+                  
+                  <input type=\"hidden\" name=\"endereco_edit_checkout\" value=\"".$dados[$i]["id"]."\">
+                  <input type=\"hidden\" name=\"id_cliente\" value=\"".$dados[$i]["id_cliente"]."\">
+                  <div class=\"modal-body\">
+                  <table class=\"table_modal\">
+                   
+                    <tr>
+                        <td>CEP:</td>
+                        <td><input type=\"text\" name=\"cep\" onblur=\"buscaCep();\" onfocus=\"change(".$dados[$i]["id"].")\" id=\"cep".$dados[$i]["id"]."\" value=".$dados[$i]["cep"]." class=\"input_padrao \"></td>
+                        <td>Rua:</td>
+                        <td><input type=\"text\" name=\"rua\" id=\"rua".$dados[$i]["id"]."\" value=\"".$dados[$i]["rua"]."\" readonly class=\"input_padrao input2\"></td>
+                    </tr>
+                    <tr>
+                        <td>Número:</td>
+                        <td><input type=\"text\" name=\"numero\" value=\"".$dados[$i]["numero"]."\" class=\"input_padrao\"></td>
+                        <td>Bairro:</td>
+                        <td><input type=\"text\" name=\"bairro\" id=\"bairro".$dados[$i]["id"]."\" value=\"".$dados[$i]["bairro"]."\" readonly class=\"input_padrao input2 \"></td>
+                    </tr>
+                    <tr>
+                        <td>Bloco:</td>
+                        <td><input type=\"text\" name=\"bloco\" value=\"".$dados[$i]["bloco"]." \"class=\"input_padrao\"></td>
+                        <td>Cidade:</td>
+                        <td><input type=\"text\" name=\"cidade\" readonly  id=\"cidade".$dados[$i]["id"]."\" value=\"".$dados[$i]["cidade"]."\" class=\"input_padrao input2 \"></td>
+                    </tr>
+                    <tr>
+                        <td>Apto:</td>
+                        <td><input type=\"text\" name=\"apto\"  class=\"input_padrao\" value=\"".$dados[$i]["apto"]."\"></td>
+                        <td>Estado:</td>
+                        <td><input type=\"text\" name=\"estado\" readonly id=\"estado".$dados[$i]["id"]."\" value=\"".$dados[$i]["estado"]."\" class=\"input_padrao input2 \"></td>
+                    </tr>
+                </table>
+                  </div>
+                  <div class=\"modal-footer\">
+                    <button type=\"submit\" class=\"salvar\">Salvar mudanças</button> <button class=\"salvar\">|</button> <button type=\"button\" onclick=\"excluir('".$dados[$i]["id"]."')\" class=\"salvar\">Excluir endereço</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            </form>";
+}?>
 
     <div class="modal fade" id="novo_endereco" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado" aria-hidden="true">
 
-<div class="modal-dialog modal-lg modal-dialog-centered" role="document">
-  <div class="modal-content">
-    <div class="modal-header">
-      
 <form action="../controller/controller_client.php" method="post" name="novo_end">
-    <h5 class="modal-title" id="TituloModalCentralizado"><input type="text" id="input-apelido-novo" name="apelido" class="input_apelido" value="Novo Endereço" style="text-decoration:underline;"></h5>
-<button type="button" class="close" data-dismiss="modal" aria-label="Fechar" onclick="limpa('endereco_new')">
-<span aria-hidden="true">&times;</span>
-</button>
-</div>
-<input type="hidden" name="endereco_new" value="1" placeholder="">
-<input type="hidden" name="id_cliente" placeholder="" value="<?php $_SESSION["USER-ID"] ?>">
-<div class="modal-body">
-<table class="table_modal">
-<tr>
-  <td>CEP:</td>
-  <td><input type="text" name="cep" onblur="buscaCepN();" id="input-cep-novo" placeholder="" class="input_padrao "></td>
-  <td>Rua:</td>
-  <td><input type="text" name="rua" id="input-rua-novo" placeholder="" readonly class="input_padrao input2"></td>
-</tr>
-<tr>
-  <td>Número:</td>
-  <td><input type="text" name="numero" placeholder="" class="input_padrao"></td>
-  <td>Bairro:</td>
-  <td><input type="text" name="bairro" id="input-bairro-novo" placeholder="" readonly class="input_padrao input2"></td>
-</tr>
-<tr>
-  <td>Bloco:</td>
-  <td><input type="text" name="bloco" placeholder="" class="input_padrao"></td>
-  <td>Cidade:</td>
-  <td><input type="text" name="cidade" readonly id="input-cidade-novo" placeholder="" class="input_padrao input2"></td>
-</tr>
-<tr>
-  <td>Apto:</td>
-  <td><input type="text" name="apto" class="input_padrao" placeholder=""></td>
-  <td>Estado:</td>
-  <td><input type="text" name="estado" readonly id="input-estado-novo" placeholder="" class="input_padrao input2"></td>
-</tr>
-</table>
-</div>
-<div class="modal-footer">
-                  <button type="submit" class="salvar">Adicionar</button>
-  </form>
-                </div>
-  </div>
-</div>
-</div>
+          <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                
+              <h5 class="modal-title" id="TituloModalCentralizado"><input type="text" id="input-apelido-novo" name="apelido" class="input_apelido" value="Novo Endereço" style="text-decoration:underline;"></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar" onclick="limpa('endereco_new')">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        </div>
+        <input type="hidden" name="endereco_new" value="1" placeholder="">
+        <input type="hidden" name="id_cliente" placeholder="" value="<?php $_SESSION["USER-ID"] ?>">
+        <div class="modal-body">
+        <table class="table_modal">
+          <tr>
+            <td>CEP:</td>
+            <td><input type="text" name="cep" onblur="buscaCepN();" id="input-cep-novo" placeholder="" class="input_padrao "></td>
+            <td>Rua:</td>
+            <td><input type="text" name="rua" id="input-rua-novo" placeholder="" readonly class="input_padrao input2"></td>
+          </tr>
+          <tr>
+            <td>Número:</td>
+            <td><input type="text" name="numero" placeholder="" class="input_padrao"></td>
+            <td>Bairro:</td>
+            <td><input type="text" name="bairro" id="input-bairro-novo" placeholder="" readonly class="input_padrao input2"></td>
+          </tr>
+          <tr>
+            <td>Bloco:</td>
+            <td><input type="text" name="bloco" placeholder="" class="input_padrao"></td>
+            <td>Cidade:</td>
+            <td><input type="text" name="cidade" readonly id="input-cidade-novo" placeholder="" class="input_padrao input2"></td>
+          </tr>
+          <tr>
+            <td>Apto:</td>
+            <td><input type="text" name="apto" class="input_padrao" placeholder=""></td>
+            <td>Estado:</td>
+            <td><input type="text" name="estado" readonly id="input-estado-novo" placeholder="" class="input_padrao input2"></td>
+          </tr>
+        </table>
+        </div>
+        <div class="modal-footer">
+                            <button type="submit" class="salvar">Adicionar</button>
+            </form>
+                          </div>
+            </div>
+          </div>
+        </div>
+
 </html>
 <?php } else{ header("Location: login.php?fase=2"); }?>
 </body>
