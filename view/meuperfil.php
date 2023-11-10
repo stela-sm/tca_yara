@@ -342,6 +342,10 @@ font-size: 1.1em;
    
     }
 
+
+    form{
+        width: 100%;
+    }
         </style>
         <!-- menu -->
         <header>

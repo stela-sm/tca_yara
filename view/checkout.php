@@ -298,6 +298,88 @@ box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
     font-weight: 500 !important;
     
 }
+
+
+
+
+
+.card-text{
+font-size: 1.1em;
+    line-height: 2em;
+}
+#php{
+        margin-left: 6%;
+    }
+    .php{
+        display: none;
+    }
+    .active{
+        display: block;
+    }
+    .modal-footer{
+        justify-content: center;
+        text-align: center;
+    }
+    .input_padrao{
+        background-color: #dddddd;
+        border: none;
+        border-radius: 5px;
+        padding: 10px;
+
+    }
+    
+    .input2, .input2:active{
+        width: 100%;
+        opacity: 0.5;
+        outline: none;
+
+    }
+    .modal{
+        font-family: 'Questrial';
+        
+    }
+    .modal-body{
+        padding: 30px;
+    }
+    .table_modal{
+        font-weight: 600;
+        color: #1A3D1F;
+    }
+    .input_apelido{
+        background-color: transparent;
+        border: none;
+        color: var(--lgreen);
+        font-weight: 700;
+    }
+    .salvar, .salvar:active{
+        margin-top: 10px;
+        background-color: transparent;
+        border: none;
+        cursor:pointer;
+        color: var(--lgreen);
+        text-transform: uppercase;        
+        transition: 0.2s;        
+    }
+    .salvar:hover{
+        scale: 0.9;
+        transition: 0.2s;
+    }
+    .modal-lg{
+        max-width: 800px !important;
+        border-radius: 20px !important;
+    }
+    .modal-footer{
+        padding-top: 20px;
+        padding-bottom: 30px;
+    }
+    .grande{
+    width: 90%;
+    border: 0px;
+    background-color: white;
+border-radius: 20px !important;
+padding: 10px;
+box-shadow: rgba(0, 0, 0, 0.1) -4px 9px 25px -6px;
+}
         </style>
         <!-- menu -->
         <header>
@@ -315,7 +397,7 @@ box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
             <div class="container container-RESP">
                 <div class="row">
                     <div class="col-6 margin">
-                            <p id="name">Meu Carrinho</p>
+                            <p id="name">Checkout</p>
                         </div>
                     </div>
                 </div>
@@ -344,8 +426,8 @@ box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
       <div class="card-body">
 
       <div class="custom-radio">
-  <input type="radio" id="opcao1" name="opcoes" checked>
-  <label for="opcao1" class="label_padrao">
+  <input type="radio" id="endereco1" name="opcoes_endereco">
+  <label for="endereco1" class="label_padrao">
     Rua Damásio Rodrigues Gomes, 54, Jardim Cidália, São Paulo - SP, 40527647810 <br>
     <span class="azul">Editar Endereço</span>
   </label>
@@ -353,15 +435,16 @@ box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
 
 
 <div class="custom-radio">
-  <input type="radio" id="opcao1" name="opcoes" checked>
-  <label for="opcao1" class="label_padrao">
+  <input type="radio" id="endereco2" name="opcoes_endereco">
+  <label for="endereco2" class="label_padrao">
     Rua Damásio Rodrigues Gomes, 54, Jardim Cidália, São Paulo - SP, 40527647810 <br>
     <span class="azul">Editar Endereço</span>
   </label>
 </div>
 
 
-<span class="azul">+ Adicionar Endereço </span>
+
+<button type="button" class="btn botao_modal " data-toggle="modal" data-target="#novo_endereco"><span class="azul">+ Adicionar Endereço </span></button>
 
       </div>
     </div>
@@ -376,9 +459,27 @@ box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
       </h5>
     </div>
     <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
-      <div class="card-body">
-        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-      </div>
+    <div class="card-body">
+
+    <div class="custom-radio">
+  <input type="radio" id="envio1" name="opcoes_envio">
+  <label for="envio1" class="label_padrao">
+    Rua Damásio Rodrigues Gomes, 54, Jardim Cidália, São Paulo - SP, 40527647810 
+  </label>
+</div>
+
+
+<div class="custom-radio">
+  <input type="radio" id="envio2" name="opcoes_envio">
+  <label for="envio2" class="label_padrao">
+    Rua Damásio Rodrigues Gomes, 54, Jardim Cidália, São Paulo - SP, 40527647810 
+  </label>
+</div>
+
+
+
+</div>
+
     </div>
   </div>
   <br>
@@ -491,7 +592,57 @@ if(isset($_REQUEST["msg"])){
   
 
     </script>
+    <!--MODAL NOVO ENDEREÇO-->
 
+    <div class="modal fade" id="novo_endereco" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado" aria-hidden="true">
+
+<div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      
+<form action="../controller/controller_client.php" method="post" name="novo_end">
+    <h5 class="modal-title" id="TituloModalCentralizado"><input type="text" id="input-apelido-novo" name="apelido" class="input_apelido" value="Novo Endereço" style="text-decoration:underline;"></h5>
+<button type="button" class="close" data-dismiss="modal" aria-label="Fechar" onclick="limpa('endereco_new')">
+<span aria-hidden="true">&times;</span>
+</button>
+</div>
+<input type="hidden" name="endereco_new" value="1" placeholder="">
+<input type="hidden" name="id_cliente" placeholder="" value="<?php $_SESSION["USER-ID"] ?>">
+<div class="modal-body">
+<table class="table_modal">
+<tr>
+  <td>CEP:</td>
+  <td><input type="text" name="cep" onblur="buscaCepN();" id="input-cep-novo" placeholder="" class="input_padrao "></td>
+  <td>Rua:</td>
+  <td><input type="text" name="rua" id="input-rua-novo" placeholder="" readonly class="input_padrao input2"></td>
+</tr>
+<tr>
+  <td>Número:</td>
+  <td><input type="text" name="numero" placeholder="" class="input_padrao"></td>
+  <td>Bairro:</td>
+  <td><input type="text" name="bairro" id="input-bairro-novo" placeholder="" readonly class="input_padrao input2"></td>
+</tr>
+<tr>
+  <td>Bloco:</td>
+  <td><input type="text" name="bloco" placeholder="" class="input_padrao"></td>
+  <td>Cidade:</td>
+  <td><input type="text" name="cidade" readonly id="input-cidade-novo" placeholder="" class="input_padrao input2"></td>
+</tr>
+<tr>
+  <td>Apto:</td>
+  <td><input type="text" name="apto" class="input_padrao" placeholder=""></td>
+  <td>Estado:</td>
+  <td><input type="text" name="estado" readonly id="input-estado-novo" placeholder="" class="input_padrao input2"></td>
+</tr>
+</table>
+</div>
+<div class="modal-footer">
+                  <button type="submit" class="salvar">Adicionar</button>
+  </form>
+                </div>
+  </div>
+</div>
+</div>
 </html>
 <?php } else{ header("Location: login.php?fase=2"); }?>
 </body>
