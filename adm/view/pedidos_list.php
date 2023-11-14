@@ -20,8 +20,7 @@
         </script>
 </head>
 <style>
-        @import url('https://fonts.googleapis.com/css2?family=Berkshire+Swash&display=swap');
-    @import url('https://fonts.cdnfonts.com/css/glacial-indifference-2');
+        @import url('https://fonts.googleapis.com/css2?family=Berkshire+Swash&display=swap');  @import url('https://fonts.googleapis.com/css2?family=Questrial&display=swap');
     :root{
         --white: #f9f9f9;
         --green: #1A3D1F;
@@ -43,7 +42,7 @@
       border-radius: 20px;
       overflow: hidden;
       border-radius: 10px;
-      font-family: 'Glacial Indifference';
+      font-family: 'Questrial';
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     }
     
@@ -64,7 +63,7 @@
     display: flex;
     max-height: 400px;
     text-align: center;   
-    font-family: 'Glacial Indifference';
+    font-family: 'Questrial';
     background-color: #DADADA;
     color: black;
     border: none;
@@ -78,7 +77,7 @@
     display: flex;
     max-height: 400px;
     text-align: center;   
-    font-family: 'Glacial Indifference';
+    font-family: 'Questrial';
     background-color: transparent;
     color: black;
     border: none;
@@ -110,7 +109,7 @@ textarea:disabled{
     margin-left: 10%;
     padding: 5px 10px 5px 10px;
     border-radius: 10px; 
-    font-family: 'Glacial Indifference';
+    font-family: 'Questrial';
     background-color: transparent;
     color: black;
     border: 1px #DADADA solid;  
@@ -125,7 +124,7 @@ textarea
     max-width: 3cm;
     padding: 5px 10px 5px 10px;
     border-radius: 10px; 
-    font-family: 'Glacial Indifference';
+    font-family: 'Questrial';
     background-color: #DADADA;
     color: black;
     border: 1px #DADADA solid;  

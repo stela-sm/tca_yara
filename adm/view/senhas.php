@@ -46,7 +46,7 @@ body {
     margin: 0;
     padding: 0;
     display: block;    
-    font-family: 'Glacial Indifference';
+    font-family: 'Questrial';
   }
   
   table {
@@ -56,7 +56,7 @@ body {
     border-radius: 20px;
     overflow: hidden;
     border-radius: 10px;
-    font-family: 'Glacial Indifference';
+    font-family: 'Questrial';
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     border: none;
     height: 100vh;

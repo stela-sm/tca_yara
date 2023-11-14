@@ -18,7 +18,7 @@
 </head>
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Berkshire+Swash&display=swap');
-@import url('https://fonts.cdnfonts.com/css/glacial-indifference-2');
+@import url('https://fonts.googleapis.com/css2?family=Questrial&display=swap');
 :root{
     --white: #f9f9f9;
     --green: #1A3D1F;

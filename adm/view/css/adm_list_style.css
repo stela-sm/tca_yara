@@ -18,7 +18,7 @@ body {
     border-radius: 20px;
     overflow: hidden;
     border-radius: 10px;
-    font-family: 'Glacial Indifference';
+    font-family: 'Questrial';
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   }
   
@@ -38,7 +38,7 @@ body {
       display: flex;
       height: max-content;
       text-align: center;   
-      font-family: 'Glacial Indifference';
+      font-family: 'Questrial';
       background-color: transparent;
       color: black;
       border: none;
@@ -61,7 +61,7 @@ body {
       display: flex;
       height: max-content;
       text-align: center;   
-      font-family: 'Glacial Indifference';
+      font-family: 'Questrial';
       background-color: transparent;
       color: var(--green);
       border: none;

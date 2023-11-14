@@ -903,4 +903,51 @@ function verificar_cod($dados){
 } 
 
 
+/*senhas ----------------- */
+
+function verif_celular($cel){
+    
+    require "conexao.php";
+    $sql="SELECT cpf FROM adm WHERE celular = '$cel'";
+    $result = $conn -> query($sql);
+    if($result->num_rows>0){
+        $conn->close();
+        $dados["result"] = 1;
+        while($row=$result->fetch_assoc()){
+           $dados["cpf"] =    $row["cpf"];
+       }
+        return $dados;
+    }    else{
+        $conn->close();
+        $dados["result"] = 0;
+        return $dados;
+    }
+   
+   }
+   
+   
+   
+   
+   function dadosUser($id){
+       require 'conexao.php';
+       $sql = "SELECT * FROM adm WHERE ID_ADM='$id'";
+    $result=$conn->query($sql); 
+   
+    if($result->num_rows > 0){
+        $dados=array();
+        $dados["result"] = 1;
+        while($row=$result->fetch_assoc()){
+           $dados["id"] = $row["ID_CLIENTE"];
+           $dados["nome"] = $row["nome"];
+           $dados["email"] = $row["email"];
+           $dados["cpf"] = $row["cpf"];
+           $dados["cel"] = $row["celular"];
+        }
+        $conn->close();
+        return $dados;
+    
+    
+   
+   }}
+   
 ?>

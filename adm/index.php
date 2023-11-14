@@ -13,7 +13,7 @@
 </head>
 <style>
      @import url('https://fonts.googleapis.com/css2?family=Berkshire+Swash&display=swap');
-    @import url('https://fonts.cdnfonts.com/css/glacial-indifference-2');
+    @import url('https://fonts.googleapis.com/css2?family=Questrial&display=swap');
     :root{
         --white: #f9f9f9;
         --green: #1A3D1F;
@@ -48,7 +48,7 @@
         height: 80vh;
     }
     .adm, .row{
-        font-family: 'Glacial Indifference';
+        font-family: 'Questrial';
         
     }
         .adm{
@@ -84,6 +84,9 @@
         text-decoration: underline;
         color: gray;
         text-transform: none;
+    color: #1A3D1F !important;
+    font-weight: bold;
+    cursor: pointer;
     }
     .submit{
         color: var(--green);
@@ -162,7 +165,7 @@
                     <button class="submit" type="submit">Continuar</button>
                 </div>
                 <div class="row es">
-                    <a href="" class="esqueci">Esqueci a senha</a>
+                <a class="link-forgout" href=""data-toggle="modal" class="esqueci" data-target="#ExemploModalCentralizado" style="font-size: 12px;">Esqueceu sua senha?</a>
                 </div>
                 </form>
             </div>
@@ -175,6 +178,230 @@ if(isset($_REQUEST["msg"])){
 	echo "<script>alert('" . $MSG[$cod] . "');</script>";
     unset($cod);
 }
+?>
+
+<style>
+    :root {
+    --white: #f9f9f9;
+    --green: #1a3d1f;
+    --yellow: #B9C394;
+} 
+      .input_padrao{
+            background-color: #dddddd !important;
+            border: none !important;
+            box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px !important;
+            padding: 10px !important;
+            width: 100% !important;
+            margin-right: 3em !important;
+            border-radius: 5px !important;
+        }
+        
+        .label_padrao{
+            color:var(--green);
+        }
+        .salvar, .salvar:active{
+        margin-top: 10px;
+        background-color: transparent;
+        border: none;
+        cursor:pointer;
+        color: var(--lgreen);
+        text-transform: uppercase;        
+        transition: 0.2s;        
+    }
+    .salvar:hover{
+        scale: 0.9;
+        transition: 0.2s;
+    }
+    .modal-footer{
+        text-align: center !important;
+        justify-content: center !important;
+    }
+    .modal-body{
+        padding: 40px;
+    }
+    .modal{
+       
+    font-family: 'Questrial', sans-serif !important;
+    }
+.none{
+    display:none;
+}
+.show{
+    display: block;
+}
+.close:active{
+    border: none !important;
+    outline: none !important;
+}
+</style>
+<!-- Modal -->
+<div class="modal fade" id="ExemploModalCentralizado" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado" aria-hidden="true" data-backdrop="static">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="TituloModalCentralizado"><b>Redefinir a Senha</b></h5>
+        <button type="button" class="close" onclick="confirma_fechar('ExemploModalCentralizado'); limpa();"></button>
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <form action="controller/controller_adm.php" id="redefenir_form" method="post">
+        <input type="hidden" name="redefinir" value="1"></input>
+      <div class="modal-body">
+        <label for="cel" class="label_padrao">Por favor, insira seu número de telefone celular</label><br>
+        <input type="text" id="celular_input" required name="cel" class="input_padrao"></input>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="salvar">enviar código</button>
+    </form>
+      </div>
+
+
+    </div>
+  </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="verficar_modal_open" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="TituloModalCentralizado"><b>Redefinir a Senha</b></h5>
+        <button type="button" class="close" onclick="limpa()" data-dismiss="modal" aria-label="Fechar">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <form action="controller/controller_adm.php" id="verificar_form" method="get">
+ 
+      <input type="hidden" name="cpf" value="<?php  echo $_REQUEST["cpf"] ?>">
+      <div class="modal-body">
+      
+      <input type="hidden" id="cod_verif" name="cod_verif" class="input_padrao" value="1"></input>
+  <input type="hidden" name="id" value="<?php  echo $_REQUEST["id"]; ?>"> </input>
+        <label for="cel" class="label_padrao">Insira o Código de verificação</label><br>
+        <input type="text" id="celular_input" name="cod" class="input_padrao" required></input>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="salvar">verificar</button>
+    </form>
+      </div>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="autenticado_modal_open" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="TituloModalCentralizado"><b>Redefinir a Senha</b></h5>
+        <button type="button" class="close" onclick="limpa()" data-dismiss="modal" aria-label="Fechar">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <form action="controller/controller_adm.php" id="senha_form" method="get">
+ 
+      <input type="hidden" name="cpf" value="<?php echo $_REQUEST["cpf"]; ?>">
+      <div class="modal-body">
+      
+  <input type="hidden" name="senha_alt" value="1"> </input>
+        <label for="cel" class="label_padrao">Defina sua nova senha</label><br>
+        <input type="text" id="celular_input" name="senha" class="input_padrao" required></input>
+<br><br>
+        <label for="cel" class="label_padrao">Repita sua senha</label><br>
+        <input type="text" id="celular_input" name="senha_rep" class="input_padrao" required></input>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="salvar">confirmar</button>
+    </form>
+      </div>
+
+
+    </div>
+  </div>
+</div>
+
+
+</body>
+
+<!-- javascript -->
+<script>
+    function confirma_fechar(id){
+    if(confirm("Deseja encerrar o processo de alteração de senha?") == true){
+        $('#'+id).modal('hide');  
+        limpa();
+    }else{
+        $('#'+id).modal('show'); 
+    }
+}
+    let p_cadastro = document.querySelector('.account') // ir para cadastro
+    let p_login = document.querySelector('.login-back') // ir para login
+    let cadastro_form = document.querySelector('.form-section-cadastro') // form cadastro
+    let login_form = document.querySelector('.form-section-login') // form login
+
+    p_cadastro.addEventListener('click', function () {
+        login_form.style.display = "none"
+        cadastro_form.style.display = "flex"
+    })
+
+    p_login.addEventListener('click', function () {
+        login_form.style.display = "flex"
+        cadastro_form.style.display = "none"
+    }) 
+
+
+    function limpa(){
+            document.getElementById('celular_input').value="";
+  };
+</script>
+<?php
+
+if(isset($_REQUEST["msg"])){
+
+ $cod = $_REQUEST["msg"];
+ require_once "../model/msg.php";
+echo "<script>alert('" . $MSG[$cod] . "');</script>";
+
+}
+
+if(isset($_REQUEST["return"])){
+
+
+    echo "<script>
+    $('#ExemploModalCentralizado').modal('show');  
+    
+    </script>";
+    
+    }
+if(isset($_REQUEST["modal"])){
+
+
+    echo "<script>
+    $('#verficar_modal_open').modal('show');  
+    
+    </script>";
+    
+    }
+
+
+    if(isset($_REQUEST["autenticado"])){
+
+
+        echo "<script>
+        $('#autenticado_modal_open').modal('show');  
+        
+        </script>";
+        
+        }
+      
 ?>
 </body>
 </html>
