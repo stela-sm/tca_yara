@@ -1,0 +1,35 @@
+@keyframes fade-down {
+
+	30% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+.cursor {
+    position: fixed;
+    width: 100px;
+    height: 100px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border-radius: 50%;
+    border: 2px solid #87ab85;
+    left: 0;
+    z-index: 90000;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    transition: width 1000ms, height 1000ms;
+    color: #87ab85cb;
+    font-size: 15px;
+}
+
+.cursor.large {
+    height: 70px;
+    width: 70px;
+}

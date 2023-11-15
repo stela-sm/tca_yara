@@ -570,4 +570,49 @@ return $dados;
         return $dados;
 }
 }
+
+function produtos($pesquisa){
+    require "conexao.php";
+    if($pesquisa != "")
+    {
+        $termo= $pesquisa;
+        $sql = "SELECT * FROM produtos WHERE nome LIKE '%$termo%'";
+    }else{
+    $sql = "SELECT * FROM produtos";
+    }
+   
+
+    $result=$conn->query($sql); 
+       
+    if($result->num_rows > 0){
+
+        $num = $result ->num_rows;
+        $dados=array();
+        $dados["result"] = 1;
+        $dados["num"]=$num;
+        $i=0;
+        while($row=$result->fetch_assoc()){
+            $dados[$i]["id"] =          $row["ID_PRODUTO"];
+            $dados[$i]["nome"] =  $row["nome"];
+            $dados[$i]["descricao"] =       $row["descricao"];
+            $dados[$i]["img"] =   $row["img"];
+            $dados[$i]["img_sec"] =      $row["img_sec"];
+            $dados[$i]["img_hover"] =      $row["img_hover"];
+            $dados[$i]["categoria"] =    $row["categoria"];
+            $dados[$i]["finalidade"] =    $row["finalidade"];
+            $dados[$i]["estoque"] =    $row["estoque"];
+            $dados[$i]["valor_uni"] =    $row["valor_uni"];
+            $dados[$i]["ingredientes"] =    $row["ingredientes"];
+            $dados[$i]["datahora"] =    $row["datahora"];
+        
+         $i++;
+        }
+        $conn->close();
+        return $dados;
+    }else{
+        $dados["result"] = 0;
+            $conn->close();
+            return $dados;
+        }
+     }
         ?>
