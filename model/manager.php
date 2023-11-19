@@ -152,7 +152,7 @@ function userNew($dados){ //função pra criar user
 
 
  require "conexao.php";
- $sql="INSERT INTO cliente (nome,email,senha,datahora,cpf) VALUES ('{$dados["nome"]}', '{$dados["email"]}', '{$dados["senha"]}', now(), '{$dados["cpf"]}')";
+ $sql="INSERT INTO cliente (nome,email,senha,datahora,cpf,celular,status) VALUES ('{$dados["nome"]}', '{$dados["email"]}', '{$dados["senha"]}', now(), '{$dados["cpf"]}', '{$dados["tel"]}', '1')";
  $result = $conn -> query($sql);
  if($result == true){
      $conn->close();
@@ -239,6 +239,7 @@ function userNew($dados){ //função pra criar user
                 return $dados;
             }else{
                 $dados["result"] = 0;
+                $dados["num"]= 0;
                     $conn->close();
                     return $dados;
                 }
@@ -272,7 +273,7 @@ function userNew($dados){ //função pra criar user
             if ($dados['apto']=="0") {$dados['apto'] = null;};
             if ($dados['bloco']=="0") {$dados['bloco'] = null;};
 
-            $sql = "INSERT INTO endereco (cep,estado,cidade,bairro,rua,bloco,apto,numero,id_cliente,datahora,nome) VALUES ('{$dados["cep"]}','{$dados["estado"]}','{$dados["cidade"]}','{$dados["bairro"]}', '{$dados["rua"]}','{$dados["bloco"]}', '{$dados["apto"]}', '{$dados["numero"]}', '1', 'now()','{$dados["nome"]}')";
+            $sql = "INSERT INTO endereco (cep,estado,cidade,bairro,rua,bloco,apto,numero,id_cliente,datahora,nome,status) VALUES ('{$dados["cep"]}','{$dados["estado"]}','{$dados["cidade"]}','{$dados["bairro"]}', '{$dados["rua"]}','{$dados["bloco"]}', '{$dados["apto"]}', '{$dados["numero"]}', '{$dados["cliente"]}', now(),'{$dados["nome"]}', '1')";
         
             $result = $conn->query($sql);
             if($result == true){

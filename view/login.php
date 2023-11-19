@@ -79,41 +79,41 @@
                     <p class="paragraph-text login-back">Informe seus dados para cadastro.   
                         <a class="custom-link" style="color: #1A3D1F; text-decoration: none; font-weight: bold; cursor: pointer;">Já tem conta?</a></p>
                 </div>
-                <!-- área do formulário -->
-                <form class="w-100 " action="../controller/controller_client.php" method="post">
+               <!-- área do formulário -->
+               <form class="w-100" action="../controller/controller_client.php" method="post">
                     <input type="hidden" name="cadastro" value="1">
                     <!-- nome -->
                     <div class="form-group-name">
-                        <input type="text" class="name-inpt form-control" id="nome" placeholder="Nome Completo" autocomplete="off">
+                        <input type="text" class="name-inpt form-control" name="nome" id="nome" placeholder="Nome Completo" autocomplete="off">
                     </div>
                     <br>
                     <!-- email -->
                     <div class="form-group-name">
-                        <input type="email" class="email-inpt form-control" id="nome" placeholder="Email"
+                        <input type="email" class="email-inpt form-control" name="email" id="nome" placeholder="Email"
                             autocomplete="off">
                     </div>
                     <br>
                     <!-- cep -->
                     <div class="form-group-name">
-                        <input type="tel" class="cpf-inpt form-control" id="nome" placeholder="CPF"
+                        <input type="tel" class="cpf-inpt form-control" id="nome" name="cpf" placeholder="CPF"
                             autocomplete="off">
                     </div>
                     <br>
                     <!-- telefone -->
                     <div class="form-group-name">
-                        <input type="tel" class="tel-inpt form-control" id="nome" placeholder="Telefone"
+                        <input type="tel" class="tel-inpt form-control" id="nome" name="tel" placeholder="Telefone"
                             autocomplete="off">
                     </div>
                     <br>
                     <!-- senha -->
                     <div class="form-group-senha">
-                        <input type="password" class="pass-inpt form-control" id="senha" placeholder="Password">
+                        <input type="password" class="pass-inpt form-control" id="senha" name="senha" placeholder="Password">
                     </div>
                     <br>
                     <!-- termos de uso -->
                     <div class="form-check align-items-center">
-                        <input type="checkbox" class="form-check-input" id="termosDeUso">
-                        <label class="form-check-label" for="termosDeUso">
+                        <input type="checkbox" class="form-check-input" id="termosDeUso" require>
+                        <label class="form-check-label" for="termosDeUso" require>
                             Concordo com os <a href="#" style="color:#1A3D1F; text-decoration: none; font-weight: bold;">Termos de Uso</a>
                     </div>
                     <!-- botão cadastro-->
@@ -261,7 +261,7 @@
         <input type="text" id="celular_input" name="senha" class="input_padrao" required></input>
 <br><br>
         <label for="cel" class="label_padrao">Repita sua senha</label><br>
-        <input type="text" id="celular_input" name="senha_rep" class="input_padrao" required></input>
+        <input type="password" id="celular_input" name="senha_rep" class="input_padrao" required></input>
       </div>
       <div class="modal-footer">
         <button type="submit" class="salvar">confirmar</button>

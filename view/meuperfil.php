@@ -108,7 +108,6 @@
             }
             iframe{
                 margin-left: 1cm;
-                height: 500%;
             }
             i{
                 margin-right: 1cm;
@@ -389,9 +388,8 @@ font-size: 1.1em;
                             <li  class="linkmenu">
                             <a onclick="endereco('0')">  <i style="color:var(--green); margin-right:20px" class="fa-solid fa-location-dot"></i>Endereços</a></li>
                             <li  class="linkmenu">
-                            <a  href="historico.php" target="iframe_perfil" onclick="endereco('1')">  <i style="color:var(--green); margin-right:20px" class="fa-solid fa-clipboard-list"></i>Histórico</a></li>
-                            <li  class="linkmenu">
-                                <i style="color:var(--green); margin-right:20px" class="fa-solid fa-key"></i>Mudar senha</li>
+                            <a  href="historico.php?id=<?php echo $_SESSION["USER-ID"]; ?>" target="iframe_perfil" onclick="endereco('1')">  <i style="color:var(--green); margin-right:20px" class="fa-solid fa-clipboard-list"></i>Histórico</a></li>
+                           
                                 <li  class="linkmenu" onclick="ExecutaLogout()">
                                 <i style="color:var(--green); margin-right:20px" class="fa-solid fa-right-from-bracket"></i>Logout</li>
                         </ul>
@@ -437,7 +435,7 @@ font-size: 1.1em;
 require "../model/manager.php";
 $resp = buscar_endereco($_SESSION["USER-ID"]);
 
-if($resp["result"] == 0){ echo ""; }else{ 
+if($resp["result"] == 0){ echo "<br> Você não tem nenhum endreço cadatrado, registre o primeiro clicando no sinal de \"+\" acima!"; }else{ 
 
         for($i=0;$i<$resp["num"];$i++){
             echo
@@ -546,6 +544,7 @@ ECHO "
 
 
                 <!--MODAL NOVO ENDEREÇO-->
+<form action="../controller/controller_client.php" method="post" name="novo_end">
 
 <div class="modal fade" id="novo_endereco" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado" aria-hidden="true">
 
@@ -553,7 +552,6 @@ ECHO "
             <div class="modal-content">
               <div class="modal-header">
                 
-<form action="../controller/controller_client.php" method="post" name="novo_end">
               <h5 class="modal-title" id="TituloModalCentralizado"><input type="text" id="input-apelido-novo" name="apelido" class="input_apelido" value="Novo Endereço" style="text-decoration:underline;"></h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Fechar" onclick="limpa('endereco_new')">
           <span aria-hidden="true">&times;</span>

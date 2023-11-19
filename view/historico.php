@@ -214,9 +214,9 @@ width: 2.5cm;
 
     <?php
     require '../model/manager.php';
-    $historico = historico( $_SESSION['USER-ID']);
+    $historico = historico($_GET["id"]);
 
-    if($historico["result"] == 0){ echo ""; }else{ 
+    if($historico["result"] == 0){ echo "<br>Você ainda não efetuou nenhum pedido, faça seu primeiro agora!"; }else{ 
 
         for($i=0;$i<$historico["num"];$i++){
             

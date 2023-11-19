@@ -37,6 +37,8 @@ if(isset($_REQUEST["loginn"])){ //verifica se vem algo do formulário pelo POST 
                                       $dados=VerifDadosUSER($login,$senhaHASH);
 
                                                   if($dados["result"]==1){//tudo certo!
+                                                    session_reset();
+
                                                       $_SESSION["USER-ID"] = $dados["id"];
                                                       $_SESSION["USER-NOME"] = $dados["nome"];
                                                       $_SESSION["USER-EMAIL"] = $dados["email"];
@@ -102,13 +104,20 @@ if(isset($_REQUEST["cadastro"])){
 
       $dados["nome"] = $_REQUEST["nome"];
       $dados["email"] = $_REQUEST["email"];
+      $dados["tel"] = $_REQUEST["tel"];
       require_once "../model/ferramentas.php";
       $dados["senha"] =  hash256($_REQUEST["senha"]);
       $dados["cpf"] = $cpf;
       require_once "../model/Manager.php";
       $resp=userNew($dados);
   if($resp==1){ //tudo certo
-      ?>
+    session_reset();
+                                                    
+    $_SESSION["USER-ID"] = $dados["id"];
+    $_SESSION["USER-NOME"] = $dados["nome"];
+    $_SESSION["USER-EMAIL"] = $dados["email"];
+    $_SESSION["USER-CPF"] = $dados["cpf"];      ?>
+      
       <form action="../view/meuperfil.php" name="form" id="myForm" method="POST">
       <input type="hidden" name="msg" value="BD50">  <!--"BD50" => "Operação realizada com sucesso.",-->
       </form> <!--envia um formulario com a variavel "msg", que é o código da mensagem de erro (ver view/msg.php)--> 
