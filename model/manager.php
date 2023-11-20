@@ -50,7 +50,6 @@ while($row=$result->fetch_assoc()){
   $dados["id_produto"] = $row["ID_PRODUTO"];
   $dados["nome"] = $row["nome"];
   $dados["img"] = $row["img"];
-  $dados["img_hover"] = $row["img_hover"];
   $dados["valor"] = $row["valor_uni"];
   $dados["status"] = $row["status"];
   $dados["estoque"] = $row["estoque"];
@@ -572,17 +571,31 @@ return $dados;
 }
 }
 
-function produtos($pesquisa){
+function produtos($pesquisa, $ordem){
     require "conexao.php";
-    if($pesquisa != "")
+
+    $sql = "";
+    if($pesquisa != "" && $ordem !="")
+    {
+        $termo= $pesquisa;
+        $sql = "SELECT * FROM produtos WHERE nome LIKE '%$termo%' ORDER BY valor_uni $ordem;";
+    }
+    if($pesquisa != "" && $ordem =="")
     {
         $termo= $pesquisa;
         $sql = "SELECT * FROM produtos WHERE nome LIKE '%$termo%'";
-    }else{
-    $sql = "SELECT * FROM produtos";
+    }
+    if($pesquisa == "" && $ordem !="")
+    {
+        $termo= $pesquisa;
+        $sql = "SELECT * FROM produtos ORDER BY valor_uni $ordem;";
+    }
+    if($pesquisa == "" && $ordem =="")
+    {
+        $termo= $pesquisa;        
+     $sql = "SELECT * FROM produtos";
     }
    
-
     $result=$conn->query($sql); 
        
     if($result->num_rows > 0){
@@ -598,13 +611,12 @@ function produtos($pesquisa){
             $dados[$i]["descricao"] =       $row["descricao"];
             $dados[$i]["img"] =   $row["img"];
             $dados[$i]["img_sec"] =      $row["img_sec"];
-            $dados[$i]["img_hover"] =      $row["img_hover"];
             $dados[$i]["categoria"] =    $row["categoria"];
-            $dados[$i]["finalidade"] =    $row["finalidade"];
             $dados[$i]["estoque"] =    $row["estoque"];
             $dados[$i]["valor_uni"] =    $row["valor_uni"];
             $dados[$i]["ingredientes"] =    $row["ingredientes"];
             $dados[$i]["datahora"] =    $row["datahora"];
+            $dados[$i]["status"] =    $row["status"];
         
          $i++;
         }
@@ -615,5 +627,6 @@ function produtos($pesquisa){
             $conn->close();
             return $dados;
         }
+        echo $sql;
      }
         ?>

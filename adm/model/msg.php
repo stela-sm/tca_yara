@@ -34,7 +34,8 @@ $MSG = array(
     "BD52" => "Registro criado com sucesso.",
     "BD53" => "Registro alterado com sucesso.",
     "BD54" => "Registro apagado com sucesso.",
-    "BD55" => "Dados localizados com sucesso.",
+    "BD55" => "Dados localizados com sucesso.",    
+    "BD56" => "Senha alterada com sucesso.",
 
     /* série FR: operações com formulários  */
     // 00 a 49 ERROS

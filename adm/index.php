@@ -77,7 +77,12 @@
         margin-top: 10%;
     }
     .es{
-        margin-top: 15%;
+      margin-top: 15% !important;
+    display: table;
+    text-align: center;
+    width: 100%;
+    margin: auto;
+color: var(--green) !important;
       
     }
     .esqueci{
@@ -165,21 +170,15 @@
                     <button class="submit" type="submit">Continuar</button>
                 </div>
                 <div class="row es">
-                <a class="link-forgout" href=""data-toggle="modal" class="esqueci" data-target="#ExemploModalCentralizado" style="font-size: 12px;">Esqueceu sua senha?</a>
+                <a class="link-forgout" href=""data-toggle="modal" class="esqueci" data-target="#ExemploModalCentralizado" style="font-size: 16px; color:black;">Esqueceu sua senha?</a><br>
+               <br> <a href="../index.php" style="font-size: 14px; color:black;">Voltar ao site</a>
                 </div>
+                
                 </form>
             </div>
         </div>
         </div>
-        <?php
-if(isset($_REQUEST["msg"])){
-	$cod = $_REQUEST["msg"];
-	require_once "model/msg.php";
-	echo "<script>alert('" . $MSG[$cod] . "');</script>";
-    unset($cod);
-}
-?>
-
+ 
 <style>
     :root {
     --white: #f9f9f9;
@@ -232,6 +231,9 @@ if(isset($_REQUEST["msg"])){
 .close:active{
     border: none !important;
     outline: none !important;
+}
+.modal-content{
+  font-family: 'Questrial';
 }
 </style>
 <!-- Modal -->

@@ -37,24 +37,21 @@
 </select>
     </td>
     <td>
-      <p><label class="input size" style="width: 2cm;margin-right:5%;" for="img">Imagem</label><label class="input size" for="img_hover"  style="width: 2cm;margin-right:5%;">Hover</label><label  style="width: 2.5cm;" class="input size" for="img_hover">Secundária</label></p>
+      <label class="input size" style="min-width: 70%;" for="img">Imagem</label>
       <input type="file" name="img" required id="img">
-      <input type="file" name="img_hover" required id="img_hover">
-      <input type="file" name="img_sec" required id="img_sec">
     </td>
   </tr>
   <tr>
     <td> <label for="nome" class="label">Descrição</label><br>
         <textarea  name="descricao" id="" placeholder="Descrição do produto..." required class="input"></textarea>
     </td>
-    <td> <label for="categoria" class="label">Finalidade</label><br>
-    <select name="finalidade"  required class="label"><br>
-        <option  name="finalidade" value="1" class="input">Pele Acneica</option></textarea>
-</select>
-    </td>
     <td> <label for="nome" class="label">Preço</label><br>
         <input type="text" name="preco" id="" placeholder="99,99..." required class="input"></td>
-  </tr>
+  <td>
+  <label  style="min-width: 70%" class="input size" for="img_sec">Secundária</label>
+  <input type="file" name="img_sec" required id="img_sec">
+  </td>
+      </tr>
   <tr>
     <td>  <label for="nome" class="label">Ingredientes</label><br>
         <textarea  name="ingredientes" id="" placeholder="Ingredientes do produto..." required class="input"></textarea>

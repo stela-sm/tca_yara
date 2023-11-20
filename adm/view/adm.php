@@ -73,6 +73,9 @@ height:0.5em;}
    text-align: right;
 }
 }
+.modal-content, .label, .input{
+   font-family: 'Questrial';
+}
 
       </style>
    </head>

@@ -193,10 +193,8 @@ function listaProdutos($search){ //função pra listar adms
             $dados[$i]["nome"] = $row["nome"];
             $dados[$i]["descricao"] = $row["descricao"];            
             $dados[$i]["img"] = $row["img"];
-            $dados[$i]["img_hover"] = $row["img_hover"];
             $dados[$i]["img_sec"] = $row["img_sec"];
             $dados[$i]["categoria"] = $row["categoria"];
-            $dados[$i]["finalidade"] = $row["finalidade"];
             $dados[$i]["estoque"] = $row["estoque"];
             $dados[$i]["valor"] = $row["valor_uni"];            
             $dados[$i]["ingredientes"] = $row["ingredientes"];
@@ -220,7 +218,7 @@ function listaProdutos($search){ //função pra listar adms
 
 function produtoNew($dados){
     require "conexao.php";
-    $sql = "INSERT INTO produtos (nome,ingredientes,valor_uni,descricao,categoria,finalidade,estoque,status,datahora,img,img_hover,img_sec) VALUES ('{$dados["nome"]}','{$dados["ingredientes"]}','{$dados["preco"]}','{$dados["descricao"]}','{$dados["categoria"]}','{$dados["finalidade"]}','  {$dados["estoque"]}','{$dados["status"]}',now(),'{$dados["img"]}','{$dados["img_hover"]}','{$dados["img_sec"]});";
+    $sql = "INSERT INTO produtos (nome,ingredientes,valor_uni,descricao,categoria,estoque,status,datahora,img,img_sec) VALUES ('{$dados["nome"]}','{$dados["ingredientes"]}','{$dados["preco"]}','{$dados["descricao"]}','{$dados["categoria"]}','  {$dados["estoque"]}','{$dados["status"]}',now(),'{$dados["img"]}','{$dados["img_sec"]});";
    
    
     $result = $conn -> query($sql);
@@ -243,7 +241,7 @@ return $dados;
 function produtoEdit($dados){
     require "conexao.php";
    
-            $sql= "UPDATE produtos SET nome = '{$dados['nome']}', categoria = '{$dados['categoria']}', finalidade = {$dados['finalidade']}, valor_uni = {$dados['preco']}, estoque = {$dados['estoque']}, datahora = now(), status = {$dados['status']}   WHERE ID_PRODUTO = '{$dados['id']}'";
+            $sql= "UPDATE produtos SET nome = '{$dados['nome']}', categoria = '{$dados['categoria']}',  valor_uni = {$dados['preco']}, estoque = {$dados['estoque']}, datahora = now(), status = {$dados['status']}   WHERE ID_PRODUTO = '{$dados['id']}'";
 
     $result = $conn->query($sql);
     return $result;
@@ -276,14 +274,7 @@ function img($dados){
 }
 
 
-function img_hover($dados){
-    require "conexao.php";
-   
-    $sql= "UPDATE produtos SET img_hover = '{$dados['img_hover']}' WHERE ID_PRODUTO = '{$dados['id']}'";
-    $result = $conn->query($sql);
-    return $result;
-    $conn-> close();
-}
+
 
 
 function img_sec($dados){

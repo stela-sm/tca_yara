@@ -1,7 +1,7 @@
 function ExecutaLogout() {
     var resp = confirm('Deseja sair do sistema?');
     if (resp == true) {
-        location.href = "../adm_logout.php";
+        location.href = "../view/adm_logout.php";
     } else {
         return null;
     }

@@ -20,12 +20,14 @@
             padding: 0;
             font-family: Arial, sans-serif;
         }
-
+table{
+  width: 99% !important;
+}
         .container {
           
          margin-top: -60px;
           position: fixed;
-            width: 99%;
+            width: 98%;
             border-radius: 10px;
             display: flex;
             background-color: #f9f9f9;
@@ -96,6 +98,7 @@ width: 1cm !important;
         <button name="campo" value="cliente" class="submit-button"><i class="fa-solid fa-user" data-toggle="tooltip" data-placement="right" title="Cliente" style="color: #1A3D1F;"></i></button>
         <button name="campo" value="cep" class="submit-button"><i class="fa-solid fa-location-crosshairs" data-toggle="tooltip" data-placement="right" title="CEP" style="color: #1A3D1F;"></i></button>
         <button name="campo" value="estado" class="submit-button"><i class="fa-solid fa-city" data-toggle="tooltip" data-placement="right" title="estado" style="color: #1A3D1F;"></i></button>
+        <button name="campo" value="cidade" class="submit-button"><i class="fa-solid fa-building-flag" data-toggle="tooltip" data-placement="right" title="cidade" style="color: #1A3D1F;"></i></button>
         <button name="campo" value="bairro" class="submit-button"><i class="fa-solid fa-sign-hanging" data-toggle="tooltip" data-placement="right" title="bairro" style="color: #1A3D1F;"></i></button>
         <button name="campo" value="rua" class="submit-button"><i class="fa-solid fa-road" data-toggle="tooltip" data-placement="right" title="Rua" style="color: #1A3D1F;"></i></button>
         <button name="campo" value="bloco" class="submit-button"><i class="fa-solid fa-building" data-toggle="tooltip" data-placement="right" title="Bloco" style="color: #1A3D1F;"></i></button>

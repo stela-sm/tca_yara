@@ -642,6 +642,12 @@
     text-align: center;
     width: 100vw;
 }
+.orderByTitle{
+    font-family: 'Questrial';
+    border: 1px gray solid;
+    padding: 10px 15px;
+    border-radius: 20px;
+}
 </style>
 
 <body>
@@ -740,12 +746,11 @@
                             </div>
                             <div class="col-6 orderbyDiv d-flex flex-row justify-content-right">
                                 <div class="pR-4">
-                                    <select name="orderby" id="orderby">
+                              <select name="orderby" class="orderByTitle" id="orderby" onchange="ordem()">
                                         <option selected value="0" class="orderByTitle">Ordenar por</option>
-                                        <option value="1"><a href="#">Em destaque</a></option>
-                                        <option value="2"><a href="#">Mais vendidos</a></option>
-                                        <option value="3"><a href="#">Menor preço</a></option>
-                                        <option value="4"><a href="#">Maior preço</a></option>
+                                       <option value="shop.php?ordem=" > <a >Mais vendidos</a></option></form>
+                                        <option value="shop.php?ordem=ASC" ><a  >Menor preço</a></option>
+                                        <option value="shop.php?ordem=DESC" ><a  >Maior preço</a></option>
                                     </select>
                                 </div>
                             </div>
@@ -760,12 +765,17 @@
                     $pesquisa = "";
                   }else{
                     $pesquisa = $_GET["search_Prod"];
+                  }                    
+                  if((!isset($_GET["ordem"]))){
+                    $ordem = "";
+                  }else{
+                    $ordem = $_GET["ordem"];
                   }  
-                    $dados = produtos($pesquisa);
+                    $dados = produtos($pesquisa,$ordem);
                     if ($dados["result"]!=0){
                         echo "<div class=\"container__prod\">";
                         for($i=0;$i<$dados["num"];$i++){
-
+                            if($dados[$i]["status"] == '1'){
                             echo " <a href=\"#\" class=\"card card__prod\">
                             <div class=\"img__container\">
                                 <img src=\"media/".$dados[$i]["img"]."\"
@@ -779,7 +789,7 @@
                         </a>
                         ";
 
-                    }}else{
+                    }}}else{
                         echo "<div class\"container-flex\"><div class=\"col-12 noresult\"> Sua busca não resultou nenhum produto, tente buscar termos diferentes!</div></div>";
                     };
 
@@ -868,6 +878,16 @@
     </footer>
     <div class="cursor"></div>
     <script>
+function ordem(){
+    var selectElement = document.getElementById("orderby");
+            var selectedValue = selectElement.value;
+
+            if (selectedValue) {
+                window.location.href = selectedValue;
+            }
+        
+}
+
         window.addEventListener("scroll", function () {
             var menu = document.querySelector(".menu")
             var links = document.querySelectorAll(".jsChangeColor")

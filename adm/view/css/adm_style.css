@@ -103,7 +103,7 @@
 }
 .dropdown-content a {
     color: #1a3d1f;
-    font-family: "Glacial Indifference";
+    font-family: "Questrial";
     padding: 5px 10px;
     text-decoration: none;
     display: block;
@@ -111,7 +111,7 @@
 }
 .dropdown-content a:hover {
     color: #1a3d1f;
-    font-family: "Glacial Indifference";
+    font-family: "Questrial";
     padding: 5px 10px;
     text-decoration: underline;
     transition: 0.2s;
@@ -143,7 +143,7 @@ header {
 }
 .menu,
 .painel {
-    font-family: "Glacial Indifference", sans-serif;
+    font-family: "Questrial", sans-serif;
     color: var(--green);
 }
 .painel {
@@ -184,7 +184,7 @@ header {
 }
 .nav-link {
     font-size: 1.2em;
-    font-family: "Glacial Indifference", sans-serif;
+    font-family: "Questrial", sans-serif;
 }
 .titulo {
     color: var(--white);
@@ -201,11 +201,11 @@ header {
 .subtitle {
     font-size: 1.8em;
     margin-top: -1em;
-    font-family: "Glacial Indifference", sans-serif;
+    font-family: "Questrial", sans-serif;
 }
 #voltar {
     background-color: var(--white);
-    font-family: "Glacial Indifference", sans-serif;
+    font-family: "Questrial", sans-serif;
     padding: 15px 20px 15px 20px;
     font-size: 1.3em;
     width: 100%;
@@ -234,7 +234,7 @@ iframe {
 @media screen and (max-width: 1700px) {
     #voltar {
         background-color: var(--white);
-        font-family: "Glacial Indifference", sans-serif;
+        font-family: "Questrial", sans-serif;
         padding: 15px 20px 15px 20px;
         font-size: 1em;
         border: none;
@@ -245,14 +245,14 @@ iframe {
     }
     .nav-link {
         font-size: 0.9em;
-        font-family: "Glacial Indifference", sans-serif;
+        font-family: "Questrial", sans-serif;
     }
 
 }
 @media screen and (max-width: 1250px) {
     .nav-link {
         font-size: 1.6em;
-        font-family: "Glacial Indifference", sans-serif;
+        font-family: "Questrial", sans-serif;
         padding-left: 1em;
     }
     .link1 {
@@ -302,7 +302,7 @@ iframe {
     .subtitle {
         font-size: 1.4em;
         margin-top: -1em;
-        font-family: "Glacial Indifference", sans-serif;
+        font-family: "Questrial", sans-serif;
     }
 }
 @media screen and (max-width: 360px) {
