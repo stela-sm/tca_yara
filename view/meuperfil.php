@@ -43,7 +43,8 @@
                   
         <style>
             body{
-               max-width: 100vw;
+               min-width: 100vw;
+               overflow-x: hidden;
             }
             :root {
                 --white: #f9f9f9;
@@ -108,6 +109,7 @@
             }
             iframe{
                 margin-left: 1cm;
+                min-height: 500%; 
             }
             i{
                 margin-right: 1cm;

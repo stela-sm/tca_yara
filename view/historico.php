@@ -43,6 +43,7 @@
         body{
             padding-top: 1.5em;
             font-family: 'Questrial';
+            height: 100%;
         }
         table {
             border-collapse: collapse;
