@@ -15,7 +15,12 @@
         
     ?>
     <head>
-        <script>   $(document).ready(function(){
+        <script>  
+        $('#meuModal').on('shown.bs.modal', function () {
+  $('#meuInput').trigger('focus')
+})
+
+        $(document).ready(function(){
       // Expanda todos os itens do acordeão
       $('.collapse').addClass('show');
     });</script>
@@ -63,13 +68,13 @@
             
             header {
                 background-image: url("../assets/media/yara_bg.png");
-                height: 8cm;
+                height: 10cm;
                 background-size: cover;
             }
       
             .margin {
                 
-                margin: 11% 0 0;
+                margin: 14% 0 0;
                 position: absolute;
             }
             a, a:hover{
@@ -539,7 +544,8 @@ echo"  <div class=\"custom-radio\">
     </div>
     <div id="collapseThree" class="collapse show" aria-labelledby="headingThree" >
       <div class="card-body">
-      <div class="custom-radio margin-radio">
+      <div class="custom-radio margin-radio" data-toggle="modal" data-target="#modalcartao">
+
   <input type="radio" id="pay1" name="opcoes_pay">
   <label for="pay1" class="label_padrao">
    Cartão de Crédito - confirmação imediata
@@ -764,6 +770,71 @@ ECHO "
           </div>
         </div>
 
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="modalcartao" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="TituloModalCentralizado"><b>Adicionar um Cartão de Crédito</b></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action="">
+          <table>
+            <tr>
+             <td><label for="" class="label_padrao_cartao">Número do cartão</label></td> 
+              <td><input type="number" class="input_padrao"></td> 
+            </tr>
+            
+            <tr>
+              <td><label for="" class="label_padrao_cartao">Nome no cartão</label></td>
+              <td><input type="text" class="input_padrao"></td>
+            </tr>
+            
+            <tr>
+              <td><label for="" class="label_padrao_cartao">Data de validade</label></td>
+              <td>
+              <select name="month" id="" class="select_padrao">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+              </select>
+              <select name="month" id="" class="select_padrao">
+                <option value="1">2023</option>
+                <option value="2">2024</option>
+                <option value="3">2025</option>
+                <option value="4">2026</option>
+                <option value="5">2027</option>
+                <option value="6">2028</option>
+              </select></td>
+            </tr>
+            <tr>
+            <td><label for="" class="label_padrao_cartao">Código de segurança (CVV)</label></td>
+              <td><input type="number" maxlength="3" class="input_padrao"></td>
+            </tr>
+          </table>
+        </form>
+      </div>
+      <div class="modal-footer">
+       
+      <button type="submit" class="salvar">Adicionar</button>
+      </div>
+    </div>
+  </div>
+</div>
 </html>
 <?php } else{ header("Location: login.php?fase=2"); }?>
 </body>
