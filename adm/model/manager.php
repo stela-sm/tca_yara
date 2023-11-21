@@ -215,25 +215,24 @@ function listaProdutos($search){ //função pra listar adms
 }
 
 
-
-function produtoNew($dados){
+function produtoNew($dados) {
     require "conexao.php";
-    $sql = "INSERT INTO produtos (nome,ingredientes,valor_uni,descricao,categoria,estoque,status,datahora,img,img_sec) VALUES ('{$dados["nome"]}','{$dados["ingredientes"]}','{$dados["preco"]}','{$dados["descricao"]}','{$dados["categoria"]}','  {$dados["estoque"]}','{$dados["status"]}',now(),'{$dados["img"]}','{$dados["img_sec"]});";
-   
-   
-    $result = $conn -> query($sql);
 
-    if($result==true){
-        $dados["result"]=1;
+    $sql = "INSERT INTO produtos (nome, ingredientes, valor_uni, descricao, categoria, estoque, status, datahora, img, img_sec) VALUES ('{$dados["nome"]}', '{$dados["ingredientes"]}', '{$dados["preco"]}', '{$dados["descricao"]}', '{$dados["categoria"]}', '{$dados["estoque"]}', '{$dados["status"]}', NOW(), '{$dados["img"]}', '{$dados["img_sec"]}');";
+
+    $result = $conn->query($sql);
+
+    if ($result === TRUE) {
+        $dados["result"] = 1;
         $conn->close();
-         return $dados;
-}else{
-$conn->close();
-$dados["result"]=0;
-return $dados;
-
-}   
+        return $dados;
+    } else {
+        $conn->close();
+        $dados["result"] = 0;
+        return $dados;
+    }
 }
+
 
 
 

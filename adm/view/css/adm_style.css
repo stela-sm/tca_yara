@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Berkshire+Swash&display=swap");
-@import url("https://fonts.cdnfonts.com/css/glacial-indifference-2");
+@import url('https://fonts.googleapis.com/css2?family=Questrial&display=swap');
 :root {
     --white: #f9f9f9;
     --green: #1a3d1f;
@@ -201,7 +201,7 @@ header {
 .subtitle {
     font-size: 1.8em;
     margin-top: -1em;
-    font-family: "Questrial", sans-serif;
+    font-family: 'Questrial', sans-serif;
 }
 #voltar {
     background-color: var(--white);

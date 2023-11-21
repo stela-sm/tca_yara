@@ -416,7 +416,7 @@ if(isset($_REQUEST["adm_delete"])){ //deleçao
    
     $extPeq = validaExtImg($_FILES["img"]["name"]);
     $extGra = validaExtImg($_FILES["img_sec"]["name"]);
-    if ($extPeq == 0 || $extMed == 0 || $extGra == 0 ) {
+    if ($extPeq == 0 || $extGra == 0 ) {
         ?>
         <form action="../view/produtos_list.php?campo=" name="form" id="myForm" method="POST">
         <input type="hidden" name="msg" value="FR19">  <!-- "BD54" => "Registro apagado com sucesso.",-->
@@ -444,8 +444,8 @@ $str = geradorStringRandom(8);
 $extPeq = pegaExtensao($_FILES["img"]["name"]);
 $extGra = pegaExtensao($_FILES["img_sec"]["name"]);
 $img_peq_name = "produto_" . $str ."_img_." .  $extPeq;
-$img_med_name = "produto_" . $str ."_imgsec_." . $extGra;
-$imgPath="../../view/media";
+$img_gra_name = "produto_" . $str ."_imgsec_." . $extGra;
+$imgPath="../../view/media/";
 
 
 move_uploaded_file($_FILES["img"]["tmp_name"],$imgPath.$img_peq_name);
@@ -458,7 +458,7 @@ $result=produtoNew($dados);
 
 if ($result["result"]==1){
     ?>
-    <form action="../view/produtos_list.php?campo=" name="form" id="myForm" method="POST">
+     <form action="../view/produtos_list.php?campo=" name="form" id="myForm" method="POST"> 
     <input type="hidden" name="msg" value="BD50">  <!-- "BD54" => "Registro apagado com sucesso.",-->
     </form> <!--envia um formulario com a variavel "msg", que é o código da mensagem de erro (ver view/msg.php)--> 
     <script>
@@ -467,7 +467,7 @@ if ($result["result"]==1){
 <?php  
 }else{//falha
 ?>
-        <form action="../view/produtos_list.php?campo=" name="form" id="myForm" method="POST">
+        <!-- <form action="../view/produtos_list.php?campo=" name="form" id="myForm" method="POST"> - -->
         <input type="hidden" name="msg" value="BD04">  <!-- "BD54" => "Registro apagado com sucesso.",-->
         </form> <!--envia um formulario com a variavel "msg", que é o código da mensagem de erro (ver view/msg.php)--> 
         <script>

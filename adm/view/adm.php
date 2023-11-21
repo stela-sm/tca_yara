@@ -199,21 +199,21 @@ if($_SESSION["ADM-PODER"]>=4){?> <li class="nav-item">
                   </li>
                   <?php  }?>
                      <a target='iframe' style="color: var(--green);" class="link1 nav-link menulink" href="produtos_list.php?campo=">
-                        <i class="fa-solid fa-bag-shopping"></i>Produtos </a>
+                        <i class="fa-solid fa-bag-shopping" style="margin-right:15px;"></i>Produtos </a>
                      <a target='iframe' style="color: var(--green);" class="link2 nav-link menulink" href="produtos_list.php?campo=">
                         <i class="fa-solid fa-bag-shopping"></i>
                      </a>
                   </li>
                   <li class="nav-item">
                      <a target='iframe' style="color: var(--green);" class="link1 nav-link menulink" href="vitrine_list.php?campo=">
-                        <i class="fa-solid fa-store"></i>Vitrine </a>
+                        <i class="fa-solid fa-store"  style="margin-right:13px;"></i>Vitrine </a>
                      <a target='iframe' style="color: var(--green);" class="link2 nav-link menulink" href="vitrine_list.php?campo=">
                         <i class="fa-solid fa-store" style="font-size: 0.8em; "></i>
                      </a>
                   </li><?php
 if($_SESSION["ADM-PODER"]>=2){?> <li class="nav-item menulink">
                      <a target='iframe' style="color: var(--green);" class="link1 nav-link menulink" href="pedidos_list.php?campo=">
-                        <i class="fa-solid fa-box"></i>Pedidos </a>
+                        <i class="fa-solid fa-box" style="margin-right:16px; margin-left:3px"></i>Pedidos </a>
                      <a target='iframe' style="color: var(--green);" class="link2 nav-link menulink" href="pedidos_list.php?campo=">
                         <i class="fa-solid fa-box"></i>
                      </a>
