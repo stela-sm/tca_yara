@@ -171,7 +171,7 @@ box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
     font-size: 0.8rem;
 }
 .margin-table{
-    margin-top: 5%;
+    margin-top: -2%;
     
 }
 .fa-trash-can{
@@ -415,6 +415,33 @@ form{
       padding: 0px;
       font-size: 0.9em;
     }
+    .resume_row{
+      font-size: 0.9em;
+      line-height: 10px;
+      margin-top: 10px;
+      padding-top: 10px;
+    }
+    .valor_div{
+      text-align: right;
+    }
+    table{
+      font-family: 'Questrial';
+ 
+    }
+    .th{
+      font-size: 1.2em;
+      padding-bottom: 10px;
+    }
+    .maior{
+      margin-top: 2em;
+    }
+    .select_padrao{
+      padding: 5px 10px;
+      font-family: 'Questrial';
+      border-radius: 5px;
+      border: 1px solid gray;
+      font-size: 1.2em;
+    }
         </style>
         <!-- menu -->
         <header>
@@ -442,7 +469,7 @@ form{
 
             <br>
 <br>
-<form action="../controller/controller_client.php" method="post" class="form_padrao">
+<form action="../controller/controller_client.php" method="post" id="form_pedido" class="form_padrao">
             <div class="container container-RESP">
             <div class="row">
 
@@ -601,12 +628,18 @@ echo"  <div class=\"custom-radio\">
                     <div class="col-4">
                     <div class="card subtotal_card">
   <div class="card-body">
- <table> <tr class="subtotal_row font"><td><b>Subtotal</b></td><td class="valor_div">R$144,00</td></tr>
+ <table>
+  
+ <tr><td class="th" ><b>Resumo do pedido</b></td></tr>
+ 
+ <tr class="resume_row "><td><b>Subtotal</b></td><td class="valor_div">R$144,00</td></tr>
+ <tr class="resume_row "><td><b>Frete</b></td><td class="valor_div">GRÁTIS</td></tr>
+ 
+ <tr class="subtotal_row font"><td><b>Total</b></td><td class="valor_div">R$144,00</td></tr>
  </table>
 <table class="margin-table">
-<tr class="subtotal_row"><td class="frete">Tributos e Frete calculados na finalização da compra</td></tr></table>
 <tr><td class="button_final">
-    <a type="submit" class="button" href="../controller/controller_compra.php" value="<?php echo $_SESSION["USER-ID"]; ?>" name="btnCarrinho">Finalizar Compra</a>
+    <button type="button" class="button" onclick="verificar()" name="btnCarrinho">Finalizar Compra</button>
 </td></tr>
 </form>
 </table>  
@@ -774,12 +807,12 @@ ECHO "
 
 
 <!-- Modal -->
-<div class="modal fade" id="modalcartao" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado" aria-hidden="true">
+<div class="modal fade" id="modalcartao"  tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="TituloModalCentralizado"><b>Adicionar um Cartão de Crédito</b></h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+        <button type="button" class="close" onclick="desmarcar()" data-dismiss="modal" aria-label="Fechar">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
@@ -797,7 +830,7 @@ ECHO "
             </tr>
             
             <tr>
-              <td><label for="" class="label_padrao_cartao">Data de validade</label></td>
+              <td><label for="" class="label_padrao_cartao">Validade (mês/ano)</label></td>
               <td>
               <select name="month" id="" class="select_padrao">
                 <option value="1">1</option>
@@ -835,7 +868,46 @@ ECHO "
     </div>
   </div>
 </div>
-</html>
+<script>
+      function verificar() {
+        
+        var endereco = document.querySelector('input[name="opcoes_endereco"]:checked');
+        var envio = document.querySelector('input[name="opcoes_envio"]:checked');
+        var pay = document.querySelector('input[name="opcoes_pay"]:checked');
+       
+        if (endereco === null || envio === null || pay === null) {
+            alert('Por favor, preencha todos os campos.');
+            return false;
+        }
+
+
+        alert('Fazendo seu pedido...');
+        var formulario = document.getElementById("form_pedido");
+    formulario.submit();
+        return true;
+    }
+    function desmarcar() {
+      var radios = document.getElementsByName('opcoes_pay');
+
+      for (var i = 0; i < radios.length; i++) {
+        radios[i].checked = false;
+      }
+    }
+    function mascaraCartao(event) {
+      let input = event.target;
+      let value = input.value.replace(/\D/g, '');
+
+      if (value.length <= 16) {
+        value = value.replace(/(\d{4})(\d{4})(\d{4})(\d{4})/, '$1 $2 $3 $4');
+      }
+
+      input.value = value;
+    }
+
+    let cartaoInput = document.getElementById('cartao');
+  
+    cartaoInput.addEventListener('input', mascaraCartao);
+</script>
 <?php } else{ header("Location: login.php?fase=2"); }?>
 </body>
 </html>
