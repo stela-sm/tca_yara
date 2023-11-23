@@ -398,7 +398,7 @@ if(isset($_REQUEST["adm_delete"])){ //deleçao
     if($_REQUEST["nome"] == "" || 
     $_REQUEST["descricao"] == "" || 
     $_REQUEST["ingredientes"] == "" || 
-    $_REQUEST["categoria"] == "" || 
+    $_REQUEST["instrucao"] == "" || 
     $_REQUEST["preco"] == "" || 
     $_REQUEST["estoque"] == "" || 
     $_REQUEST["status"] == "" ||
@@ -435,7 +435,7 @@ $dados["nome"]=$_REQUEST["nome"];
 $dados["descricao"]=$_REQUEST["descricao"];
 $dados["ingredientes"]=$_REQUEST["ingredientes"];
 $dados["preco"]= str_replace(",",".",$_REQUEST["preco"]);
-$dados["categoria"]=$_REQUEST["categoria"];
+$dados["instrucao"]=$_REQUEST["instrucao"];
 $dados["estoque"]=$_REQUEST["estoque"];
 $dados["status"]=$_REQUEST["status"];
 
@@ -505,7 +505,7 @@ if ($result["result"]==1){
     $dados["id"]=$_REQUEST["produto_edit"];
     $dados["nome"]=$_REQUEST["nome"];
     $dados["preco"]= str_replace(",",".",$_REQUEST["valor"]);
-    $dados["categoria"]=$_REQUEST["categoria"];
+    $dados["instrucao"]=$_REQUEST["instrucao"];
     $dados["estoque"]=$_REQUEST["estoque"];
     $dados["status"]=$_REQUEST["status"];
     require_once "../model/manager.php";

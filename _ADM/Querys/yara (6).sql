@@ -331,7 +331,7 @@ CREATE TABLE IF NOT EXISTS `produtos` (
   `descricao` text,
   `img` varchar(100) NOT NULL,
   `img_sec` varchar(100) NOT NULL,
-  `categoria` int DEFAULT NULL,
+  `instrucao` int DEFAULT NULL,
   `estoque` int DEFAULT NULL,
   `valor_uni` decimal(10,2) DEFAULT NULL,
   `ingredientes` varchar(300) NOT NULL,
@@ -340,14 +340,14 @@ CREATE TABLE IF NOT EXISTS `produtos` (
   PRIMARY KEY (`ID_PRODUTO`),
   UNIQUE KEY `nome` (`nome`),
   UNIQUE KEY `nome_2` (`nome`),
-  KEY `categoria` (`categoria`)
+  KEY `instrucao` (`instrucao`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Extraindo dados da tabela `produtos`
 --
 
-INSERT INTO `produtos` (`ID_PRODUTO`, `nome`, `descricao`, `img`, `img_sec`, `categoria`, `estoque`, `valor_uni`, `ingredientes`, `status`, `datahora`) VALUES
+INSERT INTO `produtos` (`ID_PRODUTO`, `nome`, `descricao`, `img`, `img_sec`, `instrucao`, `estoque`, `valor_uni`, `ingredientes`, `status`, `datahora`) VALUES
 (2, 'Creme aloe vera', 'Formulado com aloe vera de alta qualidade, este creme exclusivo oferece uma experiência de cuidado da pele como nenhuma outra. A aloe vera, conhecida por suas propriedades hidratantes e curativas, é o segredo para uma pele saudável e radiante.', 'produto_UAaRUhol_img_.jpeg', 'produto_ackdASgG_imgsec_.png', 1, 2225, '109.99', 'Gel de Aloe Vera: 60% (proporção maior para maximizar os benefícios)\r\nÓleo de Jojoba: 10%\r\nÓleo de Coco Fracionado: 8%\r\nGlicerina Vegetal: 5%\r\nManteiga de Karité: 5%\r\nEmulsificante Natural (como cera de abelha ou emulsificante vegetal): 6%\r\nÁgua Destilada: 4%\r\nConservante Natural (como extrato de to', '1 ', '2023-11-19 20:10:33'),
 (3, 'serum jojoba', 'Formulado com aloe vera de alta qualidade, este creme exclusivo oferece uma experiência de cuidado da pele como nenhuma outra. A aloe vera, conhecida por suas propriedades hidratantes e curativas, é o segredo para uma pele saudável e radiante.', 'produto_UAaRUhol_img_.jpeg', 'produto_ackdASgG_imgsec_.png', 1, 2225, '89.99', 'Gel de Aloe Vera: 60% (proporção maior para maximizar os benefícios)\r\nÓleo de Jojoba: 10%\r\nÓleo de Coco Fracionado: 8%\r\nGlicerina Vegetal: 5%\r\nManteiga de Karité: 5%\r\nEmulsificante Natural (como cera de abelha ou emulsificante vegetal): 6%\r\nÁgua Destilada: 4%\r\nConservante Natural (como extrato de to', '1 ', '2023-11-19 17:13:14'),
 (4, 'asdas', 'dasd', 'produto_BmxBUKnP_img_.jpg', 'produto_cRftKFMx_imgsec_.png', 1, 3434, '343.00', 'asdas', '1 ', '2023-11-21 21:35:02');
@@ -389,7 +389,7 @@ ALTER TABLE `pedidos`
 -- Limitadores para a tabela `produtos`
 --
 ALTER TABLE `produtos`
-  ADD CONSTRAINT `produtos_ibfk_1` FOREIGN KEY (`categoria`) REFERENCES `filtros` (`ID_FILTRO`);
+  ADD CONSTRAINT `produtos_ibfk_1` FOREIGN KEY (`instrucao`) REFERENCES `filtros` (`ID_FILTRO`);
 
 DELIMITER $$
 --

@@ -199,7 +199,7 @@ if($_SESSION["ADM-PODER"]>=4){?> <li class="nav-item">
                   </li>
                   <?php  }?>
                      <a target='iframe' style="color: var(--green);" class="link1 nav-link menulink" href="produtos_list.php?campo=">
-                        <i class="fa-solid fa-bag-shopping" style="margin-right:15px;"></i>Produtos </a>
+                        <i class="fa-solid fa-bag-shopping" style="margin-right:15px;"></i>Estoque </a>
                      <a target='iframe' style="color: var(--green);" class="link2 nav-link menulink" href="produtos_list.php?campo=">
                         <i class="fa-solid fa-bag-shopping"></i>
                      </a>

@@ -194,7 +194,7 @@ function listaProdutos($search){ //função pra listar adms
             $dados[$i]["descricao"] = $row["descricao"];            
             $dados[$i]["img"] = $row["img"];
             $dados[$i]["img_sec"] = $row["img_sec"];
-            $dados[$i]["categoria"] = $row["categoria"];
+            $dados[$i]["instrucao"] = $row["instrucao"];
             $dados[$i]["estoque"] = $row["estoque"];
             $dados[$i]["valor"] = $row["valor_uni"];            
             $dados[$i]["ingredientes"] = $row["ingredientes"];
@@ -218,7 +218,7 @@ function listaProdutos($search){ //função pra listar adms
 function produtoNew($dados) {
     require "conexao.php";
 
-    $sql = "INSERT INTO produtos (nome, ingredientes, valor_uni, descricao, categoria, estoque, status, datahora, img, img_sec) VALUES ('{$dados["nome"]}', '{$dados["ingredientes"]}', '{$dados["preco"]}', '{$dados["descricao"]}', '{$dados["categoria"]}', '{$dados["estoque"]}', '{$dados["status"]}', NOW(), '{$dados["img"]}', '{$dados["img_sec"]}');";
+    $sql = "INSERT INTO produtos (nome, ingredientes, valor_uni, descricao, instrucao, estoque, status, datahora, img, img_sec) VALUES ('{$dados["nome"]}', '{$dados["ingredientes"]}', '{$dados["preco"]}', '{$dados["descricao"]}', '{$dados["instrucao"]}', '{$dados["estoque"]}', '{$dados["status"]}', NOW(), '{$dados["img"]}', '{$dados["img_sec"]}');";
 
     $result = $conn->query($sql);
 
@@ -240,7 +240,7 @@ function produtoNew($dados) {
 function produtoEdit($dados){
     require "conexao.php";
    
-            $sql= "UPDATE produtos SET nome = '{$dados['nome']}', categoria = '{$dados['categoria']}',  valor_uni = {$dados['preco']}, estoque = {$dados['estoque']}, datahora = now(), status = {$dados['status']}   WHERE ID_PRODUTO = '{$dados['id']}'";
+            $sql= "UPDATE produtos SET nome = '{$dados['nome']}', instrucao = '{$dados['instrucao']}',  valor_uni = {$dados['preco']}, estoque = {$dados['estoque']}, datahora = now(), status = {$dados['status']}   WHERE ID_PRODUTO = '{$dados['id']}'";
 
     $result = $conn->query($sql);
     return $result;

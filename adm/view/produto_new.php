@@ -31,9 +31,9 @@
         <input type="text" name="nome" id="" placeholder="Nome do produto..." required class="input">
     </td>
     <td>
-      <label for="categoria" class="label">Categoria</label><br>
-    <select name="categoria" required class="label"><br>
-        <option  name="categoria" value="1" class="input">Sérum</option></textarea>
+      <label for="instrucao" class="label">instrucao</label><br>
+    <select name="instrucao" required class="label"><br>
+        <option  name="instrucao" value="1" class="input">Sérum</option></textarea>
 </select>
     </td>
     <td>

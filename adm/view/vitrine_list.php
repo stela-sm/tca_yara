@@ -173,9 +173,9 @@ $dados = listaProdutos($pesquisa);
             <th class="TabelaAdmTh">Nome</th>     
             <th class="TabelaAdmTh poder">Descrição</th>            
             <th class="TabelaAdmTh poder">Composição</th>
+            <th class="TabelaAdmTh poder">Instrução</th>
             <th class="TabelaAdmTh">Imagem</th>
             <th class="TabelaAdmTh">Imagem Sec</th>
-            <th class="TabelaAdmTh">Datahora</th>
             <th class="TabelaAdmTh">Status</th>
             <th class="TabelaAdmTh"><a href="produto_new.php"><i class="fa-solid fa-user-plus" style=" color:  #4da037;"></i></a></th>
             <th class="TabelaAdmTh">&nbsp;</th>
@@ -199,6 +199,7 @@ $dados = listaProdutos($pesquisa);
 
 
             echo "<td class=\"TabelaAdmTd\"> <textarea  class=\"classe".$dados[$i]["id"]."\" disabled name=\"ingredientes\">". $dados[$i]["ingredientes"] ."</textarea></td>";
+            echo "<td class=\"TabelaAdmTd\"> <textarea  class=\"classe".$dados[$i]["id"]."\" disabled name=\"intrucao\">". $dados[$i]["instrucao"] ."</textarea></td>";
 
             echo "<td class=\"TabelaAdmTd\"> <label  for=\"img".$dados[$i]["id"]."\"><img style=\"width:3cm;\"src=\"../../view/media/".$dados[$i]["img"] ."\" alt=\"\"></label><input type=\"file\" disabled style=\"display:none;\" id=\"img".$dados[$i]["id"]."\"class=\"classe".$dados[$i]["id"]."\" name=\"img\"></td>";
            
@@ -208,9 +209,7 @@ $dados = listaProdutos($pesquisa);
 
            
            
-            echo "<td class=\"TabelaAdmTd data\"> <input disabled value=\"". $dados[$i]["datahora"] ."\"></td>";
-            
-
+       
             echo "<td class=\"TabelaAdmTd\"> <select disabled name=\"status\" class=\"classe".$dados[$i]["id"]."\"> 
             
             <option value=\"1\""; if($dados[$i]["status"]==1){

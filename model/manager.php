@@ -611,7 +611,7 @@ function produtos($pesquisa, $ordem){
             $dados[$i]["descricao"] =       $row["descricao"];
             $dados[$i]["img"] =   $row["img"];
             $dados[$i]["img_sec"] =      $row["img_sec"];
-            $dados[$i]["categoria"] =    $row["categoria"];
+            $dados[$i]["instrucao"] =    $row["instrucao"];
             $dados[$i]["estoque"] =    $row["estoque"];
             $dados[$i]["valor_uni"] =    $row["valor_uni"];
             $dados[$i]["ingredientes"] =    $row["ingredientes"];
@@ -650,4 +650,35 @@ function produtos($pesquisa, $ordem){
     
     
     }
+
+
+    function pega_produto($id){
+        require 'conexao.php';
+        $sql = "SELECT * FROM produtos WHERE ID_PRODUTO='$id'";
+     $result=$conn->query($sql); 
+    
+     if($result->num_rows > 0){
+         $dados=array();
+         $dados["result"] = 1;
+         while($row=$result->fetch_assoc()){
+            $dados["id"] = $row["ID_PRODUTO"];
+            $dados["nome"] = $row["nome"];
+            $dados["descricao"] = $row["descricao"];
+            $dados["img"] = $row["img"];
+            $dados["img"] = $row["img_sec"];
+            $dados["instrucao"] = $row["instrucao"];
+            $dados["estoque"] = $row["estoque"];
+            $dados["valor_uni"] = $row["valor_uni"];
+            $dados["ingredientes"] = $row["ingredientes"];
+            $dados["status"] = $row["status"];
+            $dados["datahora"] = $row["datahora"];
+         }
+         $conn->close();
+         return $dados;
+     
+     
+    
+    }}
+    
+    
         ?>

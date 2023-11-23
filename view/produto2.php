@@ -22,16 +22,12 @@
     integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
   </script>
-  <script src="assets/js/animator.js"></script>
   <link
     href="https://fonts.googleapis.com/css2?family=Arapey:ital@0;1&family=Berkshire+Swash&family=body_test&display=swap"
     rel="stylesheet">
   <link href="https://www.cdnfonts.com/glacial-indifference-2.font" rel="stylesheet">
 </head>
 <style>
-    footer>a{
-        color: #f0f0f0 !important;
-    }
   /*MENU*/
 
   .menu.fixed {
@@ -301,8 +297,50 @@
       transform: scale(1) !important;
     }
   }
+  .mb-4 {
+        margin-bottom: 1rem !important;
+    }
 
-  .uppercase {
+    .abnt-normal {
+        line-height: 1.625 !important;
+    }
+
+    .text-sm {
+        font-size: .875rem;
+        line-height: 1.5;
+    }
+
+    .font-light {
+        font-weight: 300;
+    }
+
+    .BodyFont-primary {
+        font-family: var(--body-font);
+    }
+
+    .TitleFont-primary {
+        font-family: var(--title-font);
+    }
+
+    @media (min-width: 1024px) {
+        .px-8 {
+            padding-left: 2rem;
+            padding-right: 2rem;
+        }
+    }
+
+    @media (min-width: 768px) {
+        .py-5 {
+            padding-top: 1.25rem;
+            padding-bottom: 1.25rem;
+        }
+    }
+
+    .tracking-wide {
+        letter-spacing: .025em;
+    }
+
+    .uppercase {
         text-transform: uppercase;
     }
 
@@ -373,8 +411,148 @@
         transition-timing-function: cubic-bezier(0, 0, .2, 1);
     }
 
+    @media (min-width: 1024px) {
+        .px-8 {
+            padding-left: 2rem;
+            padding-right: 2rem;
+        }
+    }
 
-  ul.list-unstyled li {
+    @media (min-width: 768px) {
+        .py-5 {
+            padding-top: 1.25rem;
+            padding-bottom: 1.25rem;
+        }
+    }
+
+    .tracking-wide {
+        letter-spacing: .025em;
+    }
+
+    .uppercase {
+        text-transform: uppercase;
+    }
+
+    .text-gray-500 {
+        --text-opacity: 1;
+        color: #2d333a;
+        color: rgba(45, 51, 58, var(--text-opacity));
+    }
+
+    .px-6 {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+    }
+
+    .py-4 {
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+    }
+
+    .leading-snug {
+        line-height: 1.375;
+    }
+
+    .text-xs {
+        font-size: .75rem;
+        line-height: 1.5;
+    }
+
+    .font-semibold {
+        font-weight: 600;
+    }
+
+    .flex-shrink-0 {
+        flex-shrink: 0;
+    }
+
+    .inline-block {
+        display: inline-block;
+    }
+
+    .border {
+        border-width: 1px;
+    }
+
+    .border-solid {
+        border-style: solid;
+    }
+
+    .rounded {
+        border-radius: 0.25rem;
+    }
+
+    .border-gray-500 {
+        --border-opacity: 1;
+        border-color: #2d333a;
+        border-color: rgba(45, 51, 58, var(--border-opacity));
+    }
+
+    .bg-white {
+        --bg-opacity: 1;
+        background-color: #fff;
+        background-color: rgba(255, 255, 255, var(--bg-opacity));
+    }
+
+    a {
+        transition-property: all;
+        transition-duration: .5s;
+        transition-timing-function: cubic-bezier(0, 0, .2, 1);
+        background-color: transparent;
+        color: inherit;
+        text-decoration: inherit;
+    }
+
+    * {
+        box-sizing: border-box;
+        border: 0 solid #abadb0;
+    }
+
+    @media (min-width: 1024px) {
+        .pb-28 {
+            padding-bottom: 7rem;
+        }
+    }
+
+    @media (min-width: 768px) {
+        .pb-16 {
+            padding-bottom: 4rem;
+        }
+    }
+
+    .w-full {
+        width: 100%;
+    }
+
+    .pb-12 {
+        padding-bottom: 3rem;
+    }
+
+    .mb-12 {
+        margin-bottom: 3rem;
+    }
+
+    .items-center {
+        align-items: center;
+    }
+
+    .flex-wrap {
+        flex-wrap: wrap;
+    }
+
+    img {
+        max-width: 99.8%;
+    }
+
+    .text-left {
+        text-align: left;
+    }
+
+    .w-300 {
+        font-weight: 300;
+    }
+
+    ul.list-unstyled li {
         transform: translateX(0px);
         color: inherit;
         transition: all .3s cubic-bezier(0.47, 0, 0.745, 0.715);
@@ -392,6 +570,7 @@
     }
 
 
+
   .logo {
     color: #000;
   }
@@ -406,14 +585,17 @@
   }
 
   .produto {
-    margin-left: -7%;
+    margin-top: calc(51.60px + 4vh);
+    margin-left: 0%;
+    padding-bottom: 2%;
+    margin-top: 5cm;
+    margin-bottom: 5cm;
   }
 
   .card.transparent {
     background-color: transparent !important;
   }
 </style>
-
 <body>
   <header onselectstart="return false">
     <div class="menu">
@@ -479,11 +661,11 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <a class="menu-link" href="#">Home</a>
-                        <a class="menu-link" href="#">Shop</a>
+                        <a class="menu-link" href="../index.php">Home</a>
+                        <a class="menu-link" href="shop.php">Shop</a>
                         <a class="menu-link" href="#">Sobre</a>
-                        <a class="menu-link" href="#">Login</a>
-                        <a class="menu-link" href="#">Sacola</a>
+                        <a class="menu-link" href="meuperfil.php">Login</a>
+                        <a class="menu-link" href="carrinho.php">Sacola</a>
                     </div>
                 </div>
             </div>
@@ -494,23 +676,29 @@
     <div class="container main__containerEQUAL" style="margin-left: 0;">
       <div class="row d-flex g-3">
         <div class="col-md-6 col-12 pb-3 img__produto_pag">
-          <img class="transformAutoImg" width="120%"
-            src="https://mysa-skincare.com/uploads/transforms/bc9e33244d2d8a7bebbefa89bb319b9f/496/Cuticle-Oil_2020-10-15-085737_d3867277feb154defec9b24a5714fadb.webp"
+          <form action="">
+          <?php
+          $_GET['id'] = '2';
+          $id = $_GET['id'];
+          require "../model/manager.php";
+          $dados = pega_produto($id);
+          
+          ?>
+          <img class="transformAutoImg img-fluid" width="120%"
+            src="media/<?php echo $dados["img"]; ?>"
             class="img-fluid" alt="Imagem do produto">
         </div>
         <div class="col-md-6 col-12 mb-3 prod_dec pl-6 p-7">
           <div class="product-details">
             <!--                <span class="minor_senctsML pb-2">13 Scents   ·   15ML</span>-->
-            <h4 class="prod_title  pb-1">Lorem Ipsum</h4>
-            <p class="value_prod  pb-2">R$9.99</p>
-            <p class="prod_desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-              tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-              exercitation ullamco.</p>
+            <h4 class="prod_title  pb-1"><?php echo $dados["nome"];?></h4>
+            <p class="value_prod  pb-2">R$<?php echo $dados["valor_uni"];?></p>
+            <p class="prod_desc"><?php echo $dados["descricao"];?></p>
             <!-- <p>Not suitable for people who have a nut allergy</p> -->
             <div class="row pb-4">
               <div class="col-md-6 col-6">
-                <!--                             <label for="scent">Aroma</label>
-     --> <select id="scent" class="b_radius30 form-control">
+                <!-- <label for="scent">Aroma</label>
+    --> <select id="scent" class="b_radius30 form-control">
                   <option value="0" disabled selected>Aroma</option>
 
                   <option value="scent1">Morango</option>
@@ -536,18 +724,17 @@
                 </select>
               </div>
             </div><br>
-            <button class="b_radius30 buyNow btn btn-primary btn-block">Compre Já</button>
+            
+            <button type="submit" class="b_radius30 buyNow btn btn-primary btn-block" value="<?php echo $dados["id"];?>">Compre Já</button>
           </div>
         </div>
-
+        </form>
       </div>
     </div>
   </section>
   <hr class="hiddenonMajorWindow__separatorProdDesc">
   <section class="produtoDescricao container-fluid">
     <div class="container main__containerEQUAL">
-        <br>
-        <br><br><br>
       <div class="row d-md-flex g-3">
         <div class="col-md-6 col-12 mb-3 prod_dec" style="  padding-left: 0;">
           <div class="product-details">
@@ -557,25 +744,21 @@
                 <button style="width: 100% !important;" class="collapsed prod_title-muta show text-left" type="button"
                   data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne"
                   style="font-size: 2.7rem !important;">
-                  Lorem Ipsum
+                  Instruções de uso
                 </button>
               </div>
               <div id="collapseOne" class="collapse show fade slide-up" aria-labelledby="headingOne"
                 data-parent="#accordionExample">
                 <div class="card-body">
                   <div class="aria1__cardDesc">
-                    <p class="bold">What is it?</p>
-                    <div><span>This Cuticle Oil is perfect for travel size and helps to keep your nails
-                        healthy.</span></div>
+                    <p class="bold">O que é?</p>
+                    <div><span><?php echo $dados["descricao"]; ?></span></div>
                   </div>
                   <br>
                   <div class="aria2__cardDesc">
-                    <p class="bold">What makes it so special?</p>
-                    <span class="dot_topic">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                      exercitation ullamco.</span>
-                    <span class="dot_topic">Sit amet consequer.</span>
-                    <span class="dot_topic">Dolor ipsum lorem.</span>
+                    <p class="bold">Modo de uso</p>
+                    <span class="dot_topic"><?php echo $dados["instrucao"]; ?></span>
+                  
                   </div>
                 </div>
               </div>
@@ -608,8 +791,7 @@
                 <div id="collapseTwo" class="collapse fade slide-up" aria-labelledby="headingTwo"
                   data-parent="#accordionExample">
                   <div class="card-body">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-                    et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.
+                  <?php echo $dados["ingredientes"]; ?>
                   </div>
                 </div>
               </div>
@@ -623,7 +805,6 @@
             class="img-fluid" alt="Imagem do produto">
         </div>
       </div>
-      <br><br><br><br>
     </div>
   </section>
     <hr class="hiddenonMajorWindow__separatorProdDesc-d">
@@ -631,12 +812,11 @@
   <section class="parecidos container-fluid container__prinOutros">
     <div class="container-flex main__containerINequal container__prinOutros">
       <div class="row d-flex flex-column g-3 container__prinOutros" >
-        <div class="col-12 mb-3 container__prinOutros" style="  padding-left: 0;">
+        <div class="col-12 mb-3 container__prinOutros container" style="  padding-left: 0;">
           <div class="cotainter_otherProdH">
-            <br><Br><br>
-            <h2 class="prod_title" style="text-align:center;">Talvez você goste </h2>
+            <h2 class="prod_title">Talvez você goste</h2>
           </div>
-          <div class="owl-carousel owl-theme">
+          <div class="container-flex owl-carousel owl-theme">
 
             <div class="item">
               <a href="#" class="card card__prod">
