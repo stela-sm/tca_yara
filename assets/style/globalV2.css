@@ -490,181 +490,6 @@ a {
     text-decoration: none !important;
 }
 
-/*MENU*/
-
-.menu.fixed {
-    margin: 0px;
-    box-shadow: 0 0 30px rgba(0, 0, 0, .051);
-
-    top: 0;
-    height: 80px;
-    position: fixed;
-    background-color: hsla(0, 0%, 99.6%, .7) !important;
-    -webkit-backdrop-filter: blur(30px) !important;
-    backdrop-filter: blur(10px) !important;
-    z-index: 99999999;
-}
-
-/* menu */
-.menu {
-    background-color: transparent !important;
-    position: absolute;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 3%;
-    margin: 15px 0px 0px;
-    top: 0;
-    z-index: 9999;
-}
-
-.logo {
-    font-family: 'Berkshire Swash';
-    font-size: 2.14rem;
-    text-decoration: none !important;
-    color: #f0f0f0;
-    cursor: pointer;
-}
-
-.logo:hover {
-    font-family: 'Berkshire Swash';
-    font-size: 2.14rem;
-    text-decoration: none !important;
-}
-
-.menu-links {
-    justify-content: space-between !important;
-    display: flex;
-    align-items: center;
-    height: 40px;
-    padding: 0 1.2%;
-    text-decoration: none !important;
-}
-
-.menu-link {
-    margin-left: 30px;
-    font-family: "Questrial", sans-serif;
-    font-size: 14px;
-    font-weight: bold;
-    color: #000;
-    text-decoration: none !important;
-}
-
-.menu-link:hover {
-    font-family: "Questrial", sans-serif;
-    font-size: 14px;
-    font-weight: bold;
-    text-decoration: none;
-}
-
-a.menu-link:hover {
-    color: #000 !important;
-    text-decoration: underline;
-}
-
-a.logo:hover {
-    color: #f0f0f0 !important;
-    text-decoration: underline;
-}
-
-.a-home,
-.a-shop,
-.a-sobre {
-    position: relative;
-    color: #000;
-    text-decoration: underline;
-}
-
-.a-home:before,
-.a-shop:before,
-.a-sobre:before {
-    content: "";
-    position: absolute;
-    width: 100%;
-    height: 2px;
-    bottom: -1px;
-    left: 0;
-    background-color: #000;
-    visibility: hidden;
-    -webkit-transform: scaleX(0);
-    transform: scaleX(0);
-    -webkit-transition: all 0.3s ease-in-out 0s;
-    transition: all 0.3s ease-in-out 0s;
-}
-
-.a-home:hover:before,
-.a-shop:hover:before,
-.a-sobre:hover:before {
-    visibility: visible;
-    -webkit-transform: scaleX(1);
-    transform: scaleX(1);
-}
-
-.icon-bag,
-.icon-user {
-    margin-top: -10px;
-}
-
-/* responsividade menu */
-@media (min-width: 650px) {
-    .btn-modal {
-        display: none;
-    }
-}
-
-@media (max-width: 650px) {
-    .menu-links {
-        display: none;
-    }
-
-    .modal-body {
-        text-align: center;
-        margin-top: -15px;
-    }
-
-    .menu-link {
-        list-style: none;
-        display: block;
-        margin: 20px 0;
-        text-align: center;
-        text-decoration: none !important;
-    }
-
-    .btn-modal,
-    .btn-modal:active,
-    .btn-modal:hover,
-    .btn-modal::before {
-        border: none;
-        background-color: transparent;
-        border: transparent;
-        box-shadow: none;
-        outline: none;
-        color: #f0f0f0;
-    }
-
-    .btn-modal.transparent {
-        color: transparent !important;
-    }
-
-    .modal-content {
-        border-radius: 30px;
-        border-style: none;
-        background-color: rgba(240, 240, 240, 0.915);
-    }
-
-    .modal-dialog {
-        position: fixed;
-        top: 3%;
-        right: 10px;
-        width: 45%;
-        height: 80%;
-        margin: 0;
-        transform: translate(0, 0);
-    }
-}
-
-
 input:focus,
 select:focus {
     outline: none !important;
@@ -1144,8 +969,23 @@ button.btn.btn-link.ingred__btn:focus {
 
 /*TABLETS*/
 @media (max-width:570px) {
+    .menu.fixed {
+        padding: 0 3%;
+        margin: 15px 0px 0px;
+        box-shadow: 0 0 30px rgba(0, 0, 0, .051);
+        height: auto;
+        position: unset;
+        background-color: transparent !important;
+        -webkit-backdrop-filter: blur(0) !important;
+
+        backdrop-filter: blur(0) !important;
+    }
+
     .hiddenMobileMinor_Plus {
         display: none;
+    }
+    .container-pb.pb-28.secTotalIndex.eficazImportant__secIndexanFooter {
+        padding-bottom: 2rem !important;
     }
 }
 
@@ -1180,7 +1020,14 @@ button.btn.btn-link.ingred__btn:focus {
 .BodyFont-primary {
     font-family: var(--body-font) !important;
 }
-
+@media (min-width:1024px){
+    .col-md-4.text-center.box__left.paddingOnResponsiveLeftBox.show{
+        padding-left: 8%;    }
+    .conectionToShop.gallery__left.box__left {
+        padding-right: 4rem;
+        padding-left: 0rem;
+    }
+}
 @media(min-width:1466px) {
     .product-details {
         padding-right: 8% !important;
@@ -1204,15 +1051,55 @@ button.btn.btn-link.ingred__btn:focus {
         padding-left: 0 !important;
         padding-right: 4rem !important;
     }
-    .conectionToShop.gallery__left.box__left.show{
+
+    .conectionToShop.gallery__left.box__left.show {
         padding-bottom: 5% !important;
     }
-    .container-pb.pb-28.secTotalIndex.eficazImportant__secIndexanFooter{
+
+    .container-pb.pb-28.secTotalIndex.eficazImportant__secIndexanFooter {
         padding-right: 4rem !important;
     }
 }
+
+@media(max-width:666px) {
+    section.Mvh_section.info_section-I.scrollPart_anim4.box__right.show {
+        height: auto !important;
+    }
+
+    .container-pb.pb-28.secTotalIndex.eficazImportant__secIndexanFooter {
+        padding-right: 2rem !important;
+    }
+
+    .col-md-4.text-center.box__left.paddingOnResponsiveLeftBox.show {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+}
+
+@media (max-width:1400px) {
+    .herocurtain {
+        display: none;
+    }
+
+    .hero {
+        background-image: url(https://images.everydayhealth.com/images/what-are-natural-skin-care-products-alt-1440x810.jpg);
+        background-size: cover;
+        background-repeat: no-repeat;
+        overflow: visible;
+        display: flex;
+        flex-direction: row;
+        height: 100vh;
+        width: 100vw;
+        justify-content: center;
+        align-items: center;
+        background-blend-mode: darken;
+        background-color: #000000ce;
+    }
+
+}
+
 @media (max-width:577px) {
-    p{
+    p {
         text-align: left !important;
     }
 
@@ -1271,21 +1158,6 @@ button.btn.btn-link.ingred__btn:focus {
 
     .herocurtain {
         display: none;
-    }
-
-    .hero {
-        background-image: url(https://images.everydayhealth.com/images/what-are-natural-skin-care-products-alt-1440x810.jpg);
-        background-size: cover;
-        background-repeat: no-repeat;
-        overflow: visible;
-        display: flex;
-        flex-direction: row;
-        height: 100vh;
-        width: 100vw;
-        justify-content: center;
-        align-items: center;
-        background-blend-mode: darken;
-        background-color: #000000ce;
     }
 
     .slogan.viewportHero h1 {
@@ -1347,9 +1219,11 @@ button.btn.btn-link.ingred__btn:focus {
 .f0dot8rem {
     font-size: 0.8rem;
 }
-.txtcmmarginRight__in{
+
+.txtcmmarginRight__in {
     margin-right: 2.1%;
 }
+
 /* .txtcmmarginLeft__in{
     margin-left: 2.1%;
 
@@ -1360,24 +1234,29 @@ ul.list-unstyled li {
     color: inherit;
     transition: all .3s cubic-bezier(0.47, 0, 0.745, 0.715)
 }
+
 ul.list-unstyled li:hover {
     transform: translateX(5px);
     color: inherit;
     color: white
 }
+
 .link__footer:hover {
     opacity: 1 !important;
     color: white
 }
+
 footer {
     background-color: var(--soft-green);
     clip-path: circle(100% at 50% 50%);
     text-align: center;
     width: 100vw !important;
 }
+
 .social-ico {
     font-size: 1rem;
 }
+
 .socialport {
     display: flex;
     flex-direction: row;
@@ -1385,11 +1264,13 @@ footer {
     align-items: center;
     gap: 10%;
 }
+
 .divColMdFooter {
     justify-content: center;
     align-items: center;
     text-align: left;
 }
+
 .containerFooter {
     width: 100%;
     padding-top: 2rem;
@@ -1397,6 +1278,7 @@ footer {
     display: flex;
     flex-direction: row;
 }
+
 @media (max-width:558px) {
 
     .row.rowNavFooter {
@@ -1412,6 +1294,7 @@ footer {
         padding: 0;
     }
 }
+
 @media (max-width:980px) {
     .hiddenMobileMinor {
         display: none;
@@ -1429,6 +1312,7 @@ footer {
         width: 100% !important;
     }
 }
+
 @media (min-width:980px) {
 
     .hidden_onMajorFooter {
@@ -1439,19 +1323,31 @@ footer {
         display: block;
     }
 }
+
 @media (max-width:992px) {
     .hiddenMobile {
         display: none;
     }
 }
-.btn.btn-primary.buttonInscreva.btn__footerInsc{
+
+.btn.btn-primary.buttonInscreva.btn__footerInsc {
     transition: all .3s cubic-bezier(0.47, 0, 0.745, 0.715);
 }
-.btn.btn-primary.buttonInscreva.btn__footerInsc:hover{
+
+.btn.btn-primary.buttonInscreva.btn__footerInsc:hover {
     background-color: white !important;
     color: #1b1f23;
-    
+
 }
-#container__interaShopCarousel, .card__prod_index{
+
+#container__interaShopCarousel,
+.card__prod_index {
     cursor: none;
+}
+
+.row.rowVeryImportant.rowSectionTXT__carouselMB-includeShopHTML {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
 }

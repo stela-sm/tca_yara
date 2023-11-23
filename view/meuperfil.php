@@ -38,10 +38,160 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Yara | Meu Perfil</title>
     </head>
-    <body>
+    
 
                   
         <style>
+            
+            
+.menu {
+    background-color: transparent !important;
+    position: absolute; 
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 3%;
+    margin: 15px 0px 0px;
+    top: 0;
+    z-index: 9999999999;
+}
+
+.logo {
+    font-family: 'Berkshire Swash';
+    font-size: 2.14rem;
+    text-decoration: none !important;
+    color: white !important;
+    cursor: pointer;
+}
+
+.logo:hover, .logo:active, .logo::before, .logo::after {
+    font-family: 'Berkshire Swash';
+    font-size: 2.14rem;
+    text-decoration: none !important;
+    color: white !important;
+}
+
+.menu-links {
+    justify-content: space-between !important;
+    display: flex;
+    align-items: center;
+    height: 40px;
+    padding: 0 1.2%;
+    text-decoration: none !important;
+}
+
+.menu-link {
+    margin-left: 30px;
+    font-family: "Questrial", sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    text-decoration: none !important;
+}
+
+.menu-link:hover {
+    font-family: "Questrial", sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+a.menu-link:hover {
+    color: var(--lgreen) !important;
+    text-decoration: underline;
+}
+
+a.logo:hover {
+    color: #f0f0f0 !important;
+    text-decoration: underline;
+}
+
+.a-home, .a-shop, .a-sobre {
+    position: relative;
+    color: white;
+    text-decoration: underline;
+}
+
+.a-home:before, .a-shop:before, .a-sobre:before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  bottom: -1px;
+  left: 0;
+  background-color: var(--lgreen);
+  visibility: hidden;
+  -webkit-transform: scaleX(0);
+  transform: scaleX(0);
+  -webkit-transition: all 0.3s ease-in-out 0s;
+  transition: all 0.3s ease-in-out 0s;
+}
+
+.a-home:hover:before, .a-shop:hover:before, .a-sobre:hover:before {
+  visibility: visible;
+  -webkit-transform: scaleX(1);
+  transform: scaleX(1);
+}
+
+.icon-bag, .icon-user {
+    margin-top: -10px;
+}
+
+/* responsividade menu */
+@media (min-width: 650px) {
+    .btn-modal {
+        display: none;
+    }
+}
+
+@media (max-width: 650px) {
+    .menu-links {
+        display: none;
+    }
+
+    .modal-body {
+        text-align: center;
+        margin-top: -15px;
+    }
+
+    .menu-link {
+        list-style: none;
+        display: block;
+        margin: 20px 0;
+        text-align: center;
+        text-decoration: none !important;
+    }
+
+    .btn-modal, .btn-modal:active, .btn-modal:hover, .btn-modal::before {
+        border: none;
+        background-color: transparent;
+        border: transparent;
+        box-shadow: none;
+        outline: none;
+        color: #000;
+    }
+
+    .btn-modal.transparent {
+        color: transparent !important;
+    }
+
+    .modal-content {
+        border-radius: 30px;
+        border-style: none;
+        background-color: rgba(240, 240, 240, 0.915);
+    }
+
+    .modal-dialog {
+        position: fixed;
+        top: 3%; 
+        right: 10px;
+        width: 45%; 
+        height: 80%;
+        margin: 0;
+        transform: translate(0, 0);
+    }
+} 
             body{
                min-width: 100vw;
                overflow-x: hidden;
@@ -78,12 +228,10 @@
             }
             #name {
                 line-height: 3cm;
-                text-align: center;
-                align-items: center;
                 font-family: 'Berkshire Swash';
-                padding-left: 0.3cm;
+                margin: 0;          
                 color: white;
-                font-size: 2.2em;
+                font-size: 2.7em;
             }
             .linkmenu {
                 list-style: none;
@@ -278,7 +426,7 @@ font-size: 1.1em;
         padding-bottom: 30px;
     }
     .margin{
-        margin-top:10rem
+        margin-top:10%;
     }
     .col-12{
         padding-left: 50px;
@@ -347,31 +495,87 @@ font-size: 1.1em;
     form{
         width: 100%;
     }
-        </style>
+       
+.fade-in {
+    opacity: 0;
+    animation: fadeIn 0.4s ease-in forwards;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+</style>
+
+
+<body class="fade-in">
         <!-- menu -->
         <header>
-            <div class="menu">
-                <a class="logo" href="#">
-                    Yara.
-                </a>
-                <div class="menu-links">
-                    <a class="menu-link" href="#">Home</a>
-                    <a class="menu-link" href="#">Shop</a>
-                    <a class="menu-link" href="#">Sobre</a>
-                    <a class="menu-link" href="#">Contato</a>
-                </div>
-            </div>
+        <div class="menu">
+          <a class="logo" href="#" style="color:#000">
+              Yara.
+          </a>
+          <div class="menu-links">
+              <a class="menu-link a-home" href="../index.php">Home</a>
+              <a class="menu-link a-shop" href="shop.php">Shop</a>
+              <a class="menu-link a-sobre" href="">Sobre</a>
+              <!-- ícone user -->
+              <a class="menu-link" href="meuperfil.php">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="icon-user icon-tabler icon-tabler-user-circle" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                      <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                      <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0"></path>
+                      <path d="M12 10m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0"></path>
+                      <path d="M6.168 18.849a4 4 0 0 1 3.832 -2.849h4a4 4 0 0 1 3.834 2.855"></path>
+                  </svg>
+              </a>
+              <!-- ícone carrinho -->
+              <a class="menu-link" href="carrinho.php">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="icon-bag icon-tabler icon-tabler-shopping-bag" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                      <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                      <path d="M6.331 8h11.339a2 2 0 0 1 1.977 2.304l-1.255 8.152a3 3 0 0 1 -2.966 2.544h-6.852a3 3 0 0 1 -2.965 -2.544l-1.255 -8.152a2 2 0 0 1 1.977 -2.304z"></path>
+                      <path d="M9 11v-5a3 3 0 0 1 6 0v5"></path>
+                   </svg>
+              </a>
+          </div>
+
+       <!-- área responsiva do menu -->
+       <button type="button" class="btn-modal" data-bs-toggle="modal" data-bs-target="#exampleModal" style="color: #000">
+           <!-- ícone menu -->
+           <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-menu-2" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+               <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+               <path d="M4 6l16 0"></path>
+               <path d="M4 12l16 0"></path>
+               <path d="M4 18l16 0"></path>
+            </svg>
+       </button>
+         <!-- modal -->
+         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+           <div class="modal-dialog">
+             <div class="modal-content">
+               <div class="modal-header">
+                 <button type="button" class="btn-close btn-modal" width="32" height="32" data-bs-dismiss="modal" aria-label="Close"></button>
+               </div>
+               <div class="modal-body">
+                     <a class="menu-link" href="../index.html">Home</a>
+                     <a class="menu-link" href="shop.php">Shop</a>
+                     <a class="menu-link" href="#">Sobre</a>
+                     <a class="menu-link" href="#">Login</a>
+                     <a class="menu-link" href="#">Sacola</a>
+               </div>
+             </div>
+           </div>
+         </div>
+      </div>
             <div class="container">
                 <div class="row">
                     <div class="col-6 margin">
-                        <input type="file" name="pfp" id="pfp">
                         <div class="row">
-                            <label for="pfp"><img
-                                src="../assets/media/user-profile-icon-free-vector.jpg"
-                                id="pfp_label"
-                                alt=""
-                                srcset=""></label>
-                            <p id="name"><?php echo $_SESSION["USER-NOME"]?></p>
+                    
+                            <p id="name">Olá,<?php echo $_SESSION["USER-NOME"]?>!</p>
                         </div>
                     </div>
                 </div>

@@ -13,7 +13,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
     <link href="../assets/style/login.css" rel="stylesheet">
-    <title>Login</title>
+    <title>Yara | Login</title>
 </head>
 <body class="fade-in">
 
@@ -25,7 +25,7 @@
         </a>
         <div class="menu-links">
             <a class="menu-link" href="#">Home</a>
-            <a class="menu-link" href="#">Shop</a>
+            <a class="menu-link" href="shop.php">Shop</a>
             <a class="menu-link" href="#">Sobre</a>
             <a class="menu-link" href="#">Contato</a>
         </div>

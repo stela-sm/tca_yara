@@ -648,20 +648,184 @@
     padding: 10px 15px;
     border-radius: 20px;
 }
+
+.menu {
+    background-color: transparent !important;
+    position: absolute; 
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 3%;
+    margin: 15px 0px 0px;
+    top: 0;
+    z-index: 9999999999;
+}
+
+.logo {
+    font-family: 'Berkshire Swash';
+    font-size: 2.14rem;
+    text-decoration: none !important;
+    color: white !important;
+    cursor: pointer;
+}
+
+.logo:hover, .logo:active, .logo::before, .logo::after {
+    font-family: 'Berkshire Swash';
+    font-size: 2.14rem;
+    text-decoration: none !important;
+    color: white !important;
+}
+
+.menu-links {
+    justify-content: space-between !important;
+    display: flex;
+    align-items: center;
+    height: 40px;
+    padding: 0 1.2%;
+    text-decoration: none !important;
+}
+
+.menu-link {
+    margin-left: 30px;
+    font-family: 'Questrial', sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    color: white;
+    text-decoration: none !important;
+}
+
+.menu-link:hover {
+    font-family: "Questrial", sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+a.menu-link:hover {
+    color: var(--soft-green) !important;
+    text-decoration: underline;
+}
+
+a.logo:hover {
+    color: #f0f0f0 !important;
+    text-decoration: underline;
+}
+
+.a-home, .a-shop, .a-sobre {
+    position: relative;
+    color: white;
+    text-decoration: underline;
+}
+
+.a-home:before, .a-shop:before, .a-sobre:before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  bottom: -1px;
+  left: 0;
+  background-color: var(--soft-green);
+  visibility: hidden;
+  -webkit-transform: scaleX(0);
+  transform: scaleX(0);
+  -webkit-transition: all 0.3s ease-in-out 0s;
+  transition: all 0.3s ease-in-out 0s;
+}
+
+.a-home:hover:before, .a-shop:hover:before, .a-sobre:hover:before {
+  visibility: visible;
+  -webkit-transform: scaleX(1);
+  transform: scaleX(1);
+}
+
+.icon-bag, .icon-user {
+    margin-top: -10px;
+}
+
+/* responsividade menu */
+@media (min-width: 650px) {
+    .btn-modal {
+        display: none;
+    }
+}
+
+@media (max-width: 650px) {
+    .menu-links {
+        display: none;
+    }
+
+    .modal-body {
+        text-align: center;
+        margin-top: -15px;
+    }
+
+    .menu-link {
+        list-style: none;
+        display: block;
+        margin: 20px 0;
+        text-align: center;
+        text-decoration: none !important;
+    }
+
+    .btn-modal, .btn-modal:active, .btn-modal:hover, .btn-modal::before {
+        border: none;
+        background-color: transparent;
+        border: transparent;
+        box-shadow: none;
+        outline: none;
+        color: #000;
+    }
+
+    .btn-modal.transparent {
+        color: transparent !important;
+    }
+
+    .modal-content {
+        border-radius: 30px;
+        border-style: none;
+        background-color: rgba(240, 240, 240, 0.915);
+    }
+
+    .modal-dialog {
+        position: fixed;
+        top: 3%; 
+        right: 10px;
+        width: 45%; 
+        height: 80%;
+        margin: 0;
+        transform: translate(0, 0);
+    }
+} 
+
+.fade-in {
+    opacity: 0;
+    animation: fadeIn 0.2s ease-in forwards;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
 </style>
 
-<body>
+
+<body class="fade-in">
     <header>
         <div class="menu">
           <a class="logo" href="#">
             Yara.
           </a>
           <div class="menu-links">
-            <a class="menu-link a-home" href="#">Home</a>
-            <a class="menu-link a-shop" href="view/shop.html">Shop</a>
-            <a class="menu-link a-sobre" href="#">Sobre</a>
+            <a class="menu-link a-home" href="../index.php">Home</a>
+            <a class="menu-link a-shop" href="#">Shop</a>
+            <a class="menu-link a-sobre" href="sobre.html">Sobre</a>
             <!-- ícone user -->
-            <a class="menu-link" href="#">
+            <a class="menu-link" href="meuperfil.php">
               <svg xmlns="http://www.w3.org/2000/svg" class="icon-user icon-tabler icon-tabler-user-circle" width="24"
                 height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
                 stroke-linejoin="round">
@@ -672,7 +836,7 @@
               </svg>
             </a>
             <!-- ícone carrinho -->
-            <a class="menu-link" href="#">
+            <a class="menu-link" href="carrinho.php">
               <svg xmlns="http://www.w3.org/2000/svg" class="icon-bag icon-tabler icon-tabler-shopping-bag" width="24"
                 height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
                 stroke-linejoin="round">
@@ -706,11 +870,11 @@
                     aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                  <a class="menu-link" href="#">Home</a>
-                  <a class="menu-link" href="view/shop.html">Shop</a>
-                  <a class="menu-link" href="view/sobre.html">Sobre</a>
+                  <a class="menu-link" href="../index.php">Home</a>
+                  <a class="menu-link" href="#">Shop</a>
+                  <a class="menu-link" href="sobre.html">Sobre</a>
                   <a class="menu-link" href="#">Login</a>
-                  <a class="menu-link" href="#">Sacola</a>
+                  <a class="menu-link" href="carrinho.php">Sacola</a>
                 </div>
               </div>
             </div>
@@ -722,7 +886,7 @@
             <section class="bg-white scrollPart_anim1 hero" id="hero" onselectstart="return false">
                 <div class="herocurtain"></div>
                 <div class="position-relative slogan viewportHero d-flex flex-row justify-center color-white">
-                    <h1 class="TitleFont-primary">Le meilleur de la nature directement sur votre peau</h1>
+                    <h1 class="TitleFont-primary">Explore a linha Yara e experimente o poder da natureza em cada gota. Sua pele merece esse carinho</h1>
                 </div>
             </section>
             
@@ -811,71 +975,154 @@
 
 
     <!-- Footer -->
-    <footer class="container-fluid text-light py-5" style="background-color: #1b1f23;">
+    <footer onselectstart="return false" class="container-fluid text-light py-5" style="background-color: #1b1f23;">
         <div class="row">
-            <div class="container-pb containerFooter">
-                <div class="col-md-6" style="width: 100%;">
-                    <div class="d-flex flex-column divColMdFooter opacity-08 text-justify" style="width: 70%;">
-                        <p> Que ce soit bien triste, la lumière de nos deux morts. Un traitement de deux jours.</p>
-                        <div class="input-group mb-3 d-flex gap5">
-                            <input type="text" class="form-control inputInscreva" placeholder="Inscreva-se">
-                            <button class="btn btn-primary buttonInscreva" type="button">Inscrever</button>
-                        </div>
-                        <div>
-                            <a href="#">
-                                <ion-icon name="logo-instagram"></ion-icon>
-                            </a>
-                            <a href="#">
-                                <ion-icon name="logo-twitter"></ion-icon>
-                            </a>
-                            <a href="#">
-                                <ion-icon name="logo-whatsapp"></ion-icon>
-                            </a>
-                        </div>
+            <div class="col-12 hidden_onMajorFooter mb-3">
+                <div class="row rowNavFooter">
+                    <div class="column_footer">
+                        <h4 class="rem1 uppercase bold">Explore</h4>
+                        <ul class="list-unstyled">
+                            <li class="opacity-08">
+                                <a class="opacity-08 link__footer" href="#">Home</a>
+                            </li>
+                            <li class="opacity-08">
+                                <a class="opacity-08 link__footer" href="view/shop.html">Shop</a>
+                            </li>
+                            <li class="opacity-08">
+                                <a class="opacity-08 link__footer" href="view/sobre.html">Sobre</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="column_footer">
+                        <h4 class="rem1 uppercase bold">Contato</h4>
+                        <ul class="list-unstyled">
+                            <li class="opacity-08">
+                                <a class="opacity-08 link__footer" target="_blank"
+                                    href="mailto:yaraskincare.corp@gmail.com?subject=Dúvida">info@yaracorp.com</a>
+                            </li>
+                            <li class="opacity-08">
+                                <a class="opacity-08 link__footer" target="_blank"
+                                    href="api.whatsapp.com/send?phone=+5511963208060">+55 11 98328-3252</a>
+                            </li>
+                            <li class="opacity-08">
+                                <a class="opacity-08 link__footer" target="_blank" onclick="redirecionarParaMapa()">Av.
+                                    Magalhães de Castro, 12.000</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="column_footer">
+                        <h4 class="rem1 uppercase bold">Privacidade</h4>
+                        <ul class="list-unstyled">
+                            <li class="opacity-08">
+                                <a class="opacity-08 link__footer" href="#">Entrega & Devolução</a>
+                            </li>
+                            <li class="opacity-08">
+                                <a class="opacity-08 link__footer" href="#">Termos & condições</a>
+                            </li>
+                            <li class="opacity-08">
+                                <a class="opacity-08 link__footer" href="#">Política de Privacidade</a>
+                            </li>
+                        </ul>
                     </div>
                 </div>
-                <div class="col-md-6">
-                    <div class="row rowNavFooter">
-                        <div class="col-md-2">
-                            <h4 class="rem1 uppercase bold">Lorem</h4>
-                            <ul class="list-unstyled">
-                                <li class="opacity-08"><a class="opacity-08" href="#">Ipsum</a></li>
-                                <li class="opacity-08"><a class="opacity-08" href="#">Ipsum</a></li>
-                                <li class="opacity-08"><a class="opacity-08" href="#">Ipsum</a></li>
-                            </ul>
-                        </div>
-
-                        <div class="col-md-2">
-                            <h4 class="rem1 uppercase bold">Dolor</h4>
-                            <ul class="list-unstyled">
-                                <li class="opacity-08"><a class="opacity-08" href="#">Ipsum</a></li>
-                                <li class="opacity-08"><a class="opacity-08" href="#">Ipsum</a></li>
-                                <li class="opacity-08"><a class="opacity-08" href="#">Ipsum</a></li>
-                            </ul>
-                        </div>
-                        <div class="col-md-2">
-                            <h4 class="rem1 uppercase bold">Amet</h4>
-                            <ul class="list-unstyled">
-                                <li class="opacity-08"><a class="opacity-08" href="#">Ipsum</a></li>
-                                <li class="opacity-08"><a class="opacity-08" href="#">Ipsum</a></li>
-                                <li class="opacity-08"><a class="opacity-08" href="#">Ipsum</a></li>
-                            </ul>
-                        </div>
+            </div>
+            <div class="col-md-6 col-12 superMajorAriaa mb-3" style="width: 100%;">
+                <div class="col-12 d-flex flex-column divColMdFooter opacity-08 text-justify" style="width: 70%;">
+                    <p> Junte-se à família Yara: Inscreva-se agora para receber notificações exclusivas!</p>
+                    <div class="input-group mb-3 d-flex gap5">
+                        <input type="text" class="form-control inputInscreva" placeholder="Seu telefone">
+                        <button class="btn btn-primary buttonInscreva btn__footerInsc" type="button">Inscrever</button>
+                    </div>
+                    <div class="social__port">
+                        <a href="https://api.whatsapp.com/send?phone=+5511963208060" target="_blank"
+                            class="social__icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-whatsapp"
+                                width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+                                fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                <path d="M3 21l1.65 -3.8a9 9 0 1 1 3.4 2.9l-5.05 .9"></path>
+                                <path
+                                    d="M9 10a.5 .5 0 0 0 1 0v-1a.5 .5 0 0 0 -1 0v1a5 5 0 0 0 5 5h1a.5 .5 0 0 0 0 -1h-1a.5 .5 0 0 0 0 1">
+                                </path>
+                            </svg>
+                        </a>
+                        <a href="#" class="social__icon" target="_blank">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-x"
+                                width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+                                fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                <path d="M4 4l11.733 16h4.267l-11.733 -16z"></path>
+                                <path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772"></path>
+                            </svg>
+                        </a>
+                        <a href="https://www.instagram.com/yaraclass/" class="social__icon" target="_blank">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-instagram"
+                                width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+                                fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                <path d="M4 4m0 4a4 4 0 0 1 4 -4h8a4 4 0 0 1 4 4v8a4 4 0 0 1 -4 4h-8a4 4 0 0 1 -4 -4z">
+                                </path>
+                                <path d="M12 12m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0"></path>
+                                <path d="M16.5 7.5l0 .01"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-12 hidden_onMobileFooter">
+                <div class="row rowNavFooter">
+                    <div class="column_footer">
+                        <h4 class="rem1 uppercase bold">Explore</h4>
+                        <ul class="list-unstyled">
+                            <li class="opacity-08">
+                                <a class="opacity-08 link__footer" href="#">Home</a>
+                            </li>
+                            <li class="opacity-08">
+                                <a class="opacity-08 link__footer" href="view/shop.html">Shop</a>
+                            </li>
+                            <li class="opacity-08">
+                                <a class="opacity-08 link__footer" href="view/sobre.html">Sobre</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="column_footer">
+                        <h4 class="rem1 uppercase bold">Contato</h4>
+                        <ul class="list-unstyled">
+                            <li class="opacity-08">
+                                <a class="opacity-08 link__footer" target="_blank"
+                                    href="mailto:yaraskincare.corp@gmail.com?subject=Dúvida">info@yaracorp.com</a>
+                            </li>
+                            <li class="opacity-08">
+                                <a class="opacity-08 link__footer" target="_blank"
+                                    href="https://api.whatsapp.com/send?phone=+5511963208060">+55 11 98328-3252</a>
+                            </li>
+                            <li class="opacity-08" style="cursor: pointer;">
+                                <a class="opacity-08 link__footer" target="_blank"
+                                    onclick="redirecionarParaMapa()">Shopping Cidade Jardim</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="column_footer">
+                        <h4 class="rem1 uppercase bold">Privacidade</h4>
+                        <ul class="list-unstyled">
+                            <li class="opacity-08">
+                                <a class="opacity-08 link__footer" href="#">Entrega & Devolução</a>
+                            </li>
+                            <li class="opacity-08">
+                                <a class="opacity-08 link__footer" href="#">Termos & condições</a>
+                            </li>
+                            <li class="opacity-08">
+                                <a class="opacity-08 link__footer" href="#">Política de Privacidade</a>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="container-pb container-pbDocPort mt-4">
-            <span class="">
-                © 2023 Mysa
-                ·
-                All Rights Reserved
-            </span>
-            <span class="text-end">
-                Yara Corporation
-            </span>
+        <div class="container-pbDocPort mt-4">
+            <span class="copyright__port"> © 2023 Yara · All Rights Reserved </span>
+            <span class="text-end"> Yara Corporation </span>
         </div>
-    </footer>
     <div class="cursor"></div>
     <script>
 function ordem(){

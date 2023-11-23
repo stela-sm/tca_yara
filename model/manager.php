@@ -629,4 +629,25 @@ function produtos($pesquisa, $ordem){
         }
         echo $sql;
      }
+
+
+
+
+     
+     function adicionar_prod($dados){
+        require "conexao.php";
+        $sql = "INSERT INTO carrinho (id_cliente, id_produto, nome_produto, quantidade, preco) VALUES ('{$dados["cliente"]}', '{$dados["produto"]}', '{$dados["nome"]}', '{$dados["qnt"]}','{$dados["preco"]}');";
+        $result=$conn->query($sql); 
+        if($result==true){
+            $dados["result"] = 1;
+    $conn->close(); 
+    return $dados;
+    }else{
+            $dados["result"] = 0;
+            $conn->close();    
+            return $dados;
+    }
+    
+    
+    }
         ?>
