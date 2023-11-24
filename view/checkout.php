@@ -534,7 +534,7 @@ echo"  <div class=\"custom-radio\">
     <div class="card-body">
 
     <div class="custom-radio margin-radio">
-  <input type="radio" id="envio1" name="opcoes_envio">
+  <input type="radio" onclick="frete('GRÁTIS')" id="envio1" name="opcoes_envio">
   <label for="envio1" class="label_padrao">
    ENVIO GRÁTIS PADRÃO - 10 dias úteis via SEDEX
   </label>
@@ -542,13 +542,13 @@ echo"  <div class=\"custom-radio\">
 
 
 <div class="custom-radio margin-radio">
-  <input type="radio" id="envio2" name="opcoes_envio">
-  <label for="envio2" class="label_padrao">
+  <input type="radio" onclick="frete('2')" id="envio2" name="opcoes_envio">
+  <label for="envio2"  class="label_padrao">
   R$2,00 - 5 dias úteis via SEDEX 
   </label>
 </div>
 <div class="custom-radio margin-radio">
-  <input type="radio" id="envio3" name="opcoes_envio">
+  <input type="radio" onclick="frete('10')" id="envio3" name="opcoes_envio">
   <label for="envio3" class="label_padrao">
   R$10,00 - 2 dias úteis via YARA TRANSPORTADORA 
   </label>
@@ -632,10 +632,10 @@ echo"  <div class=\"custom-radio\">
   
  <tr><td class="th" ><b>Resumo do pedido</b></td></tr>
  
- <tr class="resume_row "><td><b>Subtotal</b></td><td class="valor_div">R$144,00</td></tr>
- <tr class="resume_row "><td><b>Frete</b></td><td class="valor_div">GRÁTIS</td></tr>
+ <tr class="resume_row "><td><b>Subtotal</b></td><td class="valor_div"><span id="valor"> R$<?php echo $_GET["valor"]; ?> </span></td></tr>
+ <tr class="resume_row "><td><b>Frete</b></td><td class="valor_div"><span id="frete">---</span></td></tr>
  
- <tr class="subtotal_row font"><td><b>Total</b></td><td class="valor_div">R$144,00</td></tr>
+ <tr class="subtotal_row font"><td><b>Total</b></td><td class="valor_div valor_final">R$144,00</td></tr>
  </table>
 <table class="margin-table">
 <tr><td class="button_final">
@@ -755,7 +755,7 @@ ECHO "
 
     <div class="modal fade" id="novo_endereco" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado" aria-hidden="true">
 
-<form action="../controller/controller_client.php" method="post" name="novo_end">
+<form action="../controller/controller_compra.php" method="post" name="novo_end">
           <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
             <div class="modal-content">
               <div class="modal-header">
@@ -766,7 +766,7 @@ ECHO "
         </button>
         </div>
         <input type="hidden" name="endereco_new" value="1" placeholder="">
-        <input type="hidden" name="id_cliente" placeholder="" value="<?php $_SESSION["USER-ID"] ?>">
+        <input type="hidden" name="id_cliente" placeholder="" value="<?php echo $_SESSION["USER-ID"] ?>">
         <div class="modal-body">
         <table class="table_modal">
           <tr>
@@ -821,7 +821,7 @@ ECHO "
           <table>
             <tr>
              <td><label for="" class="label_padrao_cartao">Número do cartão</label></td> 
-              <td><input type="number" class="input_padrao"></td> 
+              <td><input type="number"  oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="16" class="input_padrao"></td> 
             </tr>
             
             <tr>
@@ -856,14 +856,14 @@ ECHO "
             </tr>
             <tr>
             <td><label for="" class="label_padrao_cartao">Código de segurança (CVV)</label></td>
-              <td><input type="number" maxlength="3" class="input_padrao"></td>
+              <td><input type="number"   oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="3" class="input_padrao cvv"></td>
             </tr>
           </table>
         </form>
       </div>
       <div class="modal-footer">
        
-      <button type="submit" class="salvar">Adicionar</button>
+      <button type="button" class="salvar " data-dismiss="modal" aria-label="Fechar"> Adicionar</button>
       </div>
     </div>
   </div>
@@ -907,6 +907,34 @@ ECHO "
     let cartaoInput = document.getElementById('cartao');
   
     cartaoInput.addEventListener('input', mascaraCartao);
+
+
+    function frete(valor) {
+    var frete = parseFloat(valor).toFixed(2);
+
+    if (isNaN(frete)) {
+        document.getElementById('frete').innerHTML = "GRÁTIS";
+    } else {
+        document.getElementById('frete').innerHTML = "R$" + frete;
+
+        var elementoTd = document.querySelector('.valor_final');
+        var valorNoTd = parseFloat(elementoTd.innerText.replace('R$', '').replace(',', '.'));
+
+        if (isNaN(valorNoTd)) {
+            valorNoTd = 0; // Ou o valor original desejado
+        }
+
+        var novoValor = valorNoTd + parseFloat(valor);
+        
+        elementoTd.innerHTML = "R$" + novoValor.toFixed(2);
+    }
+}
+
+document.getElementById('meuInput').addEventListener('input', function () {
+            if (this.value.length > 3) {
+                this.value = this.value.slice(0, 3); // Limita a 3 caracteres
+            }
+        });
 </script>
 <?php } else{ header("Location: login.php?fase=2"); }?>
 </body>

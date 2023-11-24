@@ -564,7 +564,7 @@ if($dados['result']=="0"){
 <table class="margin-table">
 <tr class="subtotal_row"><td class="frete">Tributos e Frete calculados na finalização da compra</td></tr></table>
 <tr><td class="button_final">
-    <a type="submit" class="button" href="checkout.php" value="<?php echo $_SESSION["USER-ID"]; ?>" name="btnCarrinho">Finalizar Compra</a>
+    <a type="submit" class="button" href="checkout.php?valor=<?php echo $valortotal; ?>" value="<?php echo $_SESSION["USER-ID"]; ?>" name="btnCarrinho">Finalizar Compra</a>
 </td></tr>
 </table>  
 </div>
@@ -618,7 +618,8 @@ if(isset($_REQUEST["msg"])){
     }
 }
 
-  
+
+
 
     </script>
 
