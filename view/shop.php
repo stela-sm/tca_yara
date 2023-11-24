@@ -28,6 +28,8 @@
     <link href="https://www.cdnfonts.com/glacial-indifference-2.font" rel="stylesheet">
 
 </head>
+<?php
+session_start();?>
 <style>
     /*MENU*/
     
@@ -924,6 +926,7 @@ a.logo:hover {
                    
                    
                    <?php
+                   
                    require '../model/manager.php';
                    if((!isset($_GET["search_Prod"]))){
                     $pesquisa = "";
@@ -940,7 +943,7 @@ a.logo:hover {
                         echo "<div class=\"container__prod\">";
                         for($i=0;$i<$dados["num"];$i++){
                             if($dados[$i]["status"] == '1'){
-                            echo " <a href=\"#\" class=\"card card__prod\">
+                            echo " <a href=\"produto2.php?id=".$dados[$i]["id"]."\" class=\"card card__prod\">
                             <div class=\"img__container\">
                                 <img src=\"media/".$dados[$i]["img"]."\"
                                     alt=\"Imagem do produto 1\">

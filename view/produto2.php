@@ -27,6 +27,14 @@
     rel="stylesheet">
   <link href="https://www.cdnfonts.com/glacial-indifference-2.font" rel="stylesheet">
 </head>
+<?php
+
+session_start();
+if (!isset($_GET["id"])){
+ 
+header("shop.php");
+}else{
+?>
 <style>
   /*MENU*/
 
@@ -595,6 +603,13 @@
   .card.transparent {
     background-color: transparent !important;
   }
+  .vermelho {
+  color: red;
+transition: 0.3S;
+}
+.form-control{
+  transition: 0.3s !important;
+}
 </style>
 <body>
   <header onselectstart="return false">
@@ -603,11 +618,11 @@
             Yara.
         </a>
         <div class="menu-links">
-            <a class="menu-link a-home  jsChangeColor" href="#">Home</a>
-            <a class="menu-link a-shop  jsChangeColor" href="#">Shop</a>
+            <a class="menu-link a-home  jsChangeColor" href="../index.php">Home</a>
+            <a class="menu-link a-shop  jsChangeColor" href="shop.php">Shop</a>
             <a class="menu-link a-sobre jsChangeColor" href="#">Sobre</a>
             <!-- ícone user -->
-            <a class="menu-link jsChangeColor" href="#">
+            <a class="menu-link jsChangeColor" href="meuperfil.php">
                 <svg xmlns="http://www.w3.org/2000/svg" class="icon-user icon-tabler icon-tabler-user-circle"
                     width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
                     stroke-linecap="round" stroke-linejoin="round">
@@ -618,7 +633,7 @@
                 </svg>
             </a>
             <!-- ícone carrinho -->
-            <a class="menu-link jsChangeColor" href="#">
+            <a class="menu-link jsChangeColor" href="carrinho.php">
                 <svg xmlns="http://www.w3.org/2000/svg" class="icon-bag icon-tabler icon-tabler-shopping-bag"
                     width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
                     stroke-linecap="round" stroke-linejoin="round">
@@ -676,13 +691,17 @@
     <div class="container main__containerEQUAL" style="margin-left: 0;">
       <div class="row d-flex g-3">
         <div class="col-md-6 col-12 pb-3 img__produto_pag">
-          <form action="">
+          <form action="../controller/controller_compra.php" method="post" name="form" id="add">
           <?php
-          $_GET['id'] = '2';
           $id = $_GET['id'];
           require "../model/manager.php";
           $dados = pega_produto($id);
-          
+          echo"
+          <input type=\"hidden\" value=\"".$id."\" name=\"id\">
+          <input type=\"hidden\" value=\"". $_SESSION["USER-ID"] ."\" name=\"cliente\">
+          <input type=\"hidden\" value=\"".$dados["valor_uni"]."\" name=\"preco\">          
+          <input type=\"hidden\" value=\"".$dados["nome"]."\" name=\"nome\">          
+          ";
           ?>
           <img class="transformAutoImg img-fluid" width="120%"
             src="media/<?php echo $dados["img"]; ?>"
@@ -695,21 +714,12 @@
             <p class="value_prod  pb-2">R$<?php echo $dados["valor_uni"];?></p>
             <p class="prod_desc"><?php echo $dados["descricao"];?></p>
             <!-- <p>Not suitable for people who have a nut allergy</p> -->
-            <div class="row pb-4">
-              <div class="col-md-6 col-6">
-                <!-- <label for="scent">Aroma</label>
-    --> <select id="scent" class="b_radius30 form-control">
-                  <option value="0" disabled selected>Aroma</option>
-
-                  <option value="scent1">Morango</option>
-                  <option value="scent2">Framboesa</option>
-
-                </select>
-              </div>
+            <div class="row pb-5">
+            
               <div class="col-md-6 col-6">
                 <!--                             <label for="QUANT">Quantidade</label>
-     --> <select id="QUANT" class="b_radius30 form-control">
-                  <option value="0" disabled selected>Quantidade</option>
+     --> <select id="QUANT" name="qtd" require class="b_radius30 form-control">
+                  <option value="" disabled selected>Quantidade</option>
                   <option value="1">1</option>
                   <option value="2">2</option>
                   <option value="3">3</option>
@@ -725,7 +735,7 @@
               </div>
             </div><br>
             
-            <button type="submit" class="b_radius30 buyNow btn btn-primary btn-block" value="<?php echo $dados["id"];?>">Compre Já</button>
+            <button type="button" onclick="verif()" name="adicionar_prod" class="b_radius30 buyNow btn btn-primary btn-block" value="<?php echo $dados["id"];?>">Adicionar à cesta</button>
           </div>
         </div>
         </form>
@@ -1164,9 +1174,32 @@ window.addEventListener('resize', function() {
 
         setInterval(verificarChevron, 100);
       });
+
+function verif(){
+  var form = document.getElementById("add")
+  var select = document.getElementById('QUANT');
+      var valorSelecionado = select.value;
+
+      if (valorSelecionado === '') {
+        
+        form.preventDefault;
+
+        select.classList.add('vermelho');
+  setTimeout(function() {
+    select.classList.remove('vermelho');
+  }, 3000);
+      }
+
+      else{
+        form.submit();
+      }
+    }
+
+
     </script>
 
 
 </body>
 
 </html>
+<?php } ?>

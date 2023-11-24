@@ -490,7 +490,7 @@ if($dados['result']=="0"){
 }else{
     echo "<div class=\"col-8\">";
     $valortotal = '0';
-    for($i=0;$i<=$dados['result'];$i++){
+    for($i=0;$i<$dados['num'];$i++){
     $produto = produtoBusca($dados[$i]['id_produto']);
     $valor= $dados[$i]['quantidade'] * $produto['valor'];
     
