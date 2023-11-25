@@ -268,19 +268,20 @@ function userNew($dados){ //função pra criar user
         }
         function enderecoNew($dados){
             require "conexao.php";
+            if ($dados['numero']=="0") {$dados['numero'] = null;};
+            if ($dados['apto']=="0") {$dados['apto'] = null;};
+            if ($dados['bloco']=="0") {$dados['bloco'] = null;};
 
             $sql = "INSERT INTO endereco (cep,estado,cidade,bairro,rua,bloco,apto,numero,id_cliente,datahora,nome,status) VALUES ('{$dados["cep"]}','{$dados["estado"]}','{$dados["cidade"]}','{$dados["bairro"]}', '{$dados["rua"]}','{$dados["bloco"]}', '{$dados["apto"]}', '{$dados["numero"]}', '{$dados["cliente"]}', now(),'{$dados["nome"]}', '1')";
         
             $result = $conn->query($sql);
-            if ($result === true) {
-    
-    return 1;
-} else {
-    echo "Erro na execução da consulta: " . $conn->error;
-    var_dump($dados);
-    return 0;
-}
-
+            if($result == true){
+                $conn->close();
+                return 1;
+            }    else{
+                $conn->close();
+                return 0;
+            }
         
         
         }
@@ -679,5 +680,76 @@ function produtos($pesquisa, $ordem){
     
     }}
     
+
+    function find_pedido($data){
+        require 'conexao.php';
+        $sql = "SELECT ID_PEDIDO FROM pedidos WHERE id_cliente='$data' ORDER BY datahora DESC";
+     $result=$conn->query($sql); 
     
+     if($result->num_rows > 0){
+         $dados=array();
+         $dados["result"] = 1;
+         while($row=$result->fetch_assoc()){
+            $dados["id"] = $row["ID_PEDIDO"];}}
+            
+         $conn->close();
+         return $dados;
+
+    }
+
+
+    function efetuar_pedidos($dados){
+        require "conexao.php";
+        $sql = "INSERT INTO pedidos (id_cliente, id_endereco, valor, pagamento, datahora, status) VALUES ('{$dados["cliente"]}', '{$dados["endereco"]}', '{$dados["valor"]}', '{$dados["payway"]}', NOW(), '1');";
+        $result=$conn->query($sql); 
+        if($result==true){
+            $dados["result"] = 1;
+
+                $id = find_pedido($dados["cliente"]);
+                transfer_itens($id["id"], $dados["cliente"]);
+
+    $conn->close(); 
+    return $dados;
+    }else{
+            $dados["result"] = 0;
+            $conn->close();    
+            return $dados;
+    }
+    
+
+    }
+
+
+
+
+    function transfer_itens($id_pedido, $id_cliente){
+    require "conexao.php";
+
+
+    $sql = "SELECT * FROM carrinho WHERE id_cliente='$id_cliente'";
+    $result=$conn->query($sql); 
+        $dados=array();
+        $dados["result"] = 1;
+        $i=0;
+        while($row=$result->fetch_assoc()){
+            $dados[$i]["id"] =  $row["id_produto"];
+            $dados[$i]["nome"] =  $row["nome_produto"];
+            $dados[$i]["qtd"] =  $row["quantidade"];
+            $dados["num"]=$i;
+            $i++;}
+        return $dados;
+ 
+                for ($ii=0;$ii<$dados["num"];$ii++){
+$valortotal = $dados[$i]["preco"] * $dados[$i]["quantidade"];
+
+$sql_transfer = "INSERT INTO itens (id_pedido, id_produto, quantidade, valor_uni, valor_total, datahora) VALUES ('$id_pedido', '{$dados[$i]["id"]}', '{$dados["qtd"]}', '{$dados["preco"]}', '$valortotal', 'NOW()' );";
+
+$result_transfer = $conn->query($sql_transfer);
+                
+                }
+
+    $sql_delete = "DELETE FROM carrinho WHERE id_cliente = '$id_cliente'";
+    $result_delete = $conn->query($sql_delete);
+
+$conn->close();}
         ?>

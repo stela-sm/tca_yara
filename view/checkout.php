@@ -469,7 +469,9 @@ form{
 
             <br>
 <br>
-<form action="../controller/controller_client.php" method="post" id="form_pedido" class="form_padrao">
+<form action="../controller/controller_compra.php" method="post" id="form_pedido" class="form_padrao">
+  <input type="hidden" name="efetuar_pedido" value="<?php echo $_SESSION["USER-ID"]; ?>">
+  <input type="hidden" name="valorget" value="<?php echo $_GET["valor"]; ?>">
             <div class="container container-RESP">
             <div class="row">
 
@@ -498,7 +500,7 @@ form{
               for($i=0;$i<$dados["num"];$i++){
 
 echo"  <div class=\"custom-radio\">
-<input type=\"radio\" id=\"endereco".$dados[$i]["id"]."\" name=\"opcoes_endereco\">
+<input type=\"radio\" value=\"".$dados[$i]["id"]."\" id=\"endereco".$dados[$i]["id"]."\" name=\"opcoes_endereco\">
 <label for=\"endereco".$dados[$i]["id"]."\" class=\"label_padrao\">".$dados[$i]["rua"].", "; if ($dados[$i]["numero"]!=''){echo 'nº'.$dados[$i]["numero"].", ";} if ($dados[$i]["bloco"]!=''){echo 'b.'.$dados[$i]["bloco"].", ";} if ($dados[$i]["apto"]!=''){echo 'apto.'.$dados[$i]["apto"].", ";} echo $dados[$i]["bairro"].", ".$dados[$i]["cidade"].", ".$dados[$i]["estado"].", ".$dados[$i]["cep"]." - ".$dados[$i]["nome"]." <br>
 <button type=\"button\" class=\"btn botao_modal editar\" data-toggle=\"modal\" data-target=\"#modal".$dados[$i]["id"]."\"><span class=\"azul\">Editar Endereço</span></button> 
 </label>
@@ -534,7 +536,7 @@ echo"  <div class=\"custom-radio\">
     <div class="card-body">
 
     <div class="custom-radio margin-radio">
-  <input type="radio" onclick="frete('GRÁTIS')" id="envio1" name="opcoes_envio">
+  <input type="radio" value="0" onclick="frete('GRÁTIS')" id="envio1" name="opcoes_envio">
   <label for="envio1" class="label_padrao">
    ENVIO GRÁTIS PADRÃO - 10 dias úteis via SEDEX
   </label>
@@ -542,13 +544,13 @@ echo"  <div class=\"custom-radio\">
 
 
 <div class="custom-radio margin-radio">
-  <input type="radio" onclick="frete('2')" id="envio2" name="opcoes_envio">
+  <input type="radio" value="2" onclick="frete('2')" id="envio2" name="opcoes_envio">
   <label for="envio2"  class="label_padrao">
   R$2,00 - 5 dias úteis via SEDEX 
   </label>
 </div>
 <div class="custom-radio margin-radio">
-  <input type="radio" onclick="frete('10')" id="envio3" name="opcoes_envio">
+  <input type="radio" value="10" onclick="frete('10')" id="envio3" name="opcoes_envio">
   <label for="envio3" class="label_padrao">
   R$10,00 - 2 dias úteis via YARA TRANSPORTADORA 
   </label>
@@ -573,7 +575,7 @@ echo"  <div class=\"custom-radio\">
       <div class="card-body">
       <div class="custom-radio margin-radio" data-toggle="modal" data-target="#modalcartao">
 
-  <input type="radio" id="pay1" name="opcoes_pay">
+  <input type="radio" value="card" id="pay1" name="opcoes_pay">
   <label for="pay1" class="label_padrao">
    Cartão de Crédito - confirmação imediata
   </label>
@@ -581,13 +583,13 @@ echo"  <div class=\"custom-radio\">
 
 
 <div class="custom-radio margin-radio">
-  <input type="radio" id="pay2" name="opcoes_pay">
+  <input type="radio" value="boleto" id="pay2" name="opcoes_pay">
   <label for="pay2" class="label_padrao">
   Boleto Bancário - Vencimento em 1 dia útil
   </label>
 </div>
 <div class="custom-radio margin-radio">
-  <input type="radio" id="pay3" name="opcoes_pay">
+  <input type="radio" value="pix" id="pay3" name="opcoes_pay">
   <label for="pay3" class="label_padrao">
   Pix - Código válido por 1 hora
   </label>
