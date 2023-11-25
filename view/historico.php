@@ -239,7 +239,7 @@ width: 2.5cm;
 </table>
     <table>";
     $itens = itens($historico[$i]["id"]);
-    for($ii=0;$ii<$itens["num"];$ii++){
+    for($ii=0;$ii<$itens["result"];$ii++){
 
     $img = imgProduto($itens[$i]["id_produto"]);
     echo

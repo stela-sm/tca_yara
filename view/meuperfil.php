@@ -4,7 +4,7 @@
     session_start();
  
     if(isset($_SESSION['USER-ID'])){
-        
+
     ?>
     <head>
         
@@ -574,8 +574,7 @@ font-size: 1.1em;
                 <div class="row">
                     <div class="col-6 margin">
                         <div class="row">
-                    
-                            <p id="name">Olá,<?php echo $_SESSION["USER-NOME"]?>!</p>
+                            <p id="name">Olá, <?php ECHO $_SESSION["USER-NOME"];?>!</p>
                         </div>
                     </div>
                 </div>
@@ -935,6 +934,21 @@ if(isset($_REQUEST["msg"])){
 	$cod = $_REQUEST["msg"];
 	require_once "../model/msg.php";
 	echo "<script>alert('" . $MSG[$cod] . "');</script>";
+    unset($cod);
+
+}
+
+if(isset($_REQUEST["historico"])){
+	echo "<script>
+
+    var iframe = document.getElementById(\"iframe_perfil\");
+    var tabela = document.getElementById(\"php\");
+    iframe.src = \"historico.php\"; 
+    tabela.style.display=\"none !important\";
+
+    
+    
+    </script>";
     unset($cod);
 
 }

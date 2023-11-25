@@ -32,7 +32,7 @@
 session_start();
 if (!isset($_GET["id"])){
  
-header("shop.php");
+echo '<script>window.location.href = "shop.php";</script>';
 }else{
 ?>
 <style>
@@ -691,7 +691,7 @@ transition: 0.3S;
     <div class="container main__containerEQUAL" style="margin-left: 0;">
       <div class="row d-flex g-3">
         <div class="col-md-6 col-12 pb-3 img__produto_pag">
-          <form action="../controller/controller_compra.php" method="post" name="form" id="add">
+          <form action="../controller/controller_compra.php?adicionar_prod=1" method="post" name="form" id="add">
           <?php
           $id = $_GET['id'];
           require "../model/manager.php";

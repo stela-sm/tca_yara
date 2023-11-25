@@ -767,7 +767,7 @@ ECHO "
           <span aria-hidden="true">&times;</span>
         </button>
         </div>
-        <input type="hidden" name="endereco_new" value="1" placeholder="">
+        <input type="hidden" name="endereco_new_checkout" value="1" placeholder="">
         <input type="hidden" name="id_cliente" placeholder="" value="<?php echo $_SESSION["USER-ID"] ?>">
         <div class="modal-body">
         <table class="table_modal">

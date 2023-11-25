@@ -12,8 +12,8 @@ session_start();
         $resp = adicionar_prod($dados);
         if ($resp["result"] == '1') { //SUCESSO
             ?>
-                  <form action="../view/produto.php" name="form" id="myForm" method="POST">
-                  <input type="hidden" name="msg" value="BD50"> 
+                  <form action="../view/carrinho.php" name="form" id="myForm" method="POST">
+                 
                         </form>  
                         <script>
                         document.getElementById('myForm').submit();
@@ -24,7 +24,7 @@ session_start();
                         }else if($resp["result"]=='0'){//erro
                             
                             ?>
-                            <form action="../view/produto.php" name="form" id="myForm" method="POST">
+                            <form action="../view/produto2.php" name="form" id="myForm" method="POST">
                             <input type="hidden" name="msg" value="BD04"> 
                             </form> 
                             <script>
@@ -35,7 +35,7 @@ session_start();
                         }
                 }
 
-                if (isset($_REQUEST["endereco_new"]) || isset($_SESSION["USER-NAME"])){ 
+                if (isset($_REQUEST["endereco_new_checkout"])){ 
 
                     $dados["cliente"] =  $_REQUEST["id_cliente"];
                     $dados["nome"] =  $_REQUEST["apelido"];
@@ -51,7 +51,7 @@ session_start();
                 $resp=enderecoNew($dados);
                     if ($resp == 1) {
                             ?>
-                            <!-- <form action="../view/checkout.php" name="form" id="myForm" method="POST"> -->
+                            <form action="../view/checkout.php" name="form" id="myForm" method="POST"> 
                             <input type="hidden" name="msg" value="BD50">  <!--"BD50" => "Operação realizada com sucesso.",-->
                             </form> <!--envia um formulario com a variavel "msg", que é o código da mensagem de erro (ver view/msg.php)--> 
                             <script>
@@ -63,7 +63,7 @@ session_start();
                             <?php  
                         }else if($resp==0){//erro
                             ?>
-                            <!-- <form action="../view/checkout.php" name="form" id="myForm" method="POST"> -->
+                           <form action="../view/checkout.php" name="form" id="myForm" method="POST"> 
                             <input type="hidden" name="msg" value="BD02">  <!--""BD02" => "Erro ao criar registro.",-->
                             </form> <!--envia um formulario com a variavel "msg", que é o código da mensagem de erro (ver view/msg.php)--> 
                             <script>
@@ -93,11 +93,12 @@ session_start();
                         $dados["envio"] =   $_REQUEST["opcoes_envio"];          
                         $dados["valor"] =   $_REQUEST["valorget"];
                     require '../model/manager.php';
-                    $resp=transfer_itens('60','6');
-                        if ($resp == 1) {
+                    $resp= efetuar_pedidos($dados);
+                        if ($resp["result"] == 1) {
                                 ?>
-                                <!-- <form action="../view/checkout.php" name="form" id="myForm" method="POST"> -->
+                                 <form action="../view/meuperfil.php" name="form" id="myForm" method="POST">
                                 <input type="hidden" name="msg" value="BD50">  <!--"BD50" => "Operação realizada com sucesso.",-->
+                                <input type="hidden" name="historico" value="historico.php">  <!--"BD50" => "Operação realizada com sucesso.",-->
                                 </form> <!--envia um formulario com a variavel "msg", que é o código da mensagem de erro (ver view/msg.php)--> 
                                 <script>
                                 document.getElementById('myForm').submit();//envio automático submit()
@@ -106,9 +107,9 @@ session_start();
                         
                         
                                 <?php  
-                            }else if($resp==0){//erro
+                            }else if($resp["result"]==0){//erro
                                 ?>
-                                <!-- <form action="../view/checkout.php" name="form" id="myForm" method="POST"> -->
+                                 <form action="../view/checkout.php" name="form" id="myForm" method="POST">
                                 <input type="hidden" name="msg" value="BD02">  <!--""BD02" => "Erro ao criar registro.",-->
                                 </form> <!--envia um formulario com a variavel "msg", que é o código da mensagem de erro (ver view/msg.php)--> 
                                 <script>
@@ -116,17 +117,8 @@ session_start();
                                 </script>
                                 <?php  
                                 
-                            }else if($resp==2){?>
-                                <form action="../view/meuperfil.php" name="form" id="myForm" method="POST">
-                                <input type="hidden" name="msg" value="FR27">  <!--""BD02" => "Erro ao criar registro.",-->
-                                </form> <!--envia um formulario com a variavel "msg", que é o código da mensagem de erro (ver view/msg.php)--> 
-                                <script>
-                                document.getElementById('myForm').submit();//envio automático submit()
-                                </script>
-                                <?php  
-                                
-                            }
-                        }
+                        
+                        }}
     
                     
         ?>

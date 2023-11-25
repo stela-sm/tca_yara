@@ -368,9 +368,9 @@ function userNew($dados){ //função pra criar user
            if($result->num_rows > 0){
        
                $num = $result ->num_rows;
+               $dados["num"]=$num;
                $dados=array();
                $dados["result"] = 1;
-               $dados["num"]=$num;
                $i=0;
                while($row=$result->fetch_assoc()){
                    $dados[$i]["id"] =          $row["ID_ITENS"];
@@ -380,6 +380,7 @@ function userNew($dados){ //função pra criar user
                    $dados[$i]["valor_uni"] =      $row["valor_uni"];
                    $dados[$i]["valor_total"] =      $row["valor_total"];
                    $dados[$i]["datahora"] =    $row["datahora"];
+               
                
                 $i++;
                }
@@ -743,23 +744,17 @@ function produtos($pesquisa, $ordem){
 $valortotal = $dados[$i]["preco"] * $dados[$i]["qtd"];
 
 
-$sql_transfer = "INSERT INTO itens VALUES ('5','$id_pedido', '{$dados[$i]["id"]}', '{$dados[$i]["nome"]}' '{$dados[$i]["qtd"]}', '{$dados[$i]["preco"]}', '$valortotal', NOW());";
+$sql_transfer = "INSERT INTO itens ( id_pedido, id_produto, nome, quantidade, valor_uni, valor_total, datahora)VALUES ('$id_pedido', '{$dados[$i]["id"]}', '{$dados[$i]["nome"]}', '{$dados[$i]["qtd"]}', '{$dados[$i]["preco"]}', '$valortotal', NOW());";
 
-ECHO $sql_transfer;
 
 $result_transfer = $conn->query($sql_transfer);
                 
-if (!$result_transfer) {
-    echo "Erro na inserção: " . $conn->error;
-} else {
-    echo "Inserção bem-sucedida!";
-}
 
 $i++;
                 }
 
-    // $sql_delete = "DELETE FROM carrinho WHERE id_cliente = '$id_cliente'";
-    // $result_delete = $conn->query($sql_delete);
+     $sql_delete = "DELETE FROM carrinho WHERE id_cliente = '$id_cliente'";
+     $result_delete = $conn->query($sql_delete);
 
     
 $conn->close();}

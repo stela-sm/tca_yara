@@ -481,7 +481,7 @@ if($dados['result']=="0"){
     <div class=\"col-12\">
     <br>
 <p class=\"vazio_p\">
-    Seu carrinho está vazio, veja nosso catálogo de <a href=\"\" class=\"produtos_a\">produtos</a>!
+    Seu carrinho está vazio, veja nosso catálogo de <a href=\"shop.php\" class=\"produtos_a\">produtos</a>!
 </p></div>
 </div>
         </div>
