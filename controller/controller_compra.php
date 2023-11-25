@@ -93,7 +93,7 @@ session_start();
                         $dados["envio"] =   $_REQUEST["opcoes_envio"];          
                         $dados["valor"] =   $_REQUEST["valorget"];
                     require '../model/manager.php';
-                    $resp=efetuar_pedidos($dados);
+                    $resp=transfer_itens('60','6');
                         if ($resp == 1) {
                                 ?>
                                 <!-- <form action="../view/checkout.php" name="form" id="myForm" method="POST"> -->

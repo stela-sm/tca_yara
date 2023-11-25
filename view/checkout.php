@@ -637,7 +637,7 @@ echo"  <div class=\"custom-radio\">
  <tr class="resume_row "><td><b>Subtotal</b></td><td class="valor_div"><span id="valor"> R$<?php echo $_GET["valor"]; ?> </span></td></tr>
  <tr class="resume_row "><td><b>Frete</b></td><td class="valor_div"><span id="frete">---</span></td></tr>
  
- <tr class="subtotal_row font"><td><b>Total</b></td><td class="valor_div valor_final">R$144,00</td></tr>
+ <tr class="subtotal_row font"><td><b>Total</b></td><td class="valor_div valor_final">R$<?php echo $_GET["valor"]; ?></td></tr>
  </table>
 <table class="margin-table">
 <tr><td class="button_final">

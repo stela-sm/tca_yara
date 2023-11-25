@@ -683,18 +683,18 @@ function produtos($pesquisa, $ordem){
 
     function find_pedido($data){
         require 'conexao.php';
-        $sql = "SELECT ID_PEDIDO FROM pedidos WHERE id_cliente='$data' ORDER BY datahora DESC";
-     $result=$conn->query($sql); 
+        $sql2 = "SELECT * FROM pedidos WHERE id_cliente= '6' ORDER BY ID_PEDIDO DESC limit 1";
+     $result2=$conn->query($sql2); 
     
-     if($result->num_rows > 0){
-         $dados=array();
-         $dados["result"] = 1;
-         while($row=$result->fetch_assoc()){
-            $dados["id"] = $row["ID_PEDIDO"];}}
+     if($result2->num_rows > 0){
+         $dados4=array();
+         $dados4["result"] = 1;
+         while($row2=$result2->fetch_assoc()){
+            $dados4["id"] = $row2["ID_PEDIDO"];
+        }}
             
-         $conn->close();
-         return $dados;
-
+         return $dados4;
+        
     }
 
 
@@ -725,31 +725,42 @@ function produtos($pesquisa, $ordem){
     function transfer_itens($id_pedido, $id_cliente){
     require "conexao.php";
 
-
     $sql = "SELECT * FROM carrinho WHERE id_cliente='$id_cliente'";
+    
     $result=$conn->query($sql); 
         $dados=array();
         $dados["result"] = 1;
         $i=0;
+        
         while($row=$result->fetch_assoc()){
+            
             $dados[$i]["id"] =  $row["id_produto"];
             $dados[$i]["nome"] =  $row["nome_produto"];
             $dados[$i]["qtd"] =  $row["quantidade"];
+            $dados[$i]["preco"] =  $row["preco"];
             $dados["num"]=$i;
-            $i++;}
-        return $dados;
- 
-                for ($ii=0;$ii<$dados["num"];$ii++){
-$valortotal = $dados[$i]["preco"] * $dados[$i]["quantidade"];
 
-$sql_transfer = "INSERT INTO itens (id_pedido, id_produto, quantidade, valor_uni, valor_total, datahora) VALUES ('$id_pedido', '{$dados[$i]["id"]}', '{$dados["qtd"]}', '{$dados["preco"]}', '$valortotal', 'NOW()' );";
+$valortotal = $dados[$i]["preco"] * $dados[$i]["qtd"];
+
+
+$sql_transfer = "INSERT INTO itens VALUES ('5','$id_pedido', '{$dados[$i]["id"]}', '{$dados[$i]["nome"]}' '{$dados[$i]["qtd"]}', '{$dados[$i]["preco"]}', '$valortotal', NOW());";
+
+ECHO $sql_transfer;
 
 $result_transfer = $conn->query($sql_transfer);
                 
+if (!$result_transfer) {
+    echo "Erro na inserção: " . $conn->error;
+} else {
+    echo "Inserção bem-sucedida!";
+}
+
+$i++;
                 }
 
-    $sql_delete = "DELETE FROM carrinho WHERE id_cliente = '$id_cliente'";
-    $result_delete = $conn->query($sql_delete);
+    // $sql_delete = "DELETE FROM carrinho WHERE id_cliente = '$id_cliente'";
+    // $result_delete = $conn->query($sql_delete);
 
+    
 $conn->close();}
         ?>
