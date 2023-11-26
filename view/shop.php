@@ -109,6 +109,7 @@ session_start();?>
 
     .TitleFont-primary {
         font-family: var(--title-font);
+        max-width: 80%;
     }
 
     @media (min-width: 1024px) {
@@ -888,7 +889,7 @@ a.logo:hover {
             <section class="bg-white scrollPart_anim1 hero" id="hero" onselectstart="return false">
                 <div class="herocurtain"></div>
                 <div class="position-relative slogan viewportHero d-flex flex-row justify-center color-white">
-                    <h1 class="TitleFont-primary">Explore a linha Yara e experimente o poder da natureza em cada gota. Sua pele merece esse carinho</h1>
+                    <h1 class="TitleFont-primary">Explore a linha Yara e experimente o poder da natureza em cada gota. Sua pele merece esse cuidado.</h1>
                 </div>
             </section>
             

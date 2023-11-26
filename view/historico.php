@@ -239,14 +239,14 @@ width: 2.5cm;
 </table>
     <table>";
     $itens = itens($historico[$i]["id"]);
-    for($ii=0;$ii<$itens["result"];$ii++){
+    for($ii=0;$ii<=$itens["num"];$ii++){
 
-    $img = imgProduto($itens[$i]["id_produto"]);
+    $img = imgProduto($itens[$ii]["id_produto"]);
     echo
 "   <tr><td class=\"img\"><img src=\"media/".$img["img"]."\" alt=\"\" style=\"width:50px;\"></td>
-    <td class=\"produto\"><span class=\"nome_produto\">".$itens[$i]["nome"]."</span></td>
-    <td class=\"quant\"> <span class=\"quantidade\">".$itens[$i]["quantidade"]."x</span> </td>
-    <td class=\"valor\"><span class=\"preco\">R$".$itens[$i]["valor_total"]."</span></td></tr>";
+    <td class=\"produto\"><span class=\"nome_produto\">".$itens[$ii]["nome"]."</span></td>
+    <td class=\"quant\"> <span class=\"quantidade\">".$itens[$ii]["quantidade"]."x</span> </td>
+    <td class=\"valor\"><span class=\"preco\">R$".$itens[$ii]["valor_total"]."</span></td></tr>";
     };
 echo"
     </table>

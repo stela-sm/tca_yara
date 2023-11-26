@@ -1254,7 +1254,7 @@
                         <h4 class="rem1 uppercase bold">Explore</h4>
                         <ul class="list-unstyled">
                             <li class="opacity-08">
-                                <a class="opacity-08 link__footer" href="#">Home</a>
+                                <a class="opacity-08 link__footer" href="">Home</a>
                             </li>
                             <li class="opacity-08">
                                 <a class="opacity-08 link__footer" href="view/shop.html">Shop</a>

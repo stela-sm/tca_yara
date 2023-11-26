@@ -44,6 +44,7 @@
             rel="stylesheet"
             href="https://fonts.googleapis.com/css2?family=Questrial&display=swap">
         <link href="../assets/style/meuperfil.css" rel="stylesheet">
+        <link rel="stylesheet" href="../assets/style/globalV2.css">
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Yara | Meu Perfil</title>
@@ -51,7 +52,10 @@
 
                   
         <style>
-            
+            footer{
+                position: fixed !important;
+    bottom: 0 !important;
+            }
 .menu {
     background-color: transparent !important;
     position: absolute; 
@@ -202,14 +206,20 @@ a.logo:hover {
 } 
 
             body{
-               max-width: 100vw;
-               
+               width: 100vw;
+               display: flex;
+    flex-direction: column;
+    
+    margin: 0;
             }
             :root {
                 --white: #f9f9f9;
                 --green: #1A3D1F;
                 --yellow: #B9C394;
                 --lgreen: #B9C394;
+            }
+            .row>*{
+                width:auto;
             }
             
             header {
@@ -393,6 +403,7 @@ box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
 
 
 <body class="fade-in">
+    
         <!-- menu -->
         <header>
         <div class="menu">
@@ -478,13 +489,14 @@ $dados= carrinho($id);
 if($dados['result']=="0"){
     echo "
     
-    <div class=\"col-12\">
+    <div class=\"col-12 vazio-col\">
     <br>
 <p class=\"vazio_p\">
     Seu carrinho está vazio, veja nosso catálogo de <a href=\"shop.php\" class=\"produtos_a\">produtos</a>!
 </p></div>
 </div>
         </div>
+
     
     ";
 }else{
@@ -573,6 +585,9 @@ if($dados['result']=="0"){
                 </div>
             </div>
 
+
+
+            
  </body>
 
 
@@ -623,6 +638,10 @@ if(isset($_REQUEST["msg"])){
 
     </script>
 
+
+
 <?php }} }else{ header("Location: login.php?fase=2"); }?>
+
+
 </body>
 </html>

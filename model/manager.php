@@ -318,7 +318,7 @@ function userNew($dados){ //função pra criar user
 
         function historico($id){
             require "conexao.php";
-            $sql = "SELECT * FROM pedidos WHERE id_cliente='$id'";
+            $sql = "SELECT * FROM pedidos WHERE id_cliente='$id' ORDER BY datahora DESC";
             $result=$conn->query($sql); 
        
            if($result->num_rows > 0){
@@ -368,7 +368,6 @@ function userNew($dados){ //função pra criar user
            if($result->num_rows > 0){
        
                $num = $result ->num_rows;
-               $dados["num"]=$num;
                $dados=array();
                $dados["result"] = 1;
                $i=0;
@@ -381,6 +380,7 @@ function userNew($dados){ //função pra criar user
                    $dados[$i]["valor_total"] =      $row["valor_total"];
                    $dados[$i]["datahora"] =    $row["datahora"];
                
+               $dados["num"]=$i;
                
                 $i++;
                }

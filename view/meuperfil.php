@@ -34,6 +34,7 @@
             rel="stylesheet"
             href="https://fonts.googleapis.com/css2?family=Questrial&display=swap">
         <link href="../assets/style/meuperfil.css" rel="stylesheet">
+      
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Yara | Meu Perfil</title>
@@ -42,8 +43,12 @@
 
                   
         <style>
-            
-            
+            body{
+                height: auto;
+            }
+            footer > a, a:hover{
+                color: white !important;
+            }
 .menu {
     background-color: transparent !important;
     position: absolute; 
@@ -193,7 +198,7 @@ a.logo:hover {
     }
 } 
             body{
-               min-width: 100vw;
+               height: 50cm !important ;
                overflow-x: hidden;
             }
             :root {
@@ -800,11 +805,10 @@ ECHO "
           </div>
         </div>
 
+       
+
+
  </body>
-
-
-
-
 
 
 
@@ -923,6 +927,12 @@ function atualizarClasseElemento() {
 setInterval(atualizarClasseElemento, 1);
 atualizarClasseElemento();
 
+function srcHistorico(valor) {
+            var iframe = document.getElementById("iframe_perfil");
+            var tabela = document.getElementById("php");
+            iframe.src = valor; 
+            tabela.style.display="none !important";
+        }
 
     </script>
     
@@ -938,20 +948,15 @@ if(isset($_REQUEST["msg"])){
 
 }
 
-if(isset($_REQUEST["historico"])){
-	echo "<script>
-
-    var iframe = document.getElementById(\"iframe_perfil\");
-    var tabela = document.getElementById(\"php\");
-    iframe.src = \"historico.php\"; 
-    tabela.style.display=\"none !important\";
-
-    
-    
+if (isset($_REQUEST["historico"])) {
+    echo "<script>
+        document.addEventListener('DOMContentLoaded', function() {
+            srcHistorico('historico.php?id=" . $_SESSION["USER-ID"] . "');
+        });
     </script>";
     unset($cod);
-
 }
+
 ?>
 
 
