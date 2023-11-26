@@ -833,7 +833,7 @@
     /*FIM RESPONSIVIDADE GERAL*/
 </style>
 
-<body onload="menu__onload()">
+<body onload="menu__onload()" class="fade-in">
     <!-- menu -->
     <header>
         <div class="menu">
