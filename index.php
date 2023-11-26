@@ -215,8 +215,8 @@
     }
 
     .majorFormula {
-        padding-top: 7rem;
-        padding-bottom: 7rem;
+        padding-top: 15rem;
+        padding-bottom: 15rem;
     }
 
     @media (min-width: 1024px) {
@@ -829,6 +829,26 @@
     section {
         overflow: visible;
     }
+    
+.fade-in {
+    opacity: 0;
+    animation: fadeIn 0.4s ease-in forwards;
+  }
+  .fade-in-title {
+    opacity: 0;
+    animation: fadeIn 0.6s ease-in forwards;
+    animation-delay: 0.7s; 
+  }
+  
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
 
     /*FIM RESPONSIVIDADE GERAL*/
 </style>
@@ -843,7 +863,7 @@
             <div class="menu-links">
                 <a class="menu-link a-home  jsChangeColor" href="#">Home</a>
                 <a class="menu-link a-shop  jsChangeColor" href="view/shop.php">Shop</a>
-                <a class="menu-link a-sobre jsChangeColor" href="#">Sobre</a>
+                <a class="menu-link a-sobre jsChangeColor" href="view/sobre.html">Sobre</a>
                 <!-- ícone user -->
                 <a class="menu-link jsChangeColor" href="view/login.php">
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon-user icon-tabler icon-tabler-user-circle"
@@ -900,10 +920,10 @@
                         </div>
                         <div class="modal-body">
                             <a class="menu-link" href="#">Home</a>
-                            <a class="menu-link" href="#">Shop</a>
-                            <a class="menu-link" href="#">Sobre</a>
-                            <a class="menu-link" href="#">Login</a>
-                            <a class="menu-link" href="#">Sacola</a>
+                            <a class="menu-link" href="VIEW/shop.php">Shop</a>
+                            <a class="menu-link" href="view/sobre.html">Sobre</a>
+                            <a class="menu-link" href="view/meuperfil.php">Login</a>
+                            <a class="menu-link" href="view/carrinho.php">Sacola</a>
                         </div>
                     </div>
                 </div>
@@ -919,7 +939,7 @@
                     </video>
                 </div>
                 <div class="video__curtain"></div>
-                <div class="position-relative slogan viewportHero d-flex flex-row justify-center color-white">
+                <div class="position-relative fade-in-title slogan viewportHero d-flex flex-row justify-center color-white">
                     <h1 class="TitleFont-primary" style="font-size: 5rem;text-align: center;">Sua beleza, sua história
                     </h1>
                 </div>
@@ -929,14 +949,14 @@
                 <div class="container-fluid">
                     <div class="row rowVeryImportant rowSectionTXT__carouselMB-includeShopHTML">
                         <div data-speed=".9" class=" conectionToShop gallery__left box__left">
-                            <div class="col-md-4 text-center box__left paddingOnResponsiveLeftBox">
-                                <h4 class="title_section pb-1 TitleFont-primary text-justify">Produtos</h4>
-                                <p style="    margin-left: 2%;" class="desc_section BodyFont-primary text-justify">Os
+                            <div  class="col-md-4 text-center box__left paddingOnResponsiveLeftBox">
+                                <h4 class="title_section pb-1 TitleFont-primary text-justify" style="margin-left:-2%;"> Destaques</h4>
+                                <p style="  margin-left: 0%;" class="desc_section BodyFont-primary text-justify">Os
                                     produtos Yara proporcionam uma experiência singular no cuidado da pele. Com fórmulas
                                     cuidadosamente elaboradas, inteiramente naturais e veganas, nossa linha inspira
                                     autenticidade, nutrindo e realçando a beleza da sua pele de maneira consciente e
-                                    altamente eficaz.</p>
-                                <a href="view/shop.html" class="b_radius30 viewNow btn btn-primary btn-block">VER
+                                    altamente eficaz.</p><br>
+                                <a href="view/shop.html" class="b_radius30 viewNow btn btn-primary btn-block">VER TODOS OS
                                     PRODUTOS</a>
                             </div>
                         </div>
@@ -951,7 +971,7 @@
                                 <div class="item">
                                     <a href="view/produto.html" class="card card__prod nonScale card__prod_index">
                                         <div class="img__container">
-                                            <img src="assets/media/testeProdutp.png"
+                                        <img src="https://mysa-skincare.com/uploads/transforms/bc9e33244d2d8a7bebbefa89bb319b9f/500/Hand-Wash_d3867277feb154defec9b24a5714fadb.webp"
                                                 alt="Imagem do produto 1">
                                         </div>
                                         <div class="d-flex flex-column align-items-center">
@@ -1023,7 +1043,7 @@
         <section class="vh_section carouselIndex scrollPart_anim5" onselectstart="return false"
             style="height: 80vh !important;">
             <div id="carouselExampleIndicators" class="carousel slide carousel-fade" data-ride="carousel"
-                style="height: 70vh;">
+                style="height: 70vh; box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;">
                 <ol class="carousel-indicators customCarouselIndicator">
                     <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active bolinhaCarousel">
                         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-number-1-small"
@@ -1042,25 +1062,22 @@
                         </svg>
                     </li>
                 </ol>
-                <div class="carousel-inner h-100cent">
+                <div class="carousel-inner h-100cent" >
                     <div class="carousel-item active h-100cent" style="background-color: var(--base-green);">
-                        <div class="contentA d-flex flex-row h-100cent" style="width: 100%;">
+                        <div class="contentA d-flex flex-row h-100cent" style="width: 100%; ">
                             <div class="aria1_carousel" style="width: 50%">
                                 <div class="contentTxt">
                                     <div>
                                         <p
                                             class="font-light abnt-normal text-sm color-white capitalize f3rem title__font super__carouselRep">
-                                            Limpeza </p>
+                                            Limpeza profunda </p>
                                     </div>
-                                    <p class="color-white BodyFont-primary  h2__carousel f1dot5_rem"> Oferecemos uma
-                                        limpeza profunda e suave, respeitando a delicadeza da pele. Nossos produtos
-                                        naturais removem impurezas, revelando a beleza natural que brilha de dentro para
-                                        fora. </p>
+                                    <p class="color-white BodyFont-primary  h2__carousel f1dot5_rem"  style="font-family:'Questrial'; margin-top:-2rem;">Oferecemos uma limpeza profunda e delicada, respeitando a pele. Nossos produtos naturais removem impurezas, revelando a beleza natural. Com ingredientes de qualidade, nossa abordagem holística busca equilíbrio e revitalização. Escolha nossa linha para uma jornada de autocuidado, celebrando sua beleza que brilha de dentro para fora. </p>
                                 </div>
                             </div>
                             <div class="aria2_carousel" style="width: 50%;">
                                 <img class="d-block w-100 h-100cent"
-                                    src="https://t3.ftcdn.net/jpg/04/28/51/02/360_F_428510221_f1eVs6BjxpBTvhmyUa3C4k8ExuRwHRum.jpg"
+                                    src="assets/media/bglimpeza.jpg"
                                     alt="Segundo Slide">
                             </div>
                         </div>
@@ -1072,17 +1089,14 @@
                                     <div>
                                         <p
                                             class="font-light abnt-normal text-sm color-black capitalize title__font f3rem super__carouselRep">
-                                            Tratamento </p>
+                                            Tratamento eficaz</p>
                                     </div>
-                                    <p class="color-black BodyFont-primary  h2__carousel f1dot5_rem"> Nosso tratamento
-                                        exclusivo ressalta a verdadeira essência da pele. Com ingredientes naturais,
-                                        promovemos uma jornada de cuidados que respeita e realça sua beleza autêntica e
-                                        única. </p>
+                                    <p class="color-black BodyFont-primary  h2__carousel f1dot5_rem" > Oferecemos uma linha de cuidados exclusiva com ingredientes naturais, veganos e testados sem crueldade. Nossos produtos farmacêuticos garantem eficácia, sendo recomendados por 9 a cada 10 profissionais de saúde. Proporcionamos uma jornada de cuidados que respeita, realça e celebra a beleza autêntica e única da sua pele, revelando uma radiância duradoura.</p>
                                 </div>
                             </div>
                             <div class="aria2_carousel" style="width: 50%;">
                                 <img class="d-block w-100 h-100cent"
-                                    src="https://imageio.forbes.com/specials-images/imageserve/1170027541/Different-glass-bottles-with-CBD-OIL--THC-tincture-and-cannabis-leaves-on-yellow/960x0.jpg?format=jpg&width=960"
+                                    src="assets/media/bgtratamento.jpg"
                                     alt="Segundo Slide">
                             </div>
                         </div>
@@ -1096,7 +1110,7 @@
                 <div class="row d-flex flex-row justify-content-center align-center items-center flex-wrap mobileTXT">
                     <div class="col-12 box__left mobileTXTinside mobileTXTinside">
                         <h4 class="title_section pb-1 TitleFont-primary text-left color-white">Limpeza</h4>
-                        <p class="desc_section BodyFont-primary text-justify color-white">A eficácia dos produtos Yara é
+                        <p class="desc_section BodyFont-primary text-justify color-white" >A eficácia dos produtos Yara é
                             o resultado de anos de pesquisa e dedicação à qualidade. Desenvolvidos com fórmulas
                             inovadoras e naturais, nossos produtos oferecem resultados visíveis, proporcionando uma
                             experiência de cuidados com a pele excepcionalmente eficaz. </p>
@@ -1117,10 +1131,10 @@
                                 alt="Imagem">
                         </picture>
                     </div>
-                    <div class="col-md-6 text-center box__right" style="width: 41.666667%;    padding-left: 4rem;
+                    <div class="col-md-6 text-center box__right" style="width: 41.666667%;   padding-left: 4rem;
             ">
-                        <h4 class="title_section pb-1 TitleFont-primary text-justify">Natural</h4>
-                        <p style="    margin-left: 2%;"
+                        <h4 class="title_section pb-1 TitleFont-primary text-justify">Meio Ambiente</h4>
+                        <p style="   margin-left: 2%;"
                             class="desc_section BodyFont-primary text-justify txtcmmarginRight__in">Nossos produtos são
                             cuidadosamente elaborados a partir de ingredientes naturais, colhidos na essência da
                             natureza. Combinamos elementos orgânicos para criar formulações delicadas que nutrem e
@@ -1135,7 +1149,7 @@
                     class="positionResp_Ind row d-flex flex-row justify-content-center align-center items-center flex-wrap">
                     <div class="col-md-6 text-center box__left" style="width: 41.666667%;
           padding-left: 1.6%;">
-                        <h4 class="title_section pb-1 TitleFont-primary text-justify">Eficácia</h4>
+                        <h4 class="title_section pb-1 TitleFont-primary text-justify">Nossa especialidade</h4>
                         <p style="    margin-left: 2%;"
                             class="desc_section BodyFont-primary text-justify txtcmmarginLeft__in txtcmmarginRight__in">
                             A eficácia dos produtos Yara é o resultado de anos de pesquisa e dedicação à qualidade.

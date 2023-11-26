@@ -24,8 +24,8 @@ session_start();
                         }else if($resp["result"]=='0'){//erro
                             
                             ?>
-                            <form action="../view/produto2.php" name="form" id="myForm" method="POST">
-                            <input type="hidden" name="msg" value="BD04"> 
+                            <form action="../view/login.php" name="form" id="myForm" method="POST">
+                            <input type="hidden" name="msg" value="OA04"> 
                             </form> 
                             <script>
                             document.getElementById('myForm').submit();

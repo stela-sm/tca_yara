@@ -80,6 +80,7 @@ $MSG = array(
     "OA01" => "Não há autorização para acessar a área solicitada.",
 	"OA02" => "Erro: não foi possível iniciar sessão.",
     "OA03" => "Acesso não permitido.",
+    "OA04" => "Entre em sua conta para adicionar produtos ao carrinho",
     
     // 50 A 99 SUCESSOS
     "OP50" => "Acesso permitido",

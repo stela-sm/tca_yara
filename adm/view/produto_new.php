@@ -30,11 +30,8 @@
     <label for="nome" class="label">Nome</label><br>
         <input type="text" name="nome" id="" placeholder="Nome do produto..." required class="input">
     </td>
-    <td>
-      <label for="instrucao" class="label">instrucao</label><br>
-    <select name="instrucao" required class="label"><br>
-        <option  name="instrucao" value="1" class="input">Sérum</option></textarea>
-</select>
+    <td> <label for="nome" class="label">Instruções</label><br>
+        <textarea  name="instrucao" id="" placeholder="Instruções de uso..." required class="input"></textarea>
     </td>
     <td>
       <label class="input size" style="min-width: 70%;" for="img">Imagem</label>

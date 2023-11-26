@@ -695,10 +695,13 @@ transition: 0.3S;
           <?php
           $id = $_GET['id'];
           require "../model/manager.php";
+          
           $dados = pega_produto($id);
+          if(isset($_SESSION["USER-ID"])){$id_user=$_SESSION["USER-ID"];}
+          else{$id_user="";}
           echo"
           <input type=\"hidden\" value=\"".$id."\" name=\"id\">
-          <input type=\"hidden\" value=\"". $_SESSION["USER-ID"] ."\" name=\"cliente\">
+          <input type=\"hidden\" value=\"". $id_user ."\" name=\"cliente\">
           <input type=\"hidden\" value=\"".$dados["valor_uni"]."\" name=\"preco\">          
           <input type=\"hidden\" value=\"".$dados["nome"]."\" name=\"nome\">          
           ";
@@ -811,7 +814,7 @@ transition: 0.3S;
         </div>
         <div class="col-md-6 col-12 pb-3">
           <img width="100%" class="img_desc_Prod"
-            src="https://s2.glbimg.com/z6gAxFLtlwU_2te9JMg4PF8N7aI=/e.glbimg.com/og/ed/f/original/2022/03/17/img_1902.jpg"
+            src=  "media/<?php echo $dados["img_sec"]; ?>"
             class="img-fluid" alt="Imagem do produto">
         </div>
       </div>

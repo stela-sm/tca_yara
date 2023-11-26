@@ -666,7 +666,7 @@ function produtos($pesquisa, $ordem){
             $dados["nome"] = $row["nome"];
             $dados["descricao"] = $row["descricao"];
             $dados["img"] = $row["img"];
-            $dados["img"] = $row["img_sec"];
+            $dados["img_sec"] = $row["img_sec"];
             $dados["instrucao"] = $row["instrucao"];
             $dados["estoque"] = $row["estoque"];
             $dados["valor_uni"] = $row["valor_uni"];

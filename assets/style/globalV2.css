@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Arapey:ital@0;1&family=Berkshire+Swash&family=body_test&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Questrial&display=swap');
 /*GERAL*/
 
 ::-webkit-scrollbar {
@@ -66,7 +68,7 @@
     --pLR: calc(5% + 18px);
 
     --title-font: 'Berkshire Swash', cursive !important;
-    --body-font: 'body_test', sans-serif !important;
+    --body-font: 'Questrial', sans-serif !important;
     --base-font: 'Arapey', serif !important;
 
     --base-tam-font: 25pt;
@@ -300,7 +302,7 @@ footer {
 }
 
 .f1dot5_rem {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
 }
 
 .bold {
@@ -393,7 +395,7 @@ footer {
 }
 
 .card.card__prod {
-    height: auto;
+    height: fit-content;
 }
 
 .card.card__prod img {

@@ -288,7 +288,7 @@ function img_sec($dados){
 
 function produtoDelete($id){
     require "conexao.php";
-    $sql="DELETE FROM produtos WHERE ID_PRODUTO = {$id}";
+    $sql= "UPDATE produtos SET status = '0' WHERE ID_PRODUTO = '$id'";
     $result = $conn -> query($sql);
     $conn->close();
     return $result;

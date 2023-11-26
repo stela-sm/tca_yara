@@ -129,7 +129,25 @@ color: var(--green) !important;
             margin-top: 10%;
            
         }
+    }.fade-in {
+    opacity: 0;
+    animation: fadeIn 0.4s ease-in forwards;
+  }
+  .fade-in-title {
+    opacity: 0;
+    animation: fadeIn 0.6s ease-in forwards;
+    animation-delay: 0.7s; 
+  }
+  
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
     }
+    to {
+      opacity: 1;
+    }
+  }
 </style>
 <script>
       function updateElementClass() {
@@ -149,7 +167,7 @@ color: var(--green) !important;
 
 
     </script>
-<body>
+<body class="fade-in">
     <div class="container">
         <div class="row">
             <div class="col-5" id="col">
@@ -235,6 +253,7 @@ color: var(--green) !important;
 .modal-content{
   font-family: 'Questrial';
 }
+
 </style>
 <!-- Modal -->
 <div class="modal fade" id="ExemploModalCentralizado" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado" aria-hidden="true" data-backdrop="static">
