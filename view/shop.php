@@ -352,7 +352,7 @@ session_start();?>
     }
 
     .hero {
-        background-image: url(https://www.rockymountainsoap.com/cdn/shop/collections/FaceCare-2_1600x.jpg?v=1683151878);
+        background-image: url("../assets/media/yara_background.png");
         /*background-image: url(https://images.pexels.com/photos/807598/pexels-photo-807598.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1);*/
         background-size: cover;
         background-repeat: no-repeat;

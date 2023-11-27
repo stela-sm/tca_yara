@@ -519,7 +519,7 @@ font-size: 1.1em;
 </style>
 
 
-<body class="fade-in">
+<body class="fade-in" style="display:block !important;">
         <!-- menu -->
         <header>
         <div class="menu">

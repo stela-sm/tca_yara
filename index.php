@@ -962,11 +962,14 @@
                         </div>
                         <div style="overflow: hidden;" id="container__interaShopCarousel" data-speed=".9"
                             id="heightImportant" class=" gallery__right col-md-7">
-                            <div
-                                class="custom-cursor d-flex flex-row justify-content align-items-center text-center uppercase f0dot8rem bold base-green">
-                                <span>Arraste</span>
-                            </div>
+                            
                             <div class="owl-carousel owl-theme">
+
+
+
+                            <?php
+                            require '';
+                            ?>
                                 <!--card-->
                                 <div class="item">
                                     <a href="view/produto.html" class="card card__prod nonScale card__prod_index">
@@ -982,6 +985,12 @@
                                     </a>
                                 </div>
                                 <!--fim do card-->
+
+
+
+
+
+
                                 <div class="item">
                                     <a href="view/produto.html" class="card card__prod nonScale card__prod_index">
                                         <div class="img__container">

@@ -403,7 +403,7 @@ box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
 </style>
 
 
-<body class="fade-in">
+<body class="fade-in" style="display:block !important;">
     
         <!-- menu -->
         <header>
