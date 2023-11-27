@@ -112,11 +112,7 @@ if(isset($_REQUEST["cadastro"])){
       $resp=userNew($dados);
   if($resp==1){ //tudo certo
     session_reset();
-                                                    
-    $_SESSION["USER-ID"] = $dados["id"];
-    $_SESSION["USER-NOME"] = $dados["nome"];
-    $_SESSION["USER-EMAIL"] = $dados["email"];
-    $_SESSION["USER-CPF"] = $dados["cpf"];      ?>
+              ?>
       
       <form action="../view/meuperfil.php" name="form" id="myForm" method="POST">
       <input type="hidden" name="msg" value="BD50">  <!--"BD50" => "Operação realizada com sucesso.",-->

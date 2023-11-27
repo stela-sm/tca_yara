@@ -419,6 +419,7 @@ footer {
 
 .img__container {
     border-radius: 30px;
+    height: max-content;
     background-color: #f5f5f5;
     transition: all .3s cubic-bezier(0.47, 0, 0.745, 0.715);
 }
@@ -458,7 +459,7 @@ footer {
 }
 
 .text-xl {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     line-height: 1.25;
 }
 
@@ -1345,8 +1346,9 @@ footer {
 }
 
 #container__interaShopCarousel,
-.card__prod_index {
-    cursor: none;
+.card__prod_index ,
+.card__prod_index:hover{
+    cursor: grab !important;
 }
 
 .row.rowVeryImportant.rowSectionTXT__carouselMB-includeShopHTML {

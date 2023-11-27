@@ -593,6 +593,7 @@
     }
 
     .owl-item .item {
+        margin-top: 35px;
         width: 15rem !important;
     }
 
@@ -968,81 +969,31 @@
 
 
                             <?php
-                            require '';
-                            ?>
-                                <!--card-->
-                                <div class="item">
-                                    <a href="view/produto.html" class="card card__prod nonScale card__prod_index">
-                                        <div class="img__container">
-                                        <img src="https://mysa-skincare.com/uploads/transforms/bc9e33244d2d8a7bebbefa89bb319b9f/500/Hand-Wash_d3867277feb154defec9b24a5714fadb.webp"
-                                                alt="Imagem do produto 1">
-                                        </div>
-                                        <div class="d-flex flex-column align-items-center">
-                                            <span class="description mb-2 text-gray-500 text-xl mt-2 body-font">Lorem
-                                                Ipsum Dolor</span>
-                                            <span class="price mb-2 text-gray-500 text-md">R$99.99</span>
-                                        </div>
-                                    </a>
-                                </div>
-                                <!--fim do card-->
+                            require 'model/manager.php';
+                            $produtos = produtos("","");
+                            for($i=0;$i<=5;$i++){
+                                if($produtos[$i]["status"] == '1'){
+                                echo "   <div class=\"item\">
+                                <a href=\"view/produto2.php?id=".$produtos[$i]["id"]."\" class=\"card card__prod nonScale card__prod_index\">
+                                  <div class=\"img__container\" >
+                                    <img class=\"img__container\" src=\"view/media/".$produtos[$i]["img"]."\" alt=\"Imagem do produto \">
+                                    </div>
+                                    <div class=\"d-flex flex-column align-items-center\">
+                                      <span class=\"description mb-2 text-gray-500 text-xl mt-2\">".$produtos[$i]["nome"]."</span>
+                                      <span class=\"price mb-2 text-gray-500 text-md\">R$".$produtos[$i]["valor_uni"]."</span>
+                                      </div>
+                                      </a>
+                                    </div>
+                                    
+                            ";
+                          
+                          }}
+                          ?>
 
 
 
 
 
-
-                                <div class="item">
-                                    <a href="view/produto.html" class="card card__prod nonScale card__prod_index">
-                                        <div class="img__container">
-                                            <img src="https://mysa-skincare.com/uploads/transforms/bc9e33244d2d8a7bebbefa89bb319b9f/500/Hand-Wash_d3867277feb154defec9b24a5714fadb.webp"
-                                                alt="Imagem do produto 1">
-                                        </div>
-                                        <div class="d-flex flex-column align-items-center">
-                                            <span class="description mb-2 text-gray-500 text-xl mt-2">Lorem Ipsum
-                                                Dolor</span>
-                                            <span class="price mb-2 text-gray-500 text-md">R$99.99</span>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="item">
-                                    <a href="view/produto.html" class="card card__prod nonScale card__prod_index">
-                                        <div class="img__container">
-                                            <img src="https://mysa-skincare.com/uploads/transforms/bc9e33244d2d8a7bebbefa89bb319b9f/500/Hand-Wash_d3867277feb154defec9b24a5714fadb.webp"
-                                                alt="Imagem do produto 1">
-                                        </div>
-                                        <div class="d-flex flex-column align-items-center">
-                                            <span class="description mb-2 text-gray-500 text-xl mt-2">Lorem Ipsum
-                                                Dolor</span>
-                                            <span class="price mb-2 text-gray-500 text-md">R$99.99</span>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="item">
-                                    <a href="view/produto.html" class="card card__prod nonScale card__prod_index">
-                                        <div class="img__container">
-                                            <img src="https://mysa-skincare.com/uploads/transforms/bc9e33244d2d8a7bebbefa89bb319b9f/500/Hand-Wash_d3867277feb154defec9b24a5714fadb.webp"
-                                                alt="Imagem do produto 1">
-                                        </div>
-                                        <div class="d-flex flex-column align-items-center">
-                                            <span class="description mb-2 text-gray-500 text-xl mt-2">Lorem Ipsum
-                                                Dolor</span>
-                                            <span class="price mb-2 text-gray-500 text-md">R$99.99</span>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="item">
-                                    <a href="view/produto.html" class="card card__prod nonScale card__prod_index">
-                                        <div class="img__container">
-                                            <img src="https://mysa-skincare.com/uploads/transforms/bc9e33244d2d8a7bebbefa89bb319b9f/500/Hand-Wash_d3867277feb154defec9b24a5714fadb.webp"
-                                                alt="Imagem do produto 1">
-                                        </div>
-                                        <div class="d-flex flex-column align-items-center">
-                                            <span class="description mb-2 text-gray-500 text-xl mt-2">Lorem Ipsum
-                                                Dolor</span>
-                                            <span class="price mb-2 text-gray-500 text-md">R$99.99</span>
-                                        </div>
-                                    </a>
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -1091,21 +1042,21 @@
                             </div>
                         </div>
                     </div>
-                    <div class="carousel-item h-100cent secondHidden_car" style="background-color: var(--base-yellow);">
+                    <div class="carousel-item h-100cent secondHidden_car" style="background-color: var(--soft-green);">
                         <div class="contentA d-flex flex-row h-100cent" style="width: 100%;">
                             <div class="aria1_carousel" style="width: 50%">
                                 <div class="contentTxt">
                                     <div>
                                         <p
-                                            class="font-light abnt-normal text-sm color-black capitalize title__font f3rem super__carouselRep">
+                                            class="font-light abnt-normal text-sm color-white capitalize title__font f3rem super__carouselRep">
                                             Tratamento eficaz</p>
                                     </div>
-                                    <p class="color-black BodyFont-primary  h2__carousel f1dot5_rem" > Oferecemos uma linha de cuidados exclusiva com ingredientes naturais, veganos e testados sem crueldade. Nossos produtos farmacêuticos garantem eficácia, sendo recomendados por 9 a cada 10 profissionais de saúde. Proporcionamos uma jornada de cuidados que respeita, realça e celebra a beleza autêntica e única da sua pele, revelando uma radiância duradoura.</p>
+                                    <p class="color-white BodyFont-primary  h2__carousel f1dot5_rem" style="font-family:'Questrial'; margin-top:-2rem;"> Oferecemos uma linha de cuidados exclusiva com ingredientes naturais, veganos e testados sem crueldade. Nossos produtos farmacêuticos garantem eficácia, sendo recomendados por 9 a cada 10 profissionais de saúde. Proporcionamos uma jornada de cuidados que respeita, realça e celebra a beleza autêntica e única da sua pele, revelando uma radiância duradoura.</p>
                                 </div>
                             </div>
                             <div class="aria2_carousel" style="width: 50%;">
                                 <img class="d-block w-100 h-100cent"
-                                    src="assets/media/bgtratamento.jpg"
+                                    src="assets/media/Download free image of Green background, water drops frame about water drops, nature photos, drop backgrounds, water, and green textured background drop 3843354.jpeg"
                                     alt="Segundo Slide">
                             </div>
                         </div>
@@ -1588,7 +1539,7 @@
         document.addEventListener("DOMContentLoaded", function () {
             var owl = $(".owl-carousel");
             owl.owlCarousel({
-                loop: false,
+                loop: true,
                 margin: 10,
                 responsiveClass: true,
                 responsive: {
@@ -1607,7 +1558,7 @@
                     1000: {
                         items: 3,
                         nav: false,
-                        loop: false,
+                        loop: true,
                     },
                 },
             });

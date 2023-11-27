@@ -71,7 +71,7 @@ CREATE TABLE IF NOT EXISTS `carrinho` (
   `ID_CARRINHO` int NOT NULL AUTO_INCREMENT,
   `id_cliente` int DEFAULT NULL,
   `id_produto` int DEFAULT NULL,
-  `nome_produto` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `nome_produto` varchar(255) NOT NULL,
   `quantidade` int DEFAULT NULL,
   `preco` float NOT NULL,
   PRIMARY KEY (`ID_CARRINHO`),

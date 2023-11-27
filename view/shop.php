@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <link rel="shortcut icon" href="../favicon/yara.ico" type="image/x-icon"><link rel="shortcut icon" href="../favicon/yara.ico" type="image/x-icon">
-
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
         integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
@@ -779,13 +780,25 @@ a.logo:hover {
         border: transparent;
         box-shadow: none;
         outline: none;
-        color: #000;
+        color: black !important;
     }
 
     .btn-modal.transparent {
         color: transparent !important;
     }
+    .menu-link {
+        list-style: none;
+        display: block;
+        margin: 20px 0;
+        text-align: center;
+        text-decoration: none !important;
+        color: #000 !important;
+    }
 
+    a.menu-link:hover {
+        color: #000 !important;
+        text-decoration: none;
+    }
     .modal-content {
         border-radius: 30px;
         border-style: none;
@@ -864,7 +877,7 @@ a.logo:hover {
           <!-- área responsiva do menu -->
           <button type="button" class="btn-modal" data-bs-toggle="modal" data-bs-target="#exampleModal">
             <!-- ícone menu -->
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-menu-2" width="24" height="24"
+            <svg xmlns="http://www.w3.org/2000/svg" style="color:white;" class="icon icon-tabler icon-tabler-menu-2" width="24" height="24"
               viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
               stroke-linejoin="round">
               <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
