@@ -1,13 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
-
+<?php
+          $id = $_GET['id'];
+          require "../model/manager.php";
+          
+          $dados = pega_produto($id);?>
 <head>
+  <link rel="shortcut icon" href="../favicon/yara.ico" type="image/x-icon">
   <meta charset="UTF-8">
   <link rel="shortcut icon"   href="../assets/media/yara.ico" type="image/x-icon" sizes="128x128">
     <link rel="shortcut icon" href="../assets/media/yara.ico" type="image/x-icon" sizes="32x32">
     <link rel="shortcut icon" href="../assets/media/yara.ico" type="image/x-icon" sizes="64x64">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lorem Ipsum | Yara Skincare</title>
+  <title> Yara | <?php echo $dados["nome"] ?></title>
   <link rel="stylesheet" href="../assets/style/globalV2.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"
     integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g=="
@@ -610,8 +615,28 @@ transition: 0.3S;
 .form-control{
   transition: 0.3s !important;
 }
+
+.fade-in-title {
+    opacity: 0;
+    animation: fadeIn 0.6s ease-in forwards;
+    animation-delay: 0.3s; 
+  }
+  
+.fade-in {
+    opacity: 0;
+    animation: fadeIn 0.5s ease-in-out forwards;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
 </style>
-<body>
+<body class="fade-in">
   <header onselectstart="return false">
     <div class="menu">
         <a class="logo jsChangeColor" href="#">
@@ -687,16 +712,12 @@ transition: 0.3S;
         </div>
     </div>
 </header>
-  <section class="produto container-fluid">
+  <section class="produto container-fluid fade-in-title">
     <div class="container main__containerEQUAL" style="margin-left: 0;">
       <div class="row d-flex g-3">
         <div class="col-md-6 col-12 pb-3 img__produto_pag">
           <form action="../controller/controller_compra.php?adicionar_prod=1" method="post" name="form" id="add">
           <?php
-          $id = $_GET['id'];
-          require "../model/manager.php";
-          
-          $dados = pega_produto($id);
           if(isset($_SESSION["USER-ID"])){$id_user=$_SESSION["USER-ID"];}
           else{$id_user="";}
           echo"
@@ -829,120 +850,35 @@ transition: 0.3S;
           <div class="cotainter_otherProdH">
             <h2 class="prod_title">Talvez você goste</h2>
           </div>
+
           <div class="container-flex owl-carousel owl-theme">
 
-            <div class="item">
-              <a href="#" class="card card__prod">
-                <div class="img__container">
-                  <img
-                    src="https://mysa-skincare.com/uploads/transforms/bc9e33244d2d8a7bebbefa89bb319b9f/500/Hand-Wash_d3867277feb154defec9b24a5714fadb.webp"
-                    alt="Imagem do produto 1">
-                </div>
-
-                <div class="d-flex flex-column align-items-center">
-                  <span class="description mb-2 text-gray-500 text-xl mt-2">Lorem Ipsum Dolor</span>
-                  <span class="price mb-2 text-gray-500 text-md">R$99.99</span>
-                </div>
-              </a>
+<?php
+$pesquisa = "";
+$ordem = "";
+$produtos = produtos($pesquisa, $ordem);
+  for($i=0;$i<=8;$i++){
+      if($produtos[$i]["status"] == '1'){
+      echo "   <div class=\"item\">
+      <a href=\"produto2.php?id=".$produtos[$i]["id"]."\" class=\"card card__prod\">
+        <div class=\"img__container\">
+          <img src=\"media/".$produtos[$i]["img"]."\" alt=\"Imagem do produto \">
+          </div>
+          <div class=\"d-flex flex-column align-items-center\">
+            <span class=\"description mb-2 text-gray-500 text-xl mt-2\">".$produtos[$i]["nome"]."</span>
+            <span class=\"price mb-2 text-gray-500 text-md\">R$".$produtos[$i]["valor_uni"]."</span>
             </div>
-            <div class="item">
-              <a href="#" class="card card__prod">
-                <div class="img__container">
-                  <img
-                    src="https://mysa-skincare.com/uploads/transforms/bc9e33244d2d8a7bebbefa89bb319b9f/500/Hand-Wash_d3867277feb154defec9b24a5714fadb.webp"
-                    alt="Imagem do produto 1">
-                </div>
+            </a>
+          </div>
+          
+  ";
 
-                <div class="d-flex flex-column align-items-center">
-                  <span class="description mb-2 text-gray-500 text-xl mt-2">Lorem Ipsum Dolor</span>
-                  <span class="price mb-2 text-gray-500 text-md">R$99.99</span>
-                </div>
-              </a>
-            </div>
-            <div class="item">
-              <a href="#" class="card card__prod">
-                <div class="img__container">
-                  <img
-                    src="https://mysa-skincare.com/uploads/transforms/bc9e33244d2d8a7bebbefa89bb319b9f/500/Hand-Wash_d3867277feb154defec9b24a5714fadb.webp"
-                    alt="Imagem do produto 1">
-                </div>
+}}
+?>
 
-                <div class="d-flex flex-column align-items-center">
-                  <span class="description mb-2 text-gray-500 text-xl mt-2">Lorem Ipsum Dolor</span>
-                  <span class="price mb-2 text-gray-500 text-md">R$99.99</span>
-                </div>
-              </a>
-            </div>
-            <div class="item">
-              <a href="#" class="card card__prod">
-                <div class="img__container">
-                  <img
-                    src="https://mysa-skincare.com/uploads/transforms/bc9e33244d2d8a7bebbefa89bb319b9f/500/Hand-Wash_d3867277feb154defec9b24a5714fadb.webp"
-                    alt="Imagem do produto 1">
-                </div>
-
-                <div class="d-flex flex-column align-items-center">
-                  <span class="description mb-2 text-gray-500 text-xl mt-2">Lorem Ipsum Dolor</span>
-                  <span class="price mb-2 text-gray-500 text-md">R$99.99</span>
-                </div>
-              </a>
-            </div>
-            <div class="item">
-              <a href="#" class="card card__prod">
-                <div class="img__container">
-                  <img
-                    src="https://mysa-skincare.com/uploads/transforms/bc9e33244d2d8a7bebbefa89bb319b9f/500/Hand-Wash_d3867277feb154defec9b24a5714fadb.webp"
-                    alt="Imagem do produto 1">
-                </div>
-
-                <div class="d-flex flex-column align-items-center">
-                  <span class="description mb-2 text-gray-500 text-xl mt-2">Lorem Ipsum Dolor</span>
-                  <span class="price mb-2 text-gray-500 text-md">R$99.99</span>
-                </div>
-              </a>
-            </div>
-            <div class="item">
-              <a href="#" class="card card__prod">
-                <div class="img__container">
-                  <img
-                    src="https://mysa-skincare.com/uploads/transforms/bc9e33244d2d8a7bebbefa89bb319b9f/500/Hand-Wash_d3867277feb154defec9b24a5714fadb.webp"
-                    alt="Imagem do produto 1">
-                </div>
-
-                <div class="d-flex flex-column align-items-center">
-                  <span class="description mb-2 text-gray-500 text-xl mt-2">Lorem Ipsum Dolor</span>
-                  <span class="price mb-2 text-gray-500 text-md">R$99.99</span>
-                </div>
-              </a>
-            </div>
-            <div class="item">
-              <a href="#" class="card card__prod">
-                <div class="img__container">
-                  <img
-                    src="https://mysa-skincare.com/uploads/transforms/bc9e33244d2d8a7bebbefa89bb319b9f/500/Hand-Wash_d3867277feb154defec9b24a5714fadb.webp"
-                    alt="Imagem do produto 1">
-                </div>
-
-                <div class="d-flex flex-column align-items-center">
-                  <span class="description mb-2 text-gray-500 text-xl mt-2">Lorem Ipsum Dolor</span>
-                  <span class="price mb-2 text-gray-500 text-md">R$99.99</span>
-                </div>
-              </a>
-            </div>
-            <div class="item">
-              <a href="#" class="card card__prod">
-                <div class="img__container">
-                  <img
-                    src="https://mysa-skincare.com/uploads/transforms/bc9e33244d2d8a7bebbefa89bb319b9f/500/Hand-Wash_d3867277feb154defec9b24a5714fadb.webp"
-                    alt="Imagem do produto 1">
-                </div>
-
-                <div class="d-flex flex-column align-items-center">
-                  <span class="description mb-2 text-gray-500 text-xl mt-2">Lorem Ipsum Dolor</span>
-                  <span class="price mb-2 text-gray-500 text-md">R$99.99</span>
-                </div>
-              </a>
-            </div>
+          
+                   
+              
           </div>
         </div>
       </div>
@@ -1133,7 +1069,7 @@ transition: 0.3S;
       </script>
     <script>
       $('.owl-carousel').owlCarousel({
-        loop: false,
+        loop: true,
         margin: 10,
         nav: false,
         responsive: {

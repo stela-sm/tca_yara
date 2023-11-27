@@ -487,10 +487,8 @@ function listaItens($pedido){
   
 
     if($result->num_rows > 0){
-        $num = $result ->num_rows;
         $dados=array();
         $dados["result"] = 1;
-        $dados["num"]=$num;
         $i=1;
         while($row=$result->fetch_assoc()){
             $dados[$i]["id_itens"] = $row["ID_ITENS"];
@@ -504,7 +502,7 @@ function listaItens($pedido){
             $result2=$conn->query($sql2);
             $row2 = $result2->fetch_assoc(); 
             $dados[$i]["itens"] = $row2['nome'] ;
-            $dados["num2"]=count($row2);  
+            $dados["num2"]=$i;  
 
                
             $i++;

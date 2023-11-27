@@ -4,6 +4,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="shortcut icon" href="../../favicon/yara.ico" type="image/x-icon"><link rel="shortcut icon" href="../favicon/yara.ico" type="image/x-icon">
+
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/5b9d82b6ee.js" crossorigin="anonymous"></script>
@@ -315,9 +317,6 @@ $dados = listaPedidos($pesquisa);
      
             $resp = listaItens($dados[$i]["id"]);
 
-            for ($ii=1;$ii<=$resp['num2']+1;$ii++){
-            $itens[$ii] = $resp[$ii]["itens"];}
-      
 
             echo"<tr><form  name=\"formEdit\" action=\"../controller/controller_adm.php\" method=\"post\">";
 
@@ -331,7 +330,7 @@ $dados = listaPedidos($pesquisa);
             
             echo "<td class=\"TabelaAdmTd email\"> <input type=\"text\"  classe=\"end\"  disabled name=\"endereco\" value=\"". $dados[$i]["endereco"] ."\"></td>";
 
-            echo "<td class=\"TabelaAdmTd\"> <textarea  disabled name=\"itens\">";for ($ii=1;$ii<=$resp['num2']+1;$ii++){ echo nl2br($itens[$ii]). "\n";  };echo "</textarea></td>";
+            echo "<td class=\"TabelaAdmTd\"> <textarea  disabled name=\"itens\">"; for ($ii=1;$ii<=$resp['num2'];$ii++){ echo nl2br($resp[$ii]["itens"]). "\n";  };echo "</textarea></td>";
             
 
             echo "<td class=\"TabelaAdmTd\"> <input type=\"text\" disabled name=\"valor\" value=\"". $dados[$i]["valor"] ."\"></td>";
