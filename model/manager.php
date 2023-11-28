@@ -13,7 +13,7 @@ function carrinho($id){
   $result = $conn->query($sqlSUB);
   $dadosSUB=array();
 
-  if ($result->num_rows>0){
+  if ($result !== false){
       $dadosSUB["result"] = 1;
       $i = 0;
       while($row = $result->fetch_assoc()){
@@ -798,6 +798,7 @@ function verif_estoque($id, $qtd){
         $conn->close(); 
         return $dados; 
 }
+<<<<<<< HEAD
 
 function pega_cel($id){
     require "conexao.php";
@@ -812,3 +813,6 @@ function pega_cel($id){
         return $dados;
 }
         ?>
+=======
+        ?>
+>>>>>>> e745d0d4bb73481472d714d5ed5c25a0bb32f794
