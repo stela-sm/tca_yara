@@ -3,6 +3,8 @@
 
 <head>
     <meta charset="UTF-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     <link rel="shortcut icon" href="assets/media/yara.ico" type="image/x-icon" sizes="128x128">
     <link rel="shortcut icon" href="assets/media/yara.ico" type="image/x-icon" sizes="32x32">
     <link rel="shortcut icon" href="assets/media/yara.ico" type="image/x-icon" sizes="64x64">
@@ -957,7 +959,7 @@
                                     cuidadosamente elaboradas, inteiramente naturais e veganas, nossa linha inspira
                                     autenticidade, nutrindo e realçando a beleza da sua pele de maneira consciente e
                                     altamente eficaz.</p><br>
-                                <a href="view/shop.html" class="b_radius30 viewNow btn btn-primary btn-block">VER TODOS OS
+                                <a href="view/shop.php" class="b_radius30 viewNow btn btn-primary btn-block">VER TODOS OS
                                     PRODUTOS</a>
                             </div>
                         </div>
@@ -1259,13 +1261,13 @@
                         <h4 class="rem1 uppercase bold">Privacidade</h4>
                         <ul class="list-unstyled">
                             <li class="opacity-08">
-                                <a class="opacity-08 link__footer" href="#">Entrega & Devolução</a>
+                                <a class="opacity-08 link__footer" href="assets/terms/ENTREGA.pdf">Entrega & Devolução</a>
                             </li>
                             <li class="opacity-08">
-                                <a class="opacity-08 link__footer" href="#">Termos & condições</a>
+                                <a class="opacity-08 link__footer" href="assets/terms/TERMOS.pdf">Termos & condições</a>
                             </li>
                             <li class="opacity-08">
-                                <a class="opacity-08 link__footer" href="#">Política de Privacidade</a>
+                                <a class="opacity-08 link__footer" href="assets/terms/PRIVACIDADE.pdf">Política de Privacidade</a>
                             </li>
                         </ul>
                     </div>

@@ -898,7 +898,7 @@ a.logo:hover {
                   <a class="menu-link" href="../index.php">Home</a>
                   <a class="menu-link" href="#">Shop</a>
                   <a class="menu-link" href="sobre.html">Sobre</a>
-                  <a class="menu-link" href="#">Login</a>
+                  <a class="menu-link" href="meuperfil.php">Login</a>
                   <a class="menu-link" href="carrinho.php">Sacola</a>
                 </div>
               </div>
@@ -1009,13 +1009,13 @@ a.logo:hover {
                         <h4 class="rem1 uppercase bold">Explore</h4>
                         <ul class="list-unstyled">
                             <li class="opacity-08">
-                                <a class="opacity-08 link__footer" href="#">Home</a>
+                                <a class="opacity-08 link__footer" href="../index.php">Home</a>
                             </li>
                             <li class="opacity-08">
-                                <a class="opacity-08 link__footer" href="view/shop.html">Shop</a>
+                                <a class="opacity-08 link__footer" href="#">Shop</a>
                             </li>
                             <li class="opacity-08">
-                                <a class="opacity-08 link__footer" href="view/sobre.html">Sobre</a>
+                                <a class="opacity-08 link__footer" href="sobre.html">Sobre</a>
                             </li>
                         </ul>
                     </div>
@@ -1039,14 +1039,14 @@ a.logo:hover {
                     <div class="column_footer">
                         <h4 class="rem1 uppercase bold">Privacidade</h4>
                         <ul class="list-unstyled">
-                            <li class="opacity-08">
-                                <a class="opacity-08 link__footer" href="#">Entrega & Devolução</a>
+                        <li class="opacity-08">
+                                <a class="opacity-08 link__footer" href="assets/terms/ENTREGA.pdf">Entrega & Devolução</a>
                             </li>
                             <li class="opacity-08">
-                                <a class="opacity-08 link__footer" href="#">Termos & condições</a>
+                                <a class="opacity-08 link__footer" href="assets/terms/TERMOS.pdf">Termos & condições</a>
                             </li>
                             <li class="opacity-08">
-                                <a class="opacity-08 link__footer" href="#">Política de Privacidade</a>
+                                <a class="opacity-08 link__footer" href="assets/terms/PRIVACIDADE.pdf">Política de Privacidade</a>
                             </li>
                         </ul>
                     </div>
@@ -1097,7 +1097,7 @@ a.logo:hover {
             </div>
             <div class="col-md-6 col-12 hidden_onMobileFooter">
                 <div class="row rowNavFooter">
-                    <div class="column_footer">
+                    <div class="column_footer" style="width:auto;">
                         <h4 class="rem1 uppercase bold">Explore</h4>
                         <ul class="list-unstyled">
                             <li class="opacity-08">
@@ -1111,7 +1111,7 @@ a.logo:hover {
                             </li>
                         </ul>
                     </div>
-                    <div class="column_footer">
+                    <div class="column_footer" style="width:auto;">
                         <h4 class="rem1 uppercase bold">Contato</h4>
                         <ul class="list-unstyled">
                             <li class="opacity-08">
@@ -1128,7 +1128,7 @@ a.logo:hover {
                             </li>
                         </ul>
                     </div>
-                    <div class="column_footer">
+                    <div class="column_footer" style="width:auto;">
                         <h4 class="rem1 uppercase bold">Privacidade</h4>
                         <ul class="list-unstyled">
                             <li class="opacity-08">

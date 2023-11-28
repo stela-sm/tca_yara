@@ -581,7 +581,7 @@ font-size: 1.1em;
                 <div class="row">
                     <div class="col-6 margin">
                         <div class="row">
-                            <p id="name">Olá, <?php ECHO $_SESSION["USER-NOME"];?>!</p>
+                            <p id="name">Olá, <?php   ECHO $_SESSION["USER-NOME"];?>!</p>
                         </div>
                     </div>
                 </div>

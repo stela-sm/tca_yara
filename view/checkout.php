@@ -7,14 +7,17 @@
     <link rel="shortcut icon" href="../favicon/yara.ico" type="image/x-icon"><link rel="shortcut icon" href="../favicon/yara.ico" type="image/x-icon">
 
   </head>
-<body>
+<body class="fade-in">
 <html lang="en">
 <?php
 
     session_start();
  
     if(isset($_SESSION['USER-ID'])){
-        
+    if(isset($_GET["valor"])){
+            $_SESSION["valor"]=$_GET["valor"];
+    };
+    
     ?>
     <head>
         <script>  
@@ -60,6 +63,27 @@
 
                   
         <style>
+          
+.fade-in-title {
+    opacity: 0;
+    animation: fadeIn 0.6s ease-in forwards;
+    animation-delay: 0.5s; 
+  }
+  
+  
+.fade-in {
+    opacity: 0;
+    animation: fadeIn 0.4s ease-in forwards;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
            .menu {
     background-color: transparent !important;
     position: absolute; 
@@ -646,9 +670,9 @@ form{
                <div class="modal-body">
                      <a class="menu-link" href="../index.html">Home</a>
                      <a class="menu-link" href="shop.php">Shop</a>
-                     <a class="menu-link" href="#">Sobre</a>
-                     <a class="menu-link" href="#">Login</a>
-                     <a class="menu-link" href="#">Sacola</a>
+                     <a class="menu-link" href="sobre.html">Sobre</a>
+                     <a class="menu-link" href="meuperfil.php">Login</a>
+                     <a class="menu-link" href="carrinho.php">Sacola</a>
                </div>
              </div>
            </div>
@@ -669,7 +693,7 @@ form{
 <br>
 <form action="../controller/controller_compra.php" method="post" id="form_pedido" class="form_padrao">
   <input type="hidden" name="efetuar_pedido" value="<?php echo $_SESSION["USER-ID"]; ?>">
-  <input type="hidden" name="valorget" value="<?php echo $_GET["valor"]; ?>">
+  <input type="hidden" name="valorget" value="<?php echo $_SESSION["valor"]; ?>">
             <div class="container container-RESP">
             <div class="row">
 
@@ -832,10 +856,10 @@ echo"  <div class=\"custom-radio\">
   
  <tr><td class="th" ><b>Resumo do pedido</b></td></tr>
  
- <tr class="resume_row "><td><b>Subtotal</b></td><td class="valor_div"><span id="valor"> R$<?php echo $_GET["valor"]; ?> </span></td></tr>
+ <tr class="resume_row "><td><b>Subtotal</b></td><td class="valor_div"><span id="valor"> R$<?php echo $_SESSION["valor"]; ?> </span></td></tr>
  <tr class="resume_row "><td><b>Frete</b></td><td class="valor_div"><span id="frete">---</span></td></tr>
  
- <tr class="subtotal_row font"><td><b>Total</b></td><td class="valor_div valor_final">R$<?php echo $_GET["valor"]; ?></td></tr>
+ <tr class="subtotal_row font"><td><b>Total</b></td><td class="valor_div valor_final">R$<?php echo $_SESSION["valor"]; ?></td></tr>
  </table>
 <table class="margin-table">
 <tr><td class="button_final">

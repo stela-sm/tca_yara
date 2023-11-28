@@ -182,9 +182,11 @@ if (isset($_REQUEST["update_dados"]) || isset($_SESSION["USER-NAME"])){
     }else{
     require_once "../model/manager.php";
     $resp=clienteEdit($dados);
-    if($resp==1){ //tudo certo
+    if($resp==1){
+        
+        $_SESSION["USER-NAME"]= $dados["nome"]; //tudo certo
         ?>
-        <form action="../view/dados.php" name="form" id="myForm" method="POST">
+         <form action="../view/dados.php" name="form" id="myForm" method="POST">
         <input type="hidden" name="msg" value="BD50">  <!--"BD50" => "Operação realizada com sucesso.",-->
         </form> <!--envia um formulario com a variavel "msg", que é o código da mensagem de erro (ver view/msg.php)--> 
         <script>
