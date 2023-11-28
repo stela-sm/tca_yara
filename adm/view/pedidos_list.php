@@ -38,7 +38,7 @@
     }
     
     table {
-      width: 100vw;
+      width: 98vw;
       border-collapse: collapse;
       table-layout: auto;
       border-radius: 20px;

@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Yara | Meu Carrinho </title>
     <link rel="shortcut icon" href="../favicon/yara.ico" type="image/x-icon"><link rel="shortcut icon" href="../favicon/yara.ico" type="image/x-icon">
+    
+<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
 
   </head>
 <body class="fade-in">
@@ -1045,7 +1047,7 @@ ECHO "
           <table>
             <tr>
              <td><label for="" class="label_padrao_cartao">Número do cartão</label></td> 
-              <td><input type="number"  oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="16" class="input_padrao"></td> 
+              <td><input type="number" id="cartaoinput" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="16" class="input_padrao"></td> 
             </tr>
             
             <tr>
@@ -1128,7 +1130,7 @@ ECHO "
       input.value = value;
     }
 
-    let cartaoInput = document.getElementById('cartao');
+    let cartaoInput = document.getElementById('cartaoinput');
   
     cartaoInput.addEventListener('input', mascaraCartao);
 
@@ -1158,7 +1160,25 @@ ECHO "
 
 
 
+        // Certifique-se de que o DOM está pronto
+        $(document).ready(function () {
+            // Defina sua variável
+            var minhaVariavel = "valorInicial";
 
+            // Faça a requisição AJAX apenas uma vez
+            $.ajax({
+                type: "GET",
+                url: "frete.php",  // Substitua pelo caminho do seu script no servidor
+                data: { minhaVariavel: minhaVariavel },
+                success: function (response) {
+                    console.log("Variável alterada com sucesso!");
+                },
+                error: function (error) {
+                    console.error("Erro na requisição AJAX: ", error);
+                }
+            });
+        });
+    </script>
 
 
   </script>

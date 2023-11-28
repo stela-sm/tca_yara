@@ -24,7 +24,9 @@
 </head>
 <body>
     <style>
-        
+        table{
+          width: 98vw;
+        }
 
 .container {
           
@@ -91,6 +93,9 @@
          
  #admTabela {
    margin-top: 60px; /* Para evitar que o conteúdo fique oculto pelo menu */
+ }
+ .nomecampo{
+  min-width: 6cm !important;
  }
     </style>
     
@@ -203,7 +208,7 @@ $dados = listaProdutos($pesquisa);
 
             echo "<td class=\"TabelaAdmTd\">". $dados[$i]["id"]."</td>";
             
-            echo "<td class=\"TabelaAdmTd\"> <input type=\"text\" id=\"classe".$dados[$i]["id"]."\"  disabled name=\"nome\" value=\"". $dados[$i]["nome"] ."\"></td>";
+            echo "<td class=\"TabelaAdmTd \"> <input type=\"text\"  class=\"nomecampo\" id=\"classe".$dados[$i]["id"]."\"  disabled name=\"nome\" value=\"". $dados[$i]["nome"] ."\"></td>";
             
           
             
