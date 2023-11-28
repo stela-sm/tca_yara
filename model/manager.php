@@ -798,4 +798,17 @@ function verif_estoque($id, $qtd){
         $conn->close(); 
         return $dados; 
 }
+
+function pega_cel($id){
+    require "conexao.php";
+    $sql="SELECT celular FROM cliente WHERE ID_CLIENTE = '$id'";
+    $resultado=$conn->query($sql);
+    while($row=$resultado->fetch_assoc()){
+            
+        
+        $dados["cel"] = $row['celular'];
+    }
+        $conn->close();
+        return $dados;
+}
         ?>

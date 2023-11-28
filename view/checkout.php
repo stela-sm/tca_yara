@@ -760,25 +760,12 @@ echo"  <div class=\"custom-radio\">
     <div class="card-body">
 
     <div class="custom-radio margin-radio">
-  <input type="radio" value="0" onclick="frete('GRÁTIS')" id="envio1" name="opcoes_envio">
+  <input type="radio" value="0" onclick="frete('GRÁTIS')" id="envio1"  name="opcoes_envio">
   <label for="envio1" class="label_padrao">
    ENVIO GRÁTIS PADRÃO - 10 dias úteis via SEDEX
   </label>
 </div>
 
-
-<div class="custom-radio margin-radio">
-  <input type="radio" value="2" onclick="frete('2')" id="envio2" name="opcoes_envio">
-  <label for="envio2"  class="label_padrao">
-  R$2,00 - 5 dias úteis via SEDEX 
-  </label>
-</div>
-<div class="custom-radio margin-radio">
-  <input type="radio" value="10" onclick="frete('10')" id="envio3" name="opcoes_envio">
-  <label for="envio3" class="label_padrao">
-  R$10,00 - 2 dias úteis via YARA TRANSPORTADORA 
-  </label>
-</div>
 
 
 
@@ -799,7 +786,7 @@ echo"  <div class=\"custom-radio\">
       <div class="card-body">
       <div class="custom-radio margin-radio" data-toggle="modal" data-target="#modalcartao">
 
-  <input type="radio" value="card" id="pay1" name="opcoes_pay">
+  <input type="radio" value="credito" id="pay1" name="opcoes_pay">
   <label for="pay1" class="label_padrao">
    Cartão de Crédito - confirmação imediata
   </label>
@@ -1084,6 +1071,18 @@ ECHO "
             <td><label for="" class="label_padrao_cartao">Código de segurança (CVV)</label></td>
               <td><input type="number"   oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="3" class="input_padrao cvv"></td>
             </tr>
+            <tr>
+              <td><label for="" class="label_padrao_cartao">Parcelas</label></td>
+              <td>
+              <select name="month" id="" class="select_padrao">
+                <option value="1">1x - sem juros</option>
+                <option value="2">2x - sem juros</option>
+                <option value="3">3x - sem juros</option>
+                <option value="4">4x - 5% de juros</option>
+                <option value="5">5x - 6% de juros</option>
+                <option value="6">6x - 7% de juros</option>
+              </select></td>
+            </tr>
           </table>
         </form>
       </div>
@@ -1119,44 +1118,18 @@ ECHO "
         radios[i].checked = false;
       }
     }
-    function mascaraCartao(event) {
-      let input = event.target;
-      let value = input.value.replace(/\D/g, '');
-
-      if (value.length <= 16) {
-        value = value.replace(/(\d{4})(\d{4})(\d{4})(\d{4})/, '$1 $2 $3 $4');
-      }
-
-      input.value = value;
-    }
-
-    let cartaoInput = document.getElementById('cartaoinput');
   
-    cartaoInput.addEventListener('input', mascaraCartao);
 
 
 
-    document.addEventListener('DOMContentLoaded', function() {
-    const valorfinal = parseFloat(document.querySelector('.valor_final').innerText.replace('R$', '').replace(',', '.'));
 
     function frete(valor) {
-        var frete = parseFloat(valor).toFixed(2);
-
-        if (isNaN(frete)) {
+       
             document.getElementById('frete').innerHTML = "GRÁTIS";
-        } else {
-            document.getElementById('frete').innerHTML = "R$" + frete;
-
-            var novoValor = valorfinal + parseFloat(valor);
-            
-            var elementoTd = document.querySelector('.valor_final')
-            elementoTd.innerHTML = "R$" + novoValor.toFixed(2);
-        }
+       
     }
 
-    // Exemplo de chamada da função frete
-    // frete(10); // Substitua o argumento com o valor desejado
-});
+   
 
 
 

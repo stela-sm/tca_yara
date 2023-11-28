@@ -161,6 +161,8 @@ function inalteravel(id){
       if (campo1.value === valorInicialCampo1 && campo2.value === valorInicialCampo2 && campo3.value === valorInicialCampo3 && campo4.value === valorInicialCampo4) {
         alert("Nenhum campo foi alterado.");
         event.preventDefault(); // Impede o envio do formulário
+      }else{
+        document.getElementById('meuForm').submit();
       }
     }
 </script>

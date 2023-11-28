@@ -160,7 +160,7 @@ else{ //se o emial é repetido
 
 // update usuario -------------------------------------------------------------------------------
 
-if (isset($_REQUEST["update_dados"]) && isset($_SESSION["USER-NAME"])){    
+if (isset($_REQUEST["update_dados"])){    
 
         
     $dados["id"] = $_REQUEST["update_dados"];
@@ -173,7 +173,7 @@ if (isset($_REQUEST["update_dados"]) && isset($_SESSION["USER-NAME"])){
     if($valida==0){
         ?>
         <form action="../view/dados.php" name="form" id="myForm" method="POST">
-        <input type="hidden" name="msg" value="FR26">  <!--""BD02" => "Erro ao criar registro.",-->
+        <input type="hidden" name="msg" value="FR27">  <!--""BD02" => "Erro ao criar registro.",-->
         </form> <!--envia um formulario com a variavel "msg", que é o código da mensagem de erro (ver view/msg.php)--> 
         <script>
         document.getElementById('myForm').submit();//envio automático submit()
@@ -199,7 +199,7 @@ if (isset($_REQUEST["update_dados"]) && isset($_SESSION["USER-NAME"])){
     }else if($resp==0){//erro
         ?>
         <form action="../view/dados.php" name="form" id="myForm" method="POST">
-        <input type="hidden" name="msg" value="BD02">  <!--""BD02" => "Erro ao criar registro.",-->
+        <input type="hidden" name="msg" value="FR27">  <!--""BD02" => "Erro ao criar registro.",-->
         </form> <!--envia um formulario com a variavel "msg", que é o código da mensagem de erro (ver view/msg.php)--> 
         <script>
         document.getElementById('myForm').submit();//envio automático submit()
@@ -208,7 +208,7 @@ if (isset($_REQUEST["update_dados"]) && isset($_SESSION["USER-NAME"])){
         
     }else if($resp==2){?>
         <form action="../view/dados.php" name="form" id="myForm" method="POST">
-        <input type="hidden" name="msg" value="FR27">  <!--""BD02" => "Erro ao criar registro.",-->
+        <input type="hidden" name="msg" value="FR26">  <!--""BD02" => "Erro ao criar registro.",-->
         </form> <!--envia um formulario com a variavel "msg", que é o código da mensagem de erro (ver view/msg.php)--> 
         <script>
         document.getElementById('myForm').submit();//envio automático submit()
@@ -219,7 +219,7 @@ if (isset($_REQUEST["update_dados"]) && isset($_SESSION["USER-NAME"])){
 }
 }
 
-if (isset($_REQUEST["endereco_edit"]) || isset($_SESSION["USER-NAME"])){ 
+if (isset($_REQUEST["endereco_edit"])){ 
     
     $dados["id"] =       $_REQUEST["endereco_edit"];
     $dados["nome"] =       $_REQUEST["apelido"];
@@ -269,7 +269,7 @@ if (isset($_REQUEST["endereco_edit"]) || isset($_SESSION["USER-NAME"])){
     }
 
     
-if (isset($_REQUEST["endereco_edit_checkout"]) || isset($_SESSION["USER-NAME"])){ 
+if (isset($_REQUEST["endereco_edit_checkout"])){ 
     
     $dados["id"] =       $_REQUEST["endereco_edit_checkout"];
     $dados["nome"] =       $_REQUEST["apelido"];
@@ -318,7 +318,7 @@ if (isset($_REQUEST["endereco_edit_checkout"]) || isset($_SESSION["USER-NAME"]))
         }
     }
     
-if (isset($_REQUEST["endereco_new"]) || isset($_SESSION["USER-NAME"])){ 
+if (isset($_REQUEST["endereco_new"])){ 
 
     $dados["cliente"] =  $_REQUEST["id_cliente"];
     $dados["nome"] =  $_REQUEST["apelido"];

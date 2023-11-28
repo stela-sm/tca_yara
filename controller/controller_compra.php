@@ -6,7 +6,7 @@ session_start();
         require '../model/manager.php';
         $dados["produto"] = $_REQUEST["id"];
         $dados["qnt"] = $_REQUEST["qtd"];
-        $dados["cliente"] = $_REQUEST["cliente"];
+        if(isset($_REQUEST["cliente"])){$dados["cliente"]=$_REQUEST["cliente"];}else{$dados["cliente"]="";};
         $dados["preco"] = $_REQUEST["preco"];
         $dados["nome"] = $_REQUEST["nome"];
         $resp = adicionar_prod($dados);
@@ -106,8 +106,11 @@ session_start();
                     require '../model/manager.php';
                     $resp= efetuar_pedidos($dados);
                         if ($resp["result"] == 1) {
+
+                            $cel = pega_cel($dados["cliente"] );
+
                                 ?>
-                                 <form action="../view/meuperfil.php" name="form" id="myForm" method="POST">
+                                 <form action="../model/mailconfirm.php?payway=<?php echo $_REQUEST["opcoes_pay"];?>&cel=<?php echo $cel["cel"];?>" name="form" id="myForm" method="POST">
                                 <input type="hidden" name="msg" value="BD50">  <!--"BD50" => "Operação realizada com sucesso.",-->
                                 <input type="hidden" name="historico" value="historico.php">  <!--"BD50" => "Operação realizada com sucesso.",-->
                                 </form> <!--envia um formulario com a variavel "msg", que é o código da mensagem de erro (ver view/msg.php)--> 
