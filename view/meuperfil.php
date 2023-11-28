@@ -48,9 +48,7 @@
             body{
                 height: auto;
             }
-            footer > a, a:hover{
-                color: white !important;
-            }
+    
 .menu {
     background-color: transparent !important;
     position: absolute; 
@@ -110,7 +108,6 @@ a.menu-link:hover {
 }
 
 a.logo:hover {
-    color: #f0f0f0 !important;
     text-decoration: underline;
 }
 

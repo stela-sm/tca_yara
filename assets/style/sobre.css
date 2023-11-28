@@ -173,7 +173,7 @@ h4.title-4{
     transition: all .3s cubic-bezier(0.47, 0, 0.745, 0.715);
 }
 
-.btn-4:hover, .btn-4::before, .btn-4:active, .btn-4::after, .btn-4:visited  {
+.btn-4:hover, .btn-4::before, .btn-4:active, .btn-4::after  {
     background-color: #1a3d1fe2;
     outline: none !important;
     border: 1.6px solid #1a3d1fe2;
@@ -303,16 +303,16 @@ h4.title-4{
 
     .btn-4 {
         border: 1.6px solid #f0f0f0;
-        color: #f0f0f0;
+        color: #000000 !important;
         margin-top: 7%;
         font-size: 11px;
         width: 65%;    
     }
     
-    .btn-4:hover, .btn-4::before, .btn-4:active, .btn-4::after, .btn-4:visited  {
+    .btn-4:hover, .btn-4::before, .btn-4:active, .btn-4::after  {
         background-color: #1a3d1fe2;
         border: 1.6px solid #1a3d1fe2;
-        color: #f0f0f0;
+        color: #f0f0f0 !important;
     }
 
 }

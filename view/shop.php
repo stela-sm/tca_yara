@@ -1005,7 +1005,7 @@ a.logo:hover {
         <div class="row">
             <div class="col-12 hidden_onMajorFooter mb-3">
                 <div class="row rowNavFooter">
-                    <div class="column_footer">
+                    <div class="column_footer" >
                         <h4 class="rem1 uppercase bold">Explore</h4>
                         <ul class="list-unstyled">
                             <li class="opacity-08">
