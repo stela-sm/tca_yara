@@ -1137,7 +1137,17 @@ function verif(){
 
     </script>
 
+<?php
 
+if(isset($_REQUEST["msg"])){
+
+ $cod = $_REQUEST["msg"];
+ require_once "../model/msg.php";
+echo "<script>alert('" . $MSG[$cod] . "');</script>";
+
+}
+
+?>
 </body>
 
 </html>

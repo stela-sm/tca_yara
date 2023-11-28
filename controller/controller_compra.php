@@ -12,7 +12,7 @@ session_start();
         $resp = adicionar_prod($dados);
         if ($resp["result"] == '1') { //SUCESSO
             ?>
-                  <form action="../view/carrinho.php" name="form" id="myForm" method="POST">
+                   <form action="../view/carrinho.php" name="form" id="myForm" method="POST"> 
                  
                         </form>  
                         <script>
@@ -24,8 +24,19 @@ session_start();
                         }else if($resp["result"]=='0'){//erro
                             
                             ?>
-                            <form action="../view/login.php" name="form" id="myForm" method="POST">
+                             <form action="../view/login.php" name="form" id="myForm" method="POST">
                             <input type="hidden" name="msg" value="OA04"> 
+                            </form> 
+                            <script>
+                            document.getElementById('myForm').submit();
+                            </script>
+                            <?php  
+                            
+                        }   else if($resp["result"]=='2'){//erro
+                            
+                            ?>
+                             <form action="../view/produto2.php?id=<?php echo $_REQUEST["id"];?>" name="form" id="myForm" method="POST"> 
+                            <input type="hidden" name="msg" value="FR29"> 
                             </form> 
                             <script>
                             document.getElementById('myForm').submit();

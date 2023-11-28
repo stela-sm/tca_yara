@@ -7,7 +7,7 @@ function carrinho($id){
 
   require "conexao.php";
  
-  $sqlSUB = "SELECT * FROM carrinho  WHERE id_cliente = '{$id}'";
+  $sqlSUB = "SELECT * FROM carrinho  WHERE id_cliente = '{$id}' AND status='1'";
  
  
   $result = $conn->query($sqlSUB);
@@ -541,6 +541,10 @@ function dadosUser($id){
 function quantidade_op($dados){
     require "conexao.php";
    
+    
+    $verif = verif_estoque($dados["id_prod"],$dados["quant"]);
+   
+    if ($verif["result"] == '1') {
     $sql = "UPDATE carrinho SET quantidade = '{$dados['quant']}' WHERE ID_CARRINHO = '{$dados['id']}'";
 
    $result = $conn->query($sql);
@@ -550,6 +554,10 @@ $conn->close();
 return $dados;
 }else{
         $dados["result"] = 0;
+        $conn->close();    
+        return $dados;
+}}else{
+  $dados["result"] = 2;
         $conn->close();    
         return $dados;
 }
@@ -637,6 +645,9 @@ function produtos($pesquisa, $ordem){
      
      function adicionar_prod($dados){
         require "conexao.php";
+        $verif = verif_estoque($dados["produto"], $dados["qnt"]);
+        
+        if($verif["result"]=='1'){
         $sql = "INSERT INTO carrinho (id_cliente, id_produto, nome_produto, quantidade, preco) VALUES ('{$dados["cliente"]}', '{$dados["produto"]}', '{$dados["nome"]}', '{$dados["qnt"]}','{$dados["preco"]}');";
         $result=$conn->query($sql); 
         if($result==true){
@@ -645,6 +656,10 @@ function produtos($pesquisa, $ordem){
     return $dados;
     }else{
             $dados["result"] = 0;
+            $conn->close();    
+            return $dados;
+    }}else{
+        $dados["result"] = 2;
             $conn->close();    
             return $dados;
     }
@@ -684,7 +699,7 @@ function produtos($pesquisa, $ordem){
 
     function find_pedido($data){
         require 'conexao.php';
-        $sql2 = "SELECT * FROM pedidos WHERE id_cliente= '6' ORDER BY ID_PEDIDO DESC limit 1";
+        $sql2 = "SELECT * FROM pedidos WHERE id_cliente= '{$data}' ORDER BY ID_PEDIDO DESC limit 1";
      $result2=$conn->query($sql2); 
     
      if($result2->num_rows > 0){
@@ -749,7 +764,7 @@ $sql_transfer = "INSERT INTO itens ( id_pedido, id_produto, nome, quantidade, va
 
 $result_transfer = $conn->query($sql_transfer);
                 
-
+estoque_pedido($dados[$i]["id"], $dados[$i]["qtd"] );
 $i++;
                 }
 
@@ -758,4 +773,29 @@ $i++;
 
     
 $conn->close();}
+
+
+function estoque_pedido($id,$qtd){
+    require "conexao.php";
+    $sql_update = "UPDATE produtos SET estoque = (estoque - '$qtd') WHERE ID_PRODUTO = '$id' ";   
+    $result=$conn->query($sql_update); 
+
+}
+
+function verif_estoque($id, $qtd){
+    require "conexao.php";
+
+    $sql_verificar = "SELECT * FROM produtos WHERE ID_PRODUTO = '$id' AND estoque >= $qtd";
+   
+    $result=$conn->query($sql_verificar);
+    
+    $dados=array();
+    if ($result->num_rows > 0) { 
+        $dados["result"]='1';
+        } else{
+             $dados["result"]='0';
+        }
+        $conn->close(); 
+        return $dados; 
+}
         ?>

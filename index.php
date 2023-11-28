@@ -913,16 +913,7 @@
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header modalJusti">
-                            <button type="button" id="insideMobMenu__closeBTN"
-                                class="btn-close btn-modal mobileMenu__closeBTN" width="32" height="32"
-                                data-bs-dismiss="modal" aria-label="Close">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-x"
-                                    width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
-                                    fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                    <path d="M18 6l-12 12" />
-                                    <path d="M6 6l12 12" /></svg>
-                            </button>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-x" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M18 6l-12 12" /><path d="M6 6l12 12" /></svg></button>
                         </div>
                         <div class="modal-body">
                             <a class="menu-link" href="#">Home</a>
@@ -1376,24 +1367,38 @@
         video.disablePictureInPicture = true
     </script>
     <script>
-        window.addEventListener("scroll", function () {
+            window.addEventListener("scroll", function () {
             var menu = document.querySelector(".menu")
             var links = document.querySelectorAll(".jsChangeColor")
             var scrollPosition = window.scrollY;
-            if (scrollPosition > 150) {
-                menu.classList.add("fixed")
-                menu.style.top = "0%"
-                links.forEach((element, index) => {
-                    element.style.color = "#000";
-                })
-            } else {
-                menu.classList.remove("fixed")
+            var tel_tam = window.innerWidth
+            if (tel_tam >= 1000) {//se width for maior ou igual a 1000px
+                if (scrollPosition > 150) {//se scroll for maior que 150px
+                    menu.classList.add("fixed")//adiciona classe fixed no menu
+                    menu.style.top = "0%"//deixa top = 0
+                    menu.style.top = "0%"//deixa top = 0%
+                    links.forEach((element, index) => {//forEach dos links
+                        element.style.color = "#000";//altera a cor para preto
+                    })
+                } else {//se scrollPosition for < 150:
+                    menu.classList.remove("fixed")//remove classe fixed do mennu
+                    menu.style.top = "2%"//deixa top = 2
+                    menu.style.top = "2%"//deixa top = 2%
+                    links.forEach((element, index) => {//forEach dos links
+                        element.style.color = "#fff";//atera a cor para branco
+                    })
+                }
+            } else {//se width da tela for menor que 1000px
+                menu.classList.remove("fixed")//remove a classe fixed para que o menu nunca fique fixed
                 menu.style.top = "2%"
                 links.forEach((element, index) => {
                     element.style.color = "#fff";
+                menu.style.top = "2%"//deixa top = 2%
+                links.forEach((element, index) => {//forEach dos links
+                    element.style.color = "#fff";//atera a cor para branco
                 })
-            }
-        });
+
+            })}})
 
         function menu__onload() {
             var links = document.querySelectorAll(".jsChangeColor")

@@ -69,6 +69,7 @@ $MSG = array(
     "FR26" => "CPF inválido, tente novamente.",
     "FR27" => "Usuário já existente, verifique os dados inseridos.",
     "FR28" => "Código inválido ou expirado, tente novamente",
+    "FR29" => "Estoque insuficiente, por favor selecione uma quantidade menor",
 
     // 50 A 99 SUCESSOS
     "FR50" => "Formulário enviado com sucesso.",

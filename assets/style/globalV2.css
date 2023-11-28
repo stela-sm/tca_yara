@@ -8,7 +8,10 @@
     position: fixed;
     right: 0;
 }
-
+.modal.fade{
+    filter: none;
+    background: transparent;
+}
 ::selection {
     background-color: #87ab8548;
     /* Cor de fundo da seleção */
@@ -973,7 +976,7 @@ button.btn.btn-link.ingred__btn:focus {
 }
 
 /*TABLETS*/
-@media (max-width:570px) {
+@media(max-width:1000px){
     .menu.fixed {
         padding: 0 3%;
         margin: 15px 0px 0px;
@@ -982,7 +985,6 @@ button.btn.btn-link.ingred__btn:focus {
         position: unset;
         background-color: transparent !important;
         -webkit-backdrop-filter: blur(0) !important;
-
         backdrop-filter: blur(0) !important;
     }
 
@@ -1021,7 +1023,11 @@ button.btn.btn-link.ingred__btn:focus {
 
     }
 }
+@media (max-width:570px) {
 
+    .hiddenMobileMinor_Plus {
+        display: none;
+    }}
 .BodyFont-primary {
     font-family: var(--body-font) !important;
 }
@@ -1081,13 +1087,13 @@ button.btn.btn-link.ingred__btn:focus {
     }
 }
 
-@media (max-width:1400px) {
+@media (max-width:1300px) {
     .herocurtain {
         display: none;
     }
 
     .hero {
-        background-image: url(https://images.everydayhealth.com/images/what-are-natural-skin-care-products-alt-1440x810.jpg);
+        background-image: url(../media/yara_background.png);
         background-size: cover;
         background-repeat: no-repeat;
         overflow: visible;
@@ -1103,20 +1109,18 @@ button.btn.btn-link.ingred__btn:focus {
 
 }
 
+    
 @media (max-width:577px) {
     p {
         text-align: left !important;
     }
-
     .carouselIndex {
         display: none !important;
     }
-
     .mobileTXT {
         display: block;
         height: 80vh !important;
     }
-
     .mobileTXTinside {
         padding: 5%;
         gap: 1vh;
@@ -1125,16 +1129,13 @@ button.btn.btn-link.ingred__btn:focus {
         flex-direction: column;
         align-items: flex-start;
     }
-
     .TXT__v44 {
         font-size: .9rem !important;
         text-align: justify !important;
     }
-
     .squareSuperMobile {
         flex: 0 0 30% !important;
     }
-
     .flex-column-custom {
         width: 50%;
         display: flex;
@@ -1144,29 +1145,31 @@ button.btn.btn-link.ingred__btn:focus {
         background-color: transparent !important;
         gap: 2%;
     }
-
     .container_igTop {
         margin-left: -5%;
     }
-
     .container-pb {
         padding-left: 3rem !important;
         padding-right: 2rem !important;
     }
-
     .superMajorAriaa {
         display: flex;
         flex-direction: row;
         justify-content: center;
         align-items: center;
     }
-
     .herocurtain {
         display: none;
     }
 
     .slogan.viewportHero h1 {
-        font-size: 3rem !important;
+        font-size: 3rem !important;}
+    .nonmobile_slogan {
+        display: none;
+    }
+    .mobile_slogan{
+        display: block;
+        font-size: 3.5rem !important ;
     }
 
     #container__interaShopCarousel {
@@ -1175,13 +1178,28 @@ button.btn.btn-link.ingred__btn:focus {
         flex-direction: row;
         justify-content: center;
     }
+    }
 
 
+@media (min-width:578px) {
+    .nonmobile_slogan {
+        display: block;
+    }
+    .mobile_slogan{
+        display: none;
+    }
 }
 
 @media (max-width: 610px) {
     .custom-cursor {
         display: none !important;
+    }
+     .nonmobile_slogan {
+        display: none;
+    }
+    .mobile_slogan{
+        display: block;
+        font-size: 3.5rem !important ;
     }
 }
 
@@ -1366,4 +1384,16 @@ footer {
     flex-direction: row;
     justify-content: center;
     align-items: center;
+}
+.col-12.d-flex.flex-column.divColMdFooter.opacity-08.text-justify{
+    align-items: flex-start;
+}
+button.btn-modal.jsChangeColor.transparent,
+button.close{
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+}
+button.btn-modal.jsChangeColor.transparent{
+    cursor: pointer;
 }

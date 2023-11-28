@@ -521,9 +521,9 @@ if($dados['result']=="0"){
     </div>
     <div class=\"col-3 d-flex align-items-center add_div\">
     <div class=\"square_quant\">
-  <button class=\"decrease-quantity\" onclick=\"quant('sub','".$dados[$i]['id_carrinho']."','".$dados[$i]['quantidade']."')\"><i class=\"fa-solid fa-minus\"></i></button>
+  <button class=\"decrease-quantity\" onclick=\"quant('sub','".$dados[$i]['id_carrinho']."','".$dados[$i]['quantidade']."','".$dados[$i]['id_produto']."')\"><i class=\"fa-solid fa-minus\"></i></button>
   <span id=\"quantidade\">".$dados[$i]['quantidade']."</span>
-  <button class=\"increase-quantity\" onclick=\"quant('add','".$dados[$i]['id_carrinho']."','".$dados[$i]['quantidade']."')\"><i class=\"fa-solid fa-plus\"></i></button>
+  <button class=\"increase-quantity\" onclick=\"quant('add','".$dados[$i]['id_carrinho']."','".$dados[$i]['quantidade']."','".$dados[$i]['id_produto']."')\"><i class=\"fa-solid fa-plus\"></i></button>
   </div>
   </div>
   <div class=\"col-2 d-flex align-items-center preco_div\">
@@ -616,12 +616,12 @@ if(isset($_REQUEST["msg"])){
 ?>
 
 <script>
-     function quant(op,id,quant){
+     function quant(op,id,quant,idprod){
         quant = parseInt(quant);
          if (quant == "1" && op == 'sub'){
             excluir(id)
          }else{
-            location.href="../controller/controller_client.php?quantidade_op="+op+"&id="+id+"&quant="+quant;
+            location.href="../controller/controller_client.php?quantidade_op="+op+"&id="+id+"&quant="+quant+"&idprod="+idprod;
      }}
      
 

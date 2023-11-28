@@ -160,7 +160,7 @@ else{ //se o emial é repetido
 
 // update usuario -------------------------------------------------------------------------------
 
-if (isset($_REQUEST["update_dados"]) || isset($_SESSION["USER-NAME"])){    
+if (isset($_REQUEST["update_dados"]) && isset($_SESSION["USER-NAME"])){    
 
         
     $dados["id"] = $_REQUEST["update_dados"];
@@ -533,6 +533,7 @@ header("Location: ../model/mailget.php?celular=" . urlencode($cel). "&cpf=". url
                         }
                         $dados["quant"] = $qtd;
                         $dados["id"] = $_REQUEST["id"];
+                        $dados["id_prod"] = $_REQUEST["idprod"];
                         $resp = quantidade_op($dados);
 
                   
@@ -551,6 +552,17 @@ header("Location: ../model/mailget.php?celular=" . urlencode($cel). "&cpf=". url
                                 
                                 ?>
                                 <form action="../view/carrinho.php" name="form" id="myForm" method="POST">
+                                </form> 
+                                <script>
+                                document.getElementById('myForm').submit();
+                                </script>
+                                <?php  
+                                
+                            } else if($resp["result"]=='2'){//erro
+                                
+                                ?>
+                                <form action="../view/carrinho.php" name="form" id="myForm" method="POST">
+                                <input type="hidden" name="msg" value="FR29"> 
                                 </form> 
                                 <script>
                                 document.getElementById('myForm').submit();

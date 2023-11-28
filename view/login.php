@@ -22,14 +22,13 @@
     <!-- menu -->
     <header>
     <div class="menu">
-        <a class="logo" href="#">
+        <a class="logo" href="../index.php">
             Yara.
         </a>
         <div class="menu-links">
-            <a class="menu-link" href="#">Home</a>
+            <a class="menu-link" href="../index.php">Home</a>
             <a class="menu-link" href="shop.php">Shop</a>
-            <a class="menu-link" href="#">Sobre</a>
-            <a class="menu-link" href="#">Contato</a>
+            <a class="menu-link" href="sobre.html">Sobre</a>
         </div>
     </div>
     </header>
