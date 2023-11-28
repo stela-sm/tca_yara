@@ -1133,32 +1133,35 @@ ECHO "
     cartaoInput.addEventListener('input', mascaraCartao);
 
 
+
+    document.addEventListener('DOMContentLoaded', function() {
+    const valorfinal = parseFloat(document.querySelector('.valor_final').innerText.replace('R$', '').replace(',', '.'));
+
     function frete(valor) {
-    var frete = parseFloat(valor).toFixed(2);
+        var frete = parseFloat(valor).toFixed(2);
 
-    if (isNaN(frete)) {
-        document.getElementById('frete').innerHTML = "GRÁTIS";
-    } else {
-        document.getElementById('frete').innerHTML = "R$" + frete;
+        if (isNaN(frete)) {
+            document.getElementById('frete').innerHTML = "GRÁTIS";
+        } else {
+            document.getElementById('frete').innerHTML = "R$" + frete;
 
-        var elementoTd = document.querySelector('.valor_final');
-        var valorNoTd = parseFloat(elementoTd.innerText.replace('R$', '').replace(',', '.'));
-
-        if (isNaN(valorNoTd)) {
-            valorNoTd = 0; // Ou o valor original desejado
+            var novoValor = valorfinal + parseFloat(valor);
+            
+            var elementoTd = document.querySelector('.valor_final')
+            elementoTd.innerHTML = "R$" + novoValor.toFixed(2);
         }
-
-        var novoValor = valorNoTd + parseFloat(valor);
-        
-        elementoTd.innerHTML = "R$" + novoValor.toFixed(2);
     }
-}
 
-document.getElementById('meuInput').addEventListener('input', function () {
-            if (this.value.length > 3) {
-                this.value = this.value.slice(0, 3); // Limita a 3 caracteres
-            }
-        });
+    // Exemplo de chamada da função frete
+    // frete(10); // Substitua o argumento com o valor desejado
+});
+
+
+
+
+
+
+  </script>
 </script>
 
 
