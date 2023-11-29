@@ -240,7 +240,7 @@ function produtoNew($dados) {
 function produtoEdit($dados){
     require "conexao.php";
    
-            $sql= "UPDATE produtos SET nome = '{$dados['nome']}', instrucao = '{$dados['instrucao']}',  valor_uni = {$dados['preco']}, estoque = {$dados['estoque']}, datahora = now(), status = {$dados['status']}   WHERE ID_PRODUTO = '{$dados['id']}'";
+            $sql= "UPDATE produtos SET nome = '{$dados['nome']}',   valor_uni = {$dados['preco']}, estoque = {$dados['estoque']}, datahora = now(), status = {$dados['status']}   WHERE ID_PRODUTO = '{$dados['id']}'";
 
     $result = $conn->query($sql);
     return $result;
@@ -254,7 +254,7 @@ function produtoEdit($dados){
 function vitrineEdit($dados){
     require "conexao.php";
    
-            $sql= "UPDATE produtos SET nome = '{$dados['nome']}', descricao = '{$dados['descricao']}', ingredientes = '{$dados['ingredientes']}', datahora = now(), status = '{$dados['status']} '  WHERE ID_PRODUTO = '{$dados['id']}'";
+            $sql= "UPDATE produtos SET nome = '{$dados['nome']}', descricao = '{$dados['descricao']}', ingredientes = '{$dados['ingredientes']}', instrucao = '{$dados['instrucao']}', datahora = now(), status = '{$dados['status']} '  WHERE ID_PRODUTO = '{$dados['id']}'";
 
     $result = $conn->query($sql);
     return $result;

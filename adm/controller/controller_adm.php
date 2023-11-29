@@ -467,7 +467,7 @@ if ($result["result"]==1){
 <?php  
 }else{//falha
 ?>
-        <!-- <form action="../view/produtos_list.php?campo=" name="form" id="myForm" method="POST"> - -->
+        <form action="../view/produtos_list.php?campo=" name="form" id="myForm" method="POST"> - 
         <input type="hidden" name="msg" value="BD04">  <!-- "BD54" => "Registro apagado com sucesso.",-->
         </form> <!--envia um formulario com a variavel "msg", que é o código da mensagem de erro (ver view/msg.php)--> 
         <script>
@@ -505,14 +505,13 @@ if ($result["result"]==1){
     $dados["id"]=$_REQUEST["produto_edit"];
     $dados["nome"]=$_REQUEST["nome"];
     $dados["preco"]= str_replace(",",".",$_REQUEST["valor"]);
-    $dados["instrucao"]=$_REQUEST["instrucao"];
     $dados["estoque"]=$_REQUEST["estoque"];
     $dados["status"]=$_REQUEST["status"];
     require_once "../model/manager.php";
     $resp=produtoEdit($dados);
     if($resp==1){ //tudo certo
         ?>
-        <form action="../view/produtos_list.php?campo=" name="form" id="myForm" method="POST">
+         <form action="../view/produtos_list.php?campo=" name="form" id="myForm" method="POST"> 
         <input type="hidden" name="msg" value="BD50">  <!--"BD50" => "Operação realizada com sucesso.",-->
         </form> <!--envia um formulario com a variavel "msg", que é o código da mensagem de erro (ver view/msg.php)--> 
         <script>
@@ -548,7 +547,8 @@ if ($result["result"]==1){
     require_once "../model/manager.php";
     $dados["id"] = $_REQUEST["vitrine_edit"];
     $dados["nome"] = $_REQUEST["nome"];    
-    $dados["ingredientes"] = $_REQUEST["ingredientes"];    
+    $dados["ingredientes"] = $_REQUEST["ingredientes"];        
+    $dados["instrucao"]=$_REQUEST["instrucao"];
     $dados["descricao"] = $_REQUEST["descricao"]; 
     $dados["status"] = $_REQUEST["status"];
    

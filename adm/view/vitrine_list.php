@@ -201,7 +201,7 @@ $dados = listaProdutos($pesquisa);
 
 
             echo "<td class=\"TabelaAdmTd\"> <textarea  class=\"classe".$dados[$i]["id"]."\" disabled name=\"ingredientes\">". $dados[$i]["ingredientes"] ."</textarea></td>";
-            echo "<td class=\"TabelaAdmTd\"> <textarea  class=\"classe".$dados[$i]["id"]."\" disabled name=\"intrucao\">". $dados[$i]["instrucao"] ."</textarea></td>";
+            echo "<td class=\"TabelaAdmTd\"> <textarea  class=\"classe".$dados[$i]["id"]."\" disabled name=\"instrucao\">". $dados[$i]["instrucao"] ."</textarea></td>";
 
             echo "<td class=\"TabelaAdmTd\"> <label  for=\"img".$dados[$i]["id"]."\"><img style=\"width:3cm;\"src=\"../../view/media/".$dados[$i]["img"] ."\" alt=\"\"></label><input type=\"file\" disabled style=\"display:none;\" id=\"img".$dados[$i]["id"]."\"class=\"classe".$dados[$i]["id"]."\" name=\"img\"></td>";
            
