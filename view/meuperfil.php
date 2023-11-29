@@ -578,7 +578,7 @@ font-size: 1.1em;
                 <div class="row">
                     <div class="col-6 margin">
                         <div class="row">
-                            <p id="name">Olá, <?php   ECHO $_SESSION["USER-NOME"];?>!</p>
+                            <p id="name">Olá, <?php   echo $primeiraPalavra = explode(' ', $_SESSION["USER-NOME"])[0];?>!</p>
                         </div>
                     </div>
                 </div>
@@ -659,7 +659,7 @@ if($resp["result"] == 0){ echo "<br> Você não tem nenhum endreço cadatrado, r
               <div class=\"card-body body_card\">
                 <p class=\"card-text\">
                 CEP: <span class=\"cep\">".$resp[$i]["cep"]."</span><br>
-                <span class=\"rua\">".$resp[$i]["rua"].",</span><span class=\"numero\"> "; if (isset($resp[$i]["numero"])){echo 'nº'.$resp[$i]["numero"].", ";} if (isset($resp[$i]["bloco"])){echo 'b.'.$resp[$i]["bloco"].", ";} if (isset($resp[$i]["apto"])){echo 'apto.'.$resp[$i]["apto"].", ";} echo "</span><br>
+                <span class=\"rua\">".$resp[$i]["rua"].",</span><span class=\"numero\"> "; if ($resp[$i]["numero"]!==""){echo 'nº'.$resp[$i]["numero"].", ";} if ($resp[$i]["bloco"]!== ""){echo 'b.'.$resp[$i]["bloco"].", ";} if ($resp[$i]["apto"]!==""){echo 'apto.'.$resp[$i]["apto"].", ";} echo "</span><br>
                 <span class=\"bairro\">".$resp[$i]["bairro"].", </span><span class=\"cidade\">".$resp[$i]["cidade"]." - </span><span class=\"estado\">".$resp[$i]["estado"]."</span>
                 </p>
               </div>

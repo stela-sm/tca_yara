@@ -121,6 +121,19 @@ function admDelete($id){
 }
 
 
+function clienteDelete($id){
+    require "conexao.php";
+    $sql="DELETE FROM cliente WHERE ID_CLIENTE = {$id}";
+    $result = $conn -> query($sql);
+    $conn->close();
+    var_dump($result);
+     if ($result) {
+        echo "Cliente deletado com sucesso!";
+    } else {
+        echo "Erro ao deletar cliente: " . $conn->error;
+    }
+    return $result;
+}
 
 
 

@@ -787,7 +787,7 @@ echo"  <div class=\"custom-radio\">
       <div class="custom-radio margin-radio" data-toggle="modal" data-target="#modalcartao">
 
   <input type="radio" value="credito" id="pay1" name="opcoes_pay">
-  <label for="pay1" class="label_padrao">
+  <label for="pay1" id="ultimosDigitosLabel" class="label_padrao">
    Cartão de Crédito - confirmação imediata
   </label>
 </div>
@@ -889,6 +889,8 @@ if(isset($_REQUEST["msg"])){
 ?>
 
 <script>
+ 
+
      function quant(op,id,quant){
         quant = parseInt(quant);
          if (quant == "1" && op == 'sub'){
@@ -1030,11 +1032,11 @@ ECHO "
         </button>
       </div>
       <div class="modal-body">
-        <form action="">
+        <form action="" name="cartao_form">
           <table>
             <tr>
              <td><label for="" class="label_padrao_cartao">Número do cartão</label></td> 
-              <td><input type="number" id="cartaoinput" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="16" class="input_padrao"></td> 
+              <td><input type="number" id="cartaoinput" id="cartaoinput" oninput="atualizarUltimosDigitos(); javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="16" class="input_padrao"></td> 
             </tr>
             
             <tr>
@@ -1111,7 +1113,18 @@ ECHO "
     formulario.submit();
         return true;
     }
+
+    function atualizarUltimosDigitos() {
+        // Obtém o valor do input
+        var numeroCartao = document.getElementById('cartaoinput').value;
+
+        var ultimosDigitos = numeroCartao.slice(-4);
+
+        document.getElementById('ultimosDigitosLabel').innerText = 'Cartão de Crédito '+ ultimosDigitos +' - confirmação imediata ';
+    }
     function desmarcar() {
+      document.cartao_form.reset();
+      atualizarUltimosDigitos();
       var radios = document.getElementsByName('opcoes_pay');
 
       for (var i = 0; i < radios.length; i++) {
@@ -1130,27 +1143,9 @@ ECHO "
     }
 
    
+ 
 
 
-
-        // Certifique-se de que o DOM está pronto
-        $(document).ready(function () {
-            // Defina sua variável
-            var minhaVariavel = "valorInicial";
-
-            // Faça a requisição AJAX apenas uma vez
-            $.ajax({
-                type: "GET",
-                url: "frete.php",  // Substitua pelo caminho do seu script no servidor
-                data: { minhaVariavel: minhaVariavel },
-                success: function (response) {
-                    console.log("Variável alterada com sucesso!");
-                },
-                error: function (error) {
-                    console.error("Erro na requisição AJAX: ", error);
-                }
-            });
-        });
     </script>
 
 

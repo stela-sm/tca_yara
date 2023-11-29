@@ -114,7 +114,7 @@ $dados = listaClientes($pesquisa);
      function confirmDelete(id){
     var resp = confirm("Tem certeza que deseja deletar esse registro?");
     if(resp==true){
-            location.href="../../controller/controller_adm.php?adm_delete=1&id="+id;
+            location.href="../controller/controller_adm.php?cliente_delete=1&id="+id;
     }else{
         return null;
     }

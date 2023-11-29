@@ -746,7 +746,34 @@ if(isset($_REQUEST["cliente_new"])){ //se vier do admNew (criar adm)
 
 
 
+if(isset($_REQUEST["cliente_delete"])){
+     
+    $dados["id"] = $_REQUEST["id"];
+    require_once "../model/manager.php";
+    $resp = clienteDelete($_REQUEST["id"]);
+    if($resp==1){
+        ?>
+        <!-- <form action="../view/clientes_list.php?campo=" name="form" id="myForm" method="POST"> -->
+        <input type="hidden" name="msg" value="FR26">  <!--""BD02" => "Erro ao criar registro.",-->
+        </form> <!--envia um formulario com a variavel "msg", que é o código da mensagem de erro (ver view/msg.php)--> 
+        <script>
+        document.getElementById('myForm').submit();//envio automático submit()
+        </script>
+        <?php  
+    }else{
+        ?>
+        <!-- <form action="../view/clientes_list.php?campo=" name="form" id="myForm" method="POST"> -->
+        <input type="hidden" name="msg" value="BD50">  <!--"BD50" => "Operação realizada com sucesso.",-->
+        </form> <!--envia um formulario com a variavel "msg", que é o código da mensagem de erro (ver view/msg.php)--> 
+        <script>
+        document.getElementById('myForm').submit();//envio automático submit()
+        </script>
 
+
+
+        <?php  
+    }
+}
 
 
 

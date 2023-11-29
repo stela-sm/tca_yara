@@ -192,7 +192,7 @@ $dados = listaProdutos($pesquisa);
             <th class="TabelaAdmTh">Preço</th>
             <th class="TabelaAdmTh">Datahora</th>
             <th class="TabelaAdmTh">Status </th>
-            <th class="TabelaAdmTh"><a href="produto_new.php"><i class="fa-solid fa-user-plus" style=" color:  #4da037;"></i></a></th>
+            <th class="TabelaAdmTh"><a href="produto_new.php"><i class="fa-solid fa-circle-plus" style=" color:  #4da037;"></i></a></th>
             <th class="TabelaAdmTh">&nbsp;</th>
         </tr>
         <?php
