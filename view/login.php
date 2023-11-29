@@ -52,7 +52,7 @@
                     <input type="hidden" name="loginn" value="1">
                     <!-- email -->
                     <div class="form-group-email">
-                        <input type="email" name="login" class="username-inpt form-control" id="usuário" placeholder="Email ou CPF" autocomplete="off">
+                        <input type="text" name="login" class="username-inpt form-control" id="usuário" placeholder="Email ou CPF" autocomplete="off">
                     </div>
                     <br>
                     <!-- senha -->
