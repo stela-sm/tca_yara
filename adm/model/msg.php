@@ -36,6 +36,7 @@ $MSG = array(
     "BD54" => "Registro apagado com sucesso.",
     "BD55" => "Dados localizados com sucesso.",    
     "BD56" => "Senha alterada com sucesso.",
+    "BD57" => "Produto inativado.",
 
     /* série FR: operações com formulários  */
     // 00 a 49 ERROS

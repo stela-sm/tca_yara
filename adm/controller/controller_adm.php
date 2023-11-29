@@ -651,30 +651,6 @@ if ($resp ==1){ //tudo certo
 
 
 
-if(isset($_REQUEST["produto_delete"])){ //deleçao
-    $id = $_REQUEST["id"];
-    require_once "../model//manager.php";
-    $result = produtoDelete($id);
-    if($result==1){//tudo certo
-        ?>
-        <form action="../view/produtos_list.php?campo=" name="form" id="myForm" method="POST">
-        <input type="hidden" name="msg" value="BD54">  <!--"BD04" => "Erro ao apagar registro.",-->
-        </form> <!--envia um formulario com a variavel "msg", que é o código da mensagem de erro (ver view/msg.php)--> 
-        <script>
-        document.getElementById('myForm').submit();//envio automático submit()
-        </script>
-        <?php  
-    }else{//erro
-        ?>
-        <form action="../view/produtos_list.php?campo=" name="form" id="myForm" method="POST">
-        <input type="hidden" name="msg" value="BD04">  <!-- "BD54" => "Registro apagado com sucesso.",-->
-        </form> <!--envia um formulario com a variavel "msg", que é o código da mensagem de erro (ver view/msg.php)--> 
-        <script>
-        document.getElementById('myForm').submit();//envio automático submit()
-        </script>
-        <?php  
-    }
-}
 
 
 
@@ -685,6 +661,30 @@ if(isset($_REQUEST["produto_delete"])){ //deleçao
 
 
 
+if(isset($_REQUEST["produto_delete"])){ //deleçao
+    $id = $_REQUEST["id"];
+    require_once "../model//manager.php";
+    $result = produtoDelete($id);
+    if($result==1){//tudo certo
+        ?>
+       <form action="../view/produtos_list.php?campo=" name="form" id="myForm" method="POST">  
+        <input type="hidden" name="msg" value="BD57">  <!--"BD04" => "Erro ao apagar registro.",-->
+        </form> <!--envia um formulario com a variavel "msg", que é o código da mensagem de erro (ver view/msg.php)--> 
+        <script>
+        document.getElementById('myForm').submit();//envio automático submit()
+        </script>
+        <?php  
+    }else{//erro
+        ?>
+          <form action="../view/produtos_list.php?campo=" name="form" id="myForm" method="POST">  
+        <input type="hidden" name="msg" value="BD04">  <!-- "BD54" => "Registro apagado com sucesso.",-->
+        </form> <!--envia um formulario com a variavel "msg", que é o código da mensagem de erro (ver view/msg.php)--> 
+        <script>
+        document.getElementById('myForm').submit();//envio automático submit()
+        </script>
+        <?php  
+    }
+}
 
 //CLIENTES -------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -753,8 +753,8 @@ if(isset($_REQUEST["cliente_delete"])){
     $resp = clienteDelete($_REQUEST["id"]);
     if($resp==1){
         ?>
-        <!-- <form action="../view/clientes_list.php?campo=" name="form" id="myForm" method="POST"> -->
-        <input type="hidden" name="msg" value="FR26">  <!--""BD02" => "Erro ao criar registro.",-->
+        <form action="../view/clientes_list.php?campo=" name="form" id="myForm" method="POST">
+        <input type="hidden" name="msg" value="BD54">  <!--""BD02" => "Erro ao criar registro.",-->
         </form> <!--envia um formulario com a variavel "msg", que é o código da mensagem de erro (ver view/msg.php)--> 
         <script>
         document.getElementById('myForm').submit();//envio automático submit()
@@ -762,7 +762,7 @@ if(isset($_REQUEST["cliente_delete"])){
         <?php  
     }else{
         ?>
-        <!-- <form action="../view/clientes_list.php?campo=" name="form" id="myForm" method="POST"> -->
+        <form action="../view/clientes_list.php?campo=" name="form" id="myForm" method="POST">
         <input type="hidden" name="msg" value="BD50">  <!--"BD50" => "Operação realizada com sucesso.",-->
         </form> <!--envia um formulario com a variavel "msg", que é o código da mensagem de erro (ver view/msg.php)--> 
         <script>

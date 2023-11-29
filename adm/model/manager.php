@@ -125,13 +125,8 @@ function clienteDelete($id){
     require "conexao.php";
     $sql="DELETE FROM cliente WHERE ID_CLIENTE = {$id}";
     $result = $conn -> query($sql);
+    
     $conn->close();
-    var_dump($result);
-     if ($result) {
-        echo "Cliente deletado com sucesso!";
-    } else {
-        echo "Erro ao deletar cliente: " . $conn->error;
-    }
     return $result;
 }
 
@@ -292,7 +287,7 @@ function img($dados){
 function img_sec($dados){
     require "conexao.php";
    
-    $sql= "UPDATE produtos SET img_sec = '{$dados['img_sec']}' WHERE ID_PRODUTO = '{$dados['id']}'";
+    $sql= "UPDATE produtos SET img_sec = '{$dados['img_sec']}' WHERE ID_PRODUTO = '{$dados['id']}';";
     $result = $conn->query($sql);
     return $result;
     $conn-> close();
@@ -301,9 +296,15 @@ function img_sec($dados){
 
 function produtoDelete($id){
     require "conexao.php";
-    $sql= "UPDATE produtos SET status = '0' WHERE ID_PRODUTO = '$id'";
+    $sql= "UPDATE produtos SET status = '0' WHERE ID_PRODUTO = '{$id}';";
     $result = $conn -> query($sql);
+   
+
+    // Fechamento da conexão
     $conn->close();
+
+    // Retorno do resultado
+   
     return $result;
 }
 

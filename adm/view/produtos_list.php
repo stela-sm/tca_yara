@@ -13,7 +13,7 @@
     <title>Yara</title>
     <script>
         function confirmDelete(id){
-            var resp = confirm("Tem certeza que deseja deletar esse registro?");
+            var resp = confirm("Produtos não podem ser deletados, deseja transformá-lo em inativo?");
             if(resp==true){
                     location.href="../controller/controller_adm.php?produto_delete=1&id="+id;
             }else{
