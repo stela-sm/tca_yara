@@ -19,62 +19,73 @@
 <body class="fade-in">
     <!-- menu -->
     <header>
-      <div class="menu">
-          <a class="logo" href="../index.html">
-              Yara.
+        <div class="menu">
+          <a class="logo jsChangeColor" href="../index.php">
+            Yara.
           </a>
           <div class="menu-links">
-              <a class="menu-link a-home" href="../index.html">Home</a>
-              <a class="menu-link a-shop" href="shop.html">Shop</a>
-              <a class="menu-link a-sobre" href="sobre.html">Sobre</a>
-              <!-- ícone user -->
-              <a class="menu-link" href="../view/meuperfil.php">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="icon-user icon-tabler icon-tabler-user-circle" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                      <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                      <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0"></path>
-                      <path d="M12 10m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0"></path>
-                      <path d="M6.168 18.849a4 4 0 0 1 3.832 -2.849h4a4 4 0 0 1 3.834 2.855"></path>
-                  </svg>
-              </a>
-              <!-- ícone carrinho -->
-              <a class="menu-link" href="../view/carrinho.php">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="icon-bag icon-tabler icon-tabler-shopping-bag" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                      <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                      <path d="M6.331 8h11.339a2 2 0 0 1 1.977 2.304l-1.255 8.152a3 3 0 0 1 -2.966 2.544h-6.852a3 3 0 0 1 -2.965 -2.544l-1.255 -8.152a2 2 0 0 1 1.977 -2.304z"></path>
-                      <path d="M9 11v-5a3 3 0 0 1 6 0v5"></path>
-                   </svg>
-              </a>
-          </div>
-
-       <!-- área responsiva do menu -->
-       <button type="button" class="btn-modal" data-bs-toggle="modal" data-bs-target="#exampleModal" style="color: #000">
-           <!-- ícone menu -->
-           <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-menu-2" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-               <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-               <path d="M4 6l16 0"></path>
-               <path d="M4 12l16 0"></path>
-               <path d="M4 18l16 0"></path>
+            <a class="menu-link a-home  jsChangeColor" href="../index.php">Início</a>
+            <a class="menu-link a-shop  jsChangeColor" href="shop.php">Shop</a>
+            <a class="menu-link a-sobre jsChangeColor" href="#">Sobre</a>
+            <!-- ícone user -->
+            <a class="menu-link jsChangeColor" href="login.php">
+              <svg xmlns="http://www.w3.org/2000/svg" class="icon-user icon-tabler icon-tabler-user-circle" width="24"
+                height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
+                stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0"></path>
+                <path d="M12 10m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0"></path>
+                <path d="M6.168 18.849a4 4 0 0 1 3.832 -2.849h4a4 4 0 0 1 3.834 2.855"></path>
+              </svg>
+            </a>
+            <!-- ícone carrinho -->
+            <a class="menu-link jsChangeColor" href="carrinho.php">
+              <svg xmlns="http://www.w3.org/2000/svg" class="icon-bag icon-tabler icon-tabler-shopping-bag" width="24"
+                height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
+                stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                <path
+                  d="M6.331 8h11.339a2 2 0 0 1 1.977 2.304l-1.255 8.152a3 3 0 0 1 -2.966 2.544h-6.852a3 3 0 0 1 -2.965 -2.544l-1.255 -8.152a2 2 0 0 1 1.977 -2.304z">
+                </path>
+                <path d="M9 11v-5a3 3 0 0 1 6 0v5"></path>
+              </svg>
+            </a>
+        </div>
+        <!-- área responsiva do menu -->
+        <button type="button" class="btn-modal" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        <!-- ícone menu -->
+            <svg xmlns="http://www.w3.org/2000/svg" class="jsChangeColor icon icon-tabler icon-tabler-menu-2" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+            <path d="M4 6l16 0"></path>
+            <path d="M4 12l16 0"></path>
+            <path d="M4 18l16 0"></path>
             </svg>
-       </button>
-         <!-- modal -->
-         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-           <div class="modal-dialog">
-             <div class="modal-content">
-               <div class="modal-header">
-                 <button type="button" class="btn-close btn-modal" width="32" height="32" data-bs-dismiss="modal" aria-label="Close"></button>
-               </div>
-               <div class="modal-body">
-                     <a class="menu-link" href="../index.php">Home</a>
-                     <a class="menu-link" href="shop.php">Shop</a>
-                     <a class="menu-link" href="#">Sobre</a>
-                     <a class="menu-link" href="meuperfil.php">Login</a>
-                     <a class="menu-link" href="carrinho.php">Sacola</a>
-               </div>
-             </div>
-           </div>
-         </div>
+        </button>
+        <!-- modal -->
+        <div class="modal fade modalMenu__mob" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header modalJusti">
+              <button type="button" id="insideMobMenu__closeBTN" class="btn-close btn-modal mobileMenu__closeBTN" width="32" height="32" data-bs-dismiss="modal" aria-label="Close">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-x" width="24" height="24"viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                  <path d="M18 6l-12 12"/>
+                  <path d="M6 6l12 12"/>
+                </svg>
+              </button>
+            </div>
+            <div class="modal-body">
+              <a class="menu-link" href="../index.php">Início</a>
+              <a class="menu-link" href="shop.php">Shop</a>
+              <a class="menu-link" href="#">Sobre</a>
+              <a class="menu-link" href="meuperfil.php">Login</a>
+              <a class="menu-link" href="carrinho.php">Sacola</a>
+            </div>
+          </div>
+        </div>
       </div>
-    </header> 
+     </div>
+    </header>
 
     <!-- área imagem e texto 1-->
     <section class="custom-section-1">
@@ -90,7 +101,7 @@
     <section class="custom-section-2">
       <!-- imagem -->
       <div class="custom-img-2">
-        <img class="img-fluid" src="../assets/media/img1.png" alt="Imagem">
+        <img class="img-fluid" src="../assets/media/prod-pedras.jpg" alt="Imagem">
       </div>
       <!-- texto -->
       <div class="col-md-6 custom-col">
@@ -120,7 +131,7 @@
       </div>
       <!-- imagem -->
       <div class="custom-img-3">
-        <img class="img-fluid" src="../assets/media/img1.png" alt="Imagem">
+        <img class="img-fluid" src="../assets/media/prod-flor.jpeg" alt="Imagem">
       </div>
     </section>
 
@@ -129,7 +140,7 @@
       <div class="d-flex flex-column align-items-center">
           <!-- imagem -->
           <picture>
-            <img class="img-fluid fullscreen-bg-4" src="../assets/media/bg-4.png" alt="Sua Imagem">
+            <img class="img-fluid fullscreen-bg-4" src="../assets/media/bg-branco-planta.jpeg" alt="Sua Imagem">
           </picture>
           <picture>
             <img class="img-fluid fullscreen-4" src="../assets/media/bg-4-resp.jpeg" alt="Sua Imagem">
@@ -138,7 +149,7 @@
         <div class="custom-text-4 text-center-4 position-absolute d-flex align-items-center justify-content-center">
             <h4 class="title-4"> Transforme sua rotina, <br> realce sua beleza. </h4>
             <h3 class="sub-title-4"> Explore a coleção que potencializa <br> sua beleza diária </h3>
-            <a type="button" href="shop.php" class="btn btn-4">VER PRODUTOS</a>
+            <button type="button" class="btn btn-4">VER PRODUTOS</button>
         </div>
       </div>
     </section> 
@@ -157,7 +168,7 @@
                               <a class="opacity-08 link__footer" href="../index.html">Home</a>
                           </li>
                           <li class="opacity-08">
-                              <a class="opacity-08 link__footer" href="shop.php">Shop</a>
+                              <a class="opacity-08 link__footer" href="../view/shop.html">Shop</a>
                           </li>
                           <li class="opacity-08">
                               <a class="opacity-08 link__footer" href="#">Sobre</a>
@@ -257,7 +268,7 @@
                               <a class="opacity-08 link__footer" href="../index.html">Home</a>
                           </li>
                           <li class="opacity-08">
-                              <a class="opacity-08 link__footer" href="shop.html">Shop</a>
+                              <a class="opacity-08 link__footer" href="../view/shop.html">Shop</a>
                           </li>
                           <li class="opacity-08">
                               <a class="opacity-08 link__footer" href="#">Sobre</a>
@@ -284,15 +295,15 @@
                   <div class="column_footer piv">
                       <h4 class="rem1 uppercase bold">Privacidade</h4>
                       <ul class="list-unstyled">
-                        <li class="opacity-08">
-                          <a class="opacity-08 link__footer" href="assets/terms/ENTREGA.pdf">Entrega & Devolução</a>
-                      </li>
-                      <li class="opacity-08">
-                          <a class="opacity-08 link__footer" href="assets/terms/TERMOS.pdf">Termos & condições</a>
-                      </li>
-                      <li class="opacity-08">
-                          <a class="opacity-08 link__footer" href="assets/terms/PRIVACIDADE.pdf">Política de Privacidade</a>
-                      </li>
+                          <li class="opacity-08">
+                              <a class="opacity-08 link__footer" href="#">Entrega & Devolução</a>
+                          </li>
+                          <li class="opacity-08">
+                              <a class="opacity-08 link__footer" href="#">Termos & condições</a>
+                          </li>
+                          <li class="opacity-08">
+                              <a class="opacity-08 link__footer" href="#">Política de Privacidade</a>
+                          </li>
                       </ul>
                   </div>
               </div>
@@ -320,6 +331,43 @@
         btnModal.classList.remove('transparent');
       });
     });
+</script>
+
+<script>
+  window.addEventListener("scroll", function () {
+    var menu = document.querySelector(".menu") //menu
+    var links = document.querySelectorAll(".jsChangeColor") //classe dos links
+    var scrollPosition = window.scrollY; //posição do scroll vertical
+    var tel_tam = window.innerWidth //width da tela em px
+    if (tel_tam >= 1000) { //se width for maior ou igual a 1000px
+      if (scrollPosition > 150) { //se scroll for maior que 150px
+        menu.classList.add("fixed") //adiciona classe fixed no menu
+        menu.style.top = "0%" //deixa top = 0%
+        links.forEach((element, index) => { //forEach dos links
+          element.style.color = "#000"; //altera a cor para preto
+        })
+      } else { //se scrollPosition for < 150:
+        menu.classList.remove("fixed") //remove classe fixed do mennu
+        menu.style.top = "2%" //deixa top = 2%
+        links.forEach((element, index) => { //forEach dos links
+          element.style.color = "#fff"; //atera a cor para branco
+        })
+      }
+    } else { //se width da tela for menor que 1000px
+      menu.classList.remove("fixed") //remove a classe fixed para que o menu nunca fique fixed
+      menu.style.top = "2%" //deixa top = 2%
+      links.forEach((element, index) => { //forEach dos links
+        element.style.color = "#fff"; //atera a cor para branco
+      })
+    }
+  });
+  //FUNÇÃO DE ALTERAÇÃO DE COR AO INICIAR PÁGINA
+  function menu__onload() {
+    var links = document.querySelectorAll(".jsChangeColor")
+    links.forEach((element, index) => {
+      element.style.color = "#fff";
+    })
+  }
 </script>
 
 <!-- javascript endereço footer -->

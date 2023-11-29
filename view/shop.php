@@ -366,7 +366,10 @@ session_start();?>
         background-color: #000000ce;
     }
 
-
+    .modal.fade.show{
+        background-color: transparent;
+        backdrop-filter: blur(10px) !important;
+    }
     .color-white {
         color: white;
     }

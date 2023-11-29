@@ -47,8 +47,7 @@
         z-index: 99999999;
     }
     .modal.fade.show{
-        background-color: #00000057;
-        -webkit-backdrop-filter: blur(30px) !important;
+        background-color: transparent;
         backdrop-filter: blur(10px) !important;
     }
     /* menu */

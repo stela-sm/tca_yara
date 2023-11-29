@@ -31,7 +31,7 @@ html {
 .custom-img-1 {
   width: 100%;
   height: 100%;
-  filter: brightness(0.6) !important;
+  filter: brightness(0.5) !important;
 }
 
 .custom-text-1 {
@@ -60,9 +60,9 @@ html {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-left: 6.5%;
     padding-bottom: 4rem;
     padding-top: 6rem;
-    margin-left: 6.5%;
 }
 
 .custom-text-2 {
@@ -86,7 +86,8 @@ html {
     align-items: center;
     padding-bottom: 4rem;
     padding-top: 3rem;
-    margin-left: 5.5%;
+    margin-left: 5%;
+    overflow: hidden;
 }
 
 .col-md-6.px-8.custom-col picture{
@@ -125,19 +126,21 @@ html {
     height: 95vh !important;
     z-index: -2;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    filter: brightness(0.9) !important;
+
 }
 
 .custom-text-4 {
     position: absolute !important;
-    top: 30%;
+    top: 28%;
     z-index: 1;
-    width: 25%;
+    width: 50%;
     height: 38%;
     margin-right: 50%;
     font-family: 'Berkshire Swash' !important;
     align-items: center;
     justify-content: center;
-    background-color: #f0f0f0ea;
+    background-color: transparent;
     flex-direction: column;
 }
 
@@ -148,14 +151,14 @@ html {
 }
 
 h4.title-4{
-    font-size: 1.7rem !important;
+    font-size: 2.4rem !important;
 }
 
 .sub-title-4 {
     font-family: 'Questrial' !important;
     color: #1A3D1F;
     text-align: center;
-    font-size: 1rem;
+    font-size: 1.2rem;
 }
 
 .btn-4 {
@@ -169,17 +172,17 @@ h4.title-4{
     font-family: 'Questrial' !important;
     margin-top: 7%;
     font-size: 13px;
-    width: 60%;    
+    width: 48%;    
     transition: all .3s cubic-bezier(0.47, 0, 0.745, 0.715);
 }
 
-.btn-4:hover, .btn-4::before, .btn-4:active, .btn-4::after  {
+.btn-4:hover, .btn-4::before, .btn-4:active, .btn-4::after, .btn-4:visited  {
     background-color: #1a3d1fe2;
     outline: none !important;
     border: 1.6px solid #1a3d1fe2;
     color: #f0f0f0;
     font-weight: bold;
-    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    box-shadow: 0 8px 32px 0 #00000059;
 }
 
 /* responsividade section */
@@ -303,16 +306,16 @@ h4.title-4{
 
     .btn-4 {
         border: 1.6px solid #f0f0f0;
-        color: #000000 !important;
+        color: #f0f0f0;
         margin-top: 7%;
         font-size: 11px;
         width: 65%;    
     }
     
-    .btn-4:hover, .btn-4::before, .btn-4:active, .btn-4::after  {
+    .btn-4:hover, .btn-4::before, .btn-4:active, .btn-4::after, .btn-4:visited  {
         background-color: #1a3d1fe2;
         border: 1.6px solid #1a3d1fe2;
-        color: #f0f0f0 !important;
+        color: #f0f0f0;
     }
 
 }
@@ -325,18 +328,6 @@ h4.title-4{
 
 
 /* menu */
-.menu-fixed {
-    margin: 0px;
-    box-shadow: 0 0 30px rgba(0, 0, 0, .051);
-    top: 0;
-    height: 80px;
-    position: fixed;
-    background-color: hsla(0, 0%, 99.6%, .7) !important;
-    -webkit-backdrop-filter: blur(30px) !important;
-    backdrop-filter: blur(10px) !important;
-    z-index: 99999999;
-}
-
 .menu {
     background-color: transparent !important;
     position: absolute; 
@@ -348,6 +339,31 @@ h4.title-4{
     margin: 15px 0px 0px;
     top: 0;
     z-index: 9999999999;
+}
+
+.menu.fixed {
+    margin: 0px;
+    box-shadow: 0 0 30px rgba(0, 0, 0, .051);
+    top: 0;
+    height: 80px;
+    position: fixed;
+    background-color: hsla(0, 0%, 99.6%, .7) !important;
+    -webkit-backdrop-filter: blur(30px) !important;
+    backdrop-filter: blur(10px) !important;
+    z-index: 99999999;
+    color: #000 !important;
+}
+
+ .modal.fade.show {
+    background-color: transparent !important;
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+}
+
+.fade.show {
+    background-color: transparent !important;
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
 }
 
 .logo {
@@ -807,13 +823,12 @@ ul.list-unstyled li:hover {
 .fade-in-title {
     opacity: 0;
     animation: fadeIn 0.6s ease-in forwards;
-    animation-delay: 0.5s; 
+    animation-delay: 0.3s; 
   }
-  
   
 .fade-in {
     opacity: 0;
-    animation: fadeIn 0.4s ease-in forwards;
+    animation: fadeIn 0.5s ease-in-out forwards;
   }
   
   @keyframes fadeIn {
