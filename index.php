@@ -1084,14 +1084,14 @@
                     class="positionResp_Ind row d-flex flex-row justify-content-center align-center items-center flex-wrap">
                     <div class="col-md-6 px-8 img_index_info img_indexInfo1">
                         <picture>
-                            <img class="borderR-30 " style="width: 90% !important;transform: rotate(62deg);"
-                                src="https://mysa-skincare.com/uploads/transforms/bc9e33244d2d8a7bebbefa89bb319b9f/500/Hand-Wash_d3867277feb154defec9b24a5714fadb.webp"
+                        <img class="borderR-30 " style="width: 90% !important;transform:scale(1.5)"
+                                src="assets/media/caixinha_index.png"
                                 alt="Imagem">
                         </picture>
                     </div>
                     <div class="col-md-6 text-center box__right" style="width: 41.666667%;   padding-left: 4rem;
             ">
-                        <h4 class="title_section pb-1 TitleFont-primary text-justify">Meio Ambiente</h4>
+                        <h4 class="title_section pb-1 TitleFont-primary text-justify">Compromisso</h4>
                         <p style="   margin-left: 2%;"
                             class="desc_section BodyFont-primary text-justify txtcmmarginRight__in">Nossos produtos são
                             cuidadosamente elaborados a partir de ingredientes naturais, colhidos na essência da
@@ -1101,7 +1101,9 @@
                 </div>
             </div>
         </section>
-        <section class="Mvh_section info_section-I  scrollPart_anim4 box__right">
+        <br>
+        <br>
+        <br>        <section class="Mvh_section info_section-I  scrollPart_anim4 box__right">
             <div class="container-pb pb-28 secTotalIndex eficazImportant__secIndexanFooter">
                 <div
                     class="positionResp_Ind row d-flex flex-row justify-content-center align-center items-center flex-wrap">
@@ -1116,8 +1118,8 @@
                     </div>
                     <div class="col-md-6 px-8  img_index_info img_indexInfo2" style="width: 50% !important;">
                         <picture>
-                            <img class="borderR-30 " style="width: 90% !important;transform: rotate(-62deg);"
-                                src="https://mysa-skincare.com/uploads/transforms/bc9e33244d2d8a7bebbefa89bb319b9f/496/Cuticle-Oil_2020-10-15-085737_d3867277feb154defec9b24a5714fadb.webp"
+                        <img class="borderR-30 " style="width: 90% !important;transform:scale(1.2)"
+                                src="assets/media/produtos_index.png"
                                 alt="Imagem">
                         </picture>
                     </div>

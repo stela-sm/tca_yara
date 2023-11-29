@@ -223,7 +223,7 @@ h4.title-4{
         background-color: #f0f0f0 !important;
         flex-direction: column !important;
         border-radius: 30px 30px 0 0 !important;
-        margin-top: 25% !important;
+        margin-top: 60% !important;
         width: 100% !important;
         height: calc(50% + 8rem) !important;
         -webkit-box-shadow: 0px -5px 6px 2px rgba(60,64,67,0.09); 
@@ -326,6 +326,37 @@ h4.title-4{
     }
 }
 
+@media (max-width: 500px) {
+    /* section 1 */
+    .custom-section-1 {
+        height: 100%;
+        overflow: hidden;
+        z-index: 1;
+    }
+
+    .custom-text-1 {
+        position: absolute;
+        text-align: center;
+        justify-content: center !important;
+        color: #1A3D1F;
+        background-color: #f0f0f0 !important;
+        flex-direction: column !important;
+        border-radius: 30px 30px 0 0 !important;
+        margin-top: 50% !important;
+        width: 100% !important;
+        height: calc(50% + 15rem) !important;
+        -webkit-box-shadow: 0px -5px 6px 2px rgba(60,64,67,0.09); 
+        box-shadow: 0px -5px 6px 2px rgba(60,64,67,0.09);
+    }
+
+    /* section 2 */
+    .custom-section-2 {
+        z-index: 4;
+        margin-top: -40% !important;
+    }
+
+}
+
 
 /* menu */
 .menu {
@@ -351,13 +382,11 @@ h4.title-4{
     -webkit-backdrop-filter: blur(30px) !important;
     backdrop-filter: blur(10px) !important;
     z-index: 99999999;
-    color: #000 !important;
 }
 
- .modal.fade.show {
+.modal.fade.show {
     background-color: transparent !important;
-    -webkit-backdrop-filter: none !important;
-    backdrop-filter: none !important;
+    backdrop-filter: blur(10px) !important;
 }
 
 .fade.show {
@@ -370,15 +399,14 @@ h4.title-4{
     font-family: 'Berkshire Swash';
     font-size: 2.14rem;
     text-decoration: none !important;
-    color: #f0f0f0 !important;
+    color: #000;
     cursor: pointer;
 }
 
-.logo:hover, .logo:active, .logo::before, .logo::after {
+.logo:hover {
     font-family: 'Berkshire Swash';
     font-size: 2.14rem;
     text-decoration: none !important;
-    color: #f0f0f0 !important;
 }
 
 .menu-links {
@@ -394,7 +422,8 @@ h4.title-4{
     margin-left: 30px;
     font-family: "Questrial", sans-serif;
     font-size: 14px;
-    color: #f0f0f0 !important;
+    font-weight: bold;
+    color: #000;
     text-decoration: none !important;
 }
 
@@ -403,12 +432,10 @@ h4.title-4{
     font-size: 14px;
     font-weight: bold;
     text-decoration: none;
-    color: #f0f0f0 !important;
-    text-decoration-color: #f0f0f0 !important;
 }
 
 a.menu-link:hover {
-    color: #f0f0f0 !important;
+    color: #000 !important;
     text-decoration: underline;
 }
 
@@ -417,35 +444,48 @@ a.logo:hover {
     text-decoration: underline;
 }
 
-.a-home, .a-shop, .a-sobre {
+.a-home,
+.a-shop,
+.a-sobre {
     position: relative;
-    color: #f0f0f0 !important;
+    color: #000;
     text-decoration: underline;
 }
 
-.a-home:before, .a-shop:before, .a-sobre:before {
-  content: "";
-  position: absolute;
-  width: 100%;
-  height: 2px;
-  bottom: -1px;
-  left: 0;
-  background-color: #000 !important;
-  visibility: hidden;
-  -webkit-transform: scaleX(0);
-  transform: scaleX(0);
-  -webkit-transition: all 0.3s ease-in-out 0s;
-  transition: all 0.3s ease-in-out 0s;
+.a-home:before,
+.a-shop:before,
+.a-sobre:before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    bottom: -1px;
+    left: 0;
+    background-color: #000;
+    visibility: hidden;
+    -webkit-transform: scaleX(0);
+    transform: scaleX(0);
+    -webkit-transition: all 0.3s ease-in-out 0s;
+    transition: all 0.3s ease-in-out 0s;
 }
 
-.a-home:hover:before, .a-shop:hover:before, .a-sobre:hover:before {
-  visibility: visible;
-  -webkit-transform: scaleX(1);
-  transform: scaleX(1);
+.a-home:hover:before,
+.a-shop:hover:before,
+.a-sobre:hover:before {
+    visibility: visible;
+    -webkit-transform: scaleX(1);
+    transform: scaleX(1);
 }
 
-.icon-bag, .icon-user {
+.icon-bag,
+.icon-user {
     margin-top: -10px;
+}
+
+.modalJusti {
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
 }
 
 /* responsividade menu */
@@ -820,6 +860,7 @@ ul.list-unstyled li:hover {
         display: block;
     }
 }
+
 .fade-in-title {
     opacity: 0;
     animation: fadeIn 0.6s ease-in forwards;
