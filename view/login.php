@@ -115,7 +115,7 @@
                     <div class="form-check align-items-center">
                         <input type="checkbox" class="form-check-input" id="termosDeUso" require>
                         <label class="form-check-label" for="termosDeUso" require>
-                            Concordo com os <a href="#" style="color:#1A3D1F; text-decoration: none; font-weight: bold;">Termos de Uso</a>
+                            Concordo com os <a href="../assets/terms/TERMOS.pdf" style="color:#1A3D1F; text-decoration: none; font-weight: bold;">Termos de Uso</a>
                     </div>
                     <!-- botão cadastro-->
                     <button type="submit" class="btn btn-primary w-100" style="margin-top: 30px;">Cadastrar</button>
