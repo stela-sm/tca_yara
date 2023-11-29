@@ -2,11 +2,11 @@
 
 session_start();
 
-    if (isset($_REQUEST["adicionar_prod"])){
+    if (isset($_REQUEST["adicionar_prod"]) && (isset($_REQUEST["cliente"]))){
         require '../model/manager.php';
         $dados["produto"] = $_REQUEST["id"];
         $dados["qnt"] = $_REQUEST["qtd"];
-        if(isset($_REQUEST["cliente"])){$dados["cliente"]=$_REQUEST["cliente"];}else{$dados["cliente"]="";};
+        $dados["cliente"]=$_REQUEST["cliente"];
         $dados["preco"] = $_REQUEST["preco"];
         $dados["nome"] = $_REQUEST["nome"];
         $resp = adicionar_prod($dados);
@@ -44,6 +44,15 @@ session_start();
                             <?php  
                             
                         }
+                }else{
+                    ?>
+                    <form action="../view/login.php" name="form" id="myForm" method="POST">
+                   <input type="hidden" name="msg" value="OA04"> 
+                   </form> 
+                   <script>
+                   document.getElementById('myForm').submit();
+                   </script>
+                   <?php 
                 }
 
                 if (isset($_REQUEST["endereco_new_checkout"])){ 
