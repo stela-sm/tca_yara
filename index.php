@@ -105,7 +105,7 @@
     }
 
     a.menu-link:hover {
-        color: #000 !important;
+        color: var(--soft-green) !important;
         text-decoration: underline;
     }
 
@@ -118,7 +118,7 @@
     .a-shop,
     .a-sobre {
         position: relative;
-        color: #000;
+        color: var(--soft-green);
         text-decoration: underline;
     }
 
@@ -131,7 +131,7 @@
         height: 2px;
         bottom: -1px;
         left: 0;
-        background-color: #000;
+        background-color: var(--soft-green);
         visibility: hidden;
         -webkit-transform: scaleX(0);
         transform: scaleX(0);
