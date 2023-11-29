@@ -11,6 +11,7 @@
 .modal.fade{
     filter: none;
     background: transparent;
+    display: none;
 }
 ::selection {
     background-color: #87ab8548;

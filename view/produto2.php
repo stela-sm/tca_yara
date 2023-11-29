@@ -41,6 +41,9 @@ echo '<script>window.location.href = "shop.php";</script>';
 }else{
 ?>
 <style>
+  .borderRadius30{
+    border-radius: 30px;
+  }
   /*MENU*/
 
   .menu.fixed {
@@ -301,6 +304,19 @@ echo '<script>window.location.href = "shop.php";</script>';
     justify-content: center;
   }
 
+  @media (min-width:768px) and (max-width: 990px) {
+    .prod_desc{
+      display: none;
+    }
+  
+  }
+  @media (max-width:768px)  {
+    .borderRadius30, .img__produto_pag{
+      margin-bottom: 20px !important;
+    }
+  
+  
+  }
   @media (max-width: 1370px) {
     .product-details {
       transform: scale(1);
@@ -308,6 +324,7 @@ echo '<script>window.location.href = "shop.php";</script>';
 
     .transformAutoImg {
       transform: scale(1) !important;
+      
     }
   }
   .mb-4 {
@@ -599,7 +616,7 @@ echo '<script>window.location.href = "shop.php";</script>';
 
   .produto {
     margin-top: calc(51.60px + 4vh);
-    margin-left: 0%;
+    margin-left: -2%;
     padding-bottom: 2%;
     margin-top: 5cm;
     margin-bottom: 5cm;
@@ -634,6 +651,10 @@ transition: 0.3S;
     to {
       opacity: 1;
     }
+  }
+  .img-fluid{
+    padding-right: 0% !important;
+    max-width: 90%;
   }
 </style>
 <body class="fade-in">
@@ -727,9 +748,9 @@ transition: 0.3S;
           <input type=\"hidden\" value=\"".$dados["nome"]."\" name=\"nome\">          
           ";
           ?>
-          <img class="transformAutoImg img-fluid" width="120%"
+          <img class="transformAutoImg img-fluid borderRadius30" width="120%"
             src="media/<?php echo $dados["img"]; ?>"
-            class="img-fluid" alt="Imagem do produto">
+            class="img-fluid " alt="Imagem do produto">
         </div>
         <div class="col-md-6 col-12 mb-3 prod_dec pl-6 p-7">
           <div class="product-details">
