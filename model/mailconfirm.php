@@ -10,7 +10,7 @@ if($_REQUEST["payway"]=="credito"){
 
 $params=array(
 'token' => 'kwyiyiznivdl6388',
-'to' => '11963220905',
+'to' => $_REQUEST["cel"],
 'body' => $body
 );
 $curl = curl_init();

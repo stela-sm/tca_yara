@@ -44,7 +44,7 @@ session_start();
                             <?php  
                             
                         }
-                }else{
+                }else if ((isset($_REQUEST["adicionar_prod"])) && (!isset($_REQUEST["cliente"])) ) {
                     ?>
                     <form action="../view/login.php" name="form" id="myForm" method="POST">
                    <input type="hidden" name="msg" value="OA04"> 
@@ -54,7 +54,7 @@ session_start();
                    </script>
                    <?php 
                 }
-
+            
                 if (isset($_REQUEST["endereco_new_checkout"])){ 
 
                     $dados["cliente"] =  $_REQUEST["id_cliente"];

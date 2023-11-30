@@ -317,6 +317,43 @@ if (isset($_REQUEST["endereco_edit_checkout"])){
             
         }
     }
+
+
+
+   if (isset($_REQUEST["excluir_endereco_checkout"])){
+    $dados =  $_REQUEST["excluir_endereco_checkout"];
+                require '../model/manager.php';
+                $resp=enderecoDelete($dados);
+               
+                    if ($resp == '1') { //SUCESSO
+                        
+                        ?>
+                      <form action="../view/checkout.php" name="form" id="myForm" method="POST"> 
+                                             
+                        <input type="hidden" name="msg" value="BD57"> 
+                        </form>  
+                        <script>
+                        document.getElementById('myForm').submit();
+                        </script>
+                        <?php  
+                      
+                
+                        }else if($resp=='0'){//erro
+                            
+                            ?>
+                           <form action="../view/checkout.php" name="form" id="myForm" method="POST"> 
+                            <input type="hidden" name="msg" value="BD04"> 
+                            <input type="hidden" name="autenticado" value="1">  
+                            </form> 
+                            <script>
+                            document.getElementById('myForm').submit();
+                            </script>
+                            <?php  
+                            
+                        }
+                        
+                    
+   }
     
 if (isset($_REQUEST["endereco_new"])){ 
 

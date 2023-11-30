@@ -1,7 +1,7 @@
 <?php
 //validar se o login foi feito da maneira correta
 session_start();
-if(!isset($_SESSION["ADM-ID"]) || empty($_SESSION["ADM-ID"])){ //se a variavel de sessão "adm-id" não estiver setada ou vazia(se a sessão não foi startada), então:
+ //se a variavel de sessão "adm-id" não estiver setada ou vazia(se a sessão não foi startada), então:
 
    
    
@@ -87,7 +87,6 @@ if(!isset($_SESSION["ADM-ID"]) || empty($_SESSION["ADM-ID"])){ //se a variavel d
         }
         }
         }
-}else{ //caso exista sessão 
 
     if(isset($_SESSION["ADM-ID"])){
    
@@ -353,31 +352,6 @@ if(isset($_REQUEST["adm_new"])){ //se vier do admNew (criar adm)
 
 
 
-
-if(isset($_REQUEST["adm_delete"])){ //deleçao
-    $id = $_REQUEST["id"];
-    require_once "../model//manager.php";
-    $result = admDelete($id);
-    if($result==1){//tudo certo
-        ?>
-        <form action="../view/adm_list.php?campo=" name="form" id="myForm" method="POST">
-        <input type="hidden" name="msg" value="BD54">  <!--"BD04" => "Erro ao apagar registro.",-->
-        </form> <!--envia um formulario com a variavel "msg", que é o código da mensagem de erro (ver view/msg.php)--> 
-        <script>
-        document.getElementById('myForm').submit();//envio automático submit()
-        </script>
-        <?php  
-    }else{//erro
-        ?>
-        <form action="../view/adm_list.php?campo=" name="form" id="myForm" method="POST">
-        <input type="hidden" name="msg" value="BD04">  <!-- "BD54" => "Registro apagado com sucesso.",-->
-        </form> <!--envia um formulario com a variavel "msg", que é o código da mensagem de erro (ver view/msg.php)--> 
-        <script>
-        document.getElementById('myForm').submit();//envio automático submit()
-        </script>
-        <?php  
-    }
-}
 
 
 
@@ -656,7 +630,7 @@ if ($resp ==1){ //tudo certo
 
 
 
-}
+
     
 
 
@@ -686,6 +660,32 @@ if(isset($_REQUEST["produto_delete"])){ //deleçao
     }
 }
 
+
+
+if(isset($_REQUEST["adm_delete"])){ //deleçao
+    $id = $_REQUEST["id"];
+    require_once "../model//manager.php";
+    $result = admDelete($id);
+    if($result==1){//tudo certo
+        ?>
+        <form action="../view/adm_list.php?campo=" name="form" id="myForm" method="POST">
+        <input type="hidden" name="msg" value="BD54">  <!--"BD04" => "Erro ao apagar registro.",-->
+        </form> <!--envia um formulario com a variavel "msg", que é o código da mensagem de erro (ver view/msg.php)--> 
+        <script>
+        document.getElementById('myForm').submit();//envio automático submit()
+        </script>
+        <?php  
+    }else{//erro
+        ?>
+        <form action="../view/adm_list.php?campo=" name="form" id="myForm" method="POST">
+        <input type="hidden" name="msg" value="BD04">  <!-- "BD54" => "Registro apagado com sucesso.",-->
+        </form> <!--envia um formulario com a variavel "msg", que é o código da mensagem de erro (ver view/msg.php)--> 
+        <script>
+        document.getElementById('myForm').submit();//envio automático submit()
+        </script>
+        <?php  
+    }
+}
 //CLIENTES -------------------------------------------------------------------------------------------------------------------------------------------------
 
 

@@ -891,21 +891,15 @@ if(isset($_REQUEST["msg"])){
 <script>
  
 
-     function quant(op,id,quant){
-        quant = parseInt(quant);
-         if (quant == "1" && op == 'sub'){
-            excluir(id)
-         }else{
-            location.href="../controller/controller_client.php?quantidade_op="+op+"&id="+id+"&quant="+quant;
-     }}
+     
      
 
      function excluir(id){
-    if(confirm("Deseja excluir esse produto do seu carrinho?") == true){
-        location.href="../controller/controller_client.php?excluir_prod="+id;
-        
-    }else{
-       return false;
+    var resp = confirm('Deseja excluir este este endereço?');
+    if (resp == true) {
+        location.href = `../controller/controller_client.php?excluir_endereco_checkout=${id}`;
+    } else {
+        return null;
     }
 }
 
@@ -1061,7 +1055,7 @@ ECHO "
                 <option value="12">12</option>
               </select>
               <select name="month" id="" class="select_padrao">
-                <option value="1">2023</option>
+                
                 <option value="2">2024</option>
                 <option value="3">2025</option>
                 <option value="4">2026</option>
