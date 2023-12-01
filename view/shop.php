@@ -698,7 +698,7 @@ session_start();?>
 .menu-link {
     margin-left: 30px;
     font-family: 'Questrial', sans-serif;
-    font-size: 14px;
+    font-size: 16px;
     font-weight: bold;
     color: white;
     text-decoration: none !important;
@@ -706,7 +706,7 @@ session_start();?>
 
 .menu-link:hover {
     font-family: "Questrial", sans-serif;
-    font-size: 14px;
+    font-size: 16px;
     font-weight: bold;
     text-decoration: none;
 }

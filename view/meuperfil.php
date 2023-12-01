@@ -466,6 +466,19 @@ font-size: 1.1em;
         font-size: 1.2em;
         line-height:1.6cm ;
     }
+    #name{
+        line-height: 10cm;
+    }
+    }
+
+    @media (min-width: 768px) and (max-width: 900px){
+        #name{
+            line-height: 10cm;
+        }
+    } @media (min-width: 900px) and (max-width: 1200px){
+        #name{
+            line-height: 5cm;
+        }
     }
     @media (max-width: 465px) {
     #name{

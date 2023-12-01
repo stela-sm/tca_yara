@@ -399,7 +399,7 @@ h4.title-4{
     font-family: 'Berkshire Swash';
     font-size: 2.14rem;
     text-decoration: none !important;
-    color: #000;
+    color: WHITE;
     cursor: pointer;
 }
 
@@ -421,21 +421,21 @@ h4.title-4{
 .menu-link {
     margin-left: 30px;
     font-family: "Questrial", sans-serif;
-    font-size: 14px;
+    font-size: 16px;
     font-weight: bold;
-    color: #000;
+    color: WHITE;
     text-decoration: none !important;
 }
 
 .menu-link:hover {
     font-family: "Questrial", sans-serif;
-    font-size: 14px;
+    font-size: 16px;
     font-weight: bold;
     text-decoration: none;
 }
 
 a.menu-link:hover {
-    color: #000 !important;
+    color: #87ab85 !important;
     text-decoration: underline;
 }
 
@@ -448,7 +448,7 @@ a.logo:hover {
 .a-shop,
 .a-sobre {
     position: relative;
-    color: #000;
+    color: white;
     text-decoration: underline;
 }
 
@@ -461,7 +461,7 @@ a.logo:hover {
     height: 2px;
     bottom: -1px;
     left: 0;
-    background-color: #000;
+    background-color: #87ab85;
     visibility: hidden;
     -webkit-transform: scaleX(0);
     transform: scaleX(0);

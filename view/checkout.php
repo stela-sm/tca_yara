@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Yara | Meu Carrinho </title>
     <link rel="shortcut icon" href="../favicon/yara.ico" type="image/x-icon"><link rel="shortcut icon" href="../favicon/yara.ico" type="image/x-icon">
-    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
 
-  </head>
 <body class="fade-in">
 <html lang="en">
 <?php
@@ -98,7 +98,15 @@
     top: 0;
     z-index: 9999999999;
 }
-
+@media (min-width: 768px) and (max-width: 900px){
+        #name{
+            line-height: 10cm;
+        }
+    } @media (min-width: 900px) and (max-width: 1200px){
+        #name{
+            line-height: 5cm;
+        }
+    }
 .logo {
     font-family: 'Berkshire Swash';
     font-size: 2.14rem;
@@ -181,6 +189,8 @@ a.logo:hover {
 }
 
 /* responsividade menu */
+
+/* responsividade menu */
 @media (min-width: 650px) {
     .btn-modal {
         display: none;
@@ -203,6 +213,12 @@ a.logo:hover {
         margin: 20px 0;
         text-align: center;
         text-decoration: none !important;
+        color: #000 !important;
+    }
+
+    a.menu-link:hover {
+        color: #000 !important;
+        text-decoration: underline;
     }
 
     .btn-modal, .btn-modal:active, .btn-modal:hover, .btn-modal::before {
@@ -211,7 +227,7 @@ a.logo:hover {
         border: transparent;
         box-shadow: none;
         outline: none;
-        color: #000;
+        color: #f0f0f0 !important;
     }
 
     .btn-modal.transparent {
@@ -234,6 +250,7 @@ a.logo:hover {
         transform: translate(0, 0);
     }
 } 
+
             :root {
                 --white: #f9f9f9;
                 --green: #1A3D1F;

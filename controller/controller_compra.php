@@ -2,59 +2,8 @@
 
 session_start();
 
-    if (isset($_REQUEST["adicionar_prod"]) && (isset($_REQUEST["cliente"]))){
-        require '../model/manager.php';
-        $dados["produto"] = $_REQUEST["id"];
-        $dados["qnt"] = $_REQUEST["qtd"];
-        $dados["cliente"]=$_REQUEST["cliente"];
-        $dados["preco"] = $_REQUEST["preco"];
-        $dados["nome"] = $_REQUEST["nome"];
-        $resp = adicionar_prod($dados);
-        if ($resp["result"] == '1') { //SUCESSO
-            ?>
-                   <form action="../view/carrinho.php" name="form" id="myForm" method="POST"> 
-                 
-                        </form>  
-                        <script>
-                        document.getElementById('myForm').submit();
-                        </script>
-                        <?php  
-                      
-                
-                        }else if($resp["result"]=='0'){//erro
-                            
-                            ?>
-                             <form action="../view/login.php" name="form" id="myForm" method="POST">
-                            <input type="hidden" name="msg" value="OA04"> 
-                            </form> 
-                            <script>
-                            document.getElementById('myForm').submit();
-                            </script>
-                            <?php  
-                            
-                        }   else if($resp["result"]=='2'){//erro
-                            
-                            ?>
-                             <form action="../view/produto2.php?id=<?php echo $_REQUEST["id"];?>" name="form" id="myForm" method="POST"> 
-                            <input type="hidden" name="msg" value="FR29"> 
-                            </form> 
-                            <script>
-                            document.getElementById('myForm').submit();
-                            </script>
-                            <?php  
-                            
-                        }
-                }else if ((isset($_REQUEST["adicionar_prod"])) && (!isset($_REQUEST["cliente"])) ) {
-                    ?>
-                    <form action="../view/login.php" name="form" id="myForm" method="POST">
-                   <input type="hidden" name="msg" value="OA04"> 
-                   </form> 
-                   <script>
-                   document.getElementById('myForm').submit();
-                   </script>
-                   <?php 
-                }
-            
+    
+
                 if (isset($_REQUEST["endereco_new_checkout"])){ 
 
                     $dados["cliente"] =  $_REQUEST["id_cliente"];
@@ -105,7 +54,7 @@ session_start();
 
 
 
-                    if (isset($_REQUEST["efetuar_pedido"])){ 
+                   else if (isset($_REQUEST["efetuar_pedido"])){ 
 
                         $dados["cliente"] =  $_REQUEST["efetuar_pedido"];
                         $dados["endereco"] =  $_REQUEST["opcoes_endereco"];
@@ -143,5 +92,56 @@ session_start();
                         
                         }}
     
-                    
+                       else if (isset($_REQUEST["adicionar_prod"]) && (isset($_REQUEST["cliente"])) && $_REQUEST["cliente"]!==""){
+                            require '../model/manager.php';
+                            $dados["produto"] = $_REQUEST["id"];
+                            $dados["qnt"] = $_REQUEST["qtd"];
+                            $dados["cliente"]=$_REQUEST["cliente"];
+                            $dados["preco"] = $_REQUEST["preco"];
+                            $dados["nome"] = $_REQUEST["nome"];
+                            $resp = adicionar_prod($dados);
+                            if ($resp["result"] == '1') { //SUCESSO
+                                ?>
+                                       <form action="../view/carrinho.php" name="form" id="myForm" method="POST"> 
+                                     
+                                            </form>  
+                                            <script>
+                                            document.getElementById('myForm').submit();
+                                            </script>
+                                            <?php  
+                                          
+                                    
+                                            }else if($resp["result"]=='0'){//erro
+                                                
+                                                ?>
+                                                 <form action="../view/login.php" name="form" id="myForm" method="POST">
+                                                <input type="hidden" name="msg" value="OA04"> 
+                                                </form> 
+                                                <script>
+                                                document.getElementById('myForm').submit();
+                                                </script>
+                                                <?php  
+                                                
+                                            }   else if($resp["result"]=='2'){//erro
+                                                
+                                                ?>
+                                                 <form action="../view/produto2.php?id=<?php echo $_REQUEST["id"];?>" name="form" id="myForm" method="POST"> 
+                                                <input type="hidden" name="msg" value="FR29"> 
+                                                </form> 
+                                                <script>
+                                                document.getElementById('myForm').submit();
+                                                </script>
+                                                <?php  
+                                                
+                                            }
+                                    }else{
+                                        ?>
+                                        <form action="../view/login.php" name="form" id="myForm" method="POST">
+                                       <input type="hidden" name="msg" value="OA04"> 
+                                       </form> 
+                                       <script>
+                                       document.getElementById('myForm').submit();
+                                       </script>
+                                       <?php 
+                                    }
         ?>

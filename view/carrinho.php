@@ -7,7 +7,8 @@
 
     
     <link rel="shortcut icon" href="../favicon/yara.ico" type="image/x-icon"><link rel="shortcut icon" href="../favicon/yara.ico" type="image/x-icon">
-        
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
         <script src="js/cep_ajax.js"></script>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
@@ -53,6 +54,16 @@
 
                   
         <style>
+            @media (min-width: 768px) and (max-width: 900px){
+        #name{
+            line-height: 10cm;
+            font-size: 0.8rem;
+        }
+    } @media (min-width: 900px) and (max-width: 1200px){
+        #name{
+            line-height: 5cm;
+        }
+    }
             footer{
                 position: fixed !important;
     bottom: 0 !important;
@@ -152,6 +163,8 @@ a.logo:hover {
 }
 
 /* responsividade menu */
+
+/* responsividade menu */
 @media (min-width: 650px) {
     .btn-modal {
         display: none;
@@ -174,6 +187,12 @@ a.logo:hover {
         margin: 20px 0;
         text-align: center;
         text-decoration: none !important;
+        color: #000 !important;
+    }
+
+    a.menu-link:hover {
+        color: #000 !important;
+        text-decoration: underline;
     }
 
     .btn-modal, .btn-modal:active, .btn-modal:hover, .btn-modal::before {
@@ -182,7 +201,7 @@ a.logo:hover {
         border: transparent;
         box-shadow: none;
         outline: none;
-        color: #000;
+        color: #f0f0f0 !important;
     }
 
     .btn-modal.transparent {
@@ -414,7 +433,7 @@ box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
           <div class="menu-links">
               <a class="menu-link a-home" href="../index.php">Home</a>
               <a class="menu-link a-shop" href="shop.php">Shop</a>
-              <a class="menu-link a-sobre" href="">Sobre</a>
+              <a class="menu-link a-sobre" href="sobre.html">Sobre</a>
               <!-- ícone user -->
               <a class="menu-link" href="meuperfil.php">
                   <svg xmlns="http://www.w3.org/2000/svg" class="icon-user icon-tabler icon-tabler-user-circle" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -454,9 +473,9 @@ box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
                <div class="modal-body">
                      <a class="menu-link" href="../index.html">Home</a>
                      <a class="menu-link" href="shop.php">Shop</a>
-                     <a class="menu-link" href="#">Sobre</a>
-                     <a class="menu-link" href="#">Login</a>
-                     <a class="menu-link" href="#">Sacola</a>
+                     <a class="menu-link" href="sobre.html">Sobre</a>
+                     <a class="menu-link" href="meuperfil.php">Login</a>
+                     <a class="menu-link" href="carrinho.php">Sacola</a>
                </div>
              </div>
            </div>
