@@ -622,7 +622,7 @@ font-size: 1.1em;
                             <li  class="linkmenu">
                             <a onclick="endereco('0')">  <i style="color:var(--green); margin-right:20px" class="fa-solid fa-location-dot"></i></a></li>
                             <li  class="linkmenu">
-                            <a  href="historico.php" target="iframe_perfil" onclick="endereco('1')">  <i style="color:var(--green); margin-right:20px" class="fa-solid fa-clipboard-list"></i></a></li>
+                            <a  href="historico.php?id=<?php echo $_SESSION["USER-ID"];?>" target="iframe_perfil" onclick="endereco('1')">  <i style="color:var(--green); margin-right:20px" class="fa-solid fa-clipboard-list"></i></a></li>
                             <li  class="linkmenu">
                                 <i style="color:var(--green); margin-right:20px" class="fa-solid fa-key"></i></li>
                                 <li  class="linkmenu" onclick="ExecutaLogout()">
@@ -636,7 +636,6 @@ font-size: 1.1em;
                   
              
 </head>
-<body>   
 
 
 

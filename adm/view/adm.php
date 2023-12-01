@@ -7,6 +7,10 @@ session_start();
       <meta charset="UTF-8">
       <link rel="shortcut icon" href="../../favicon/yara.ico" type="image/x-icon"><link rel="shortcut icon" href="../favicon/yara.ico" type="image/x-icon">
 
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
       <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -55,7 +59,11 @@ atualizarClasseElemento();
 }
 .responsivo{
    z-index: 300;
+   width: 100%;
+   align-items: end;
+   text-align: end;
             display:flex;
+            margin-left: 90%;
          }
 .menubar{
    display: none !important; 
@@ -78,56 +86,119 @@ height:0.5em;}
 .modal-content, .label, .input{
    font-family: 'Questrial';
 }
+.menu-link{
+   font-size: 0.8em;
+}
+@media (min-width: 650px) {
+    .btn-modal {
+        display: none;
+    }
+}
 
+@media (max-width: 650px) {
+    .menu-links {
+        display: none;
+    }
+
+    .modal-body {
+        text-align: center;
+        margin-top: -15px;
+    }
+
+    .menu-link {
+        list-style: none;
+        display: block;
+        margin: 20px 0;
+        text-align: center;
+        text-decoration: none !important;
+        color: #000 !important;
+    }
+
+    a.menu-link:hover {
+        color: #000 !important;
+        text-decoration: underline;
+    }
+
+    .btn-modal, .btn-modal:active, .btn-modal:hover, .btn-modal::before {
+        border: none;
+        background-color: transparent;
+        border: transparent;
+        box-shadow: none;
+        outline: none;
+        color: #f0f0f0 !important;
+    }
+
+    .btn-modal.transparent {
+        color: transparent !important;
+    }
+
+    .modal-content {
+        border-radius: 30px;
+        border-style: none;
+        background-color: rgba(240, 240, 240, 0.915);
+    }
+
+    .modal-dialog {
+        position: fixed;
+        top: 3%; 
+        right: 10px;
+        width: 45%; 
+        height: 80%;
+        margin: 0;
+        transform: translate(0, 0);
+    }
+    
+.modal-backdrop{
+   display: none;
+}
+} 
       </style>
    </head>
-   <body>
+   <body class="fade-in">
       <header>
          
           <nav class="responsivo navbar navbar-expand-lg navbar-light ">
-          <a class="navbar-brand" href="#" style="color:white !important">Y.</a>
-  <button class="navbar-toggler"style="background-color:white"  type="button" data-toggle="collapse" data-target="#textoNavbar" aria-controls="textoNavbar" aria-expanded="false" aria-label="Alterna navegação">
-    <span class="navbar-toggler-icon" ></span>
-  </button>
-  <div class="collapse navbar-collapse" id="textoNavbar">
-    <ul class="navbar-nav mr-auto">
-
-      <li class="nav-item active">
-      <a target='iframe' style="color: var(--green); font-size: 0.4cm;  height:0.5em;" onclick="click()" class="link2 nav-link active" href="painel.php?campo="> Painel </a>
-      </li>
-      <li class="nav-item active">
-      <a target='iframe' style="color: var(--green); font-size: 0.4cm;  height:0.5em;" onclick="click()" class="link2 nav-link active" href="adm_list.php?campo="> Admnistradores </a>
-      </li>
-      <li class="nav-item active">
-      <a target='iframe' style="color: var(--green); font-size: 0.4cm;  height:0.5em;" onclick="click()" class="link2 nav-link active" href="clientes_list.php?campo="> Clientes </a>
-      </li>
-      <li class="nav-item active">
-      <a target='iframe' style="color: var(--green); font-size: 0.4cm;  height:0.5em;" onclick="click()" class="link2 nav-link active" href="senhas.php?campo="> Senhas </a>
-      </li>
-      <li class="nav-item active">
-      <a target='iframe' style="color: var(--green); font-size: 0.4cm;  height:0.5em;" onclick="click()" class="link2 nav-link active" href="produtos_list.php?campo="> Produtos </a>
-      </li>
-      <li class="nav-item active">
-      <a target='iframe' style="color: var(--green); font-size: 0.4cm;  height:0.5em;" onclick="click()" class="link2 nav-link active" href="vitrine_list.php?campo="> Vitrine </a>
-      </li>
-      <li class="nav-item active">
-      <a target='iframe' style="color: var(--green); font-size: 0.4cm;  height:0.5em;" onclick="click()" class="link2 nav-link active" href="pedidos_list.php?campo="> Pedidos </a>
-      </li>
-      <li class="nav-item active">
-     <b> <a href="#" class="link2 nav-link active"  style="color: var(--green); font-size: 0.4cm;  height:0.5em;" data-toggle="modal" data-target="#ExemploModalCentralizado">Meu Perfil</a>
-</b></li>
-      <li class="nav-item active">
-      <b><a href="#" class="link2 nav-link active"  style="color: var(--green); font-size: 0.4cm;  height:0.5em;" onclick="ExecutaLogout()">LogOut</a>
-</b></li>
-     
-    </ul>
-    <span class="navbar-text">
-    
-    </span>
-  </div>
+          <button type="button" class="btn-modal" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        <!-- ícone menu -->
+            <svg xmlns="http://www.w3.org/2000/svg" class="jsChangeColor icon icon-tabler icon-tabler-menu-2" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+            <path d="M4 6l16 0"></path>
+            <path d="M4 12l16 0"></path>
+            <path d="M4 18l16 0"></path>
+            </svg>
+        </button>
+        <!-- modal -->
+        <div class="modal fade modalMenu__mob" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header modalJusti">
+                        <button type="button" style="margin-left: 90%;" id="insideMobMenu__closeBTN" class="btn-close btn-modal mobileMenu__closeBTN" width="32" height="32" data-bs-dismiss="modal" aria-label="Close">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-x" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                <path d="M18 6l-12 12" />
+                                <path d="M6 6l12 12" /></svg>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                    <a target='iframe' style="color: var(--green);" onclick="click()" class="link1 nav-link active menu-link" href="painel.php">Painel</a>
+                    <?php if($_SESSION["ADM-PODER"]==5){?>
+                    <a target='iframe' style="color: var(--green);" class="link1 nav-link menulink menu-link" href="adm_list.php?campo=">Administradores</a>
+                   <?php } if($_SESSION["ADM-PODER"]>=4){?>
+                    <a target='iframe' style="color: var(--green);" class="link1 nav-link menulink menu-link" href="clientes_list.php?campo=">Clientes</a>
+                    <a target='iframe' style="color: var(--green);" class="link1 nav-link menulink menu-link" href="enderecos_list.php?campo=">Endereços</a>
+                    <a target='iframe' style="color: var(--green);" class="link1 nav-link menulink menu-link" href="senhas.php">Senhas</a>
+                    <a target='iframe' style="color: var(--green);" class="link1 nav-link menulink menu-link" href="produtos_list.php?campo=">Estoque</a>
+                    <?php } if($_SESSION["ADM-PODER"]>=1){ ?>
+                    <a target='iframe' style="color: var(--green);" class="link1 nav-link menulink menu-link" href="vitrine_list.php?campo=">Vitrine</a>
+                    <a target='iframe' style="color: var(--green);" class="link1 nav-link menulink menu-link" href="pedidos_list.php?campo=">Pedidos</a> <?php }?>
+                    </div>
+                </div>
+            </div>
+        </div>
 </nav>
          <nav class="navbar menu1">
-            <a class="navbar-brand" href="#">Y.</a>
+            <a class="navbar-brand" href="../../index.php">Y.</a>
             <ul class="nav justify-content-end">
                <div class="dropdown-container">
                   <li class="nav-item icon">

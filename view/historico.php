@@ -200,7 +200,7 @@ width: 2.5cm;
 }
     </style>
 </head>
-<body>
+<body class="fade-in">
     
     <?php
     

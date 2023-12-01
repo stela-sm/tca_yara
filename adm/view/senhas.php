@@ -40,7 +40,24 @@ function recomecar(){
     --white: #f9f9f9;
     --green: #1a3d1f;
     --yellow: #B9C394;
-} 
+} .fade-in-title {
+    opacity: 0;
+    animation: fadeIn 0.6s ease-in forwards;
+    animation-delay: 0.3s; 
+  }
+  
+  .fade-in {
+    opacity: 0;
+    animation: fadeIn 0.5s ease-in-out forwards;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }}
 body {
   width: 99vw;
     margin: 0;
@@ -151,7 +168,7 @@ body {
 }
 </style>
 </head>
-<body>
+<body class="fade-in">
 <table>
   <tr>
   <td class="common-header" id="yellow" colspan="3">Alteração de senhas</td>

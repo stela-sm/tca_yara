@@ -22,10 +22,10 @@
         }
         </script>
 </head>
-<body>
+<body class="fade-in">
     <style>
         table{
-          width: 98vw;
+          width: 100vw;
         }
 
 .container {
@@ -54,7 +54,24 @@
          }
 
 
-     
+         .fade-in-title {
+    opacity: 0;
+    animation: fadeIn 0.6s ease-in forwards;
+    animation-delay: 0.3s; 
+  }
+  
+  .fade-in {
+    opacity: 0;
+    animation: fadeIn 0.5s ease-in-out forwards;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }}     
          .search-input {
              flex-grow: 2; /* Ocupa 60% do espaço lateral */
              padding: 7px;

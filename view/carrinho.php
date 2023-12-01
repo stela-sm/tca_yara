@@ -42,7 +42,7 @@
                 <meta name="viewport" content="width=device-width, initial-scale=1.0">
                 <title>Yara | Meu Perfil</title>
             </head>
-<body>
+<body class="fade-in">
 <html lang="en">
 <?php
 
@@ -54,16 +54,7 @@
 
                   
         <style>
-            @media (min-width: 768px) and (max-width: 900px){
-        #name{
-            line-height: 10cm;
-            font-size: 0.8rem;
-        }
-    } @media (min-width: 900px) and (max-width: 1200px){
-        #name{
-            line-height: 5cm;
-        }
-    }
+           
             footer{
                 position: fixed !important;
     bottom: 0 !important;
@@ -161,7 +152,13 @@ a.logo:hover {
 .icon-bag, .icon-user {
     margin-top: -10px;
 }
-
+#name {
+                line-height: 3cm;
+                font-family: 'Berkshire Swash';
+                margin: 0;          
+                color: white;
+                font-size: 2.7em;
+            }
 /* responsividade menu */
 
 /* responsividade menu */
@@ -258,13 +255,7 @@ a.logo:hover {
              color: #1A3D1F;
 
             }
-            #name {
-                line-height: 3cm;
-                font-family: 'Berkshire Swash';
-                margin: 0;          
-                color: white;
-                font-size: 2.7em;
-            }
+       
     
             .prod_img{
     width: 80%;
@@ -419,6 +410,16 @@ box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
       opacity: 1;
     }
   }
+  @media (max-width: 900px){
+        #name{
+            line-height: 10cm;
+            font-size: 2.5em;
+        }
+    } @media (min-width: 900px) and (max-width: 1200px){
+        #name{
+            line-height: 5cm;
+        }
+    }
 </style>
 
 

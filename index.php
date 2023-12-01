@@ -33,7 +33,9 @@
 </head>
 <style>
     /*MENU*/
-
+.desc_section{
+    width: 80% !important;
+}
     .menu.fixed {
         margin: 0px;
         box-shadow: 0 0 30px rgba(0, 0, 0, .051);
@@ -781,7 +783,7 @@
         }
 
         .col-md-6.text-center.box__right {
-            padding-left: 0 !important;
+            padding-left: 0 ;
         }
 
         .yara-cursor {
@@ -830,6 +832,9 @@
 
     section {
         overflow: visible;
+    }
+    footer{
+        margin-top: 5rem;
     }
     
 .fade-in {
@@ -934,7 +939,7 @@
             <section class="bg-white scrollPart_anim1 hero" id="hero" onselectstart="return false">
                 <div class="herocurtain">
                     <video id="heroBanner" disablepictureinpicture class="index__video" autoplay muted loop>
-                        <source src="assets/media/Yara_video.mp4" type="video/mp4">
+                        <source src="assets/media/yarabgvd.mp4" type="video/mp4">
                     </video>
                 </div>
                 <div class="video__curtain"></div>
@@ -950,11 +955,7 @@
                         <div data-speed=".9" class=" conectionToShop gallery__left box__left">
                             <div  class="col-md-4 text-center box__left paddingOnResponsiveLeftBox">
                                 <h4 class="title_section pb-1 TitleFont-primary text-justify" style="margin-left:-2%;"> Destaques</h4>
-                                <p style="  margin-left: 0%;" class="desc_section BodyFont-primary text-justify">Os
-                                    produtos Yara proporcionam uma experiência singular no cuidado da pele. Com fórmulas
-                                    cuidadosamente elaboradas, inteiramente naturais e veganas, nossa linha inspira
-                                    autenticidade, nutrindo e realçando a beleza da sua pele de maneira consciente e
-                                    altamente eficaz.</p><br>
+                                <p style="  margin-left: 0%; width:100% !important;" class="desc_section BodyFont-primary text-justify">Explore a linha de produtos destaque da Yara, onde a natureza encontra a ciência para proporcionar resultados excepcionais. Nossas fórmulas cuidadosamente elaboradas, inteiramente naturais e veganas, transformam a sua rotina de beleza em uma experiência de luxo e eficácia. Nutra sua pele com autenticidade e descubra a diferença Yara.</p><br>
                                 <a href="view/shop.php" class="b_radius30 viewNow btn btn-primary btn-block">VER TODOS OS
                                     PRODUTOS</a>
                             </div>
@@ -1084,19 +1085,14 @@
                     class="positionResp_Ind row d-flex flex-row justify-content-center align-center items-center flex-wrap">
                     <div class="col-md-6 px-8 img_index_info img_indexInfo1">
                         <picture>
-                        <img class="borderR-30 " style="width: 90% !important;transform:scale(1.5)"
+                        <img class="borderR-30 " style="width: 85% !important;transform:scale(1.5); filter: drop-shadow(0 4px 20px lightgray);"
                                 src="assets/media/caixinha_index.png"
                                 alt="Imagem">
                         </picture>
                     </div>
-                    <div class="col-md-6 text-center box__right" style="width: 41.666667%;   padding-left: 4rem;
-            ">
+                    <div class="col-md-6 text-center box__right" style="width: 41.666667%;   padding-left: 4rem; ">
                         <h4 class="title_section pb-1 TitleFont-primary text-justify">Compromisso</h4>
-                        <p style="   margin-left: 2%;"
-                            class="desc_section BodyFont-primary text-justify txtcmmarginRight__in">Nossos produtos são
-                            cuidadosamente elaborados a partir de ingredientes naturais, colhidos na essência da
-                            natureza. Combinamos elementos orgânicos para criar formulações delicadas que nutrem e
-                            revitalizam sua pele, respeitando sua beleza única.</p>
+                        <p  class="desc_section BodyFont-primary text-justify txtcmmarginRight__in" >Nossas embalagens refletem nossa paixão pela natureza, concebidas com a mesma dedicação dedicada à criação de nossos produtos. Optamos por materiais eco-friendly, alinhados com nosso compromisso sustentável. Da seleção de ingredientes naturais à criação de embalagens conscientes, preservamos a beleza única da natureza que nos inspira.</p>
                     </div>
                 </div>
             </div>
@@ -1108,18 +1104,15 @@
                 <div
                     class="positionResp_Ind row d-flex flex-row justify-content-center align-center items-center flex-wrap">
                     <div class="col-md-6 text-center box__left" style="width: 41.666667%;
-          padding-left: 1.6%;">
-                        <h4 class="title_section pb-1 TitleFont-primary text-justify">Nossa especialidade</h4>
-                        <p style="    margin-left: 2%;"
-                            class="desc_section BodyFont-primary text-justify txtcmmarginLeft__in txtcmmarginRight__in">
-                            A eficácia dos produtos Yara é o resultado de anos de pesquisa e dedicação à qualidade.
-                            Desenvolvidos com fórmulas inovadoras e naturais, nossos produtos oferecem resultados
-                            visíveis, proporcionando uma experiência de cuidados com a pele excepcionalmente eficaz.
+          padding-left: 1.6%; ">
+                        <h4 class="title_section pb-1 TitleFont-primary text-justify"   style="margin-left:15px;">Nossa especialidade</h4>
+                        <p class="desc_section BodyFont-primary text-justify txtcmmarginLeft__in txtcmmarginRight__in" style="margin-left:15px;">
+                        Na Yara, nossa especialidade reside na fusão meticulosa de ciência e natureza, resultando em produtos inovadores e eficazes.   Nosso compromisso com a especialidade vai além do resultado visível na pele; também se estende ao respeito pelo meio ambiente, abraçando práticas sustentáveis e veganas. Assim, cada produto Yara não é apenas um testemunho da nossa especialidade, mas também um tributo à beleza consciente e responsável.
                     </div>
                     <div class="col-md-6 px-8  img_index_info img_indexInfo2" style="width: 50% !important;">
                         <picture>
-                        <img class="borderR-30 " style="width: 90% !important;transform:scale(1.2)"
-                                src="assets/media/produtos_index.png"
+                        <img class="borderR-30 " style="width: 90% !important;transform:scale(1.2); filter: drop-shadow(0 4px 20px lightgray);"
+                                src="assets/media/produtos_index-removebg-preview.png"
                                 alt="Imagem">
                         </picture>
                     </div>
@@ -1567,12 +1560,13 @@
                     },
                     600: {
                         items: 2,
-                        nav: false,
+                        nav: false,       
                     },
                     1000: {
                         items: 3,
                         nav: false,
                         loop: true,
+                        
                     },
                 },
             });

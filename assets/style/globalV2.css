@@ -1208,8 +1208,22 @@ button.btn.btn-link.ingred__btn:focus {
 
 @media (min-width: 577px) and (max-width: 768px) {}
 
-@media (min-width: 769px) and (max-width: 992px) {}
+@media (min-width: 769px) and (max-width: 992px) {
+    .positionResp_Ind{
+        width: 100vw;
+    }
+}
+@media (min-width: 768px) and (max-width: 1024px){
+.col-md-6 {
+  --webkit-box-flex: 0;
+   -ms-flex: 0 0 50%;
+     flex: 0 0 50%; 
+     min-width: 90% !important; 
+     margin-left: 0px !important;
+     padding-left: 10% !important;
 
+    text-align: left !important;
+}}
 /*MONITORES MAIORES*/
 @media (min-width: 993px) and (max-width: 1200px) {}
 

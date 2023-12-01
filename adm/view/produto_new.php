@@ -18,7 +18,7 @@
     <title>Yara | Adminstração</title>
 </head>
 
-<body>
+<body class="fade-in">
 <form action="../controller/controller_adm.php" method="post" class="form" enctype="multipart/form-data">
     <input type="hidden" name="produto_new" value="1">
 <table>

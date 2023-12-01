@@ -30,7 +30,24 @@
         --grey: gray;
     }
 
-
+    .fade-in-title {
+    opacity: 0;
+    animation: fadeIn 0.6s ease-in forwards;
+    animation-delay: 0.3s; 
+  }
+  
+  .fade-in {
+    opacity: 0;
+    animation: fadeIn 0.5s ease-in-out forwards;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }}
    body {
       margin: 0;
       padding: 0;
@@ -38,7 +55,7 @@
     }
     
     table {
-      width: 98vw;
+      width: 100vw;
       border-collapse: collapse;
       table-layout: auto;
       border-radius: 20px;
@@ -214,7 +231,7 @@ i{
    margin-top: 60px; /* Para evitar que o conteúdo fique oculto pelo menu */
  }
 </style>
-<body>
+<body class="fade-in">
     
 <form action="pedidos_list.php" onsubmit="preventSubmit(event)" method="get" name="search_form">
     <div class="container">

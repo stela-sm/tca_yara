@@ -25,6 +25,24 @@
         --yellow: #B9C394;
         --grey: gray;
     }
+    .fade-in-title {
+    opacity: 0;
+    animation: fadeIn 0.6s ease-in forwards;
+    animation-delay: 0.3s; 
+  }
+  
+  .fade-in {
+    opacity: 0;
+    animation: fadeIn 0.5s ease-in-out forwards;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }}
     body{        
     font-family: 'Questrial';
     color: var(--green);
@@ -101,7 +119,7 @@ button{
 
 </style>
 </head>
-<body>
+<body class="fade-in">
 <script>
 document.addEventListener("DOMContentLoaded", function() {
   const currentDateInput = document.getElementById("inicio");

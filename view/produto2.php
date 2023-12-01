@@ -666,7 +666,7 @@ transition: 0.3S;
         <div class="menu-links">
             <a class="menu-link a-home  jsChangeColor" href="../index.php">Home</a>
             <a class="menu-link a-shop  jsChangeColor" href="shop.php">Shop</a>
-            <a class="menu-link a-sobre jsChangeColor" href="#">Sobre</a>
+            <a class="menu-link a-sobre jsChangeColor" href="sobre.html">Sobre</a>
             <!-- ícone user -->
             <a class="menu-link jsChangeColor" href="meuperfil.php">
                 <svg xmlns="http://www.w3.org/2000/svg" class="icon-user icon-tabler icon-tabler-user-circle"
@@ -724,7 +724,7 @@ transition: 0.3S;
                     <div class="modal-body">
                         <a class="menu-link" href="../index.php">Home</a>
                         <a class="menu-link" href="shop.php">Shop</a>
-                        <a class="menu-link" href="#">Sobre</a>
+                        <a class="menu-link" href="sobre.html">Sobre</a>
                         <a class="menu-link" href="meuperfil.php">Login</a>
                         <a class="menu-link" href="carrinho.php">Sacola</a>
                     </div>

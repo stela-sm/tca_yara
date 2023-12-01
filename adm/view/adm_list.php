@@ -14,6 +14,24 @@
 
     <title>Yara</title>
  <style>
+  .fade-in-title {
+    opacity: 0;
+    animation: fadeIn 0.6s ease-in forwards;
+    animation-delay: 0.3s; 
+  }
+  
+  .fade-in {
+    opacity: 0;
+    animation: fadeIn 0.5s ease-in-out forwards;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }}
         body {
             margin: 0;
             padding: 0;
@@ -75,7 +93,7 @@
         }
     </style>
 </head>
-<body>
+<body class="fade-in">
 <form action="adm_list.php" onsubmit="preventSubmit(event)" method="get" name="search_form">
     <div class="container">
         <div class="icon"> <?php if(($_GET["campo"]=="")){echo "<i class=\"fa-solid fa-magnifying-glass\"></i>";}else{echo "<button class=\"x_button\"name=\"campo\" value=\"\"><i class=\"fa-solid fa-x\"></i></button>";} ?></div>

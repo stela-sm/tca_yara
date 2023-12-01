@@ -18,6 +18,28 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Yara | Adminstração</title>
       </head>
+      <style>
+        .fade-in-title {
+    opacity: 0;
+    animation: fadeIn 0.6s ease-in forwards;
+    animation-delay: 0.3s; 
+  }
+  
+  .fade-in {
+    opacity: 0;
+    animation: fadeIn 0.5s ease-in-out forwards;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }}
+      </style>
+      <body class="fade-in">
+        
       <form action="../controller/controller_adm.php" method="post" class="form ">
         <input type="hidden" name="cliente_new" value="1">
         <div class="container">
