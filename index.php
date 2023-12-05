@@ -1180,17 +1180,10 @@
                         <button class="btn btn-primary buttonInscreva btn__footerInsc" type="button">Inscrever</button>
                     </div>
                     <div class="social__port">
-                        <a href="https://api.whatsapp.com/send?phone=+5511963208060" target="_blank"
+                        <a href="https://www.facebook.com/profile.php?id=61553892526268" target="_blank"
                             class="social__icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-whatsapp"
-                                width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
-                                fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                <path d="M3 21l1.65 -3.8a9 9 0 1 1 3.4 2.9l-5.05 .9"></path>
-                                <path
-                                    d="M9 10a.5 .5 0 0 0 1 0v-1a.5 .5 0 0 0 -1 0v1a5 5 0 0 0 5 5h1a.5 .5 0 0 0 0 -1h-1a.5 .5 0 0 0 0 1">
-                                </path>
-                            </svg>
+                           <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-facebook" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M7 10v4h3v7h4v-7h3l1 -4h-4v-2a1 1 0 0 1 1 -1h3v-4h-3a5 5 0 0 0 -5 5v2h-3" /></svg>
+                          
                         </a>
                         <a href="#" class="social__icon" target="_blank">
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-x"
@@ -1224,7 +1217,7 @@
                                 <a class="opacity-08 link__footer" href="">Home</a>
                             </li>
                             <li class="opacity-08">
-                                <a class="opacity-08 link__footer" href="view/shop.html">Shop</a>
+                                <a class="opacity-08 link__footer" href="view/shop.php">Shop</a>
                             </li>
                             <li class="opacity-08">
                                 <a class="opacity-08 link__footer" href="view/sobre.html">Sobre</a>
@@ -1240,7 +1233,7 @@
                             </li>
                             <li class="opacity-08">
                                 <a class="opacity-08 link__footer" target="_blank"
-                                    href="https://api.whatsapp.com/send?phone=+5511963208060">+55 11 98328-3252</a>
+                                    href="https://www.facebook.com/profile.php?id=61553892526268">+55 11 98328-3252</a>
                             </li>
                             <li class="opacity-08" style="cursor: pointer;">
                                 <a class="opacity-08 link__footer" target="_blank"
