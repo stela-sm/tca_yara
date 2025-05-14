@@ -1,7 +1,6 @@
 
 ### 🧴 Projeto Yara – Skincare Natural e Consciente
 
-```markdown
 # 🌿 Yara – E-commerce de Skincare Natural
 
 Yara é uma plataforma de vendas de produtos de skincare desenvolvida como projeto educacional. Nosso foco é promover o cuidado pessoal aliado à sustentabilidade, com produtos naturais e uma experiência de compra fluida.
